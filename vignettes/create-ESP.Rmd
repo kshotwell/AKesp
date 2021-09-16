@@ -1,0 +1,88 @@
+---
+title: "Create an ESP"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Create an ESP}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE,
+  eval = TRUE
+)
+```
+
+First, open `AKesp.Rproj` and run:
+```{r}
+devtools::load_all()
+```
+
+Eventually the package will be on Github!
+
+## Create your template
+
+The `AKesp::create_template` function creates an ESP template at the specified path.
+
+Since `AKesp` needs to be loaded locally because it is not yet available on Github, file paths need to be specified relative to the `AKesp` folder. Once `AKesp` can be installed from Github, this will no longer be necessary.
+
+```{r, eval = FALSE}
+AKesp::create_template(path = "../test", type = "full")
+```
+
+```{r, echo = FALSE, fig.width = 10}
+knitr::include_graphics(path = "images/files.png", dpi = 72)
+```
+
+## Create your content
+
+- Put all figures in the `images` folder (.png or .jpeg format) and fill out `figure_spreadsheet.csv`. Enter figures into the spreadsheet in the order you want them to appear.
+
+- Put all tables in the `tables` folder (.csv format) and fill out `table_spreadsheet.csv`. Enter tables into the spreadsheet in the order you want them to appear.
+
+- Put all your references in the `references_spreadsheet.csv`, following the example format. A `references.bib` file will be created and used to compile your in-text references and literature cited section.
+
+- Edit `...-esp-text-template.docx` (can be done on Google Drive and then downloaded). Remember to follow markdown formatting syntax for tables, figures, and references using keywords from the respective spreadsheets. 
+
+## Create the ESP
+
+Finally, use `AKesp::render_esp` to generate your ESP from the template content. 
+
+### Exammple full ESP
+
+After creating a full ESP template, running `AKesp::render_esp` with the default parameters will produce an example ESP. However, since `AKesp` needs to be loaded locally, the directory with your ESP template needs to be specified relative to the `AKesp` folder. Once `AKesp` can be installed from Github, this will no longer be necessary, and `here::here()` can be used instead.
+
+
+```{r, eval = FALSE}
+AKesp::render_esp(dir = "../test",
+                  ref_spreadsheet = "../test/references_spreadsheet.csv",
+                  tab_spreadsheet = "../../test/table_spreadsheet.csv",
+                  fig_spreadsheet = "../../test/figure_spreadsheet.csv")
+```
+
+<p align="center">
+```{r, echo = FALSE, out.width = "80%", out.extra = 'style="background-color: #9ecff7; padding:5px;"', fig.align = "center"}
+knitr::include_graphics(path = "images/EXAMPLE-FULL-ESP_Page_1.png", dpi = 72)
+knitr::include_graphics(path = "images/EXAMPLE-FULL-ESP_Page_2.png", dpi = 72)
+knitr::include_graphics(path = "images/EXAMPLE-FULL-ESP_Page_3.png", dpi = 72)
+knitr::include_graphics(path = "images/EXAMPLE-FULL-ESP_Page_4.png", dpi = 72)
+knitr::include_graphics(path = "images/EXAMPLE-FULL-ESP_Page_5.png", dpi = 72)
+knitr::include_graphics(path = "images/EXAMPLE-FULL-ESP_Page_6.png", dpi = 72)
+```
+</p>
+
+### ESP parameters
+
+To see the parameters that can be changed for the ESP:
+```{r, eval = FALSE}
+?AKesp::render_esp()
+```
+
+```{r, echo = FALSE, out.width = "70%", fig.align = "center"}
+knitr::include_graphics(path = "images/help.png", dpi = 72)
+```
+

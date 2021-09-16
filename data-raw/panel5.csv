@@ -1,0 +1,477 @@
+Stock,Group,Region,Metric,Category,Use,Threshold Value High,Threshold Value Low,Reverse,Mean,Stdev,Max,Min,Value,Quality,Order1,Order2,Rank0,Flag,Rank
+Sablefish,Roundfish,GOA,Commercial Value,Socioeconomic,No,1773862.26,339838.64,No,13744471.18,50904942.78,367726626,0,95013831,3,44,4,0.258381701,1,0.961
+Sablefish,Roundfish,GOA,Fecundity,Ecosystem,Yes,1000,100000,Yes,571096.8333,910959.2328,3700000,4.5,700000,3,15,56,0.189188203,1,0.185
+Sablefish,Roundfish,GOA,Maximum Length,Ecosystem,Yes,155,55,No,97.91666667,58.28052897,195,16,138,3,9,19,0.681564246,,0.78
+Sablefish,Roundfish,GOA,Depth Range,Ecosystem,Yes,100,,Yes,406.2096774,393.8530614,2000,75,1000,4,12,61,0.480519481,1,0.076
+Sablefish,Roundfish,GOA,Maximum Age,Ecosystem,Yes,25,10,No,44.24074074,38.06941782,157,2,94,3,7,13,0.593548387,1,0.844
+Sablefish,Roundfish,GOA,Age at 1st Maturity,Ecosystem,Yes,5,2,No,6.517241379,4.789278872,19,1,2.5,3,4,58,0.083333333,,0.115
+Sablefish,Roundfish,GOA,Habitat Dependence Index,Ecosystem,Yes,5,1,No,1.357142857,0.772918235,3,1,1,2,24,67,0,,0
+Sablefish,Roundfish,GOA,Breeding Strategy Index,Ecosystem,Yes,4,0,No,2.35483871,2.158450979,8,0,0,3,16,64,0,,0
+Sablefish,Roundfish,GOA,Other Stressors,Ecosystem,Yes,3.5,2.5,No,1.291935484,0.275382528,2.2,1,1.7,2,27,6,0.583333333,,0.924
+Sablefish,Roundfish,GOA,Stock Size over Status,Ecosystem,No,3.5,2.5,No,1.25,0.585314097,3,1,2,3,35,15,0.5,,0.821
+Sablefish,Roundfish,GOA,ELH Survival Settlement,Ecosystem,Yes,3.5,2.5,No,2.4375,0.232609421,2.7,2,2.7,2,21,23,1,,0.75
+Sablefish,Roundfish,GOA,Habitat Specificity,Ecosystem,Yes,3.5,2.5,No,1.477419355,0.432082018,2.6,1,1.7,2,23,28,0.4375,,0.698
+Sablefish,Roundfish,GOA,Prey Specificity,Ecosystem,Yes,3.5,2.5,No,1.561290323,0.504197086,2.8,1,1.3,3,25,33,0.166666667,,0.641
+Sablefish,Roundfish,GOA,Population Growth Rate,Ecosystem,Yes,3.5,2.5,No,2.675,0.511998884,3.7,2.3,3,3,10,34,0.5,,0.625
+Sablefish,Roundfish,GOA,Mean Trophic Level,Ecosystem,Yes,3.5,2.5,No,3.760483871,0.362723882,4.4,3.2,3.8,3,28,37,0.5,1,0.596
+Sablefish,Roundfish,GOA,Dispersal ELH,Ecosystem,Yes,3.5,2.5,No,1.614516129,0.721302732,3.6,1,1.3,2,19,42,0.115384615,,0.528
+Sablefish,Roundfish,GOA,OA Sensitivity,Ecosystem,Yes,3.5,2.5,No,1.869354839,0.537019312,2.8,1,1.7,2,26,46,0.388888889,,0.49
+Sablefish,Roundfish,GOA,Adult Mobility,Ecosystem,Yes,3.5,2.5,No,1.651612903,0.538894416,2.6,1,1.4,4,22,52,0.25,,0.377
+Sablefish,Roundfish,GOA,Temperature Sensitivity,Ecosystem,Yes,3.5,2.5,No,1.84375,0.551256681,3.2,1.55,1.55,4,13,63,0,,0
+Sablefish,Roundfish,GOA,Spawning Cycle,Ecosystem,Yes,3.5,2.5,No,2.75,0.507092553,3.8,2.2,2.2,2,17,65,0,,0
+Sablefish,Roundfish,GOA,Reproductive Strategy,Ecosystem,Yes,3.5,2.5,No,1.875,0.254950976,2.3,1.6,1.6,3,20,66,0,,0
+Sablefish,Roundfish,GOA,Ecosystem Value Top-Down,Ecosystem,Yes,3,1.5,No,2.313559322,1.312730456,5,0,3,3,30,30,0.6,1,0.692
+Sablefish,Roundfish,GOA,Ecosystem Value Bottom-Up,Ecosystem,Yes,3,1.5,No,2.449152542,1.425430713,5,1,2,3,29,48,0.25,,0.442
+Sablefish,Roundfish,GOA,Geographic Concentration,Ecosystem,Yes,3,1,No,1.778846154,0.812967582,3,1,2,4,14,51,0.5,,0.4
+Sablefish,Roundfish,GOA,Recruitment Variability,Ecosystem,Yes,0.9,0.3,No,0.626755339,0.257351262,1.05,0.332979127,1.05,3,1,2,1,1,0.965
+Sablefish,Roundfish,GOA,Relative Fishing Mortality,Socioeconomic,No,0.9,0.25,No,0.319417968,0.228228829,0.900738634,0,0.68020791,4,43,5,0.755166798,,0.96
+Sablefish,Roundfish,GOA,Commercial Importance,Socioeconomic,Yes,0.729513501,0.645556499,No,0.603585556,0.270171516,1,0,0.931383279,3,31,3,0.931383279,1,0.962
+Sablefish,Roundfish,GOA,Relative Stock Abundance,Ecosystem,No,0.5,1.2,Yes,1.745167825,0.628635436,3.262385004,0.520664332,1.000011117,3,34,12,0.174834289,1,0.852
+Sablefish,Roundfish,GOA,Natural Mortality,Ecosystem,Yes,0.5,0.2,No,0.196413793,0.195789274,1,0.03,0.1,3,2,53,0.072164948,,0.358
+Sablefish,Roundfish,GOA,Growth Rate,Ecosystem,Yes,0.1,0.25,Yes,0.174834341,0.109642666,0.445,0.022,0.256,3,3,60,0.553191489,1,0.103
+Sablefish,Roundfish,GOA,Spawning Aggregation,Ecosystem,No,,,No,2.695652174,0.702901946,3,1,NA,2,36,1,#VALUE!,,#VALUE!
+Sablefish,Roundfish,GOA,Usual_Depth_Min,Ecosystem,No,,,,70.72580645,96.76677545,400,0,200,4,67,7,0.5,,0.923
+Sablefish,Roundfish,GOA,Usual_Depth_Max,Ecosystem,No,,,,476.9354839,427.9366764,2000,100,1200,4,68,8,0.578947368,,0.923
+Sablefish,Roundfish,GOA,Transformation Size,Ecosystem,No,,,,31.97857143,17.35764866,67.5,13.4,50,2,41,9,0.676524954,,0.916
+Sablefish,Roundfish,GOA,Fishing_Rate_Relative_Natural_Mortality,Socioeconomic,No,,,,0.313625445,0.288537257,1.15,0,0.7,3,57,10,0.608695652,,0.862
+Sablefish,Roundfish,GOA,Recreational Fishery Importance,Socioeconomic,No,,,No,0.239795918,0.530229863,2.25,0,1,2,47,11,0.444444444,,0.853
+Sablefish,Roundfish,GOA,Length 50% Maturity,Ecosystem,Yes,,,No,45.52172727,27.98778625,130,13.5,65,3,8,14,0.442060086,,0.833
+Sablefish,Roundfish,GOA,Fishing_Mortality (Z-M),Socioeconomic,No,,,,0.069519053,0.134024088,0.900738634,0,0.07,4,56,16,0.077713998,,0.803
+Sablefish,Roundfish,GOA,Hatch Size,Ecosystem,No,,,,4.662,1.938848389,11.5,2,5.5,2,38,17,0.368421053,,0.783
+Sablefish,Roundfish,GOA,Subsistence Fishery Importance,Socioeconomic,No,,,No,0.987179487,1.216591331,4,0,2,2,48,18,0.5,,0.781
+Sablefish,Roundfish,GOA,Recreational Index,Socioeconomic,No,,,No,26021.22222,41188.18114,122501,7,30685,2,45,20,0.25044492,,0.777
+Sablefish,Roundfish,GOA,Subsistence Index,Socioeconomic,No,,,No,1364.684925,2526.52813,10711.22072,5.599,1591.308938,2,46,21,0.148119369,,0.777
+Sablefish,Roundfish,GOA,Constituent Demand,Socioeconomic,Yes,,,No,2.73,1.607412676,5,0,5,4,32,22,1,,0.772
+Sablefish,Roundfish,GOA,Spawning Duration,Ecosystem,Yes,,,Yes,5.6,3.190026832,12,2,4,2,18,24,0.2,,0.726
+Sablefish,Roundfish,GOA,Egg Diameter,Ecosystem,No,,,,1.677419355,0.831961408,4,0.8,1.995,2,37,25,0.3734375,,0.724
+Sablefish,Roundfish,GOA,Feeding Larvae Size,Ecosystem,No,,,,18.73,10.43828462,41.5,8,19.5,2,39,26,0.343283582,,0.714
+Sablefish,Roundfish,GOA,Max Weight,Ecosystem,No,,,,14.22736364,21.61082247,91,0.052,12,3,62,27,0.131371773,,0.71
+Sablefish,Roundfish,GOA,Doubling_Time,Ecosystem,No,,,,9.738793103,3.639862672,14,2.9,14,3,59,29,1,,0.693
+Sablefish,Roundfish,GOA,Catch,Socioeconomic,No,,,,40910.29243,182269.7611,1321581,0,10953,4,51,31,0.008287801,,0.674
+Sablefish,Roundfish,GOA,Long_Min,Ecosystem,No,,,,134.75,34.67917475,180,45,141,4,65,32,0.711111111,,0.666
+Sablefish,Roundfish,GOA,Mean Age,Ecosystem,Yes,,,No,12.71687016,7.367200393,31,2,15,3,6,35,0.448275862,,0.607
+Sablefish,Roundfish,GOA,TAC,Socioeconomic,No,,,,52831.9375,191727.0498,1310000,100,13657,3,54,36,0.010349645,,0.604
+Sablefish,Roundfish,GOA,Biomass,Ecosystem,No,,,,234537.875,518883.9756,3540000,5352,89957,3,49,38,0.023935905,,0.595
+Sablefish,Roundfish,GOA,Best_Age,Ecosystem,No,,,,13.37765449,7.086950602,28,3,15,3,60,39,0.48,,0.591
+Sablefish,Roundfish,GOA,ABC,Ecosystem,No,,,,73621.35417,239652.9225,1637000,453,13657,3,53,40,0.008068207,,0.558
+Sablefish,Roundfish,GOA,Generation Time,Ecosystem,No,,,,20.33942857,13.18511013,56,8,17.2,3,58,41,0.191666667,,0.558
+Sablefish,Roundfish,GOA,Common/Max Length,Ecosystem,No,,,,99.04484151,126.2037305,700,20,80,3,61,43,0.088235294,,0.522
+Sablefish,Roundfish,GOA,B_MSY,Ecosystem,No,,,,180606.4286,370829.139,1984200,7198,89956,3,50,44,0.041860352,,0.518
+Sablefish,Roundfish,GOA,OFL,Ecosystem,No,,,,115596.06,470480.8576,3330000,560,16128,3,52,45,0.004675861,,0.511
+Sablefish,Roundfish,GOA,Total_Mortality,Ecosystem,No,,,,0.26672595,0.308989632,1.900738634,0.036,0.17,3,55,47,0.071859937,,0.49
+Sablefish,Roundfish,GOA,Lat_Max,Ecosystem,No,,,,65.91935484,5.19867066,79,60,66,4,64,49,0.315789474,,0.442
+Sablefish,Roundfish,GOA,Habitat Vulnerability Index,Ecosystem,No,,,No,0.693877551,0.683254517,2,0,1,2,42,50,0.5,,0.404
+Sablefish,Roundfish,GOA,Age 50% Maturity,Ecosystem,Yes,,,No,10.14553191,6.575004648,36,3.6,6.5,3,5,54,0.089506173,,0.282
+Sablefish,Roundfish,GOA,Non-Catch Value,Socioeconomic,Yes,,,No,1.967391304,1.419711136,5,0,1,3,33,55,0.2,,0.23
+Sablefish,Roundfish,GOA,Feeding Larvae Duration,Ecosystem,No,,,,115.530303,47.80264431,182,30,60,2,40,57,0.197368421,,0.156
+Sablefish,Roundfish,GOA,Latitude Range,Ecosystem,Yes,,,Yes,33.01612903,7.614679386,53,12,42,4,11,59,0.731707317,,0.114
+Sablefish,Roundfish,GOA,Lat_Min,Ecosystem,No,,,,32.90322581,6.657202872,54,17,24,4,63,62,0.189189189,,0.076
+Sablefish,Roundfish,GOA,Long_Max,Ecosystem,No,,,,128.5294118,21.19496123,180,109,109,4,66,68,0,,0
+POP,Rockfish,GOA,Commercial Value,Socioeconomic,No,1773862.26,339838.64,No,13744471.18,50904942.78,367726626,0,7401968,3,44,,0.020128997,1,0.826
+POP,Rockfish,GOA,Fecundity,Ecosystem,Yes,1000,100000,Yes,571096.8333,910959.2328,3700000,4.5,118500,1,15,,0.03202585,1,0.685
+POP,Rockfish,GOA,Maximum Length,Ecosystem,Yes,155,55,No,97.91666667,58.28052897,195,16,70,3,9,,0.301675978,,0.28
+POP,Rockfish,GOA,Depth Range,Ecosystem,Yes,100,,Yes,406.2096774,393.8530614,2000,75,270,3,12,,0.101298701,1,0.567
+POP,Rockfish,GOA,Maximum Age,Ecosystem,Yes,25,10,No,44.24074074,38.06941782,157,2,84,3,7,,0.529032258,1,0.8
+POP,Rockfish,GOA,Age at 1st Maturity,Ecosystem,Yes,5,2,No,6.517241379,4.789278872,19,1,6.5,3,4,,0.305555556,1,0.653
+POP,Rockfish,GOA,Habitat Dependence Index,Ecosystem,Yes,5,1,No,1.357142857,0.772918235,3,1,1,0,24,,0,,0
+POP,Rockfish,GOA,Breeding Strategy Index,Ecosystem,Yes,4,0,No,2.35483871,2.158450979,8,0,4,1,16,,0.5,1,0.509
+POP,Rockfish,GOA,Temperature Sensitivity,Ecosystem,Yes,3.5,2.5,No,1.84375,0.551256681,3.2,1.55,3.2,3,13,,1,,1
+POP,Rockfish,GOA,Spawning Cycle,Ecosystem,Yes,3.5,2.5,No,2.75,0.507092553,3.8,2.2,3.8,1,17,,1,1,1
+POP,Rockfish,GOA,Population Growth Rate,Ecosystem,Yes,3.5,2.5,No,2.675,0.511998884,3.7,2.3,3.7,3,10,,1,1,0.875
+POP,Rockfish,GOA,Reproductive Strategy,Ecosystem,Yes,3.5,2.5,No,1.875,0.254950976,2.3,1.6,2.3,1,20,,1,,0.875
+POP,Rockfish,GOA,Habitat Specificity,Ecosystem,Yes,3.5,2.5,No,1.477419355,0.432082018,2.6,1,1.9,0,23,,0.5625,,0.792
+POP,Rockfish,GOA,ELH Survival Settlement,Ecosystem,Yes,3.5,2.5,No,2.4375,0.232609421,2.7,2,2.7,1,21,,1,,0.75
+POP,Rockfish,GOA,Dispersal ELH,Ecosystem,Yes,3.5,2.5,No,1.614516129,0.721302732,3.6,1,1.6,1,19,,0.230769231,,0.735
+POP,Rockfish,GOA,Prey Specificity,Ecosystem,Yes,3.5,2.5,No,1.561290323,0.504197086,2.8,1,2,3,25,,0.555555556,,0.698
+POP,Rockfish,GOA,Adult Mobility,Ecosystem,Yes,3.5,2.5,No,1.651612903,0.538894416,2.6,1,2.4,1,22,,0.875,,0.679
+POP,Rockfish,GOA,OA Sensitivity,Ecosystem,Yes,3.5,2.5,No,1.869354839,0.537019312,2.8,1,2.1,0,26,,0.611111111,,0.566
+POP,Rockfish,GOA,Mean Trophic Level,Ecosystem,Yes,3.5,2.5,No,3.760483871,0.362723882,4.4,3.2,3.5,1,28,,0.25,1,0.192
+POP,Rockfish,GOA,Other Stressors,Ecosystem,Yes,3.5,2.5,No,1.291935484,0.275382528,2.2,1,1.2,1,27,,0.166666667,,0.15
+POP,Rockfish,GOA,Stock Size over Status,Ecosystem,No,3.5,2.5,No,1.25,0.585314097,3,1,1,3,35,,0,,0
+POP,Rockfish,GOA,Geographic Concentration,Ecosystem,Yes,3,1,No,1.778846154,0.812967582,3,1,2.5,3,14,,0.75,,0.711
+POP,Rockfish,GOA,Ecosystem Value Bottom-Up,Ecosystem,Yes,3,1.5,No,2.449152542,1.425430713,5,1,2.5,1,29,,0.375,,0.653
+POP,Rockfish,GOA,Ecosystem Value Top-Down,Ecosystem,Yes,3,1.5,No,2.313559322,1.312730456,5,0,2.5,1,30,,0.5,,0.596
+POP,Rockfish,GOA,Relative Fishing Mortality,Socioeconomic,No,0.9,0.25,No,0.319417968,0.228228829,0.900738634,0,0.769002425,3,43,,0.853746465,,1
+POP,Rockfish,GOA,Recruitment Variability,Ecosystem,Yes,0.9,0.3,No,0.626755339,0.257351262,1.05,0.332979127,0.52,3,1,,0.260830444,,0.344
+POP,Rockfish,GOA,Commercial Importance,Socioeconomic,Yes,0.729513501,0.645556499,No,0.603585556,0.270171516,1,0,0.801976201,3,31,,0.801976201,1,0.811
+POP,Rockfish,GOA,Relative Stock Abundance,Ecosystem,No,0.5,1.2,Yes,1.745167825,0.628635436,3.262385004,0.520664332,1.551935112,3,34,,0.376139988,1,0.63
+POP,Rockfish,GOA,Natural Mortality,Ecosystem,Yes,0.5,0.2,No,0.196413793,0.195789274,1,0.03,0.061,3,2,,0.031958763,,0.207
+POP,Rockfish,GOA,Growth Rate,Ecosystem,Yes,0.1,0.25,Yes,0.174834341,0.109642666,0.445,0.022,0.19,3,3,,0.397163121,1,0.308
+POP,Rockfish,GOA,Egg Diameter,Ecosystem,No,,,,1.677419355,0.831961408,4,0.8,NA,1,37,,#VALUE!,,#VALUE!
+POP,Rockfish,GOA,Subsistence Index,Socioeconomic,No,,,No,1364.684925,2526.52813,10711.22072,5.599,0,2,46,,-0.000522996,,#N/A
+POP,Rockfish,GOA,Spawning Duration,Ecosystem,Yes,,,Yes,5.6,3.190026832,12,2,2,1,18,,0,,1
+POP,Rockfish,GOA,Fishing_Rate_Relative_Natural_Mortality,Socioeconomic,No,,,,0.313625445,0.288537257,1.15,0,1.081967213,3,57,,0.940841055,,0.98
+POP,Rockfish,GOA,Usual_Depth_Min,Ecosystem,No,,,,70.72580645,96.76677545,400,0,150,3,67,,0.375,,0.903
+POP,Rockfish,GOA,Constituent Demand,Socioeconomic,Yes,,,No,2.73,1.607412676,5,0,5,3,32,,1,,0.772
+POP,Rockfish,GOA,Catch,Socioeconomic,No,,,,40910.29243,182269.7611,1321581,0,18732,3,51,,0.014173933,,0.767
+POP,Rockfish,GOA,Fishing_Mortality (Z-M),Socioeconomic,No,,,,0.069519053,0.134024088,0.900738634,0,0.066,3,56,,0.073273198,,0.764
+POP,Rockfish,GOA,Biomass,Ecosystem,No,,,,234537.875,518883.9756,3540000,5352,154984,3,49,,0.042332928,,0.744
+POP,Rockfish,GOA,Hatch Size,Ecosystem,No,,,,4.662,1.938848389,11.5,2,5.25,1,38,,0.342105263,,0.729
+POP,Rockfish,GOA,Long_Min,Ecosystem,No,,,,134.75,34.67917475,180,45,143,3,65,,0.725925926,,0.703
+POP,Rockfish,GOA,Doubling_Time,Ecosystem,No,,,,9.738793103,3.639862672,14,2.9,14,3,59,,1,,0.693
+POP,Rockfish,GOA,TAC,Socioeconomic,No,,,,52831.9375,191727.0498,1310000,100,21012,3,54,,0.015964577,,0.674
+POP,Rockfish,GOA,Usual_Depth_Max,Ecosystem,No,,,,476.9354839,427.9366764,2000,100,420,3,68,,0.168421053,,0.673
+POP,Rockfish,GOA,OFL,Ecosystem,No,,,,115596.06,470480.8576,3330000,560,24360,3,52,,0.007148349,,0.627
+POP,Rockfish,GOA,ABC,Ecosystem,No,,,,73621.35417,239652.9225,1637000,453,21012,3,53,,0.012562426,,0.627
+POP,Rockfish,GOA,B_MSY,Ecosystem,No,,,,180606.4286,370829.139,1984200,7198,99865,3,50,,0.046872487,,0.555
+POP,Rockfish,GOA,Subsistence Fishery Importance,Socioeconomic,No,,,No,0.987179487,1.216591331,4,0,1,2,48,,0.25,,0.531
+POP,Rockfish,GOA,Mean Age,Ecosystem,Yes,,,No,12.71687016,7.367200393,31,2,13,3,6,,0.379310345,,0.49
+POP,Rockfish,GOA,Age 50% Maturity,Ecosystem,Yes,,,No,10.14553191,6.575004648,36,3.6,9,3,5,,0.166666667,,0.461
+POP,Rockfish,GOA,Length 50% Maturity,Ecosystem,Yes,,,No,45.52172727,27.98778625,130,13.5,35.7,3,8,,0.19055794,,0.437
+POP,Rockfish,GOA,Best_Age,Ecosystem,No,,,,13.37765449,7.086950602,28,3,13,3,60,,0.4,,0.428
+POP,Rockfish,GOA,Generation Time,Ecosystem,No,,,,20.33942857,13.18511013,56,8,15.1,3,58,,0.147916667,,0.411
+POP,Rockfish,GOA,Habitat Vulnerability Index,Ecosystem,No,,,No,0.693877551,0.683254517,2,0,1,0,42,,0.5,,0.404
+POP,Rockfish,GOA,Common/Max Length,Ecosystem,No,,,,99.04484151,126.2037305,700,20,70,3,61,,0.073529412,,0.363
+POP,Rockfish,GOA,Total_Mortality,Ecosystem,No,,,,0.26672595,0.308989632,1.900738634,0.036,0.127,3,55,,0.048800405,,0.313
+POP,Rockfish,GOA,Lat_Max,Ecosystem,No,,,,65.91935484,5.19867066,79,60,64,3,64,,0.210526316,,0.307
+POP,Rockfish,GOA,Transformation Size,Ecosystem,No,,,,31.97857143,17.35764866,67.5,13.4,18,1,41,,0.085027726,,0.25
+POP,Rockfish,GOA,Feeding Larvae Size,Ecosystem,No,,,,18.73,10.43828462,41.5,8,9,1,39,,0.029850746,,0.214
+POP,Rockfish,GOA,Max Weight,Ecosystem,No,,,,14.22736364,21.61082247,91,0.052,2.1,3,62,,0.022518362,,0.21
+POP,Rockfish,GOA,Latitude Range,Ecosystem,Yes,,,Yes,33.01612903,7.614679386,53,12,40,3,11,,0.682926829,,0.17
+POP,Rockfish,GOA,Recreational Index,Socioeconomic,No,,,No,26021.22222,41188.18114,122501,7,7,2,45,,0,,0.111
+POP,Rockfish,GOA,Lat_Min,Ecosystem,No,,,,32.90322581,6.657202872,54,17,24,3,63,,0.189189189,,0.076
+POP,Rockfish,GOA,Feeding Larvae Duration,Ecosystem,No,,,,115.530303,47.80264431,182,30,45,1,40,,0.098684211,,0.062
+POP,Rockfish,GOA,Long_Max,Ecosystem,No,,,,128.5294118,21.19496123,180,109,110,3,66,,0.014084507,,0.034
+POP,Rockfish,GOA,Non-Catch Value,Socioeconomic,Yes,,,No,1.967391304,1.419711136,5,0,0,3,33,,0,,0
+POP,Rockfish,GOA,Spawning Aggregation,Ecosystem,No,,,No,2.695652174,0.702901946,3,1,1,1,36,,0,,0
+POP,Rockfish,GOA,Recreational Fishery Importance,Socioeconomic,No,,,No,0.239795918,0.530229863,2.25,0,0,2,47,,0,,0
+Pollock,Roundfish,GOA,Commercial Value,Socioeconomic,No,1773862.26,339838.64,No,13744471.18,50904942.78,367726626,0,40456541,3,44,49,0.110017981,1,0.918
+Pollock,Roundfish,GOA,Fecundity,Ecosystem,Yes,1000,100000,Yes,571096.8333,910959.2328,3700000,4.5,587878,3,15,7,0.841115077,,0.273
+Pollock,Roundfish,GOA,Maximum Length,Ecosystem,Yes,155,55,No,97.91666667,58.28052897,195,16,105,3,9,20,0.497206704,,0.627
+Pollock,Roundfish,GOA,Depth Range,Ecosystem,Yes,100,,Yes,406.2096774,393.8530614,2000,75,300,3,12,6,0.883116883,,0.574
+Pollock,Roundfish,GOA,Maximum Age,Ecosystem,Yes,25,10,No,44.24074074,38.06941782,157,2,31,3,7,37,0.187096774,1,0.49
+Pollock,Roundfish,GOA,Age at 1st Maturity,Ecosystem,Yes,5,2,No,6.517241379,4.789278872,19,1,3.5,3,4,42,0.138888889,,0.285
+Pollock,Roundfish,GOA,Breeding Strategy Index,Ecosystem,Yes,4,0,No,2.35483871,2.158450979,8,0,0,3,16,65,0,,0
+Pollock,Roundfish,GOA,Geographic Concentration,Ecosystem,Yes,3,1,No,1.778846154,0.812967582,3,1,2,3,14,18,0.5,,0.47
+Pollock,Roundfish,GOA,Recruitment Variability,Ecosystem,Yes,0.9,0.3,No,0.626755339,0.257351262,1.05,0.332979127,0.91,3,1,9,0.804747665,1,0.925
+Pollock,Roundfish,GOA,Relative Fishing Mortality,Socioeconomic,No,0.9,0.25,No,0.319417968,0.228228829,0.900738634,0,0.635618878,4,43,12,0.705664056,,0.894
+Pollock,Roundfish,GOA,Commercial Importance,Socioeconomic,Yes,0.729513501,0.645556499,No,0.603585556,0.270171516,1,0,0.888093688,3,31,5,0.888093688,1,0.918
+Pollock,Roundfish,GOA,Natural Mortality,Ecosystem,Yes,0.5,0.2,No,0.196413793,0.195789274,1,0.03,0.3,3,2,29,0.278350515,,0.771
+Pollock,Roundfish,GOA,Relative Stock Abundance,Ecosystem,No,0.5,1.2,Yes,1.745167825,0.628635436,3.262385004,0.520664332,0.956804806,3,34,8,0.840924541,,0.074
+Pollock,Roundfish,GOA,Growth Rate,Ecosystem,Yes,0.1,0.25,Yes,0.174834341,0.109642666,0.445,0.022,0.3,3,3,27,0.342789598,,0.117
+Pollock,Roundfish,GOA,Recreational Index,Socioeconomic,No,,,No,26021.22222,41188.18114,122501,7,,1,45,68,NA,,NA
+Pollock,Roundfish,GOA,Catch,Socioeconomic,No,,,,40910.29243,182269.7611,1321581,0,163064,4,51,46,0.123385551,,0.962
+Pollock,Roundfish,GOA,TAC,Socioeconomic,No,,,,52831.9375,191727.0498,1310000,100,186526,3,54,41,0.142320788,,0.957
+Pollock,Roundfish,GOA,OFL,Ecosystem,No,,,,115596.06,470480.8576,3330000,560,256545,3,52,53,0.076885302,,0.938
+Pollock,Roundfish,GOA,ABC,Ecosystem,No,,,,73621.35417,239652.9225,1637000,453,191309,3,53,47,0.116621154,,0.914
+Pollock,Roundfish,GOA,Fishing_Mortality (Z-M),Socioeconomic,No,,,,0.069519053,0.134024088,0.900738634,0,0.15,4,56,38,0.166529995,,0.877
+Pollock,Roundfish,GOA,Stock Size over Status,Ecosystem,No,,,No,1.25,0.585314097,3,1,2,3,35,19,0.5,,0.851
+Pollock,Roundfish,GOA,Ecosystem Value Bottom-Up,Ecosystem,Yes,,,No,2.449152542,1.425430713,5,1,5,3,29,3,1,,0.844
+Pollock,Roundfish,GOA,Total_Mortality,Ecosystem,No,,,,0.26672595,0.308989632,1.900738634,0.036,0.45,3,55,32,0.222015028,,0.842
+Pollock,Roundfish,GOA,Habitat Dependence Index,Ecosystem,Yes,,,No,1.357142857,0.772918235,3,1,3,3,24,4,1,,0.836
+Pollock,Roundfish,GOA,Biomass,Ecosystem,No,,,,234537.875,518883.9756,3540000,5352,251012,3,49,56,0.069500556,,0.836
+Pollock,Roundfish,GOA,Constituent Demand,Socioeconomic,Yes,,,No,2.73,1.607412676,5,0,5,4,32,1,1,,0.816
+Pollock,Roundfish,GOA,B_MSY,Ecosystem,No,,,,180606.4286,370829.139,1984200,7198,262344,3,50,43,0.129057027,,0.814
+Pollock,Roundfish,GOA,Lat_Max,Ecosystem,No,,,,65.91935484,5.19867066,79,60,68,3,64,25,0.421052632,,0.786
+Pollock,Roundfish,GOA,Fishing_Rate_Relative_Natural_Mortality,Socioeconomic,No,,,,0.313625445,0.288537257,1.15,0,0.5,3,57,23,0.434782609,,0.754
+Pollock,Roundfish,GOA,Common/Max Length,Ecosystem,No,,,,99.04484151,126.2037305,700,20,105,3,61,44,0.125,,0.73
+Pollock,Roundfish,GOA,Reproductive Strategy,Ecosystem,Yes,,,No,1.875,0.254950976,2.3,1.6,2.1,3,20,11,0.714285714,,0.714
+Pollock,Roundfish,GOA,Spawning Duration,Ecosystem,Yes,,,Yes,5.6,3.190026832,12,2,4,3,18,10,0.8,,0.695
+Pollock,Roundfish,GOA,Ecosystem Value Top-Down,Ecosystem,Yes,,,No,2.313559322,1.312730456,5,0,3,3,30,14,0.6,,0.689
+Pollock,Roundfish,GOA,Length 50% Maturity,Ecosystem,Yes,,,No,45.52172727,27.98778625,130,13.5,41,3,8,31,0.236051502,,0.629
+Pollock,Roundfish,GOA,Non-Catch Value,Socioeconomic,Yes,,,No,1.967391304,1.419711136,5,0,3,3,33,15,0.6,,0.555
+Pollock,Roundfish,GOA,Transformation Size,Ecosystem,No,,,,31.97857143,17.35764866,67.5,13.4,32.5,3,41,26,0.353049908,,0.538
+Pollock,Roundfish,GOA,Feeding Larvae Size,Ecosystem,No,,,,18.73,10.43828462,41.5,8,15,3,39,34,0.208955224,,0.5
+Pollock,Roundfish,GOA,Subsistence Fishery Importance,Socioeconomic,No,,,No,0.987179487,1.216591331,4,0,1,1,48,30,0.25,,0.5
+Pollock,Roundfish,GOA,Long_Max,Ecosystem,No,,,,128.5294118,21.19496123,180,109,120,3,66,40,0.154929577,,0.484
+Pollock,Roundfish,GOA,OA Sensitivity,Ecosystem,Yes,,,No,1.869354839,0.537019312,2.8,1,2,2,26,17,0.555555556,,0.475
+Pollock,Roundfish,GOA,Lat_Min,Ecosystem,No,,,,32.90322581,6.657202872,54,17,34,3,63,22,0.459459459,,0.475
+Pollock,Roundfish,GOA,Egg Diameter,Ecosystem,No,,,,1.677419355,0.831961408,4,0.8,1.485,3,37,33,0.2140625,,0.466
+Pollock,Roundfish,GOA,Latitude Range,Ecosystem,Yes,,,Yes,33.01612903,7.614679386,53,12,34,3,11,21,0.463414634,,0.46
+Pollock,Roundfish,GOA,Population Growth Rate,Ecosystem,Yes,,,No,2.675,0.511998884,3.7,2.3,2.4,3,10,55,0.071428571,,0.428
+Pollock,Roundfish,GOA,Habitat Specificity,Ecosystem,Yes,,,No,1.477419355,0.432082018,2.6,1,1.3,3,23,35,0.1875,,0.409
+Pollock,Roundfish,GOA,Subsistence Index,Socioeconomic,No,,,No,1364.684925,2526.52813,10711.22072,5.599,87.9352,1,46,62,0.007690931,,0.388
+Pollock,Roundfish,GOA,Max Weight,Ecosystem,No,,,,14.22736364,21.61082247,91,0.052,3.9,3,62,57,0.042309891,,0.325
+Pollock,Roundfish,GOA,Mean Trophic Level,Ecosystem,Yes,,,No,3.760483871,0.362723882,4.4,3.2,3.6,3,28,28,0.333333333,,0.295
+Pollock,Roundfish,GOA,Spawning Cycle,Ecosystem,Yes,,,No,2.75,0.507092553,3.8,2.2,2.5,3,17,36,0.1875,,0.285
+Pollock,Roundfish,GOA,Usual_Depth_Max,Ecosystem,No,,,,476.9354839,427.9366764,2000,100,300,3,68,50,0.105263158,,0.245
+Pollock,Roundfish,GOA,Prey Specificity,Ecosystem,Yes,,,No,1.561290323,0.504197086,2.8,1,1.2,3,25,48,0.111111111,,0.196
+Pollock,Roundfish,GOA,Spawning Aggregation,Ecosystem,No,,,No,2.695652174,0.702901946,3,1,3,3,36,2,1,,0.181
+Pollock,Roundfish,GOA,Age 50% Maturity,Ecosystem,Yes,,,No,10.14553191,6.575004648,36,3.6,4.9,3,5,58,0.040123457,,0.173
+Pollock,Roundfish,GOA,Long_Min,Ecosystem,No,,,,134.75,34.67917475,180,45,129,3,65,13,0.622222222,,0.161
+Pollock,Roundfish,GOA,Doubling_Time,Ecosystem,No,,,,9.738793103,3.639862672,14,2.9,9.25,3,59,16,0.572072072,,0.157
+Pollock,Roundfish,GOA,Hatch Size,Ecosystem,No,,,,4.662,1.938848389,11.5,2,3.5,3,38,39,0.157894737,,0.153
+Pollock,Roundfish,GOA,Mean Age,Ecosystem,Yes,,,No,12.71687016,7.367200393,31,2,4.9,3,6,51,0.1,,0.147
+Pollock,Roundfish,GOA,Dispersal ELH,Ecosystem,Yes,,,No,1.614516129,0.721302732,3.6,1,1.1,3,19,59,0.038461538,,0.147
+Pollock,Roundfish,GOA,Temperature Sensitivity,Ecosystem,Yes,,,No,1.84375,0.551256681,3.2,1.55,1.6,3,13,61,0.03030303,,0.142
+Pollock,Roundfish,GOA,ELH Survival Settlement,Ecosystem,Yes,,,No,2.4375,0.232609421,2.7,2,2.3,1,21,24,0.428571429,,0.142
+Pollock,Roundfish,GOA,Best_Age,Ecosystem,No,,,,13.37765449,7.086950602,28,3,4.9,3,60,54,0.076,,0.087
+Pollock,Roundfish,GOA,Adult Mobility,Ecosystem,Yes,,,No,1.651612903,0.538894416,2.6,1,1.2,3,22,45,0.125,,0.049
+Pollock,Roundfish,GOA,Other Stressors,Ecosystem,Yes,,,No,1.291935484,0.275382528,2.2,1,1.1,3,27,52,0.083333333,,0.032
+Pollock,Roundfish,GOA,Feeding Larvae Duration,Ecosystem,No,,,,115.530303,47.80264431,182,30,35,3,40,60,0.032894737,,0.031
+Pollock,Roundfish,GOA,Habitat Vulnerability Index,Ecosystem,No,,,No,0.693877551,0.683254517,2,0,0,3,42,63,0,,0
+Pollock,Roundfish,GOA,Recreational Fishery Importance,Socioeconomic,No,,,No,0.239795918,0.530229863,2.25,0,0,1,47,66,0,,0
+Pollock,Roundfish,GOA,Generation Time,Ecosystem,No,,,,20.33942857,13.18511013,56,8,8,3,58,64,0,,0
+Pollock,Roundfish,GOA,Usual_Depth_Min,Ecosystem,No,,,,70.72580645,96.76677545,400,0,0,3,67,67,0,,0
+Pacific Cod GOA,Roundfish,GOA,Commercial Value,Socioeconomic,No,1773862.26,339838.64,No,13744471.18,50904942.78,367726626,0,45634267,3,44,40,0.124098349,1,0.1241
+Pacific Cod GOA,Roundfish,GOA,Fecundity,Ecosystem,Yes,1000,100000,Yes,571096.8333,910959.2328,3700000,4.5,3000000,2,15,32,0.189189419,,0.18919
+Pacific Cod GOA,Roundfish,GOA,Maximum Length,Ecosystem,Yes,155,55,No,97.91666667,58.28052897,195,16,147,4,9,10,0.731843575,,0.73184
+Pacific Cod GOA,Roundfish,GOA,Depth Range,Ecosystem,Yes,100,,Yes,406.2096774,393.8530614,2000,75,300,3,12,7,0.883116883,,0.88312
+Pacific Cod GOA,Roundfish,GOA,Maximum Age,Ecosystem,Yes,25,10,No,44.24074074,38.06941782,157,2,14,3,7,45,0.077419355,,0.07742
+Pacific Cod GOA,Roundfish,GOA,Age at 1st Maturity,Ecosystem,Yes,5,2,No,6.517241379,4.789278872,19,1,2,3,4,52,0.055555556,,0.05556
+Pacific Cod GOA,Roundfish,GOA,Breeding Strategy Index,Ecosystem,Yes,4,0,No,2.35483871,2.158450979,8,0,0,2,16,60,0,,0
+Pacific Cod GOA,Roundfish,GOA,Geographic Concentration,Ecosystem,Yes,3,1,No,1.778846154,0.812967582,3,1,1,3,14,59,0,,0
+Pacific Cod GOA,Roundfish,GOA,Relative Fishing Mortality,Socioeconomic,No,0.9,0.25,No,0.319417968,0.228228829,0.900738634,0,0.554317546,4,43,14,0.61540332,,0.6154
+Pacific Cod GOA,Roundfish,GOA,Recruitment Variability,Ecosystem,Yes,0.9,0.3,No,0.626755339,0.257351262,1.05,0.332979127,0.41,4,1,41,0.107417895,,0.10742
+Pacific Cod GOA,Roundfish,GOA,Commercial Importance,Socioeconomic,Yes,0.729513501,0.645556499,No,0.603585556,0.270171516,1,0,0.894199832,3,31,6,0.894199832,1,0.8942
+Pacific Cod GOA,Roundfish,GOA,Relative Stock Abundance,Ecosystem,No,0.5,1.2,Yes,1.745167825,0.628635436,3.262385004,0.520664332,1.781318102,3,34,17,0.540196132,,0.5402
+Pacific Cod GOA,Roundfish,GOA,Natural Mortality,Ecosystem,Yes,0.5,0.2,No,0.196413793,0.195789274,1,0.03,0.38,2,2,24,0.360824742,,0.36082
+Pacific Cod GOA,Roundfish,GOA,Growth Rate,Ecosystem,Yes,0.1,0.25,Yes,0.174834341,0.109642666,0.445,0.022,0.171981,3,3,13,0.645434988,,0.64543
+Pacific Cod GOA,Roundfish,GOA,Ecosystem Value Top-Down,Ecosystem,Yes,,,No,2.313559322,1.312730456,5,0,5,3,30,1,1,,1
+Pacific Cod GOA,Roundfish,GOA,Constituent Demand,Socioeconomic,Yes,,,No,2.73,1.607412676,5,0,5,4,32,2,1,,1
+Pacific Cod GOA,Roundfish,GOA,Spawning Aggregation,Ecosystem,No,,,No,2.695652174,0.702901946,3,1,3,2,36,3,1,,1
+Pacific Cod GOA,Roundfish,GOA,Recreational Index,Socioeconomic,No,,,No,26021.22222,41188.18114,122501,7,122501,2,45,4,1,,1
+Pacific Cod GOA,Roundfish,GOA,Lat_Max,Ecosystem,No,,,,65.91935484,5.19867066,79,60,79,3,64,5,1,,1
+Pacific Cod GOA,Roundfish,GOA,Mean Trophic Level,Ecosystem,Yes,,,No,3.760483871,0.362723882,4.4,3.2,4.2,3,28,8,0.833333333,,0.83333
+Pacific Cod GOA,Roundfish,GOA,Spawning Duration,Ecosystem,Yes,,,Yes,5.6,3.190026832,12,2,4,3,18,9,0.8,,0.8
+Pacific Cod GOA,Roundfish,GOA,ELH Survival Settlement,Ecosystem,Yes,,,No,2.4375,0.232609421,2.7,2,2.5,2,21,11,0.714285714,,0.71429
+Pacific Cod GOA,Roundfish,GOA,Long_Max,Ecosystem,No,,,,128.5294118,21.19496123,180,109,156,3,66,12,0.661971831,,0.66197
+Pacific Cod GOA,Roundfish,GOA,OA Sensitivity,Ecosystem,Yes,,,No,1.869354839,0.537019312,2.8,1,2.1,3,26,15,0.611111111,,0.61111
+Pacific Cod GOA,Roundfish,GOA,Non-Catch Value,Socioeconomic,Yes,,,No,1.967391304,1.419711136,5,0,3,3,33,16,0.6,,0.6
+Pacific Cod GOA,Roundfish,GOA,Ecosystem Value Bottom-Up,Ecosystem,Yes,,,No,2.449152542,1.425430713,5,1,3,3,29,18,0.5,,0.5
+Pacific Cod GOA,Roundfish,GOA,Fishing_Rate_Relative_Natural_Mortality,Socioeconomic,No,,,,0.313625445,0.288537257,1.15,0,0.554317546,3,57,19,0.482015257,,0.48202
+Pacific Cod GOA,Roundfish,GOA,Lat_Min,Ecosystem,No,,,,32.90322581,6.657202872,54,17,34,3,63,20,0.459459459,,0.45946
+Pacific Cod GOA,Roundfish,GOA,Length 50% Maturity,Ecosystem,Yes,,,No,45.52172727,27.98778625,130,13.5,65,4,8,21,0.442060086,,0.44206
+Pacific Cod GOA,Roundfish,GOA,Spawning Cycle,Ecosystem,Yes,,,No,2.75,0.507092553,3.8,2.2,2.9,3,17,22,0.4375,,0.4375
+Pacific Cod GOA,Roundfish,GOA,Subsistence Index,Socioeconomic,No,,,No,1364.684925,2526.52813,10711.22072,5.599,4425.457,2,46,23,0.41285393,,0.41285
+Pacific Cod GOA,Roundfish,GOA,Transformation Size,Ecosystem,No,,,,31.97857143,17.35764866,67.5,13.4,30,2,41,25,0.306839187,,0.30684
+Pacific Cod GOA,Roundfish,GOA,Total_Mortality,Ecosystem,No,,,,0.26672595,0.308989632,1.900738634,0.036,0.590640668,4,55,26,0.297436144,,0.29744
+Pacific Cod GOA,Roundfish,GOA,Max Weight,Ecosystem,No,,,,14.22736364,21.61082247,91,0.052,22.7,4,62,27,0.249021419,,0.24902
+Pacific Cod GOA,Roundfish,GOA,Fishing_Mortality (Z-M),Socioeconomic,No,,,,0.069519053,0.134024088,0.900738634,0,0.210640668,4,56,28,0.233853262,,0.23385
+Pacific Cod GOA,Roundfish,GOA,Feeding Larvae Size,Ecosystem,No,,,,18.73,10.43828462,41.5,8,15,3,39,29,0.208955224,,0.20896
+Pacific Cod GOA,Roundfish,GOA,Feeding Larvae Duration,Ecosystem,No,,,,115.530303,47.80264431,182,30,60,3,40,30,0.197368421,,0.19737
+Pacific Cod GOA,Roundfish,GOA,Latitude Range,Ecosystem,Yes,,,Yes,33.01612903,7.614679386,53,12,45,3,11,31,0.195121951,,0.19512
+Pacific Cod GOA,Roundfish,GOA,Adult Mobility,Ecosystem,Yes,,,No,1.651612903,0.538894416,2.6,1,1.3,2,22,33,0.1875,,0.1875
+Pacific Cod GOA,Roundfish,GOA,Habitat Specificity,Ecosystem,Yes,,,No,1.477419355,0.432082018,2.6,1,1.3,3,23,34,0.1875,,0.1875
+Pacific Cod GOA,Roundfish,GOA,Common/Max Length,Ecosystem,No,,,,99.04484151,126.2037305,700,20,147,4,61,35,0.186764706,,0.18676
+Pacific Cod GOA,Roundfish,GOA,Hatch Size,Ecosystem,No,,,,4.662,1.938848389,11.5,2,3.5,3,38,36,0.157894737,,0.15789
+Pacific Cod GOA,Roundfish,GOA,Mean Age,Ecosystem,Yes,,,No,12.71687016,7.367200393,31,2,6.349750496,3,6,37,0.149991396,,0.14999
+Pacific Cod GOA,Roundfish,GOA,Reproductive Strategy,Ecosystem,Yes,,,No,1.875,0.254950976,2.3,1.6,1.7,2,20,38,0.142857143,,0.14286
+Pacific Cod GOA,Roundfish,GOA,Best_Age,Ecosystem,No,,,,13.37765449,7.086950602,28,3,6.349750496,3,60,39,0.13399002,,0.13399
+Pacific Cod GOA,Roundfish,GOA,Usual_Depth_Max,Ecosystem,No,,,,476.9354839,427.9366764,2000,100,300,3,68,42,0.105263158,,0.10526
+Pacific Cod GOA,Roundfish,GOA,Temperature Sensitivity,Ecosystem,Yes,,,No,1.84375,0.551256681,3.2,1.55,1.7,3,13,43,0.090909091,,0.09091
+Pacific Cod GOA,Roundfish,GOA,Other Stressors,Ecosystem,Yes,,,No,1.291935484,0.275382528,2.2,1,1.1,3,27,44,0.083333333,,0.08333
+Pacific Cod GOA,Roundfish,GOA,Dispersal ELH,Ecosystem,Yes,,,No,1.614516129,0.721302732,3.6,1,1.2,3,19,46,0.076923077,,0.07692
+Pacific Cod GOA,Roundfish,GOA,Egg Diameter,Ecosystem,No,,,,1.677419355,0.831961408,4,0.8,1.03,3,37,47,0.071875,,0.07188
+Pacific Cod GOA,Roundfish,GOA,ABC,Ecosystem,No,,,,73621.35417,239652.9225,1637000,453,102850,4,53,48,0.062568933,,0.06257
+Pacific Cod GOA,Roundfish,GOA,TAC,Socioeconomic,No,,,,52831.9375,191727.0498,1310000,100,75202,4,54,49,0.057334148,,0.05733
+Pacific Cod GOA,Roundfish,GOA,Biomass,Ecosystem,No,,,,234537.875,518883.9756,3540000,5352,202714,3,49,50,0.055836394,,0.05584
+Pacific Cod GOA,Roundfish,GOA,Prey Specificity,Ecosystem,Yes,,,No,1.561290323,0.504197086,2.8,1,1.1,3,25,51,0.055555556,,0.05556
+Pacific Cod GOA,Roundfish,GOA,B_MSY,Ecosystem,No,,,,180606.4286,370829.139,1984200,7198,113800,3,50,53,0.053921038,,0.05392
+Pacific Cod GOA,Roundfish,GOA,Age 50% Maturity,Ecosystem,Yes,,,No,10.14553191,6.575004648,36,3.6,5,3,5,54,0.043209877,,0.04321
+Pacific Cod GOA,Roundfish,GOA,OFL,Ecosystem,No,,,,115596.06,470480.8576,3330000,560,140300,4,52,55,0.041971022,,0.04197
+Pacific Cod GOA,Roundfish,GOA,Catch,Socioeconomic,No,,,,40910.29243,182269.7611,1321581,0,55260,4,51,56,0.041813555,,0.04181
+Pacific Cod GOA,Roundfish,GOA,Generation Time,Ecosystem,No,,,,20.33942857,13.18511013,56,8,8.03,3,58,57,0.000625,,0.00063
+Pacific Cod GOA,Roundfish,GOA,Population Growth Rate,Ecosystem,Yes,,,No,2.675,0.511998884,3.7,2.3,2.3,3,10,58,0,,0
+Pacific Cod GOA,Roundfish,GOA,Habitat Dependence Index,Ecosystem,Yes,,,No,1.357142857,0.772918235,3,1,1,3,24,61,0,,0
+Pacific Cod GOA,Roundfish,GOA,Stock Size over Status,Ecosystem,No,,,No,1.25,0.585314097,3,1,1,3,35,62,0,,0
+Pacific Cod GOA,Roundfish,GOA,Habitat Vulnerability Index,Ecosystem,No,,,No,0.693877551,0.683254517,2,0,0,3,42,63,0,,0
+Pacific Cod GOA,Roundfish,GOA,Recreational Fishery Importance,Socioeconomic,No,,,No,0.239795918,0.530229863,2.25,0,0,2,47,64,0,,0
+Pacific Cod GOA,Roundfish,GOA,Subsistence Fishery Importance,Socioeconomic,No,,,No,0.987179487,1.216591331,4,0,0,2,48,65,0,,0
+Pacific Cod GOA,Roundfish,GOA,Doubling_Time,Ecosystem,No,,,,9.738793103,3.639862672,14,2.9,2.9,3,59,66,0,,0
+Pacific Cod GOA,Roundfish,GOA,Long_Min,Ecosystem,No,,,,134.75,34.67917475,180,45,45,3,65,67,0,,0
+Pacific Cod GOA,Roundfish,GOA,Usual_Depth_Min,Ecosystem,No,,,,70.72580645,96.76677545,400,0,0,3,67,68,0,,0
+Pacific Cod EBS,Roundfish,EBS,Commercial Value,Socioeconomic,No,1773862.26,339838.64,No,13744471.18,50904942.78,367726626,0,134705148,4,44,3,0.366318723,1,0.983
+Pacific Cod EBS,Roundfish,EBS,Fecundity,Ecosystem,Yes,1000,100000,Yes,571096.8333,910959.2328,3700000,4.5,3700000,3,15,56,0,,0.023
+Pacific Cod EBS,Roundfish,EBS,Maximum Length,Ecosystem,Yes,155,55,No,97.91666667,58.28052897,195,16,195,4,9,10,1,1,0.966
+Pacific Cod EBS,Roundfish,EBS,Depth Range,Ecosystem,Yes,100,,Yes,406.2096774,393.8530614,2000,75,300,3,12,29,0.883116883,,0.574
+Pacific Cod EBS,Roundfish,EBS,Maximum Age,Ecosystem,Yes,25,10,No,44.24074074,38.06941782,157,2,17,3,7,41,0.096774194,,0.245
+Pacific Cod EBS,Roundfish,EBS,Age at 1st Maturity,Ecosystem,Yes,5,2,No,6.517241379,4.789278872,19,1,3,3,4,45,0.111111111,,0.178
+Pacific Cod EBS,Roundfish,EBS,Breeding Strategy Index,Ecosystem,Yes,4,0,No,2.35483871,2.158450979,8,0,0,3,16,59,0,,0
+Pacific Cod EBS,Roundfish,EBS,Geographic Concentration,Ecosystem,Yes,3,1,No,1.778846154,0.812967582,3,1,1,3,14,58,0,,0
+Pacific Cod EBS,Roundfish,EBS,Relative Fishing Mortality,Socioeconomic,No,0.9,0.25,No,0.319417968,0.228228829,0.900738634,0,0.672921965,4,43,12,0.747077942,,0.929
+Pacific Cod EBS,Roundfish,EBS,Recruitment Variability,Ecosystem,Yes,0.9,0.3,No,0.626755339,0.257351262,1.05,0.332979127,0.7,4,1,26,0.511869161,,0.703
+Pacific Cod EBS,Roundfish,EBS,Commercial Importance,Socioeconomic,Yes,0.729513501,0.645556499,No,0.603585556,0.270171516,1,0,0.949081828,4,31,2,0.949081828,1,0.983
+Pacific Cod EBS,Roundfish,EBS,Natural Mortality,Ecosystem,Yes,0.5,0.2,No,0.196413793,0.195789274,1,0.03,0.34,2,2,18,0.319587629,,0.877
+Pacific Cod EBS,Roundfish,EBS,Relative Stock Abundance,Ecosystem,No,0.5,1.2,Yes,1.745167825,0.628635436,3.262385004,0.520664332,1.42401773,3,34,39,0.670515889,,0.296
+Pacific Cod EBS,Roundfish,EBS,Growth Rate,Ecosystem,Yes,0.1,0.25,Yes,0.174834341,0.109642666,0.445,0.022,0.24,3,3,47,0.48463357,,0.163
+Pacific Cod EBS,Roundfish,EBS,Feeding Larvae Size,Ecosystem,No,,,,18.73,10.43828462,41.5,8,NA,2,39,68,NA,,NA
+Pacific Cod EBS,Roundfish,EBS,Transformation Size,Ecosystem,No,,,,31.97857143,17.35764866,67.5,13.4,NA,2,41,67,NA,,NA
+Pacific Cod EBS,Roundfish,EBS,Fishing_Rate_Relative_Natural_Mortality,Socioeconomic,No,,,,0.313625445,0.288537257,1.15,0,1.15,3,57,1,1,,1
+Pacific Cod EBS,Roundfish,EBS,Fishing_Mortality (Z-M),Socioeconomic,No,,,,0.069519053,0.134024088,0.900738634,0,0.391,4,56,4,0.434088186,,0.982
+Pacific Cod EBS,Roundfish,EBS,Catch,Socioeconomic,No,,,,40910.29243,182269.7611,1321581,0,224804,4,51,5,0.170102324,,0.981
+Pacific Cod EBS,Roundfish,EBS,OFL,Ecosystem,No,,,,115596.06,470480.8576,3330000,560,346000,4,52,6,0.103753184,,0.979
+Pacific Cod EBS,Roundfish,EBS,ABC,Ecosystem,No,,,,73621.35417,239652.9225,1637000,453,255000,4,53,7,0.155539071,,0.978
+Pacific Cod EBS,Roundfish,EBS,TAC,Socioeconomic,No,,,,52831.9375,191727.0498,1310000,100,240000,4,54,8,0.183143751,,0.978
+Pacific Cod EBS,Roundfish,EBS,Non-Catch Value,Socioeconomic,Yes,,,No,1.967391304,1.419711136,5,0,5,4,33,9,1,,0.977
+Pacific Cod EBS,Roundfish,EBS,Total_Mortality,Ecosystem,No,,,,0.26672595,0.308989632,1.900738634,0.036,0.731,4,55,11,0.372706388,,0.947
+Pacific Cod EBS,Roundfish,EBS,Lat_Max,Ecosystem,No,,,,65.91935484,5.19867066,79,60,79,3,64,13,1,,0.918
+Pacific Cod EBS,Roundfish,EBS,Spawning Duration,Ecosystem,Yes,,,Yes,5.6,3.190026832,12,2,3,3,18,14,0.9,,0.916
+Pacific Cod EBS,Roundfish,EBS,Habitat Vulnerability Index,Ecosystem,No,,,No,0.693877551,0.683254517,2,0,2,3,42,15,1,,0.895
+Pacific Cod EBS,Roundfish,EBS,B_MSY,Ecosystem,No,,,,180606.4286,370829.139,1984200,7198,282000,3,50,16,0.138999354,,0.888
+Pacific Cod EBS,Roundfish,EBS,Ecosystem Value Top-Down,Ecosystem,Yes,,,No,2.313559322,1.312730456,5,0,5,1,30,17,1,,0.879
+Pacific Cod EBS,Roundfish,EBS,Biomass,Ecosystem,No,,,,234537.875,518883.9756,3540000,5352,401573,3,49,19,0.112096311,,0.854
+Pacific Cod EBS,Roundfish,EBS,Long_Max,Ecosystem,No,,,,128.5294118,21.19496123,180,109,156,3,66,20,0.661971831,,0.848
+Pacific Cod EBS,Roundfish,EBS,Length 50% Maturity,Ecosystem,Yes,,,No,45.52172727,27.98778625,130,13.5,63.5,4,8,21,0.429184549,,0.833
+Pacific Cod EBS,Roundfish,EBS,Constituent Demand,Socioeconomic,Yes,,,No,2.73,1.607412676,5,0,5,4,32,22,1,,0.816
+Pacific Cod EBS,Roundfish,EBS,Max Weight,Ecosystem,No,,,,14.22736364,21.61082247,91,0.052,22.7,4,62,23,0.249021419,,0.79
+Pacific Cod EBS,Roundfish,EBS,Mean Trophic Level,Ecosystem,Yes,,,No,3.760483871,0.362723882,4.4,3.2,4.2,1,28,24,0.833333333,,0.77
+Pacific Cod EBS,Roundfish,EBS,Subsistence Index,Socioeconomic,No,,,No,1364.684925,2526.52813,10711.22072,5.599,1590.064833,2,46,25,0.148003159,,0.722
+Pacific Cod EBS,Roundfish,EBS,Common/Max Length,Ecosystem,No,,,,99.04484151,126.2037305,700,20,92.5,4,61,27,0.106617647,,0.692
+Pacific Cod EBS,Roundfish,EBS,Ecosystem Value Bottom-Up,Ecosystem,Yes,,,No,2.449152542,1.425430713,5,1,3,1,29,28,0.5,,0.655
+Pacific Cod EBS,Roundfish,EBS,Spawning Cycle,Ecosystem,Yes,,,No,2.75,0.507092553,3.8,2.2,2.9,3,17,30,0.4375,,0.571
+Pacific Cod EBS,Roundfish,EBS,OA Sensitivity,Ecosystem,Yes,,,No,1.869354839,0.537019312,2.8,1,2.1,0,26,31,0.611111111,,0.557
+Pacific Cod EBS,Roundfish,EBS,Lat_Min,Ecosystem,No,,,,32.90322581,6.657202872,54,17,34,3,63,32,0.459459459,,0.475
+Pacific Cod EBS,Roundfish,EBS,Temperature Sensitivity,Ecosystem,Yes,,,No,1.84375,0.551256681,3.2,1.55,1.7,3,13,33,0.090909091,,0.428
+Pacific Cod EBS,Roundfish,EBS,ELH Survival Settlement,Ecosystem,Yes,,,No,2.4375,0.232609421,2.7,2,2.5,2,21,34,0.714285714,,0.428
+Pacific Cod EBS,Roundfish,EBS,Habitat Specificity,Ecosystem,Yes,,,No,1.477419355,0.432082018,2.6,1,1.3,3,23,35,0.1875,,0.409
+Pacific Cod EBS,Roundfish,EBS,Feeding Larvae Duration,Ecosystem,No,,,,115.530303,47.80264431,182,30,104.5,2,40,36,0.490131579,,0.406
+Pacific Cod EBS,Roundfish,EBS,Recreational Index,Socioeconomic,No,,,No,26021.22222,41188.18114,122501,7,1630,2,45,37,0.013249629,,0.375
+Pacific Cod EBS,Roundfish,EBS,Adult Mobility,Ecosystem,Yes,,,No,1.651612903,0.538894416,2.6,1,1.3,3,22,38,0.1875,,0.344
+Pacific Cod EBS,Roundfish,EBS,Egg Diameter,Ecosystem,No,,,,1.677419355,0.831961408,4,0.8,1.03,2,37,40,0.071875,,0.266
+Pacific Cod EBS,Roundfish,EBS,Usual_Depth_Max,Ecosystem,No,,,,476.9354839,427.9366764,2000,100,300,3,68,42,0.105263158,,0.245
+Pacific Cod EBS,Roundfish,EBS,Spawning Aggregation,Ecosystem,No,,,No,2.695652174,0.702901946,3,1,3,3,36,43,1,,0.181
+Pacific Cod EBS,Roundfish,EBS,Dispersal ELH,Ecosystem,Yes,,,No,1.614516129,0.721302732,3.6,1,1.2,2,19,44,0.076923077,,0.18
+Pacific Cod EBS,Roundfish,EBS,Best_Age,Ecosystem,No,,,,13.37765449,7.086950602,28,3,5.4,3,60,46,0.096,,0.175
+Pacific Cod EBS,Roundfish,EBS,Mean Age,Ecosystem,Yes,,,No,12.71687016,7.367200393,31,2,5.4,3,6,48,0.117241379,,0.163
+Pacific Cod EBS,Roundfish,EBS,Hatch Size,Ecosystem,No,,,,4.662,1.938848389,11.5,2,3.5,2,38,49,0.157894737,,0.153
+Pacific Cod EBS,Roundfish,EBS,Prey Specificity,Ecosystem,Yes,,,No,1.561290323,0.504197086,2.8,1,1.1,3,25,50,0.055555556,,0.147
+Pacific Cod EBS,Roundfish,EBS,Generation Time,Ecosystem,No,,,,20.33942857,13.18511013,56,8,8.8,3,58,51,0.016666667,,0.147
+Pacific Cod EBS,Roundfish,EBS,Reproductive Strategy,Ecosystem,Yes,,,No,1.875,0.254950976,2.3,1.6,1.7,3,20,52,0.142857143,,0.142
+Pacific Cod EBS,Roundfish,EBS,Age 50% Maturity,Ecosystem,Yes,,,No,10.14553191,6.575004648,36,3.6,4.88,3,5,53,0.039506173,,0.13
+Pacific Cod EBS,Roundfish,EBS,Latitude Range,Ecosystem,Yes,,,Yes,33.01612903,7.614679386,53,12,45,3,11,54,0.195121951,,0.082
+Pacific Cod EBS,Roundfish,EBS,Other Stressors,Ecosystem,Yes,,,No,1.291935484,0.275382528,2.2,1,1.1,3,27,55,0.083333333,,0.032
+Pacific Cod EBS,Roundfish,EBS,Population Growth Rate,Ecosystem,Yes,,,No,2.675,0.511998884,3.7,2.3,2.3,3,10,57,0,,0
+Pacific Cod EBS,Roundfish,EBS,Habitat Dependence Index,Ecosystem,Yes,,,No,1.357142857,0.772918235,3,1,1,3,24,60,0,,0
+Pacific Cod EBS,Roundfish,EBS,Stock Size over Status,Ecosystem,No,,,No,1.25,0.585314097,3,1,1,3,35,61,0,,0
+Pacific Cod EBS,Roundfish,EBS,Recreational Fishery Importance,Socioeconomic,No,,,No,0.239795918,0.530229863,2.25,0,0,2,47,62,0,,0
+Pacific Cod EBS,Roundfish,EBS,Subsistence Fishery Importance,Socioeconomic,No,,,No,0.987179487,1.216591331,4,0,0,2,48,63,0,,0
+Pacific Cod EBS,Roundfish,EBS,Doubling_Time,Ecosystem,No,,,,9.738793103,3.639862672,14,2.9,2.9,3,59,64,0,,0
+Pacific Cod EBS,Roundfish,EBS,Long_Min,Ecosystem,No,,,,134.75,34.67917475,180,45,45,3,65,65,0,,0
+Pacific Cod EBS,Roundfish,EBS,Usual_Depth_Min,Ecosystem,No,,,,70.72580645,96.76677545,400,0,0,3,67,66,0,,0
+BBRKC,Crab,BSAI,Commercial Value,Socioeconomic,No,1773862.26,339838.64,No,13744471.18,50904942.78,367726626,0,,4,44,43,,,
+BBRKC,Crab,BSAI,Fecundity,Ecosystem,Yes,1000,100000,Yes,571096.8333,910959.2328,3700000,4.5,450000,3,15,30,0.878379447,1,0.395
+BBRKC,Crab,BSAI,Maximum Length,Ecosystem,Yes,155,55,No,97.91666667,58.28052897,195,16,227,2,9,8,1.17877095,1,0.96
+BBRKC,Crab,BSAI,Depth Range,Ecosystem,Yes,100,,Yes,406.2096774,393.8530614,2000,75,180,3,12,20,0.945454545,1,0.774
+BBRKC,Crab,BSAI,Maximum Age,Ecosystem,Yes,25,10,No,44.24074074,38.06941782,157,2,25,1,7,31,0.148387097,1,0.355
+BBRKC,Crab,BSAI,Age at 1st Maturity,Ecosystem,No,5,2,No,6.517241379,4.789278872,19,1,NA,NA,4,63,NA,,NA
+BBRKC,Crab,BSAI,Habitat Dependence Index,Ecosystem,Yes,5,1,No,1.357142857,0.772918235,3,1,1,4,24,37,0,,0
+BBRKC,Crab,BSAI,Breeding Strategy Index,Ecosystem,Yes,4,0,No,2.35483871,2.158450979,8,0,0,4,16,36,0,,0
+BBRKC,Crab,BSAI,Geographic Concentration,Ecosystem,Yes,3,1,No,1.778846154,0.812967582,3,1,2,4,14,29,0.5,,0.4
+BBRKC,Crab,BSAI,Ecosystem Value Top-Down,Ecosystem,Yes,3,1.5,No,2.313559322,1.312730456,5,0,1,1,30,35,0.2,,0.038
+BBRKC,Crab,BSAI,Recruitment Variability,Ecosystem,Yes,0.9,0.3,No,0.626755339,0.257351262,1.05,0.332979127,0.91,1,1,13,0.804747665,1,0.896
+BBRKC,Crab,BSAI,Relative Fishing Mortality,Socioeconomic,No,0.9,0.25,No,0.319417968,0.228228829,0.900738634,0,,,43,42,,,
+BBRKC,Crab,BSAI,Commercial Importance,Socioeconomic,Yes,0.729513501,0.645556499,No,0.603585556,0.270171516,1,0,0.916,4,31,10,0.916,1,0.943
+BBRKC,Crab,BSAI,Relative Stock Abundance,Ecosystem,No,0.5,1.2,Yes,1.745167825,0.628635436,3.262385004,0.520664332,NA,,34,66,NA,,NA
+BBRKC,Crab,BSAI,Natural Mortality,Ecosystem,Yes,0.5,0.2,No,0.196413793,0.195789274,1,0.03,0.18,0,2,25,0.154639175,,0.603
+BBRKC,Crab,BSAI,Growth Rate,Ecosystem,No,0.1,0.25,Yes,0.174834341,0.109642666,0.445,0.022,NA,NA,3,62,NA,,NA
+BBRKC,Crab,BSAI,Age 50% Maturity,Ecosystem,No,,,No,10.14553191,6.575004648,36,3.6,NA,NA,5,64,NA,,NA
+BBRKC,Crab,BSAI,Mean Age,Ecosystem,No,,,No,12.71687016,7.367200393,31,2,NA,NA,6,65,NA,,NA
+BBRKC,Crab,BSAI,Spawning Aggregation,Ecosystem,No,,,No,2.695652174,0.702901946,3,1,,,36,67,NA,,NA
+BBRKC,Crab,BSAI,Transformation Size,Ecosystem,No,,,,31.97857143,17.35764866,67.5,13.4,NA,,41,68,NA,,NA
+BBRKC,Crab,BSAI,Latitude Range,Ecosystem,Yes,,,Yes,33.01612903,7.614679386,53,12,3,4,11,1,1.219512195,,1
+BBRKC,Crab,BSAI,Reproductive Strategy,Ecosystem,Yes,,,No,1.875,0.254950976,2.3,1.6,2.5,2.3,20,2,1.285714286,,1
+BBRKC,Crab,BSAI,ELH Survival Settlement,Ecosystem,Yes,,,No,2.4375,0.232609421,2.7,2,2.8,2.3,21,3,1.142857143,,1
+BBRKC,Crab,BSAI,Lat_Min,Ecosystem,No,,,,32.90322581,6.657202872,54,17,55,,63,4,1.027027027,,1
+BBRKC,Crab,BSAI,OA Sensitivity,Ecosystem,Yes,,,No,1.869354839,0.537019312,2.8,1,3.6,3,26,5,1.444444444,,0.981
+BBRKC,Crab,BSAI,Long_Max,Ecosystem,No,,,,128.5294118,21.19496123,180,109,160,,66,6,0.718309859,,0.965
+BBRKC,Crab,BSAI,Habitat Specificity,Ecosystem,Yes,,,No,1.477419355,0.432082018,2.6,1,2.3,2.7,23,7,0.8125,,0.962
+BBRKC,Crab,BSAI,Other Stressors,Ecosystem,Yes,,,No,1.291935484,0.275382528,2.2,1,1.9,2,27,9,0.75,,0.943
+BBRKC,Crab,BSAI,Habitat Vulnerability Index,Ecosystem,No,,,No,0.693877551,0.683254517,2,0,2,4,42,11,1,,0.928
+BBRKC,Crab,BSAI,Length 50% Maturity,Ecosystem,Yes,,,No,45.52172727,27.98778625,130,13.5,120,2,8,12,0.91416309,,0.916
+BBRKC,Crab,BSAI,Long_Min,Ecosystem,No,,,,134.75,34.67917475,180,45,166,,65,14,0.896296296,,0.888
+BBRKC,Crab,BSAI,Adult Mobility,Ecosystem,Yes,,,No,1.651612903,0.538894416,2.6,1,2.6,3,22,15,1,,0.886
+BBRKC,Crab,BSAI,Population Growth Rate,Ecosystem,Yes,,,No,2.675,0.511998884,3.7,2.3,3.7,2.7,10,16,1,,0.875
+BBRKC,Crab,BSAI,Spawning Cycle,Ecosystem,Yes,,,No,2.75,0.507092553,3.8,2.2,3.2,3,17,17,0.625,,0.875
+BBRKC,Crab,BSAI,Stock Size over Status,Ecosystem,No,,,No,1.25,0.585314097,3,1,2,3,35,18,0.5,,0.821
+BBRKC,Crab,BSAI,Temperature Sensitivity,Ecosystem,Yes,,,No,1.84375,0.551256681,3.2,1.55,3,2.3,13,19,0.878787879,,0.777
+BBRKC,Crab,BSAI,Constituent Demand,Socioeconomic,Yes,,,No,2.73,1.607412676,5,0,5,4,32,21,1,,0.772
+BBRKC,Crab,BSAI,Ecosystem Value Bottom-Up,Ecosystem,Yes,,,No,2.449152542,1.425430713,5,1,3,2,29,22,0.5,,0.75
+BBRKC,Crab,BSAI,Spawning Duration,Ecosystem,Yes,,,Yes,5.6,3.190026832,12,2,4,3,18,23,0.8,,0.726
+BBRKC,Crab,BSAI,Prey Specificity,Ecosystem,Yes,,,No,1.561290323,0.504197086,2.8,1,1.3,3,25,24,0.166666667,,0.641
+BBRKC,Crab,BSAI,Non-Catch Value,Socioeconomic,Yes,,,No,1.967391304,1.419711136,5,0,2.783783674,4,33,26,0.556756735,,0.564
+BBRKC,Crab,BSAI,Usual_Depth_Min,Ecosystem,No,,,,70.72580645,96.76677545,400,0,20,,67,27,0.05,,0.519
+BBRKC,Crab,BSAI,Feeding Larvae Duration,Ecosystem,No,,,,115.530303,47.80264431,182,30,120,3,40,28,0.592105263,,0.437
+BBRKC,Crab,BSAI,Dispersal ELH,Ecosystem,Yes,,,No,1.614516129,0.721302732,3.6,1,1.2,3,19,32,0.076923077,,0.226
+BBRKC,Crab,BSAI,Usual_Depth_Max,Ecosystem,No,,,,476.9354839,427.9366764,2000,100,200,,68,33,0.052631579,,0.173
+BBRKC,Crab,BSAI,Egg Diameter,Ecosystem,No,,,,1.677419355,0.831961408,4,0.8,0.97,3,37,34,0.053125,,0.103
+BBRKC,Crab,BSAI,Hatch Size,Ecosystem,No,,,,4.662,1.938848389,11.5,2,1.1,3,38,39,-0.094736842,,0
+BBRKC,Crab,BSAI,Feeding Larvae Size,Ecosystem,No,,,,18.73,10.43828462,41.5,8,1.64,3,39,40,-0.189850746,,0
+BBRKC,Crab,BSAI,Lat_Max,Ecosystem,No,,,,65.91935484,5.19867066,79,60,58,,64,41,-0.105263158,,0
+BBRKC,Crab,BSAI,Mean Trophic Level,Ecosystem,No,,,No,3.760483871,0.362723882,4.4,3.2,3,1,28,38,-0.166666667,,
+BBRKC,Crab,BSAI,Recreational Index,Socioeconomic,No,,,No,26021.22222,41188.18114,122501,7,,4,45,44,,,
+BBRKC,Crab,BSAI,Subsistence Index,Socioeconomic,No,,,No,1364.684925,2526.52813,10711.22072,5.599,,4,46,45,,,
+BBRKC,Crab,BSAI,Recreational Fishery Importance,Socioeconomic,No,,,No,0.239795918,0.530229863,2.25,0,,4,47,46,,,
+BBRKC,Crab,BSAI,Subsistence Fishery Importance,Socioeconomic,No,,,No,0.987179487,1.216591331,4,0,,4,48,47,,,
+BBRKC,Crab,BSAI,Biomass,Ecosystem,No,,,,234537.875,518883.9756,3540000,5352,,,49,48,,,
+BBRKC,Crab,BSAI,B_MSY,Ecosystem,No,,,,180606.4286,370829.139,1984200,7198,,,50,49,,,
+BBRKC,Crab,BSAI,Catch,Socioeconomic,No,,,,40910.29243,182269.7611,1321581,0,,,51,50,,,
+BBRKC,Crab,BSAI,OFL,Ecosystem,No,,,,115596.06,470480.8576,3330000,560,,,52,51,,,
+BBRKC,Crab,BSAI,ABC,Ecosystem,No,,,,73621.35417,239652.9225,1637000,453,,,53,52,,,
+BBRKC,Crab,BSAI,TAC,Socioeconomic,No,,,,52831.9375,191727.0498,1310000,100,,,54,53,,,
+BBRKC,Crab,BSAI,Total_Mortality,Ecosystem,No,,,,0.26672595,0.308989632,1.900738634,0.036,,,55,54,,,
+BBRKC,Crab,BSAI,Fishing_Mortality (Z-M),Socioeconomic,No,,,,0.069519053,0.134024088,0.900738634,0,,,56,55,,,
+BBRKC,Crab,BSAI,Fishing_Rate_Relative_Natural_Mortality,Socioeconomic,No,,,,0.313625445,0.288537257,1.15,0,,,57,56,,,
+BBRKC,Crab,BSAI,Generation Time,Ecosystem,No,,,,20.33942857,13.18511013,56,8,,,58,57,,,
+BBRKC,Crab,BSAI,Doubling_Time,Ecosystem,No,,,,9.738793103,3.639862672,14,2.9,,,59,58,,,
+BBRKC,Crab,BSAI,Best_Age,Ecosystem,No,,,,13.37765449,7.086950602,28,3,,,60,59,,,
+BBRKC,Crab,BSAI,Common/Max Length,Ecosystem,No,,,,99.04484151,126.2037305,700,20,,,61,60,,,
+BBRKC,Crab,BSAI,Max Weight,Ecosystem,No,,,,14.22736364,21.61082247,91,0.052,,,62,61,,,
+Arrowtooth,Flatfish,GOA,Commercial Value,Socioeconomic,No,1773862.26,339838.64,No,13744471.18,50904942.78,367726626,0,7238208,3,44,,0.019683666,1,0.807
+Arrowtooth,Flatfish,GOA,Fecundity,Ecosystem,Yes,1000,100000,Yes,571096.8333,910959.2328,3700000,4.5,1243000,2,15,,0.335945138,1,0.158
+Arrowtooth,Flatfish,GOA,Maximum Length,Ecosystem,Yes,155,55,No,97.91666667,58.28052897,195,16,91,4,9,,0.418994413,,0.5
+Arrowtooth,Flatfish,GOA,Depth Range,Ecosystem,Yes,100,,Yes,406.2096774,393.8530614,2000,75,200,3,12,,0.064935065,1,0.755
+Arrowtooth,Flatfish,GOA,Maximum Age,Ecosystem,Yes,25,10,No,44.24074074,38.06941782,157,2,34,3,7,,0.206451613,1,0.533
+Arrowtooth,Flatfish,GOA,Age at 1st Maturity,Ecosystem,Yes,5,2,No,6.517241379,4.789278872,19,1,6,3,4,,0.277777778,1,0.576
+Arrowtooth,Flatfish,GOA,Habitat Dependence Index,Ecosystem,Yes,5,1,No,1.357142857,0.772918235,3,1,1,1,24,,0,,0
+Arrowtooth,Flatfish,GOA,Breeding Strategy Index,Ecosystem,Yes,4,0,No,2.35483871,2.158450979,8,0,2,2,16,,0.25,,0.358
+Arrowtooth,Flatfish,GOA,Mean Trophic Level,Ecosystem,Yes,3.5,2.5,No,3.760483871,0.362723882,4.4,3.2,4.2,1,28,,0.833333333,1,0.769
+Arrowtooth,Flatfish,GOA,Prey Specificity,Ecosystem,Yes,3.5,2.5,No,1.561290323,0.504197086,2.8,1,1.6,1,25,,0.333333333,,0.679
+Arrowtooth,Flatfish,GOA,Population Growth Rate,Ecosystem,Yes,3.5,2.5,No,2.675,0.511998884,3.7,2.3,3,3,10,,0.5,,0.625
+Arrowtooth,Flatfish,GOA,Adult Mobility,Ecosystem,Yes,3.5,2.5,No,1.651612903,0.538894416,2.6,1,1.7,1,22,,0.4375,,0.622
+Arrowtooth,Flatfish,GOA,Dispersal ELH,Ecosystem,Yes,3.5,2.5,No,1.614516129,0.721302732,3.6,1,1.4,2,19,,0.153846154,,0.547
+Arrowtooth,Flatfish,GOA,OA Sensitivity,Ecosystem,Yes,3.5,2.5,No,1.869354839,0.537019312,2.8,1,2,1,26,,0.555555556,,0.509
+Arrowtooth,Flatfish,GOA,Reproductive Strategy,Ecosystem,Yes,3.5,2.5,No,1.875,0.254950976,2.3,1.6,1.8,2,20,,0.285714286,,0.5
+Arrowtooth,Flatfish,GOA,Temperature Sensitivity,Ecosystem,Yes,3.5,2.5,No,1.84375,0.551256681,3.2,1.55,1.7,3.5,13,,0.090909091,,0.333
+Arrowtooth,Flatfish,GOA,Habitat Specificity,Ecosystem,Yes,3.5,2.5,No,1.477419355,0.432082018,2.6,1,1.1,1,23,,0.0625,,0.207
+Arrowtooth,Flatfish,GOA,Spawning Cycle,Ecosystem,Yes,3.5,2.5,No,2.75,0.507092553,3.8,2.2,2.3,1,17,,0.0625,,0.125
+Arrowtooth,Flatfish,GOA,Other Stressors,Ecosystem,Yes,3.5,2.5,No,1.291935484,0.275382528,2.2,1,1.1,1,27,,0.083333333,,0.037
+Arrowtooth,Flatfish,GOA,ELH Survival Settlement,Ecosystem,Yes,3.5,2.5,No,2.4375,0.232609421,2.7,2,2,2,21,,0,,0
+Arrowtooth,Flatfish,GOA,Stock Size over Status,Ecosystem,No,3.5,2.5,No,1.25,0.585314097,3,1,1,3,35,,0,,0
+Arrowtooth,Flatfish,GOA,Ecosystem Value Top-Down,Ecosystem,Yes,3,1.5,No,2.313559322,1.312730456,5,0,5,2,30,,1,1,0.865
+Arrowtooth,Flatfish,GOA,Ecosystem Value Bottom-Up,Ecosystem,Yes,3,1.5,No,2.449152542,1.425430713,5,1,2,2,29,,0.25,,0.442
+Arrowtooth,Flatfish,GOA,Geographic Concentration,Ecosystem,Yes,3,1,No,1.778846154,0.812967582,3,1,1,3.5,14,,0,,0
+Arrowtooth,Flatfish,GOA,Recruitment Variability,Ecosystem,Yes,0.9,0.3,No,0.626755339,0.257351262,1.05,0.332979127,0.51,2,1,,0.246883849,,0.31
+Arrowtooth,Flatfish,GOA,Relative Fishing Mortality,Socioeconomic,No,0.9,0.25,No,0.319417968,0.228228829,0.900738634,0,0.084165966,3,43,,0.093441053,,0.196
+Arrowtooth,Flatfish,GOA,Commercial Importance,Socioeconomic,Yes,0.729513501,0.645556499,No,0.603585556,0.270171516,1,0,0.80084187,3,31,,0.80084187,1,0.792
+Arrowtooth,Flatfish,GOA,Natural Mortality,Ecosystem,Yes,0.5,0.2,No,0.196413793,0.195789274,1,0.03,0.275,3,2,,0.25257732,,0.773
+Arrowtooth,Flatfish,GOA,Relative Stock Abundance,Ecosystem,No,0.5,1.2,Yes,1.745167825,0.628635436,3.262385004,0.520664332,3.262385004,3,34,,1,1,0
+Arrowtooth,Flatfish,GOA,Growth Rate,Ecosystem,Yes,0.1,0.25,Yes,0.174834341,0.109642666,0.445,0.022,0.169,3,3,,0.34751773,1,0.436
+Arrowtooth,Flatfish,GOA,Spawning Aggregation,Ecosystem,No,,,No,2.695652174,0.702901946,3,1,NA,1,36,,#VALUE!,,#VALUE!
+Arrowtooth,Flatfish,GOA,Recreational Index,Socioeconomic,No,,,No,26021.22222,41188.18114,122501,7,0,2,45,,-5.71E-05,,#N/A
+Arrowtooth,Flatfish,GOA,Recreational Fishery Importance,Socioeconomic,No,,,No,0.239795918,0.530229863,2.25,0,NA,2,47,,#VALUE!,,#VALUE!
+Arrowtooth,Flatfish,GOA,Generation Time,Ecosystem,No,,,,20.33942857,13.18511013,56,8,NA,3,58,,#VALUE!,,#VALUE!
+Arrowtooth,Flatfish,GOA,Biomass,Ecosystem,No,,,,234537.875,518883.9756,3540000,5352,1133010,3,49,,0.319029787,,0.978
+Arrowtooth,Flatfish,GOA,Spawning Duration,Ecosystem,Yes,,,Yes,5.6,3.190026832,12,2,3,1,18,,0.1,,0.942
+Arrowtooth,Flatfish,GOA,ABC,Ecosystem,No,,,,73621.35417,239652.9225,1637000,453,192921,3,53,,0.117606155,,0.93
+Arrowtooth,Flatfish,GOA,B_MSY,Ecosystem,No,,,,180606.4286,370829.139,1984200,7198,347295,3,50,,0.172026634,,0.925
+Arrowtooth,Flatfish,GOA,OFL,Ecosystem,No,,,,115596.06,470480.8576,3330000,560,226390,3,52,,0.067828223,,0.906
+Arrowtooth,Flatfish,GOA,TAC,Socioeconomic,No,,,,52831.9375,191727.0498,1310000,100,103300,3,54,,0.07878464,,0.906
+Arrowtooth,Flatfish,GOA,Long_Min,Ecosystem,No,,,,134.75,34.67917475,180,45,162,4,65,,0.866666667,,0.814
+Arrowtooth,Flatfish,GOA,Lat_Min,Ecosystem,No,,,,32.90322581,6.657202872,54,17,35,4,63,,0.486486486,,0.807
+Arrowtooth,Flatfish,GOA,Catch,Socioeconomic,No,,,,40910.29243,182269.7611,1321581,0,19060,3,51,,0.01442212,,0.79
+Arrowtooth,Flatfish,GOA,Feeding Larvae Size,Ecosystem,No,,,,18.73,10.43828462,41.5,8,26,2,39,,0.537313433,,0.785
+Arrowtooth,Flatfish,GOA,Total_Mortality,Ecosystem,No,,,,0.26672595,0.308989632,1.900738634,0.036,0.29,3,55,,0.136212119,,0.764
+Arrowtooth,Flatfish,GOA,Transformation Size,Ecosystem,No,,,,31.97857143,17.35764866,67.5,13.4,37.5,2,41,,0.445471349,,0.75
+Arrowtooth,Flatfish,GOA,Age 50% Maturity,Ecosystem,Yes,,,No,10.14553191,6.575004648,36,3.6,11,3,5,,0.228395062,,0.717
+Arrowtooth,Flatfish,GOA,Latitude Range,Ecosystem,Yes,,,Yes,33.01612903,7.614679386,53,12,32,4,11,,0.487804878,,0.699
+Arrowtooth,Flatfish,GOA,Lat_Max,Ecosystem,No,,,,65.91935484,5.19867066,79,60,67,4,64,,0.368421053,,0.692
+Arrowtooth,Flatfish,GOA,Length 50% Maturity,Ecosystem,Yes,,,No,45.52172727,27.98778625,130,13.5,44.5,4,8,,0.266094421,,0.666
+Arrowtooth,Flatfish,GOA,Long_Max,Ecosystem,No,,,,128.5294118,21.19496123,180,109,122,4,66,,0.183098592,,0.655
+Arrowtooth,Flatfish,GOA,Egg Diameter,Ecosystem,No,,,,1.677419355,0.831961408,4,0.8,1.78,2,37,,0.30625,,0.62
+Arrowtooth,Flatfish,GOA,Usual_Depth_Min,Ecosystem,No,,,,70.72580645,96.76677545,400,0,100,3,67,,0.25,,0.596
+Arrowtooth,Flatfish,GOA,Max Weight,Ecosystem,No,,,,14.22736364,21.61082247,91,0.052,8.6,3,62,,0.093987773,,0.578
+Arrowtooth,Flatfish,GOA,Hatch Size,Ecosystem,No,,,,4.662,1.938848389,11.5,2,4.25,2,38,,0.236842105,,0.54
+Arrowtooth,Flatfish,GOA,Common/Max Length,Ecosystem,No,,,,99.04484151,126.2037305,700,20,79,4,61,,0.086764706,,0.5
+Arrowtooth,Flatfish,GOA,Feeding Larvae Duration,Ecosystem,No,,,,115.530303,47.80264431,182,30,120,2,40,,0.592105263,,0.437
+Arrowtooth,Flatfish,GOA,Mean Age,Ecosystem,Yes,,,No,12.71687016,7.367200393,31,2,12.57200655,3,6,,0.36455195,,0.431
+Arrowtooth,Flatfish,GOA,Habitat Vulnerability Index,Ecosystem,No,,,No,0.693877551,0.683254517,2,0,1,1,42,,0.5,,0.404
+Arrowtooth,Flatfish,GOA,Fishing_Mortality (Z-M),Socioeconomic,No,,,,0.069519053,0.134024088,0.900738634,0,0.015,3,56,,0.016652999,,0.352
+Arrowtooth,Flatfish,GOA,Best_Age,Ecosystem,No,,,,13.37765449,7.086950602,28,3,12.57200655,3,60,,0.382880262,,0.346
+Arrowtooth,Flatfish,GOA,Subsistence Index,Socioeconomic,No,,,No,1364.684925,2526.52813,10711.22072,5.599,71.1025,2,46,,0.006118608,,0.277
+Arrowtooth,Flatfish,GOA,Usual_Depth_Max,Ecosystem,No,,,,476.9354839,427.9366764,2000,100,300,3,68,,0.105263158,,0.23
+Arrowtooth,Flatfish,GOA,Fishing_Rate_Relative_Natural_Mortality,Socioeconomic,No,,,,0.313625445,0.288537257,1.15,0,0.054545455,3,57,,0.04743083,,0.117
+Arrowtooth,Flatfish,GOA,Doubling_Time,Ecosystem,No,,,,9.738793103,3.639862672,14,2.9,9.25,3,59,,0.572072072,,0.102
+Arrowtooth,Flatfish,GOA,Constituent Demand,Socioeconomic,Yes,,,No,2.73,1.607412676,5,0,0,3,32,,0,,0
+Arrowtooth,Flatfish,GOA,Non-Catch Value,Socioeconomic,Yes,,,No,1.967391304,1.419711136,5,0,0,3,33,,0,,0
+Arrowtooth,Flatfish,GOA,Subsistence Fishery Importance,Socioeconomic,No,,,No,0.987179487,1.216591331,4,0,0,2,48,,0,,0

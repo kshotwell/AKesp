@@ -1,0 +1,4 @@
+```{r, {{label}} }
+data <- read.csv(tab)
+knitr::kable(data, caption = "{{caption}}")
+```

@@ -1,0 +1,8 @@
+^AKesp\.Rproj$
+^\.Rproj\.user$
+^old
+^data-raw$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^example_script.R$

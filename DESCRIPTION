@@ -1,0 +1,34 @@
+Package: AKesp
+Title: A package to create ESPs based on data, image, and text input
+Version: 0.0.1
+Authors@R: 
+    person(given = "Abigail",
+           family = "Tyrell",
+           role = c("aut", "cre"),
+           email = "abigail.tyrell@noaa.gov",
+           comment = c(ORCID = "0000-0002-6656-8470"))
+Description: What the package does (one paragraph).
+License: file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Depends: 
+    R (>= 2.10)
+Imports:
+    devtools,
+    dplyr,
+    flextable,
+    ggplot2,
+    ggcorrplot,
+    ggforce,
+    ggpubr,
+    knitr,
+    magrittr,
+    rlang,
+    rmarkdown,
+    scales,
+    stringr,
+    tidyr
+VignetteBuilder: 
+    knitr

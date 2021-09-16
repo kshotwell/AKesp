@@ -1,0 +1,68 @@
+url:
+
+news:
+  one_page: true
+
+authors:
+  Abigail Tyrell:
+    href: https://github.com/atyrell3
+
+navbar:
+  left:
+    - text: "Vignettes"
+      menu:
+      -  text: "Create figures"
+         href: articles/create-figures.html
+      -  text: "Create tables"
+         href: articles/create-tables.html
+      -  text: "Create an ESP"
+         href: articles/create-ESP.html
+    - text: "Functions"
+      href: reference/index.html
+    - text: "News"
+      href: news/index.html
+  right:
+    - icon: fas fa-paper-plane fa-lg
+      href: mailto:abigail.tyrell@noaa.gov
+    - icon: fas fa-question-circle fa-lg
+      href: https://github.com/
+    - icon: fab fa-github fa-lg
+      href: https://github.com/
+
+articles:
+    toc:
+      depth: 3
+
+reference:
+  - title: Functions
+  - subtitle: Create figures
+    contents:
+      - '`esp_metrics`'
+      - '`esp_cor_matrix`'
+      - '`esp_hist`'
+      - '`esp_traffic`'
+  - subtitle: Create tables
+    contents:
+      - '`esp_traffic_tab`'
+  - subtitle: Create an ESP
+    contents:
+      - '`create_template`'
+      - '`render_esp`'
+      - '`render_fig`'
+      - '`render_tab`'
+      - '`render_ref`'
+  - subtitle: Utilities
+    contents:
+      - '`label_facets`'
+  - title: Data
+    contents:
+      - '`BBRKC`'
+      - '`goa_pcod`'
+      - '`goa_pollock`'
+      - '`sablefish`'
+      - '`SMBKC`'
+      - '`ebs_pcod`'
+      - '`metric_panel`'
+
+template:
+  package: preferably

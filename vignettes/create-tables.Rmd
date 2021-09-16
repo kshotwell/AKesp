@@ -1,0 +1,42 @@
+---
+title: "Create tables"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Create tables}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE,
+  eval = TRUE,
+  fig.align = "center"
+)
+```
+
+First, open `AKesp.Rproj` and run:
+```{r}
+devtools::load_all()
+```
+
+Eventually the package will be on Github!
+
+Most tables are automatically created from the `table_spreadsheet.csv` and the `.csv` files in the `tables` folder. However, the `AKesp` package can also create some tables that require data analysis. 
+
+## Traffic light scores
+
+A traffic light table can be automatically created from a spreadsheet that has a column for year and a column for each indicator.
+```{r}
+AKesp::esp_traffic_tab(data = AKesp::sablefish, 
+                       year = 2020)
+```
+
+Multiple years can be shown.
+```{r}
+AKesp::esp_traffic_tab(data = AKesp::sablefish, 
+                       year = 2016:2020)
+```
