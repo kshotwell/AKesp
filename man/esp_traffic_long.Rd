@@ -4,7 +4,7 @@
 \alias{esp_traffic_long}
 \title{Plot indicator traffic light figure}
 \usage{
-esp_traffic_long(data, name, out, paginate = FALSE, ...)
+esp_traffic_long(data, name, out, paginate = FALSE, label = TRUE, ...)
 }
 \arguments{
 \item{data}{The ESP indicator data. Should have a column for Year and a column for each indicator.}
@@ -14,6 +14,8 @@ esp_traffic_long(data, name, out, paginate = FALSE, ...)
 \item{out}{Whether the function should save the plot, or return a ggplot object. One of c("ggplot", "save")}
 
 \item{paginate}{Whether to paginate the plots with \code{ggforce::facet_wrap_paginate}}
+
+\item{label}{Whether to label the facets}
 
 \item{...}{Passed to \code{ggplot2::ggsave}}
 }

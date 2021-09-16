@@ -9,7 +9,7 @@ make_traffic_plot <- function(dat) {
     out = "save",
     name = "../../test/images/traffic",
     paginate = TRUE,
-    label = FALSE,
+    label = TRUE,
     height = 8
   )
 
@@ -19,8 +19,8 @@ make_traffic_plot <- function(dat) {
     file_name <- paste0("../../test/images/traffic", "_page", i, ".png")
     print(file_name)
 
-    img <- file_name
     render_fig(
+      img = file_name,
       lab = paste0("traffic", "_page", i),
       cap = "testcap",
       alt = "testalt"

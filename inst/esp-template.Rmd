@@ -109,18 +109,22 @@ if (params$esp_type == "report card") {
 ```{r, figures, fig.height = 8}
   figs <- read.csv(params$fig_spreadsheet)
   for (i in 1:nrow(figs)) {
+    
     if (figs$chunk_name[i] == "traffic"){
       try(make_traffic_plot(dat = params$esp_data))
-    } else if (figs$chunk_name[i] == "overall-score") {
+    
+      } else if (figs$chunk_name[i] == "overall-score") {
      # make_overall_plot()
       print("not plotting")
-    } else {
-    img <- figs$file_name[i]
-    render_fig(
+    
+        } else {
+
+    try(render_fig(
+      img = figs$file_name[i],
       lab = figs$chunk_name[i],
       cap = figs$caption[i],
       alt = figs$alt_text[i]
-    )
+    ))
     }
   }
 
@@ -163,8 +167,8 @@ if (params$esp_type == "report card") {
 } else {
   figs <- read.csv(params$fig_spreadsheet)
   for (i in 1:nrow(figs)) {
-    img <- figs$file_name[i]
     render_fig(
+      img = figs$file_name[i],
       lab = figs$chunk_name[i],
       cap = figs$caption[i],
       alt = figs$alt_text[i]
