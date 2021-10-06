@@ -136,12 +136,22 @@ esp_traffic_long <- function(data, name, out, paginate = FALSE, label = TRUE, ..
       mean = mean(.data$DATA_VALUE,
         na.rm = TRUE
       ),
+      sd = sd(.data$DATA_VALUE,
+                  na.rm = TRUE
+      ),
       quant90 = stats::quantile(.data$DATA_VALUE,
         probs = 0.9,
         na.rm = TRUE
       ),
-      recent = (.data$YEAR == maxyear | .data$YEAR == minyear)
-    )
+      recent = (.data$YEAR == maxyear | .data$YEAR == minyear),
+      label = ifelse(.data$YEAR == maxyear,
+                     ifelse(.data$DATA_VALUE < (.data$mean + .data$sd),
+                            ifelse(.data$DATA_VALUE > (.data$mean - .data$sd),
+                                   "neutral", "low"),
+                     "high"),
+                     NA)
+      ) %>%
+    dplyr::ungroup()
 
   plt <- ggplot2::ggplot(
     dat,
@@ -186,7 +196,17 @@ esp_traffic_long <- function(data, name, out, paginate = FALSE, label = TRUE, ..
     ) +
     ggplot2::geom_point() +
     ggplot2::geom_line(data = dat %>%
-      tidyr::drop_na()) +
+      tidyr::drop_na(.data$DATA_VALUE)) +
+    #ggrepel::geom_label_repel(ggplot2::aes(label = .data$label),
+    #                 box.padding   = 0.35,
+    #                 point.padding = 0.5,
+    #                 segment.color = NA) +
+    ggplot2::geom_label(ggplot2::aes(label = .data$label,
+                                     y = .data$mean,
+                                     fill = .data$label),
+                        nudge_x = 3,
+                        show.legend = FALSE) +
+    ggplot2::scale_fill_manual(values = c("brown1", "cornflowerblue", "beige")) +
     ggplot2::ylab("") +
     ggplot2::scale_y_continuous(labels = scales::comma) +
     ggplot2::theme_bw(base_size = 16)
@@ -238,7 +258,8 @@ esp_traffic_long <- function(data, name, out, paginate = FALSE, label = TRUE, ..
   }
 }
 
-# esp_traffic_long(AKesp::bbrkc_long, out = "ggplot", paginate = FALSE)
+#
+esp_traffic_long(AKesp::bbrkc_long, out = "ggplot", paginate = TRUE)
 
 #' Plot a metric panel figure
 #'
@@ -352,9 +373,9 @@ esp_metrics <- function(data, species, region, approved = TRUE, order = FALSE, o
 #  approved = TRUE, order = FALSE, out = "ggplot"
 # )
 
-#' Plot a metric panel figure
+#' Plot a figure of overall ESP scores
 #'
-#' This function plots an ESP metric panel
+#' This function plots a visual of overall ESP scores over time.
 #' @param data The ESP indicator data (LONG format).
 #' @param species The species name
 #' @param out Whether the function should save the plot, or return a ggplot object. One of c("ggplot", "save")
@@ -405,4 +426,4 @@ esp_overall_score <- function(data, species, out = "ggplot", name) {
   }
 }
 
-esp_overall_score(AKesp::bbrkc_long, species = "BBRKC")
+# esp_overall_score(AKesp::bbrkc_long, species = "BBRKC")
