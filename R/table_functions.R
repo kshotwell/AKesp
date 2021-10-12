@@ -107,13 +107,15 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
       )
     ) %>%
     dplyr::filter(.data$this_year == TRUE) %>%
-    dplyr::select(.data$YEAR, .data$name, .data$DATA_VALUE, .data$avg, .data$stdev, .data$SIGN, .data$SCORE)
+    dplyr::select(.data$CATEGORY, .data$YEAR, .data$name, .data$DATA_VALUE,
+                  .data$avg, .data$stdev, .data$SIGN, .data$SCORE) %>%
+    dplyr::arrange(.data$CATEGORY, .data$name)
 
   status <- c()
   color <- c()
   for (i in seq_len(nrow(dat))) {
     if (is.na(dat$DATA_VALUE[i])) {
-      status[i] <- "missing"
+      status[i] <- "NA"
       color[i] <- "gray80"
     } else if (dat$DATA_VALUE[i] > (dat$avg[i] + dat$stdev[i])) {
       status[i] <- "high"
@@ -134,16 +136,18 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
   # words in cell = status
 
   tbl_dat <- dat %>%
-    dplyr::select(.data$name, .data$YEAR, .data$status) %>%
+    dplyr::select(.data$CATEGORY, .data$name, .data$YEAR, .data$status) %>%
     tidyr::pivot_wider(
-      id_cols = .data$name,
+      id_cols = c(.data$CATEGORY, .data$name),
       names_from = .data$YEAR,
       values_from = .data$status
     ) %>%
-    dplyr::rename(Indicator = .data$name)
+    dplyr::rename(Indicator = .data$name,
+                  "Indicator category" = .data$CATEGORY)
 
   color_dat <- dat %>%
-    dplyr::select(.data$name, .data$YEAR, .data$status, .data$SIGN, .data$color)
+    dplyr::select(.data$CATEGORY, .data$name, .data$YEAR, .data$status,
+                  .data$SIGN, .data$color)
 
   for (i in 1:nrow(color_dat)) {
     if (color_dat$status[i] == "low" & color_dat$SIGN[i] == -1) {
@@ -159,27 +163,31 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
       color_dat$color[i] <- "brown1"
     }
   }
+
   color_dat <- color_dat %>%
     tidyr::pivot_wider(
-      id_cols = .data$name,
+      id_cols = c(.data$CATEGORY, .data$name),
       names_from = .data$YEAR,
       values_from = .data$color
     ) %>%
     dplyr::rename(Indicator = .data$name)
 
-  colnames(tbl_dat)[2:ncol(tbl_dat)] <- paste(colnames(tbl_dat)[2:ncol(tbl_dat)], "Status")
+  colnames(tbl_dat)[3:ncol(tbl_dat)] <- paste(colnames(tbl_dat)[3:ncol(tbl_dat)], "Status")
 
   ft <- flextable::flextable(tbl_dat) %>%
     flextable::theme_vanilla() %>%
     flextable::set_caption(caption = cap) %>%
     flextable::autofit() %>%
-    flextable::align(align = "center", j = 2:ncol(tbl_dat))
+    flextable::align(align = "center", j = 3:ncol(tbl_dat))
 
-  for (j in 2:ncol(tbl_dat)) {
+  for (j in 3:ncol(tbl_dat)) {
     for (i in seq_len(nrow(tbl_dat))) {
       ft <- flextable::bg(ft, i = i, j = j, bg = as.character(color_dat[i, j]))
     }
   }
+
+  ft <- ft %>%
+    flextable::merge_v(j = 1)
 
   return(ft)
 }

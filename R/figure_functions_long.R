@@ -118,7 +118,13 @@ esp_hist_long <- function(data, name, out, ...) {
 #' @importFrom rlang .data
 #' @export
 
-esp_traffic_long <- function(data, name, out, paginate = FALSE, label = TRUE, ...) {
+esp_traffic_long <- function(data,
+                             name,
+                             out = "ggplot",
+                             paginate = FALSE,
+                             label = TRUE,
+                             caption = "",
+                             ...) {
   maxyear <- max(data$YEAR)
   minyear <- maxyear - 1
 
@@ -209,10 +215,33 @@ esp_traffic_long <- function(data, name, out, paginate = FALSE, label = TRUE, ..
     ggplot2::scale_fill_manual(values = c("brown1", "cornflowerblue", "beige")) +
     ggplot2::ylab("") +
     ggplot2::scale_y_continuous(labels = scales::comma) +
-    ggplot2::theme_bw(base_size = 16)
+    ggplot2::theme_bw(base_size = 16)+
+    ggplot2::xlim(c(min(dat$YEAR), max(dat$YEAR) + 4))
+
+  finish_fig <- function() {
+    if(label){
+      plt <- plt %>%
+        AKesp::label_facets(open = "", close = "")
+    }
+
+    if (out == "save") {
+      ggplot2::ggsave(plt, filename = paste0(name, "_page", i, ".png"), ...)
+    } else if (out == "ggplot") {
+      print(plt)
+      cat("\n\n")
+      cat("#### Figure \\@ref(fig:traffic).", caption, "{-}")
+      cat("\n\n")
+    } else {
+      stop("Please specify output format")
+    }
+  }
 
   if (paginate == TRUE) {
-    n <- ceiling(length(unique(dat$name)) / 5)
+
+    nfacet <- length(unique(dat$name))
+
+    n <- ceiling(nfacet / 5)
+    last_n <- nfacet - (n - 1)*5
 
     for (i in 1:n) {
       plt <- plt +
@@ -223,17 +252,7 @@ esp_traffic_long <- function(data, name, out, paginate = FALSE, label = TRUE, ..
           page = i
         )
 
-      plt <- plt %>%
-        label_facets(open = "", close = "")
-
-      if (out == "save") {
-        ggplot2::ggsave(plt, filename = paste0(name, "_page", i, ".png"), ...)
-      } else if (out == "ggplot") {
-        print(plt)
-        cat("\n\n")
-      } else {
-        stop("Please specify output format")
-      }
+      finish_fig()
     }
   } else {
     plt <- plt +
@@ -242,24 +261,11 @@ esp_traffic_long <- function(data, name, out, paginate = FALSE, label = TRUE, ..
         scales = "free_y"
       )
 
-    if(label){
-      plt <- plt %>%
-        label_facets(open = "", close = "")
-    }
-
-    if (out == "save") {
-      ggplot2::ggsave(plt, filename = paste0(name, ".png"), ...)
-    } else if (out == "ggplot") {
-      return(plt)
-      cat("\n\n")
-    } else {
-      stop("Please specify output format")
-    }
+    finish_fig()
   }
 }
 
-#
-esp_traffic_long(AKesp::bbrkc_long, out = "ggplot", paginate = TRUE)
+# esp_traffic_long(AKesp::bbrkc_long, out = "ggplot", paginate = TRUE)
 
 #' Plot a metric panel figure
 #'
@@ -421,6 +427,7 @@ esp_overall_score <- function(data, species, out = "ggplot", name) {
     ggplot2::ggsave(plt, filename = name, ...)
   } else if (out == "ggplot") {
     print(plt)
+    cat("\n\n")
   } else {
     stop("Please specify output format")
   }

@@ -123,12 +123,16 @@ render_fig <- function(img, # the file path to the image
                        cap = "no-caption",
                        alt = "no-alt") {
   txt <- '```{r, {{label}}, fig.cap = "{{alttext}}"}
-      knitr::include_graphics({{path}})
+      knitr::include_graphics("{{path}}")
       ```'
+
+  if(stringr::str_detect(img, "system.file")){
+    img <- eval(parse(text = img))
+  }
 
   res <- knitr::knit_child(
     text = knitr::knit_expand(
-      path = toString(img),
+      path = img,
       text = txt,
       label = lab,
       caption = cap,

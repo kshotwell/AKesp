@@ -2,7 +2,7 @@
 % Please edit documentation in R/figure_functions_long.R
 \name{esp_overall_score}
 \alias{esp_overall_score}
-\title{Plot a metric panel figure}
+\title{Plot a figure of overall ESP scores}
 \usage{
 esp_overall_score(data, species, out = "ggplot", name)
 }
@@ -21,5 +21,5 @@ esp_overall_score(data, species, out = "ggplot", name)
 An image file
 }
 \description{
-This function plots an ESP metric panel
+This function plots a visual of overall ESP scores over time.
 }

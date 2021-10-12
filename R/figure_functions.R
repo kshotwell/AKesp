@@ -196,7 +196,7 @@ esp_traffic <- function(data, name, out, ...) {
       ggplot2::theme_bw(base_size = 16)
 
     plt <- plt %>%
-      label_facets(open = "", close = "")
+      AKesp::label_facets(open = "", close = "")
 
     if (out == "save") {
       ggplot2::ggsave(plt, filename = paste0(name, "_page", i, ".png"), ...)

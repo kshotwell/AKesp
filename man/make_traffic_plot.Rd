@@ -6,6 +6,9 @@
 \usage{
 make_traffic_plot(dat)
 }
+\arguments{
+\item{dat}{The indicator data}
+}
 \description{
 This function renders an ESP figure.
 }

@@ -4,7 +4,15 @@
 \alias{esp_traffic_long}
 \title{Plot indicator traffic light figure}
 \usage{
-esp_traffic_long(data, name, out, paginate = FALSE, label = TRUE, ...)
+esp_traffic_long(
+  data,
+  name,
+  out = "ggplot",
+  paginate = FALSE,
+  label = TRUE,
+  caption = "",
+  ...
+)
 }
 \arguments{
 \item{data}{The ESP indicator data. Should have a column for Year and a column for each indicator.}

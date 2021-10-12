@@ -1,7 +1,7 @@
 #' Render the figure section
 #'
 #' This function renders an ESP figure.
-#' @param dat
+#' @param dat The indicator data
 #' @export
 
 make_traffic_plot <- function(dat) {
@@ -99,3 +99,59 @@ make_traffic_plot <- function(dat) {
 }
 
 #make_traffic_plot(AKesp::bbrkc_long)
+
+#' Create an indicator list
+#'
+#' This function creates an indicator list from the data.
+#' @param data The indicator data
+#' @param indicator_type One of `c("Ecosystem", "Socioeconomic")`
+#' @export
+
+list_indicators <- function(data, indicator_type){
+  dat <- data %>%
+    dplyr::select(
+      INDICATOR_NAME,
+      INDICATOR_TYPE,
+      CATEGORY,
+      CONTACT,
+      PRODUCT_DESCRIPTION
+    ) %>%
+    dplyr::distinct() %>%
+    dplyr::filter(INDICATOR_TYPE == indicator_type)
+
+  num_index <- 1
+  total_text <- NULL
+  for (j in unique(dat$CATEGORY)) {
+    text <- paste0(num_index, ".) ", j, " Indicators")
+
+    total_text <- paste(total_text, text, sep = "\n\n")
+
+    # res <- knitr::knit_expand(text = text)
+    # cat(res, sep = "\n")
+
+    letter_index <- 1
+    num_index <- num_index + 1
+
+    dat1 <- dat %>%
+      dplyr::filter(CATEGORY == j)
+    for (k in unique(dat1$INDICATOR_NAME)) {
+      dat2 <- dat1 %>%
+        dplyr::select(INDICATOR_NAME, CONTACT, PRODUCT_DESCRIPTION) %>%
+        dplyr::distinct() %>%
+        dplyr::filter(INDICATOR_NAME == k)
+
+      if (stringr::str_detect(dat2$PRODUCT_DESCRIPTION, "\\.$", negate = TRUE)) {
+        dat2$PRODUCT_DESCRIPTION <- glue::glue(dat2$PRODUCT_DESCRIPTION, ".")
+      }
+
+      text <- paste0(letters[letter_index], ".) ", k, ": ", dat2$PRODUCT_DESCRIPTION, " (contact: ", dat2$CONTACT, ")")
+
+      total_text <- paste(total_text, text, sep = "\n\n")
+      # res <- knitr::knit_expand(text = text)
+      # cat(res, sep = "\n")
+
+      letter_index <- letter_index + 1
+    }
+  }
+  return(total_text)
+}
