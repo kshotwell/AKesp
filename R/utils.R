@@ -109,3 +109,51 @@ label_status <- function(p,
   )
 }
 
+#' Prep indicator data
+#'
+#' This function prepares indicator data. Adds SCORE column.
+#' @param data The data (pulled from AKFIN)
+#' @return A tibble
+#' @export
+#'
+
+prep_ind_data <- function(data){
+  maxyear <- max(data$YEAR)
+  minyear <- maxyear - 1
+
+  dat <- data %>%
+    dplyr::select(INDICATOR_NAME, YEAR, DATA_VALUE, SIGN, WEIGHT) %>%
+    dplyr::group_by(INDICATOR_NAME) %>%
+    dplyr::mutate(
+      name = INDICATOR_NAME %>%
+        stringr::str_replace_all("_", " ") %>%
+        stringr::str_wrap(width = 40),
+      quant10 = stats::quantile(.data$DATA_VALUE,
+                                probs = 0.1,
+                                na.rm = TRUE
+      ),
+      mean = mean(.data$DATA_VALUE,
+                  na.rm = TRUE
+      ),
+      sd = sd(.data$DATA_VALUE,
+              na.rm = TRUE
+      ),
+      quant90 = stats::quantile(.data$DATA_VALUE,
+                                probs = 0.9,
+                                na.rm = TRUE
+      ),
+      recent = (.data$YEAR == maxyear | .data$YEAR == minyear),
+      label = ifelse(.data$YEAR == maxyear,
+                     ifelse(.data$DATA_VALUE < (.data$mean + .data$sd),
+                            ifelse(.data$DATA_VALUE > (.data$mean - .data$sd),
+                                   "neutral", "low"),
+                            "high"),
+                     NA),
+      label_num = ifelse(.data$label == "low", -1,
+                         ifelse(.data$label == "high", 1, 0)),
+      score = as.character(.data$label_num * .data$SIGN * .data$WEIGHT)
+    ) %>%
+    dplyr::ungroup()
+
+  return(dat)
+}

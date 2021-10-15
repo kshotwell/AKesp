@@ -128,36 +128,7 @@ esp_traffic_long <- function(data,
   maxyear <- max(data$YEAR)
   minyear <- maxyear - 1
 
-  dat <- data %>%
-    dplyr::select(INDICATOR_NAME, YEAR, DATA_VALUE) %>%
-    dplyr::group_by(INDICATOR_NAME) %>%
-    dplyr::mutate(
-      name = INDICATOR_NAME %>%
-        stringr::str_replace_all("_", " ") %>%
-        stringr::str_wrap(width = 40),
-      quant10 = stats::quantile(.data$DATA_VALUE,
-        probs = 0.1,
-        na.rm = TRUE
-      ),
-      mean = mean(.data$DATA_VALUE,
-        na.rm = TRUE
-      ),
-      sd = sd(.data$DATA_VALUE,
-                  na.rm = TRUE
-      ),
-      quant90 = stats::quantile(.data$DATA_VALUE,
-        probs = 0.9,
-        na.rm = TRUE
-      ),
-      recent = (.data$YEAR == maxyear | .data$YEAR == minyear),
-      label = ifelse(.data$YEAR == maxyear,
-                     ifelse(.data$DATA_VALUE < (.data$mean + .data$sd),
-                            ifelse(.data$DATA_VALUE > (.data$mean - .data$sd),
-                                   "neutral", "low"),
-                     "high"),
-                     NA)
-      ) %>%
-    dplyr::ungroup()
+  dat <- prep_ind_data(data)
 
   plt <- ggplot2::ggplot(
     dat,
@@ -171,8 +142,8 @@ esp_traffic_long <- function(data,
       data = dat %>%
         dplyr::filter(.data$recent == TRUE),
       ggplot2::aes(
-        xmin = min(.data$YEAR),
-        xmax = max(.data$YEAR),
+        xmin = min(.data$YEAR) + 0.5,
+        xmax = max(.data$YEAR) + 0.5,
         ymin = .data$quant10,
         ymax = .data$quant90,
         group = name
@@ -209,10 +180,10 @@ esp_traffic_long <- function(data,
     #                 segment.color = NA) +
     ggplot2::geom_label(ggplot2::aes(label = .data$label,
                                      y = .data$mean,
-                                     fill = .data$label),
+                                     fill = .data$score),
                         nudge_x = 3,
                         show.legend = FALSE) +
-    ggplot2::scale_fill_manual(values = c("brown1", "cornflowerblue", "beige")) +
+    ggplot2::scale_fill_manual(values = c("-1" = "brown1","1" = "cornflowerblue", "0" = "beige")) +
     ggplot2::ylab("") +
     ggplot2::scale_y_continuous(labels = scales::comma) +
     ggplot2::theme_bw(base_size = 16)+

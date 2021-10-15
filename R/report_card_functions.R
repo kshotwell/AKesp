@@ -114,14 +114,20 @@ list_indicators <- function(data, indicator_type){
       INDICATOR_TYPE,
       CATEGORY,
       CONTACT,
-      PRODUCT_DESCRIPTION
+      PRODUCT_DESCRIPTION,
+      STATUS_TRENDS
     ) %>%
     dplyr::distinct() %>%
     dplyr::filter(INDICATOR_TYPE == indicator_type)
 
   num_index <- 1
   total_text <- NULL
-  for (j in unique(dat$CATEGORY)) {
+
+  cats <- ifelse(indicator_type == "Ecosystem",
+                 c("Physical", "Lower Trophic", "Upper Trophic"),
+                 c("Fishery Performance", "Economic", "Community"))
+
+  for (j in cats) {
     text <- paste0(num_index, ".) ", j, " Indicators")
 
     total_text <- paste(total_text, text, sep = "\n\n")
@@ -136,7 +142,7 @@ list_indicators <- function(data, indicator_type){
       dplyr::filter(CATEGORY == j)
     for (k in unique(dat1$INDICATOR_NAME)) {
       dat2 <- dat1 %>%
-        dplyr::select(INDICATOR_NAME, CONTACT, PRODUCT_DESCRIPTION) %>%
+        dplyr::select(INDICATOR_NAME, CONTACT, PRODUCT_DESCRIPTION, STATUS_TRENDS) %>%
         dplyr::distinct() %>%
         dplyr::filter(INDICATOR_NAME == k)
 
@@ -144,7 +150,9 @@ list_indicators <- function(data, indicator_type){
         dat2$PRODUCT_DESCRIPTION <- glue::glue(dat2$PRODUCT_DESCRIPTION, ".")
       }
 
-      text <- paste0(letters[letter_index], ".) ", k, ": ", dat2$PRODUCT_DESCRIPTION, " (contact: ", dat2$CONTACT, ")")
+      text <- paste0(letters[letter_index], ".) ", k, ": ",
+                     dat2$PRODUCT_DESCRIPTION, " (contact: ", dat2$CONTACT, ")",
+                     "\n\n", dat2$STATUS_TRENDS)
 
       total_text <- paste(total_text, text, sep = "\n\n")
       # res <- knitr::knit_expand(text = text)

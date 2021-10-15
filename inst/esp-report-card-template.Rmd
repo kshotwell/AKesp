@@ -178,9 +178,10 @@ alt <- "Alt text"
 cap <- c("Simple traffic light score for overall ecosystem and socioeconomic categories from", min(params$esp_data$YEAR), "to present.")
 
 knitr::opts_chunk$set(fig.cap = alt)
-esp_overall_score(
+try(esp_overall_score(
   data = params$esp_data,
   species = params$fish
+)
 )
 
 cat("#### Figure \\@ref(fig:overall).", cap, "{-}")

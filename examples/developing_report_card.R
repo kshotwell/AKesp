@@ -4,7 +4,9 @@
 devtools::load_all()
 rmarkdown::render(here::here("inst/esp-report-card-template.Rmd"),
                   clean = FALSE,
-                  params = list(esp_data = get_esp_data("Alaska Sablefish")))
+                  params = list(esp_data = get_esp_data("Alaska Sablefish"),
+                                fish = "Sablefish",
+                                region = "Alaska"))
 
 
 # AKesp::bbrkc_long is the only data I have that has the `SCORE` column

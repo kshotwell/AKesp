@@ -93,6 +93,11 @@ esp_traffic_tab <- function(data, year, cap = "Traffic light scoring") {
 #' @export
 
 esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
+
+  data$CATEGORY <- factor(data$CATEGORY, c("Physical", "Lower Trophic",
+                                           "Upper Trophic", "Fishery Performance",
+                                           "Economic", "Community"))
+
   dat <- data %>%
     dplyr::group_by(.data$INDICATOR_NAME) %>%
     dplyr::mutate(
@@ -108,26 +113,43 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
     ) %>%
     dplyr::filter(.data$this_year == TRUE) %>%
     dplyr::select(.data$CATEGORY, .data$YEAR, .data$name, .data$DATA_VALUE,
-                  .data$avg, .data$stdev, .data$SIGN, .data$SCORE) %>%
+                  .data$avg, .data$stdev, .data$SIGN) %>%
     dplyr::arrange(.data$CATEGORY, .data$name)
 
   status <- c()
   color <- c()
+
   for (i in seq_len(nrow(dat))) {
+   # print(data$SIGN[i])
     if (is.na(dat$DATA_VALUE[i])) {
       status[i] <- "NA"
       color[i] <- "gray80"
     } else if (dat$DATA_VALUE[i] > (dat$avg[i] + dat$stdev[i])) {
       status[i] <- "high"
-      color[i] <- NA
+      if(is.na(dat$SIGN[i])){
+        color[i] <- "white"
+      } else if(dat$SIGN[i] == 1){
+        color[i] <- "cornflowerblue"
+      } else if(dat$SIGN[i] == -1){
+        color[i] <- "brown1"
+      }
     } else if (dat$DATA_VALUE[i] < (dat$avg[i] - dat$stdev[i])) {
       status[i] <- "low"
-      color[i] <- NA
+      if(is.na(dat$SIGN[i])){
+        color[i] <- "white"
+      } else if(dat$SIGN[i] == -1){
+        color[i] <- "cornflowerblue"
+      } else if(dat$SIGN[i] == 1){
+        color[i] <- "brown1"
+      }
     } else {
       status[i] <- "neutral"
       color[i] <- "white"
     }
   }
+
+ # message(status)
+#  message(color)
 
   dat$status <- status
   dat$color <- color
@@ -140,7 +162,8 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
     tidyr::pivot_wider(
       id_cols = c(.data$CATEGORY, .data$name),
       names_from = .data$YEAR,
-      values_from = .data$status
+      values_from = .data$status,
+      names_sort = TRUE
     ) %>%
     dplyr::rename(Indicator = .data$name,
                   "Indicator category" = .data$CATEGORY)
@@ -148,31 +171,34 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
   color_dat <- dat %>%
     dplyr::select(.data$CATEGORY, .data$name, .data$YEAR, .data$status,
                   .data$SIGN, .data$color)
-
-  for (i in 1:nrow(color_dat)) {
-    if (color_dat$status[i] == "low" & color_dat$SIGN[i] == -1) {
-      color_dat$color[i] <- "cornflowerblue"
-    }
-    if (color_dat$status[i] == "high" & color_dat$SIGN[i] == 1) {
-      color_dat$color[i] <- "cornflowerblue"
-    }
-    if (color_dat$status[i] == "high" & color_dat$SIGN[i] == -1) {
-      color_dat$color[i] <- "brown1"
-    }
-    if (color_dat$status[i] == "low" & color_dat$SIGN[i] == 1) {
-      color_dat$color[i] <- "brown1"
-    }
-  }
+#
+#   for (i in 1:nrow(color_dat)) {
+#     if(is.na(color_dat$SIGN[i])){
+#       color_dat$color[i] <- "white"
+#     } else if (color_dat$status[i] == "low" & color_dat$SIGN[i] == -1) {
+#       color_dat$color[i] <- "cornflowerblue"
+#     } else if (color_dat$status[i] == "high" & color_dat$SIGN[i] == 1) {
+#       color_dat$color[i] <- "cornflowerblue"
+#     } else if (color_dat$status[i] == "high" & color_dat$SIGN[i] == -1) {
+#       color_dat$color[i] <- "brown1"
+#     } else if (color_dat$status[i] == "low" & color_dat$SIGN[i] == 1) {
+#       color_dat$color[i] <- "brown1"
+#     }
+#   }
 
   color_dat <- color_dat %>%
     tidyr::pivot_wider(
       id_cols = c(.data$CATEGORY, .data$name),
       names_from = .data$YEAR,
-      values_from = .data$color
+      values_from = .data$color,
+      values_fill = "grey80",
+      names_sort = TRUE
     ) %>%
     dplyr::rename(Indicator = .data$name)
 
   colnames(tbl_dat)[3:ncol(tbl_dat)] <- paste(colnames(tbl_dat)[3:ncol(tbl_dat)], "Status")
+
+  flextable::set_flextable_defaults(na_str = "NA")
 
   ft <- flextable::flextable(tbl_dat) %>%
     flextable::theme_vanilla() %>%
