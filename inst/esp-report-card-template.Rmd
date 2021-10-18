@@ -173,7 +173,7 @@ esp_traffic_long(
 ```
 
 
-```{r, overall, fig.height = 5, eval = TRUE, results = "asis"}
+```{r, overall, fig.height = 7, eval = TRUE, results = "asis"}
 alt <- "Alt text"
 cap <- c("Simple traffic light score for overall ecosystem and socioeconomic categories from", min(params$esp_data$YEAR), "to present.")
 
@@ -184,7 +184,7 @@ try(esp_overall_score(
 )
 )
 
-cat("#### Figure \\@ref(fig:overall).", cap, "{-}")
+cat("##### Figure \\@ref(fig:overall).", cap, "{-}")
 ```
 
 

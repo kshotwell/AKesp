@@ -24,7 +24,7 @@ params:
 
 
 
-![](C:/Users/abigail.tyrell/Documents/AKesp/inst/images/noaa.jpg)
+![](images/noaa.jpg)
 
 *With Contributions from:*
 
@@ -125,7 +125,7 @@ Copy from full ESP
 
 ::: {custom-style="Table Caption"}
 
-<caption>(\#tab:eco-table)`<w:bookmarkStart w:id="cc14ea28-1abb-4ca7-b1ae-207263c54415" w:name="tab:eco-table"/><w:r><w:t xml:space="preserve">First stage ecosystem indicator analysis for Sablefish, including indicator title and the indicator status of the last five years. The indicator status is designated with text, (greater than = "high", less than = "low", or within 1 standard deviation = "neutral" of long-term mean). Fill color of the cell is based on the sign of the anticipated relationship between the indicator and sablefish (blue = good conditions for sablefish, red = poor conditions, white = average conditions). A gray fill and text = "missing" will appear if there were no data for that year.</w:t></w:r><w:bookmarkEnd w:id="cc14ea28-1abb-4ca7-b1ae-207263c54415"/>`{=openxml}</caption>
+<caption>(\#tab:eco-table)`<w:bookmarkStart w:id="45369073-bb66-4638-9094-d9d12f8e2d03" w:name="tab:eco-table"/><w:r><w:t xml:space="preserve">First stage ecosystem indicator analysis for Sablefish, including indicator title and the indicator status of the last five years. The indicator status is designated with text, (greater than = "high", less than = "low", or within 1 standard deviation = "neutral" of long-term mean). Fill color of the cell is based on the sign of the anticipated relationship between the indicator and sablefish (blue = good conditions for sablefish, red = poor conditions, white = average conditions). A gray fill and text = "missing" will appear if there were no data for that year.</w:t></w:r><w:bookmarkEnd w:id="45369073-bb66-4638-9094-d9d12f8e2d03"/>`{=openxml}</caption>
 
 :::
 
@@ -136,7 +136,7 @@ Copy from full ESP
 
 ::: {custom-style="Table Caption"}
 
-<caption>(\#tab:socio-table)`<w:bookmarkStart w:id="345bd7eb-b58e-4cb5-b88f-f7a4bc491818" w:name="tab:socio-table"/><w:r><w:t xml:space="preserve">First stage socioeconomic indicator analysis for Sablefish, including indicator title and the indicator status of the last five years. The indicator status is designated with text, (greater than = "high", less than = "low", or within 1 standard deviation = "neutral" of long-term mean). Fill color of the cell is based on the sign of the anticipated relationship between the indicator and sablefish (blue = good conditions for sablefish, red = poor conditions, white = average conditions). A gray fill and text = "missing" will appear if there were no data for that year.</w:t></w:r><w:bookmarkEnd w:id="345bd7eb-b58e-4cb5-b88f-f7a4bc491818"/>`{=openxml}</caption>
+<caption>(\#tab:socio-table)`<w:bookmarkStart w:id="aa070437-3e69-46dd-a90a-458268f95c00" w:name="tab:socio-table"/><w:r><w:t xml:space="preserve">First stage socioeconomic indicator analysis for Sablefish, including indicator title and the indicator status of the last five years. The indicator status is designated with text, (greater than = "high", less than = "low", or within 1 standard deviation = "neutral" of long-term mean). Fill color of the cell is based on the sign of the anticipated relationship between the indicator and sablefish (blue = good conditions for sablefish, red = poor conditions, white = average conditions). A gray fill and text = "missing" will appear if there were no data for that year.</w:t></w:r><w:bookmarkEnd w:id="aa070437-3e69-46dd-a90a-458268f95c00"/>`{=openxml}</caption>
 
 :::
 
@@ -148,36 +148,34 @@ Copy from full ESP
 
 # Figures {-}
 
-![(\#fig:con-model)Alt text](C:/Users/abigail.tyrell/Documents/AKesp/inst/images/noaa.jpg)
+![(\#fig:con-model)Alt text](images/noaa.jpg)
 
-#### Figure \@ref(fig:con-model). Life history conceptual model for Sablefish summarizing ecological information and key ecosystem processes affecting survival by life history stage. Red text means increases in process negatively affect survival, while blue text means increases in process positively affect survival. {-}
+##### Figure \@ref(fig:con-model). Life history conceptual model for Sablefish summarizing ecological information and key ecosystem processes affecting survival by life history stage. Red text means increases in process negatively affect survival, while blue text means increases in process positively affect survival. {-}
 
 
 ![](esp-report-card-template_files/figure-docx/traffic-1.png)
 
-#### Figure \@ref(fig:traffic). Selected indicators for Sablefish  with time series ranging from 1977 – present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results. {-}
+##### Figure \@ref(fig:traffic). Selected indicators for Sablefish  with time series ranging from 1977 – present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results. {-}
 
 ![](esp-report-card-template_files/figure-docx/traffic-2.png)
 
-#### Figure \@ref(fig:traffic). Selected indicators for Sablefish  with time series ranging from 1977 – present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results. {-}
+##### Figure \@ref(fig:traffic). Selected indicators for Sablefish  with time series ranging from 1977 – present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results. {-}
 
 ![](esp-report-card-template_files/figure-docx/traffic-3.png)
 
-#### Figure \@ref(fig:traffic). Selected indicators for Sablefish  with time series ranging from 1977 – present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results. {-}
+##### Figure \@ref(fig:traffic). Selected indicators for Sablefish  with time series ranging from 1977 – present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results. {-}
 
 ![](esp-report-card-template_files/figure-docx/traffic-4.png)
 
-#### Figure \@ref(fig:traffic). Selected indicators for Sablefish  with time series ranging from 1977 – present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results. {-}
+##### Figure \@ref(fig:traffic). Selected indicators for Sablefish  with time series ranging from 1977 – present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results. {-}
 
 
-Error : Problem with `summarise()` input `mean_score`.
-x Column `SCORE` not found in `.data`
-i Input `mean_score` is `mean(.data$SCORE, na.rm = TRUE)`.
-i The error occurred in group 1: INDICATOR_TYPE = "Ecosystem", YEAR = 1977.
-#### Figure \@ref(fig:overall). Simple traffic light score for overall ecosystem and socioeconomic categories from 1977 to present. {-}
+![(\#fig:overall)Alt text](esp-report-card-template_files/figure-docx/overall-1.png)
+
+##### Figure \@ref(fig:overall). Simple traffic light score for overall ecosystem and socioeconomic categories from 1977 to present. {-}
 
 
 
-![(\#fig:bayes)Alt text](C:/Users/abigail.tyrell/Documents/AKesp/inst/images/noaa.jpg)
+![(\#fig:bayes)Alt text](images/noaa.jpg)
 
-#### Figure \@ref(fig:bayes). Bayesian adaptive sampling output showing (a) standardized covariates prior to subsetting and (b) the mean relationship and uncertainty (95% confidence intervals) with log Sablefish recruitment, in each estimated effect (left bottom graph), and marginal inclusion probabilities (right bottom graph) for each predictor variable of the subsetted covariate set {-}
+##### Figure \@ref(fig:bayes). Bayesian adaptive sampling output showing (a) standardized covariates prior to subsetting and (b) the mean relationship and uncertainty (95% confidence intervals) with log Sablefish recruitment, in each estimated effect (left bottom graph), and marginal inclusion probabilities (right bottom graph) for each predictor variable of the subsetted covariate set {-}

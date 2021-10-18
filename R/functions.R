@@ -143,7 +143,7 @@ render_fig <- function(img, # the file path to the image
 
   cat(res,
     knitr::knit_expand(
-      text = "#### Figure \\@ref(fig:{{label}}). {{caption}} {-}",
+      text = "##### Figure \\@ref(fig:{{label}}). {{caption}} {-}",
       label = lab,
       caption = cap
     ),

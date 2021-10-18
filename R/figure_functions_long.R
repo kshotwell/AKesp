@@ -178,7 +178,9 @@ esp_traffic_long <- function(data,
     #                 box.padding   = 0.35,
     #                 point.padding = 0.5,
     #                 segment.color = NA) +
-    ggplot2::geom_label(ggplot2::aes(label = .data$label,
+    ggplot2::geom_label(data = dat %>%
+                          dplyr::filter(.data$YEAR == maxyear),
+                        ggplot2::aes(label = .data$label,
                                      y = .data$mean,
                                      fill = .data$score),
                         nudge_x = 3,
@@ -200,7 +202,7 @@ esp_traffic_long <- function(data,
     } else if (out == "ggplot") {
       print(plt)
       cat("\n\n")
-      cat("#### Figure \\@ref(fig:traffic).", caption, "{-}")
+      cat("##### Figure \\@ref(fig:traffic).", caption, "{-}")
       cat("\n\n")
     } else {
       stop("Please specify output format")
@@ -365,8 +367,17 @@ esp_metrics <- function(data, species, region, approved = TRUE, order = FALSE, o
 
 esp_overall_score <- function(data, species, out = "ggplot", name) {
   dat <- data %>%
-    dplyr::group_by(.data$INDICATOR_TYPE, .data$YEAR) %>%
-    dplyr::summarise(mean_score = mean(.data$SCORE, na.rm = TRUE))
+    prep_ind_data() %>%
+    dplyr::filter(YEAR >= 2000) %>%
+    dplyr::group_by(.data$CATEGORY, .data$YEAR) %>%
+    dplyr::mutate(score = as.numeric(score),
+                  mean_score = mean(.data$score, na.rm = TRUE)) %>%
+    dplyr::select(YEAR, INDICATOR_NAME, CATEGORY, INDICATOR_TYPE,
+                  score, mean_score) %>%
+    dplyr::distinct()
+
+#  print(dat$score)
+#  print(dat$mean_score)
 
   ymax <- max(abs(dat$mean_score))
 
@@ -375,7 +386,7 @@ esp_overall_score <- function(data, species, out = "ggplot", name) {
     ggplot2::aes(
       x = .data$YEAR,
       y = .data$mean_score,
-      color = .data$INDICATOR_TYPE
+      color = .data$CATEGORY
     )
   ) +
     ggplot2::geom_hline(
@@ -389,10 +400,12 @@ esp_overall_score <- function(data, species, out = "ggplot", name) {
     ggplot2::theme_bw(base_size = 16) +
     ggplot2::theme(
       legend.title = ggplot2::element_blank(),
-      legend.position = "bottom"
+      legend.position = "bottom",
+      legend.direction = "vertical",
     ) +
     ggplot2::ggtitle(label = paste("Overall Stage 1 Score for", species)) +
-    ggplot2::ylim(-ymax, ymax)
+    ggplot2::ylim(-ymax, ymax) +
+    ggplot2::facet_grid(rows = ggplot2::vars(.data$INDICATOR_TYPE))
 
   if (out == "save") {
     ggplot2::ggsave(plt, filename = name, ...)

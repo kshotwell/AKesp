@@ -113,16 +113,18 @@ label_status <- function(p,
 #'
 #' This function prepares indicator data. Adds SCORE column.
 #' @param data The data (pulled from AKFIN)
+#' @param recent Boolean. Whether to calculate the score only for the most recent year.
 #' @return A tibble
 #' @export
 #'
 
-prep_ind_data <- function(data){
+prep_ind_data <- function(data, recent = TRUE){
   maxyear <- max(data$YEAR)
   minyear <- maxyear - 1
 
   dat <- data %>%
-    dplyr::select(INDICATOR_NAME, YEAR, DATA_VALUE, SIGN, WEIGHT) %>%
+    dplyr::select(INDICATOR_NAME, CATEGORY, INDICATOR_TYPE,
+                  YEAR, DATA_VALUE, SIGN, WEIGHT) %>%
     dplyr::group_by(INDICATOR_NAME) %>%
     dplyr::mutate(
       name = INDICATOR_NAME %>%
@@ -143,7 +145,11 @@ prep_ind_data <- function(data){
                                 na.rm = TRUE
       ),
       recent = (.data$YEAR == maxyear | .data$YEAR == minyear),
-      label = ifelse(.data$YEAR == maxyear,
+      label = ifelse(
+        #if(recent){.data$YEAR == maxyear} else {
+          is.na(.data$DATA_VALUE) == FALSE
+         # }
+        ,
                      ifelse(.data$DATA_VALUE < (.data$mean + .data$sd),
                             ifelse(.data$DATA_VALUE > (.data$mean - .data$sd),
                                    "neutral", "low"),
