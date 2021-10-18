@@ -321,3 +321,83 @@ esp_metrics <- function(data, species, region, approved = TRUE, order = FALSE, o
 #  data = AKesp::metric_panel, species = "Sablefish", region = "GOA",
 #  approved = TRUE, order = FALSE, out = "ggplot"
 # )
+
+#' Create indicator traffic light table - WIDE data
+#'
+#' This function creates an ESP indicator traffic light table
+#' @param data The ESP indicator data. Should have a column for Year and a column for each indicator.
+#' @param year The year(s) to use for the traffic light analysis. Either a single number or a numeric vector.
+#' @param cap The table caption.
+#' @return A flextable
+#' @importFrom magrittr %>%
+#' @importFrom rlang .data
+#' @export
+
+esp_traffic_tab <- function(data, year, cap = "Traffic light scoring") {
+  dat <- data %>%
+    tidyr::pivot_longer(cols = colnames(data)[2:ncol(data)]) %>%
+    dplyr::group_by(.data$name) %>%
+    dplyr::mutate(
+      name = .data$name %>%
+        stringr::str_replace_all("_", " "),
+      this_year = (.data$Year %in% year),
+      avg = mean(.data$value,
+                 na.rm = TRUE
+      ),
+      stdev = stats::sd(.data$value,
+                        na.rm = TRUE
+      )
+    ) %>%
+    dplyr::filter(.data$this_year == TRUE)
+
+  status <- c()
+  for (i in seq_len(nrow(dat))) {
+    if (is.na(dat$value[i])) {
+      status[i] <- "missing"
+    } else if (dat$value[i] > (dat$avg[i] + dat$stdev[i])) {
+      status[i] <- "high"
+    } else if (dat$value[i] < (dat$avg[i] - dat$stdev[i])) {
+      status[i] <- "low"
+    } else {
+      status[i] <- "neutral"
+    }
+  }
+
+  dat$status <- status
+
+  dat <- dat %>%
+    dplyr::select(.data$name, .data$Year, .data$status) %>%
+    tidyr::pivot_wider(
+      id_cols = .data$name,
+      names_from = .data$Year,
+      values_from = .data$status
+    ) %>%
+    dplyr::rename(Indicator = .data$name)
+
+  colnames(dat)[2:ncol(dat)] <- paste(colnames(dat)[2:ncol(dat)], "Status")
+
+  ft <- flextable::flextable(dat) %>%
+    flextable::theme_vanilla() %>%
+    flextable::set_caption(caption = cap) %>%
+    flextable::autofit() %>%
+    flextable::align(align = "center", j = 2:ncol(dat))
+
+  for (j in 2:ncol(dat)) {
+    for (i in seq_len(nrow(dat))) {
+      if (dat[i, j] == "missing") {
+        ft <- flextable::bg(ft, i = i, j = j, bg = "beige")
+      }
+      if (dat[i, j] == "high") {
+        ft <- flextable::bg(ft, i = i, j = j, bg = "red")
+      }
+      if (dat[i, j] == "neutral") {
+        ft <- flextable::bg(ft, i = i, j = j, bg = "white")
+      }
+      if (dat[i, j] == "low") {
+        ft <- flextable::bg(ft, i = i, j = j, bg = "gray")
+      }
+    }
+  }
+
+  return(ft)
+}

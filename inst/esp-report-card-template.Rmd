@@ -78,14 +78,16 @@ One paragraph description of LME level indicators relevant to stock (ESR summary
 
 ### Ecosystem Indicators: {-}
 ```{r, eco_ind} 
-eco <- list_indicators(data = params$esp_data, indicator_type = "Ecosystem")
+eco <- AKesp::list_indicators(data = params$esp_data, 
+                              indicator_type = "Ecosystem")
 cat(eco)
 ```
 
 ### Socioeconomic Indicators: {-}
 
 ```{r, socio_ind}
-socio <- list_indicators(data = params$esp_data, indicator_type = "Socioeconomic")
+socio <- AKesp::list_indicators(data = params$esp_data, 
+                                indicator_type = "Socioeconomic")
 cat(socio, sep = "\n\n")
 ```
 
@@ -114,7 +116,7 @@ Copy from full ESP
 
 # Tables {-}
 
-```{r, table-set-up, message = FALSE, eval = TRUE}
+```{r, table-set-up, message = FALSE}
 dat <- params$esp_data %>%
   dplyr::mutate(INDICATOR_NAME = .data$INDICATOR_NAME %>%
     stringr::str_replace_all("_", " ") %>%
@@ -125,7 +127,7 @@ dat <- params$esp_data %>%
 this_dat <- dat %>%
   dplyr::filter(INDICATOR_TYPE == "Ecosystem")
 
-esp_traffic_tab_long(
+AKesp::esp_traffic_tab_long(
   data = this_dat,
   year = (params$year - 4):params$year,
   cap = paste0("First stage ecosystem indicator analysis for ", params$fish, ', including indicator title and the indicator status of the last five years. The indicator status is designated with text, (greater than = "high", less than = "low", or within 1 standard deviation = "neutral" of long-term mean). Fill color of the cell is based on the sign of the anticipated relationship between the indicator and sablefish (blue = good conditions for sablefish, red = poor conditions, white = average conditions). A gray fill and text = "missing" will appear if there were no data for that year.')
@@ -138,7 +140,7 @@ esp_traffic_tab_long(
 this_dat <- dat %>%
   dplyr::filter(INDICATOR_TYPE == "Socioeconomic")
 
-esp_traffic_tab_long(
+AKesp::esp_traffic_tab_long(
   data = this_dat,
   year = (params$year - 4):params$year,
   cap = paste0("First stage socioeconomic indicator analysis for ", params$fish, ', including indicator title and the indicator status of the last five years. The indicator status is designated with text, (greater than = "high", less than = "low", or within 1 standard deviation = "neutral" of long-term mean). Fill color of the cell is based on the sign of the anticipated relationship between the indicator and sablefish (blue = good conditions for sablefish, red = poor conditions, white = average conditions). A gray fill and text = "missing" will appear if there were no data for that year.')
@@ -151,7 +153,7 @@ esp_traffic_tab_long(
 
 # Figures {-}
 ```{r, conceptual-model, fig.height = 8, eval = TRUE}
-render_fig(
+AKesp::render_fig(
   img = params$con_model_path,
   lab = "con-model",
   cap = paste0("Life history conceptual model for ", params$fish, " summarizing ecological information and key ecosystem processes affecting survival by life history stage. Red text means increases in process negatively affect survival, while blue text means increases in process positively affect survival."),
@@ -160,12 +162,12 @@ render_fig(
 ```
 
 
-```{r, traffic, fig.height = 7, fig.width = 6, eval = TRUE}
+```{r, traffic, fig.height = 7, fig.width = 6}
 alt <- "Alt text"
 cap <- c("Selected indicators for", params$fish, " with time series ranging from", min(params$esp_data$YEAR), "– present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results.")
 
 knitr::opts_chunk$set(fig.cap = alt)
-esp_traffic_long(
+AKesp::esp_traffic_long(
   dat = params$esp_data,
   paginate = TRUE,
   caption = cap
@@ -173,23 +175,22 @@ esp_traffic_long(
 ```
 
 
-```{r, overall, fig.height = 7, eval = TRUE, results = "asis"}
+```{r, overall, fig.height = 7, results = "asis"}
 alt <- "Alt text"
 cap <- c("Simple traffic light score for overall ecosystem and socioeconomic categories from", min(params$esp_data$YEAR), "to present.")
 
 knitr::opts_chunk$set(fig.cap = alt)
-try(esp_overall_score(
+AKesp::esp_overall_score(
   data = params$esp_data,
   species = params$fish
-)
 )
 
 cat("##### Figure \\@ref(fig:overall).", cap, "{-}")
 ```
 
 
-```{r, bayesian, fig.height = 8, eval = TRUE}
-render_fig(
+```{r, bayesian, fig.height = 8}
+AKesp::render_fig(
   img = params$bayes_path,
   lab = "bayes",
   cap = paste0("Bayesian adaptive sampling output showing (a) standardized covariates prior to subsetting and (b) the mean relationship and uncertainty (95% confidence intervals) with log ", params$fish, " recruitment, in each estimated effect (left bottom graph), and marginal inclusion probabilities (right bottom graph) for each predictor variable of the subsetted covariate set"),

@@ -15,7 +15,7 @@ make_traffic_plot <- function(dat) {
 
   n <- 3
 
-  for(i in 1:n){
+  for (i in 1:n) {
     file_name <- paste0("../../test/images/traffic", "_page", i, ".png")
     print(file_name)
 
@@ -98,7 +98,7 @@ make_traffic_plot <- function(dat) {
   # }
 }
 
-#make_traffic_plot(AKesp::bbrkc_long)
+# make_traffic_plot(AKesp::bbrkc_long)
 
 #' Create an indicator list
 #'
@@ -107,7 +107,7 @@ make_traffic_plot <- function(dat) {
 #' @param indicator_type One of `c("Ecosystem", "Socioeconomic")`
 #' @export
 
-list_indicators <- function(data, indicator_type){
+list_indicators <- function(data, indicator_type) {
   dat <- data %>%
     dplyr::select(
       INDICATOR_NAME,
@@ -124,8 +124,9 @@ list_indicators <- function(data, indicator_type){
   total_text <- NULL
 
   cats <- ifelse(indicator_type == "Ecosystem",
-                 c("Physical", "Lower Trophic", "Upper Trophic"),
-                 c("Fishery Performance", "Economic", "Community"))
+    c("Physical", "Lower Trophic", "Upper Trophic"),
+    c("Fishery Performance", "Economic", "Community")
+  )
 
   for (j in cats) {
     text <- paste0(num_index, ".) ", j, " Indicators")
@@ -150,9 +151,11 @@ list_indicators <- function(data, indicator_type){
         dat2$PRODUCT_DESCRIPTION <- glue::glue(dat2$PRODUCT_DESCRIPTION, ".")
       }
 
-      text <- paste0(letters[letter_index], ".) ", k, ": ",
-                     dat2$PRODUCT_DESCRIPTION, " (contact: ", dat2$CONTACT, ")",
-                     "\n\n", dat2$STATUS_TRENDS)
+      text <- paste0(
+        letters[letter_index], ".) ", k, ": ",
+        dat2$PRODUCT_DESCRIPTION, " (contact: ", dat2$CONTACT, ")",
+        "\n\n", dat2$STATUS_TRENDS
+      )
 
       total_text <- paste(total_text, text, sep = "\n\n")
       # res <- knitr::knit_expand(text = text)

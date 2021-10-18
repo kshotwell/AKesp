@@ -174,25 +174,28 @@ esp_traffic_long <- function(data,
     ggplot2::geom_point() +
     ggplot2::geom_line(data = dat %>%
       tidyr::drop_na(.data$DATA_VALUE)) +
-    #ggrepel::geom_label_repel(ggplot2::aes(label = .data$label),
-    #                 box.padding   = 0.35,
-    #                 point.padding = 0.5,
-    #                 segment.color = NA) +
-    ggplot2::geom_label(data = dat %>%
-                          dplyr::filter(.data$YEAR == maxyear),
-                        ggplot2::aes(label = .data$label,
-                                     y = .data$mean,
-                                     fill = .data$score),
-                        nudge_x = 3,
-                        show.legend = FALSE) +
-    ggplot2::scale_fill_manual(values = c("-1" = "brown1","1" = "cornflowerblue", "0" = "beige")) +
+    ggplot2::geom_label(
+      data = dat %>%
+        dplyr::filter(.data$YEAR == maxyear),
+      ggplot2::aes(
+        label = .data$label,
+        y = .data$mean,
+        fill = .data$score
+      ),
+      nudge_x = 3,
+      show.legend = FALSE
+    ) +
+    # set label colors based on score
+    ggplot2::scale_fill_manual(values = c("-1" = "brown1",
+                                          "1" = "cornflowerblue",
+                                          "0" = "beige")) +
     ggplot2::ylab("") +
     ggplot2::scale_y_continuous(labels = scales::comma) +
-    ggplot2::theme_bw(base_size = 16)+
+    ggplot2::theme_bw(base_size = 16) +
     ggplot2::xlim(c(min(dat$YEAR), max(dat$YEAR) + 4))
 
   finish_fig <- function() {
-    if(label){
+    if (label) {
       plt <- plt %>%
         AKesp::label_facets(open = "", close = "")
     }
@@ -212,9 +215,7 @@ esp_traffic_long <- function(data,
   if (paginate == TRUE) {
 
     nfacet <- length(unique(dat$name))
-
     n <- ceiling(nfacet / 5)
-    last_n <- nfacet - (n - 1)*5
 
     for (i in 1:n) {
       plt <- plt +
@@ -366,18 +367,20 @@ esp_metrics <- function(data, species, region, approved = TRUE, order = FALSE, o
 #' @export
 
 esp_overall_score <- function(data, species, out = "ggplot", name) {
-  dat <- data %>%
+
+    dat <- data %>%
     prep_ind_data() %>%
     dplyr::filter(YEAR >= 2000) %>%
     dplyr::group_by(.data$CATEGORY, .data$YEAR) %>%
-    dplyr::mutate(score = as.numeric(score),
-                  mean_score = mean(.data$score, na.rm = TRUE)) %>%
-    dplyr::select(YEAR, INDICATOR_NAME, CATEGORY, INDICATOR_TYPE,
-                  score, mean_score) %>%
+    dplyr::mutate(
+      score = as.numeric(score),
+      mean_score = mean(.data$score, na.rm = TRUE)
+    ) %>%
+    dplyr::select(
+      YEAR, INDICATOR_NAME, CATEGORY, INDICATOR_TYPE,
+      score, mean_score
+    ) %>%
     dplyr::distinct()
-
-#  print(dat$score)
-#  print(dat$mean_score)
 
   ymax <- max(abs(dat$mean_score))
 

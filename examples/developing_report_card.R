@@ -8,7 +8,7 @@
 devtools::load_all()
 rmarkdown::render(here::here("inst/esp-report-card-template.Rmd"),
                   clean = FALSE,
-                  params = list(esp_data = get_esp_data("Alaska Sablefish"),
+                  params = list(esp_data = AKesp::get_esp_data("Alaska Sablefish"),
                                 fish = "Sablefish",
                                 region = "Alaska",
                                 stock_image = "images/noaa.jpg",

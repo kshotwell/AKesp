@@ -126,7 +126,7 @@ render_fig <- function(img, # the file path to the image
       knitr::include_graphics("{{path}}")
       ```'
 
-  if(stringr::str_detect(img, "system.file")){
+  if (stringr::str_detect(img, "system.file")) {
     img <- eval(parse(text = img))
   }
 

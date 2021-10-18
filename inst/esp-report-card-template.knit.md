@@ -125,7 +125,7 @@ Copy from full ESP
 
 ::: {custom-style="Table Caption"}
 
-<caption>(\#tab:eco-table)`<w:bookmarkStart w:id="45369073-bb66-4638-9094-d9d12f8e2d03" w:name="tab:eco-table"/><w:r><w:t xml:space="preserve">First stage ecosystem indicator analysis for Sablefish, including indicator title and the indicator status of the last five years. The indicator status is designated with text, (greater than = "high", less than = "low", or within 1 standard deviation = "neutral" of long-term mean). Fill color of the cell is based on the sign of the anticipated relationship between the indicator and sablefish (blue = good conditions for sablefish, red = poor conditions, white = average conditions). A gray fill and text = "missing" will appear if there were no data for that year.</w:t></w:r><w:bookmarkEnd w:id="45369073-bb66-4638-9094-d9d12f8e2d03"/>`{=openxml}</caption>
+<caption>(\#tab:eco-table)`<w:bookmarkStart w:id="236e5283-7a06-401f-a024-23c8a4104b19" w:name="tab:eco-table"/><w:r><w:t xml:space="preserve">First stage ecosystem indicator analysis for Sablefish, including indicator title and the indicator status of the last five years. The indicator status is designated with text, (greater than = "high", less than = "low", or within 1 standard deviation = "neutral" of long-term mean). Fill color of the cell is based on the sign of the anticipated relationship between the indicator and sablefish (blue = good conditions for sablefish, red = poor conditions, white = average conditions). A gray fill and text = "missing" will appear if there were no data for that year.</w:t></w:r><w:bookmarkEnd w:id="236e5283-7a06-401f-a024-23c8a4104b19"/>`{=openxml}</caption>
 
 :::
 
@@ -136,7 +136,7 @@ Copy from full ESP
 
 ::: {custom-style="Table Caption"}
 
-<caption>(\#tab:socio-table)`<w:bookmarkStart w:id="aa070437-3e69-46dd-a90a-458268f95c00" w:name="tab:socio-table"/><w:r><w:t xml:space="preserve">First stage socioeconomic indicator analysis for Sablefish, including indicator title and the indicator status of the last five years. The indicator status is designated with text, (greater than = "high", less than = "low", or within 1 standard deviation = "neutral" of long-term mean). Fill color of the cell is based on the sign of the anticipated relationship between the indicator and sablefish (blue = good conditions for sablefish, red = poor conditions, white = average conditions). A gray fill and text = "missing" will appear if there were no data for that year.</w:t></w:r><w:bookmarkEnd w:id="aa070437-3e69-46dd-a90a-458268f95c00"/>`{=openxml}</caption>
+<caption>(\#tab:socio-table)`<w:bookmarkStart w:id="ad43cf04-0a87-463b-9657-5a0fbacfb4a9" w:name="tab:socio-table"/><w:r><w:t xml:space="preserve">First stage socioeconomic indicator analysis for Sablefish, including indicator title and the indicator status of the last five years. The indicator status is designated with text, (greater than = "high", less than = "low", or within 1 standard deviation = "neutral" of long-term mean). Fill color of the cell is based on the sign of the anticipated relationship between the indicator and sablefish (blue = good conditions for sablefish, red = poor conditions, white = average conditions). A gray fill and text = "missing" will appear if there were no data for that year.</w:t></w:r><w:bookmarkEnd w:id="ad43cf04-0a87-463b-9657-5a0fbacfb4a9"/>`{=openxml}</caption>
 
 :::
 
