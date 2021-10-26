@@ -163,13 +163,29 @@ AKesp::render_fig(
 ```
 
 
-```{r, traffic, fig.height = 7, fig.width = 6}
+```{r, traffic-eco, fig.height = 7, fig.width = 6}
 alt <- "Alt text"
-cap <- c("Selected indicators for", params$fish, " with time series ranging from", min(params$esp_data$YEAR), "– present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results.")
+cap <- c("Selected ecosystem indicators for", params$fish, " with time series ranging from", min(params$esp_data$YEAR), "– present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results.")
 
 knitr::opts_chunk$set(fig.cap = alt)
 AKesp::esp_traffic_long(
-  dat = params$esp_data,
+  dat = params$esp_data %>%
+    dplyr::filter(INDICATOR_TYPE == "Ecosystem"),
+  paginate = TRUE,
+  caption = cap,
+  ncolumn = params$ncolumn
+)
+```
+
+
+```{r, traffic-socio, fig.height = 7, fig.width = 6}
+alt <- "Alt text"
+cap <- c("Selected socioeconomic indicators for", params$fish, " with time series ranging from", min(params$esp_data$YEAR), "– present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results.")
+
+knitr::opts_chunk$set(fig.cap = alt)
+AKesp::esp_traffic_long(
+  dat = params$esp_data %>%
+    dplyr::filter(INDICATOR_TYPE == "Socioeconomic"),
   paginate = TRUE,
   caption = cap,
   ncolumn = params$ncolumn
