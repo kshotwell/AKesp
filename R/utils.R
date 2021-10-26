@@ -68,6 +68,8 @@ prep_ind_data <- function(data, recent = TRUE, label_width = 50) {
   minyear <- maxyear - 1
 
   dat <- data %>%
+    dplyr::filter(!is.na(.data$GATE2_YEAR),
+                  !is.na(.data$REMOVED_YEAR)) %>%
     dplyr::select(
       INDICATOR_NAME, CATEGORY, INDICATOR_TYPE,
       YEAR, DATA_VALUE, SIGN, WEIGHT

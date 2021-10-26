@@ -110,12 +110,12 @@ make_traffic_plot <- function(dat) {
 list_indicators <- function(data, indicator_type) {
   dat <- data %>%
     dplyr::select(
-      INDICATOR_NAME,
-      INDICATOR_TYPE,
-      CATEGORY,
+      REPORT_CARD_TITLE,
       CONTACT,
-      PRODUCT_DESCRIPTION,
-      STATUS_TRENDS
+      STATUS_TRENDS,
+      INFLUENTIAL_FACTORS,
+      INDICATOR_TYPE,
+      CATEGORY
     ) %>%
     dplyr::distinct() %>%
     dplyr::filter(INDICATOR_TYPE == indicator_type)
@@ -123,10 +123,11 @@ list_indicators <- function(data, indicator_type) {
   num_index <- 1
   total_text <- NULL
 
-  cats <- ifelse(indicator_type == "Ecosystem",
-    c("Physical", "Lower Trophic", "Upper Trophic"),
-    c("Fishery Performance", "Economic", "Community")
-  )
+  if(indicator_type == "Ecosystem") {
+    cats <- c("Physical", "Lower Trophic", "Upper Trophic")
+  } else if (indicator_type == "Socioeconomic") {
+  cats <- c("Fishery Performance", "Economic", "Community")
+  }
 
   for (j in cats) {
     text <- paste0(num_index, ".) ", j, " Indicators")
@@ -141,20 +142,24 @@ list_indicators <- function(data, indicator_type) {
 
     dat1 <- dat %>%
       dplyr::filter(CATEGORY == j)
-    for (k in unique(dat1$INDICATOR_NAME)) {
+    for (k in unique(dat1$REPORT_CARD_TITLE)) {
       dat2 <- dat1 %>%
-        dplyr::select(INDICATOR_NAME, CONTACT, PRODUCT_DESCRIPTION, STATUS_TRENDS) %>%
+        dplyr::select(REPORT_CARD_TITLE,
+                      CONTACT,
+                      STATUS_TRENDS,
+                      INFLUENTIAL_FACTORS) %>%
         dplyr::distinct() %>%
-        dplyr::filter(INDICATOR_NAME == k)
+        dplyr::filter(REPORT_CARD_TITLE == k)
 
-      if (stringr::str_detect(dat2$PRODUCT_DESCRIPTION, "\\.$", negate = TRUE)) {
-        dat2$PRODUCT_DESCRIPTION <- glue::glue(dat2$PRODUCT_DESCRIPTION, ".")
-      }
+      # if (stringr::str_detect(dat2$PRODUCT_DESCRIPTION, "\\.$", negate = TRUE)) {
+      #   dat2$PRODUCT_DESCRIPTION <- glue::glue(dat2$PRODUCT_DESCRIPTION, ".")
+      # }
 
       text <- paste0(
         letters[letter_index], ".) ", k, ": ",
-        dat2$PRODUCT_DESCRIPTION, " (contact: ", dat2$CONTACT, ")",
-        "\n\n", dat2$STATUS_TRENDS
+        dat2$REPORT_CARD_TITLE, " (contact: ", dat2$CONTACT, ")",
+        "\n\n", "Status and trends: ", dat2$STATUS_TRENDS,
+        "\n\n", "Influential factors: ", dat2$INFLUENTIAL_FACTORS
       )
 
       total_text <- paste(total_text, text, sep = "\n\n")

@@ -406,6 +406,14 @@ esp_overall_score <- function(data, species, out = "ggplot", name) {
     ) %>%
     dplyr::distinct()
 
+    dat$CATEGORY <- factor(dat$CATEGORY,
+                           levels = c("Physical",
+                                      "Lower Trophic",
+                                      "Upper Trophic",
+                                      "Fishery Performance",
+                                      "Economic",
+                                      "Community"))
+
   ymax <- max(abs(dat$mean_score))
 
   plt <- ggplot2::ggplot(
@@ -413,7 +421,8 @@ esp_overall_score <- function(data, species, out = "ggplot", name) {
     ggplot2::aes(
       x = .data$YEAR,
       y = .data$mean_score,
-      color = .data$CATEGORY
+      color = .data$CATEGORY,
+      shape = .data$CATEGORY
     )
   ) +
     ggplot2::geom_hline(
@@ -430,6 +439,7 @@ esp_overall_score <- function(data, species, out = "ggplot", name) {
       legend.position = "bottom",
       legend.direction = "vertical",
     ) +
+    ggplot2::guides(color = ggplot2::guide_legend(ncol = 2)) +
     ggplot2::ggtitle(label = paste("Overall Stage 1 Score for", species)) +
     ggplot2::ylim(-ymax, ymax) +
     ggplot2::facet_grid(rows = ggplot2::vars(.data$INDICATOR_TYPE))
