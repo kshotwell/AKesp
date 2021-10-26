@@ -8,7 +8,7 @@ label_facets(
   p,
   open = "(",
   close = ")",
-  tag_pool = letters,
+  tag_pool = c(letters, paste0(letters, letters)),
   x = -Inf,
   y = Inf,
   hjust = -0.5,

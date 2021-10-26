@@ -11,6 +11,7 @@ esp_traffic_long(
   paginate = FALSE,
   label = TRUE,
   caption = "",
+  ncolumn = 1,
   ...
 )
 }
@@ -24,6 +25,8 @@ esp_traffic_long(
 \item{paginate}{Whether to paginate the plots with \code{ggforce::facet_wrap_paginate}}
 
 \item{label}{Whether to label the facets}
+
+\item{ncolumn}{How many columns the figure should have (1 by default)}
 
 \item{...}{Passed to \code{ggplot2::ggsave}}
 }

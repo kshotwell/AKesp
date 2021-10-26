@@ -18,7 +18,7 @@
 label_facets <- function(p,
                          open = "(",
                          close = ")",
-                         tag_pool = letters,
+                         tag_pool = c(letters, paste0(letters, letters)),
                          x = -Inf,
                          y = Inf,
                          hjust = -0.5,
@@ -63,7 +63,7 @@ label_facets <- function(p,
 #' @export
 #'
 
-prep_ind_data <- function(data, recent = TRUE) {
+prep_ind_data <- function(data, recent = TRUE, label_width = 50) {
   maxyear <- max(data$YEAR)
   minyear <- maxyear - 1
 
@@ -76,7 +76,7 @@ prep_ind_data <- function(data, recent = TRUE) {
     dplyr::mutate(
       name = INDICATOR_NAME %>%
         stringr::str_replace_all("_", " ") %>%
-        stringr::str_wrap(width = 40),
+        stringr::str_wrap(width = label_width),
       quant10 = stats::quantile(.data$DATA_VALUE,
         probs = 0.1,
         na.rm = TRUE

@@ -20,6 +20,7 @@ params:
   esp_data: NULL
   con_model_path: system.file("images/noaa.jpg", package = "AKesp")
   bayes_path: system.file("images/noaa.jpg", package = "AKesp")
+  ncolumn: 1
 ---
 
 ```{r setup, include = FALSE}
@@ -170,7 +171,8 @@ knitr::opts_chunk$set(fig.cap = alt)
 AKesp::esp_traffic_long(
   dat = params$esp_data,
   paginate = TRUE,
-  caption = cap
+  caption = cap,
+  ncolumn = params$ncolumn
 )
 ```
 

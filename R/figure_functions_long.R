@@ -112,6 +112,7 @@ esp_hist_long <- function(data, name, out, ...) {
 #' @param out Whether the function should save the plot, or return a ggplot object. One of c("ggplot", "save")
 #' @param paginate Whether to paginate the plots with `ggforce::facet_wrap_paginate`
 #' @param label Whether to label the facets
+#' @param ncolumn How many columns the figure should have (1 by default)
 #' @param ... Passed to `ggplot2::ggsave`
 #' @return An image file
 #' @importFrom magrittr %>%
@@ -124,11 +125,27 @@ esp_traffic_long <- function(data,
                              paginate = FALSE,
                              label = TRUE,
                              caption = "",
+                             ncolumn = 1,
                              ...) {
   maxyear <- max(data$YEAR)
   minyear <- maxyear - 1
 
-  dat <- prep_ind_data(data)
+  if(ncolumn == 1){
+    dat <- prep_ind_data(data, label_width = 70)
+  } else {
+    dat <- prep_ind_data(data, label_width = 30)
+  }
+
+  dat$CATEGORY <- factor(dat$CATEGORY, levels = c("Physical",
+                                                  "Lower Trophic",
+                                                  "Upper Trophic",
+                                                  "Fishery Performance",
+                                                  "Economic",
+                                                  "Community"))
+  dat <- dat %>%
+    dplyr::arrange(CATEGORY)
+
+  dat$name <- factor(dat$name, levels = unique(dat$name))
 
   plt <- ggplot2::ggplot(
     dat,
@@ -150,23 +167,23 @@ esp_traffic_long <- function(data,
       ),
       fill = "lightgreen"
     ) +
-    ggplot2::geom_line(ggplot2::aes(
-      x = .data$YEAR,
-      y = .data$quant10
+    ggplot2::geom_hline(ggplot2::aes(
+      yintercept = .data$quant10,
+      group = name
     ),
     color = "darkgreen",
     linetype = "solid"
     ) +
-    ggplot2::geom_line(ggplot2::aes(
-      x = .data$YEAR,
-      y = .data$quant90
+    ggplot2::geom_hline(ggplot2::aes(
+      yintercept = .data$quant90,
+      group = name
     ),
     color = "darkgreen",
     linetype = "solid"
     ) +
-    ggplot2::geom_line(ggplot2::aes(
-      x = .data$YEAR,
-      y = .data$mean
+    ggplot2::geom_hline(ggplot2::aes(
+      yintercept = .data$mean,
+      group = name
     ),
     color = "darkgreen",
     linetype = "dotted"
@@ -182,7 +199,7 @@ esp_traffic_long <- function(data,
         y = .data$mean,
         fill = .data$score
       ),
-      nudge_x = 3,
+      nudge_x = 4,
       show.legend = FALSE
     ) +
     # set label colors based on score
@@ -192,7 +209,8 @@ esp_traffic_long <- function(data,
     ggplot2::ylab("") +
     ggplot2::scale_y_continuous(labels = scales::comma) +
     ggplot2::theme_bw(base_size = 16) +
-    ggplot2::xlim(c(min(dat$YEAR), max(dat$YEAR) + 4))
+    ggplot2::xlim(c(min(dat$YEAR), max(dat$YEAR) + 6)) +
+    ggplot2::theme(strip.text = ggplot2::element_text(size = 10))
 
   finish_fig <- function() {
     if (label) {
@@ -214,16 +232,22 @@ esp_traffic_long <- function(data,
 
   if (paginate == TRUE) {
 
-    nfacet <- length(unique(dat$name))
-    n <- ceiling(nfacet / 5)
+    plt2 <- plt +
+      ggforce::facet_wrap_paginate(~name,
+                                   ncol = ncolumn,
+                                   nrow = 5,
+                                   scales = "free_y"
+      )
+
+    n <- ggforce::n_pages(plt2)
 
     for (i in 1:n) {
       plt <- plt +
         ggforce::facet_wrap_paginate(~name,
-          ncol = 1,
-          nrow = 5,
-          scales = "free_y",
-          page = i
+                                     ncol = ncolumn,
+                                     nrow = 5,
+                                     scales = "free_y",
+                                     page = i
         )
 
       finish_fig()
@@ -231,7 +255,7 @@ esp_traffic_long <- function(data,
   } else {
     plt <- plt +
       ggplot2::facet_wrap(~name,
-        ncol = 1,
+        ncol = ncolumn,
         scales = "free_y"
       )
 

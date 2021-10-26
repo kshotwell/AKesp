@@ -4,7 +4,7 @@
 \alias{prep_ind_data}
 \title{Prep indicator data}
 \usage{
-prep_ind_data(data, recent = TRUE)
+prep_ind_data(data, recent = TRUE, label_width = 50)
 }
 \arguments{
 \item{data}{The data (pulled from AKFIN)}

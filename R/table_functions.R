@@ -33,9 +33,10 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
     dplyr::filter(.data$this_year == TRUE) %>%
     dplyr::select(
       .data$CATEGORY, .data$YEAR, .data$name, .data$DATA_VALUE,
-      .data$avg, .data$stdev, .data$SIGN
+      .data$avg, .data$stdev, .data$SIGN, .data$INDICATOR_TYPE
     ) %>%
-    dplyr::arrange(.data$CATEGORY, .data$name)
+    dplyr::arrange(.data$CATEGORY, .data$name) %>%
+    dplyr::ungroup()
 
   status <- c()
   color <- c()
@@ -47,27 +48,44 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
     if (is.na(dat$DATA_VALUE[i])) {
       status[i] <- "NA"
       color[i] <- "gray80"
-    } else if (dat$DATA_VALUE[i] > (dat$avg[i] + dat$stdev[i])) {
-      status[i] <- "high"
-      if (is.na(dat$SIGN[i])) {
+
+      # ecosystem colors by sign/value combo
+    } else if (dat$INDICATOR_TYPE[i] == "Ecosystem") {
+      if (dat$DATA_VALUE[i] > (dat$avg[i] + dat$stdev[i])) {
+        status[i] <- "high"
+        if (is.na(dat$SIGN[i])) {
+          color[i] <- "white"
+        } else if (dat$SIGN[i] == 1) {
+          color[i] <- "cornflowerblue"
+        } else if (dat$SIGN[i] == -1) {
+          color[i] <- "brown1"
+        }
+      } else if (dat$DATA_VALUE[i] < (dat$avg[i] - dat$stdev[i])) {
+        status[i] <- "low"
+        if (is.na(dat$SIGN[i])) {
+          color[i] <- "white"
+        } else if (dat$SIGN[i] == -1) {
+          color[i] <- "cornflowerblue"
+        } else if (dat$SIGN[i] == 1) {
+          color[i] <- "brown1"
+        }
+      } else {
+        status[i] <- "neutral"
         color[i] <- "white"
-      } else if (dat$SIGN[i] == 1) {
-        color[i] <- "cornflowerblue"
-      } else if (dat$SIGN[i] == -1) {
-        color[i] <- "brown1"
       }
-    } else if (dat$DATA_VALUE[i] < (dat$avg[i] - dat$stdev[i])) {
-      status[i] <- "low"
-      if (is.na(dat$SIGN[i])) {
+
+      # socioeconomic colors by value only
+    } else if (dat$INDICATOR_TYPE[i] == "Socioeconomic") {
+      if (dat$DATA_VALUE[i] > (dat$avg[i] + dat$stdev[i])) {
+        status[i] <- "high"
+        color[i] <- "rosybrown3"
+      } else if (dat$DATA_VALUE[i] < (dat$avg[i] - dat$stdev[i])) {
+        status[i] <- "low"
+        color[i] <- "rosybrown1"
+      } else {
+        status[i] <- "neutral"
         color[i] <- "white"
-      } else if (dat$SIGN[i] == -1) {
-        color[i] <- "cornflowerblue"
-      } else if (dat$SIGN[i] == 1) {
-        color[i] <- "brown1"
       }
-    } else {
-      status[i] <- "neutral"
-      color[i] <- "white"
     }
   }
 
@@ -105,7 +123,7 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
 
   colnames(tbl_dat)[3:ncol(tbl_dat)] <- paste(
     colnames(tbl_dat)[3:ncol(tbl_dat)], "Status"
-    )
+  )
 
   flextable::set_flextable_defaults(na_str = "NA")
 
@@ -113,14 +131,18 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
     flextable::theme_vanilla() %>%
     flextable::set_caption(caption = cap) %>%
     flextable::autofit() %>%
-    flextable::align(align = "center",
-                     j = 3:ncol(tbl_dat))
+    flextable::align(
+      align = "center",
+      j = 3:ncol(tbl_dat)
+    )
 
   for (j in 3:ncol(tbl_dat)) {
     for (i in seq_len(nrow(tbl_dat))) {
-      ft <- flextable::bg(ft, i = i,
-                          j = j,
-                          bg = as.character(color_dat[i, j]))
+      ft <- flextable::bg(ft,
+        i = i,
+        j = j,
+        bg = as.character(color_dat[i, j])
+      )
     }
   }
 

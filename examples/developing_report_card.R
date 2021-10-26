@@ -15,7 +15,6 @@ rmarkdown::render(here::here("inst/esp-report-card-template.Rmd"),
                                 con_model_path = "images/noaa.jpg",
                                 bayes_path = "images/noaa.jpg"))
 
-
 # AKesp::bbrkc_long is the only data I have that has the `SCORE` column
 # report renders in the `inst` folder (can change later)
 # replace dummy figure paths with path to real figures (path relative to `inst` folder)
