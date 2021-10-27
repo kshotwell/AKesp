@@ -9,23 +9,23 @@
 list_indicators <- function(data, indicator_type) {
   dat <- data %>%
     dplyr::select(
-      REPORT_CARD_TITLE,
-      CONTACT,
-      STATUS_TRENDS,
-      INFLUENTIAL_FACTORS,
-      INDICATOR_TYPE,
-      CATEGORY
+      .data$REPORT_CARD_TITLE,
+      .data$CONTACT,
+      .data$STATUS_TRENDS,
+      .data$INFLUENTIAL_FACTORS,
+      .data$INDICATOR_TYPE,
+      .data$CATEGORY
     ) %>%
     dplyr::distinct() %>%
-    dplyr::filter(INDICATOR_TYPE == indicator_type)
+    dplyr::filter(.data$INDICATOR_TYPE == indicator_type)
 
   num_index <- 1
   total_text <- NULL
 
-  if(indicator_type == "Ecosystem") {
+  if (indicator_type == "Ecosystem") {
     cats <- c("Physical", "Lower Trophic", "Upper Trophic")
   } else if (indicator_type == "Socioeconomic") {
-  cats <- c("Fishery Performance", "Economic", "Community")
+    cats <- c("Fishery Performance", "Economic", "Community")
   }
 
   for (j in cats) {
@@ -37,15 +37,17 @@ list_indicators <- function(data, indicator_type) {
     num_index <- num_index + 1
 
     dat1 <- dat %>%
-      dplyr::filter(CATEGORY == j)
+      dplyr::filter(.data$CATEGORY == j)
     for (k in unique(dat1$REPORT_CARD_TITLE)) {
       dat2 <- dat1 %>%
-        dplyr::select(REPORT_CARD_TITLE,
-                      CONTACT,
-                      STATUS_TRENDS,
-                      INFLUENTIAL_FACTORS) %>%
+        dplyr::select(
+          .data$REPORT_CARD_TITLE,
+          .data$CONTACT,
+          .data$STATUS_TRENDS,
+          .data$INFLUENTIAL_FACTORS
+        ) %>%
         dplyr::distinct() %>%
-        dplyr::filter(REPORT_CARD_TITLE == k)
+        dplyr::filter(.data$REPORT_CARD_TITLE == k)
 
       text <- paste0(
         letters[letter_index], ".) ", k, ": ",

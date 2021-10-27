@@ -13,8 +13,10 @@
 
 esp_cor_matrix_long <- function(data, name, out, ...) {
   data <- data %>%
-    dplyr::select(YEAR, INDICATOR_NAME, DATA_VALUE) %>%
-    tidyr::pivot_wider(id_cols = YEAR, names_from = INDICATOR_NAME, values_from = DATA_VALUE)
+    dplyr::select(.data$YEAR, .data$INDICATOR_NAME, .data$DATA_VALUE) %>%
+    tidyr::pivot_wider(id_cols = .data$YEAR,
+                       names_from = .data$INDICATOR_NAME,
+                       values_from = .data$DATA_VALUE)
 
   traffic1_cor <- round(
     stats::cor(data,
@@ -68,7 +70,7 @@ esp_cor_matrix_long <- function(data, name, out, ...) {
 
 esp_hist_long <- function(data, name, out, ...) {
   dat <- data %>%
-    dplyr::mutate(name = INDICATOR_NAME %>%
+    dplyr::mutate(name = .data$INDICATOR_NAME %>%
       stringr::str_replace_all("_", " ") %>%
       stringr::str_wrap(width = 30))
 
@@ -112,7 +114,9 @@ esp_hist_long <- function(data, name, out, ...) {
 #' @param out Whether the function should save the plot, or return a ggplot object. One of c("ggplot", "save")
 #' @param paginate Whether to paginate the plots with `ggforce::facet_wrap_paginate`
 #' @param label Whether to label the facets
+#' @param caption A caption for the figure
 #' @param ncolumn How many columns the figure should have (1 by default)
+#' @param silent Whether to print the caption
 #' @param ... Passed to `ggplot2::ggsave`
 #' @return An image file
 #' @importFrom magrittr %>%
@@ -126,11 +130,12 @@ esp_traffic_long <- function(data,
                              label = TRUE,
                              caption = "",
                              ncolumn = 1,
+                             silent = FALSE,
                              ...) {
   maxyear <- max(data$YEAR)
   minyear <- maxyear - 1
 
-  if(ncolumn == 1){
+  if (ncolumn == 1) {
     dat <- prep_ind_data(data, label_width = 70)
   } else {
     dat <- prep_ind_data(data, label_width = 30)
@@ -154,27 +159,27 @@ esp_traffic_long <- function(data,
         xmax = max(.data$YEAR) + 0.5,
         ymin = .data$quant10,
         ymax = .data$quant90,
-        group = name
+        group = .data$name
       ),
       fill = "lightgreen"
     ) +
     ggplot2::geom_hline(ggplot2::aes(
       yintercept = .data$quant10,
-      group = name
+      group = .data$name
     ),
     color = "darkgreen",
     linetype = "solid"
     ) +
     ggplot2::geom_hline(ggplot2::aes(
       yintercept = .data$quant90,
-      group = name
+      group = .data$name
     ),
     color = "darkgreen",
     linetype = "solid"
     ) +
     ggplot2::geom_hline(ggplot2::aes(
       yintercept = .data$mean,
-      group = name
+      group = .data$name
     ),
     color = "darkgreen",
     linetype = "dotted"
@@ -185,8 +190,10 @@ esp_traffic_long <- function(data,
     # red boxes, bold
     ggplot2::geom_label(
       data = dat %>%
-        dplyr::filter(.data$YEAR == maxyear,
-                      .data$score > 0),
+        dplyr::filter(
+          .data$YEAR == maxyear,
+          .data$score > 0
+        ),
       ggplot2::aes(
         label = .data$label,
         y = .data$mean
@@ -199,8 +206,10 @@ esp_traffic_long <- function(data,
     # blue boxes, italic
     ggplot2::geom_label(
       data = dat %>%
-        dplyr::filter(.data$YEAR == maxyear,
-                      .data$score < 0),
+        dplyr::filter(
+          .data$YEAR == maxyear,
+          .data$score < 0
+        ),
       ggplot2::aes(
         label = .data$label,
         y = .data$mean
@@ -213,8 +222,10 @@ esp_traffic_long <- function(data,
     # beige boxes, neutral
     ggplot2::geom_label(
       data = dat %>%
-        dplyr::filter(.data$YEAR == maxyear,
-                      .data$score == 0),
+        dplyr::filter(
+          .data$YEAR == maxyear,
+          .data$score == 0
+        ),
       ggplot2::aes(
         label = .data$label,
         y = .data$mean
@@ -240,7 +251,9 @@ esp_traffic_long <- function(data,
     } else if (out == "ggplot") {
       print(plt)
       cat("\n\n")
-      cat("##### Figure \\@ref(fig:traffic).", caption, "{-}")
+      if(silent == FALSE){
+        cat("##### Figure \\@ref(fig:traffic).", caption, "{-}")
+      }
       cat("\n\n")
     } else {
       stop("Please specify output format")
@@ -248,12 +261,11 @@ esp_traffic_long <- function(data,
   }
 
   if (paginate == TRUE) {
-
     plt2 <- plt +
       ggforce::facet_wrap_paginate(~name,
-                                   ncol = ncolumn,
-                                   nrow = 5,
-                                   scales = "free_y"
+        ncol = ncolumn,
+        nrow = 5,
+        scales = "free_y"
       )
 
     n <- ggforce::n_pages(plt2)
@@ -261,10 +273,10 @@ esp_traffic_long <- function(data,
     for (i in 1:n) {
       plt <- plt +
         ggforce::facet_wrap_paginate(~name,
-                                     ncol = ncolumn,
-                                     nrow = 5,
-                                     scales = "free_y",
-                                     page = i
+          ncol = ncolumn,
+          nrow = 5,
+          scales = "free_y",
+          page = i
         )
 
       finish_fig()
@@ -407,29 +419,32 @@ esp_metrics <- function(data, species, region, approved = TRUE, order = FALSE, o
 #' @importFrom rlang .data
 #' @export
 
-esp_overall_score <- function(data, species, out = "ggplot", name) {
-
-    dat <- data %>%
+esp_overall_score <- function(data, species, out = "ggplot", name, ...) {
+  dat <- data %>%
     prep_ind_data() %>%
-    dplyr::filter(YEAR >= 2000) %>%
+    dplyr::filter(.data$YEAR >= 2000) %>%
     dplyr::group_by(.data$CATEGORY, .data$YEAR) %>%
     dplyr::mutate(
-      score = as.numeric(score),
+      score = as.numeric(.data$score),
       mean_score = mean(.data$score, na.rm = TRUE)
     ) %>%
     dplyr::select(
-      YEAR, INDICATOR_NAME, CATEGORY, INDICATOR_TYPE,
-      score, mean_score
+      .data$YEAR, .data$INDICATOR_NAME,
+      .data$CATEGORY, .data$INDICATOR_TYPE,
+      .data$score, .data$mean_score
     ) %>%
     dplyr::distinct()
 
-    dat$CATEGORY <- factor(dat$CATEGORY,
-                           levels = c("Physical",
-                                      "Lower Trophic",
-                                      "Upper Trophic",
-                                      "Fishery Performance",
-                                      "Economic",
-                                      "Community"))
+  dat$CATEGORY <- factor(dat$CATEGORY,
+    levels = c(
+      "Physical",
+      "Lower Trophic",
+      "Upper Trophic",
+      "Fishery Performance",
+      "Economic",
+      "Community"
+    )
+  )
 
   ymax <- max(abs(dat$mean_score))
 

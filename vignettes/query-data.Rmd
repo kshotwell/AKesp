@@ -1,0 +1,21 @@
+---
+title: "Query data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Query data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE,
+  eval = TRUE,
+  fig.align = "center"
+)
+```
+
+The `AKesp` package queries ESP data from the AKFIN web server. The ESP data can be used with the functions in this package to make an ESP report, but of course it can also be used for other purposes. See [here](atyrell3.github.io/AKesp/reference/get_esp_data.html) for documentation of `get_esp_data()`, the data querying function.

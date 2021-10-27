@@ -1,0 +1,25 @@
+---
+title: "Install package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Install package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE,
+  eval = TRUE,
+  fig.align = "center"
+)
+```
+
+The `AKesp` package can be installed from GitHub.
+
+```{r}
+devtools::install_github("atyrell3/AKesp")
+```

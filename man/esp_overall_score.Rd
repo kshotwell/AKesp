@@ -4,7 +4,7 @@
 \alias{esp_overall_score}
 \title{Plot a figure of overall ESP scores}
 \usage{
-esp_overall_score(data, species, out = "ggplot", name)
+esp_overall_score(data, species, out = "ggplot", name, ...)
 }
 \arguments{
 \item{data}{The ESP indicator data (LONG format).}

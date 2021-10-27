@@ -11,11 +11,17 @@ navbar:
   left:
     - text: "Vignettes"
       menu:
+      -  text: "Install package"
+         href: articles/install-package.html
+      -  text: "Query data"
+         href: articles/query-data.html
       -  text: "Create figures"
          href: articles/create-figures.html
       -  text: "Create tables"
          href: articles/create-tables.html
-      -  text: "Create an ESP"
+      -  text: "Create an ESP report card"
+         href: articles/create-report-card.htm
+      -  text: "Create a partial or full ESP"
          href: articles/create-ESP.html
     - text: "Functions"
       href: reference/index.html
@@ -38,16 +44,23 @@ reference:
   - subtitle: Create figures
     contents:
       - '`esp_metrics`'
-      - '`esp_cor_matrix`'
-      - '`esp_hist`'
-      - '`esp_traffic`'
+      - '`esp_cor_matrix_long`'
+      - '`esp_hist_long`'
+      - '`esp_traffic_long`'
+      - '`esp_overall_score`'
   - subtitle: Create tables
     contents:
-      - '`esp_traffic_tab`'
-  - subtitle: Create an ESP
+      - '`esp_traffic_tab_long`'
+  - subtitle: Create a full or partial ESP
     contents:
       - '`create_template`'
       - '`render_esp`'
+  - subtitle: ESP report utilities
+    contents:
+      - '`get_esp_data`'
+      - '`esp_stock_options`'
+      - '`prep_ind_data`'
+      - '`join_order`'
       - '`render_fig`'
       - '`render_tab`'
       - '`render_ref`'
@@ -57,12 +70,14 @@ reference:
   - title: Data
     contents:
       - '`BBRKC`'
+      - '`bbrkc_long`'
       - '`goa_pcod`'
       - '`goa_pollock`'
       - '`sablefish`'
       - '`SMBKC`'
       - '`ebs_pcod`'
       - '`metric_panel`'
+      - '`indicator_order`'
 
 template:
   package: preferably

@@ -12,6 +12,7 @@ esp_traffic_long(
   label = TRUE,
   caption = "",
   ncolumn = 1,
+  silent = FALSE,
   ...
 )
 }
@@ -26,7 +27,11 @@ esp_traffic_long(
 
 \item{label}{Whether to label the facets}
 
+\item{caption}{A caption for the figure}
+
 \item{ncolumn}{How many columns the figure should have (1 by default)}
+
+\item{silent}{Whether to print the caption}
 
 \item{...}{Passed to \code{ggplot2::ggsave}}
 }

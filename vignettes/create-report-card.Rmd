@@ -1,0 +1,19 @@
+---
+title: "Create an ESP report card"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Create an ESP report card}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE,
+  eval = TRUE,
+  fig.align = "center"
+)
+```

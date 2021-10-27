@@ -146,7 +146,9 @@
 <h2 class="hasAnchor">
 <a href="#correlation-matrices" class="anchor"></a>Correlation matrices</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/esp_cor_matrix.html">esp_cor_matrix</a></span><span class="op">(</span><span class="fu">AKesp</span><span class="fu">::</span><span class="va"><a href="../reference/sablefish.html">sablefish</a></span>, 
+<code class="sourceCode R"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/get_esp_data.html">get_esp_data</a></span><span class="op">(</span><span class="st">"Alaska Sablefish"</span><span class="op">)</span>
+
+<span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/esp_cor_matrix_long.html">esp_cor_matrix_long</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat</span>, 
                       out <span class="op">=</span> <span class="st">"ggplot"</span><span class="op">)</span></code></pre></div>
 <p><img src="create-figures_files/figure-html/unnamed-chunk-4-1.png" width="1440" style="display: block; margin: auto;"></p>
 </div>
@@ -154,7 +156,7 @@
 <h2 class="hasAnchor">
 <a href="#indicator-histograms" class="anchor"></a>Indicator histograms</h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/esp_hist.html">esp_hist</a></span><span class="op">(</span><span class="fu">AKesp</span><span class="fu">::</span><span class="va"><a href="../reference/sablefish.html">sablefish</a></span>, 
+<code class="sourceCode R"><span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/esp_hist_long.html">esp_hist_long</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat</span>, 
                 out <span class="op">=</span> <span class="st">"ggplot"</span><span class="op">)</span></code></pre></div>
 <p><img src="create-figures_files/figure-html/unnamed-chunk-5-1.png" width="960" style="display: block; margin: auto;"></p>
 </div>
@@ -163,9 +165,16 @@
 <a href="#traffic-plots" class="anchor"></a>Traffic plots</h2>
 <p>Traffic light plots are broken into multiple images, each with 5 plots.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/esp_traffic.html">esp_traffic</a></span><span class="op">(</span><span class="fu">AKesp</span><span class="fu">::</span><span class="va"><a href="../reference/sablefish.html">sablefish</a></span>, 
-                   out <span class="op">=</span> <span class="st">"ggplot"</span><span class="op">)</span></code></pre></div>
-<p><img src="create-figures_files/figure-html/unnamed-chunk-6-1.png" width="480" style="display: block; margin: auto;"><img src="create-figures_files/figure-html/unnamed-chunk-6-2.png" width="480" style="display: block; margin: auto;"><img src="create-figures_files/figure-html/unnamed-chunk-6-3.png" width="480" style="display: block; margin: auto;"><img src="create-figures_files/figure-html/unnamed-chunk-6-4.png" width="480" style="display: block; margin: auto;"><img src="create-figures_files/figure-html/unnamed-chunk-6-5.png" width="480" style="display: block; margin: auto;"><img src="create-figures_files/figure-html/unnamed-chunk-6-6.png" width="480" style="display: block; margin: auto;"></p>
+<code class="sourceCode R"><span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/esp_traffic_long.html">esp_traffic_long</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat</span>, 
+                        paginate <span class="op">=</span> <span class="cn">TRUE</span>,
+                   out <span class="op">=</span> <span class="st">"ggplot"</span>,
+                   silent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p><img src="create-figures_files/figure-html/unnamed-chunk-6-1.png" width="768" style="display: block; margin: auto;"></p>
+<p><img src="create-figures_files/figure-html/unnamed-chunk-6-2.png" width="768" style="display: block; margin: auto;"></p>
+<p><img src="create-figures_files/figure-html/unnamed-chunk-6-3.png" width="768" style="display: block; margin: auto;"></p>
+<p><img src="create-figures_files/figure-html/unnamed-chunk-6-4.png" width="768" style="display: block; margin: auto;"></p>
+<p><img src="create-figures_files/figure-html/unnamed-chunk-6-5.png" width="768" style="display: block; margin: auto;"></p>
+<p><img src="create-figures_files/figure-html/unnamed-chunk-6-6.png" width="768" style="display: block; margin: auto;"></p>
 </div>
   </div>
 

@@ -37,7 +37,7 @@ esp_stock_options <- function() {
     type = "application/json"
   ) %>%
     dplyr::bind_rows() %>%
-    dplyr::select("INTENDED_ESP") %>%
+    dplyr::select(.data$INTENDED_ESP) %>%
     dplyr::distinct() %>%
     dplyr::rename("Stocks" = "INTENDED_ESP") %>%
     dplyr::filter(.data$Stocks != "Multiple ESPs")
@@ -53,6 +53,7 @@ esp_stock_options <- function() {
 #' This function prepares indicator data. Adds SCORE column.
 #' @param data The data (pulled from AKFIN)
 #' @param recent Boolean. Whether to calculate the score only for the most recent year.
+#' @param label_width Width of facet labels (number of characters). Defaults to 50.
 #' @return A tibble
 #' @export
 #'
@@ -62,31 +63,33 @@ prep_ind_data <- function(data, recent = TRUE, label_width = 50) {
   minyear <- maxyear - 1
 
   dat <- data %>%
-    dplyr::filter(!is.na(.data$GATE2_YEAR),
-                  !is.na(.data$REMOVED_YEAR)) %>%
-    dplyr::select(
-      INDICATOR_NAME, CATEGORY, INDICATOR_TYPE,
-      YEAR, DATA_VALUE, SIGN, WEIGHT,
-      INTENDED_ESP_NAME, REPORT_CARD_TITLE
+    dplyr::filter(
+      !is.na(.data$GATE2_YEAR),
+      !is.na(.data$REMOVED_YEAR)
     ) %>%
-    dplyr::group_by(INDICATOR_NAME) %>%
+    dplyr::select(
+      .data$INDICATOR_NAME, .data$CATEGORY, .data$INDICATOR_TYPE,
+      .data$YEAR, .data$DATA_VALUE, .data$SIGN, .data$WEIGHT,
+      .data$INTENDED_ESP_NAME, .data$REPORT_CARD_TITLE
+    ) %>%
+    dplyr::group_by(.data$INDICATOR_NAME) %>%
     dplyr::mutate(
-      name = INDICATOR_NAME %>%
+      name = .data$INDICATOR_NAME %>%
         stringr::str_replace_all("_", " ") %>%
         stringr::str_wrap(width = label_width),
       quant10 = stats::quantile(.data$DATA_VALUE,
-                                probs = 0.1,
-                                na.rm = TRUE
+        probs = 0.1,
+        na.rm = TRUE
       ),
       mean = mean(.data$DATA_VALUE,
-                  na.rm = TRUE
+        na.rm = TRUE
       ),
-      sd = sd(.data$DATA_VALUE,
-              na.rm = TRUE
+      sd = stats::sd(.data$DATA_VALUE,
+        na.rm = TRUE
       ),
       quant90 = stats::quantile(.data$DATA_VALUE,
-                                probs = 0.9,
-                                na.rm = TRUE
+        probs = 0.9,
+        na.rm = TRUE
       ),
       recent = (.data$YEAR == maxyear | .data$YEAR == minyear),
       label = ifelse(
@@ -95,15 +98,15 @@ prep_ind_data <- function(data, recent = TRUE, label_width = 50) {
         # }
         ,
         ifelse(.data$DATA_VALUE < (.data$mean + .data$sd),
-               ifelse(.data$DATA_VALUE > (.data$mean - .data$sd),
-                      "neutral", "low"
-               ),
-               "high"
+          ifelse(.data$DATA_VALUE > (.data$mean - .data$sd),
+            "neutral", "low"
+          ),
+          "high"
         ),
         NA
       ),
       label_num = ifelse(.data$label == "low", -1,
-                         ifelse(.data$label == "high", 1, 0)
+        ifelse(.data$label == "high", 1, 0)
       ),
       score = as.character(.data$label_num * .data$SIGN * .data$WEIGHT)
     ) %>%
@@ -124,12 +127,13 @@ prep_ind_data <- function(data, recent = TRUE, label_width = 50) {
 join_order <- function(data) {
   order_key <- AKesp::indicator_order %>%
     dplyr::select(.data$REPORT_CARD_TITLE, .data$Intended.ESP, .data$ORDER2) %>%
-    dplyr::rename(INTENDED_ESP_NAME = Intended.ESP)
+    dplyr::rename(INTENDED_ESP_NAME = .data$Intended.ESP)
 
   data <- data %>%
     dplyr::left_join(order_key,
-                     by = c("INTENDED_ESP_NAME", "REPORT_CARD_TITLE")) %>%
-    dplyr::arrange(ORDER2)
+      by = c("INTENDED_ESP_NAME", "REPORT_CARD_TITLE")
+    ) %>%
+    dplyr::arrange(.data$ORDER2)
 
   data$name <- factor(data$name, levels = unique(data$name))
   return(data)

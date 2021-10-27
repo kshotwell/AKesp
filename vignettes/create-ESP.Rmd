@@ -1,8 +1,8 @@
 ---
-title: "Create an ESP"
+title: "Create a partial or full ESP"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Create an ESP}
+  %\VignetteIndexEntry{Create a partial or full ESP}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -58,10 +58,12 @@ After creating a full ESP template, running `AKesp::render_esp` with the default
 
 
 ```{r, eval = FALSE}
-AKesp::render_esp(dir = "../test",
-                  ref_spreadsheet = "../test/references_spreadsheet.csv",
-                  tab_spreadsheet = "../../test/table_spreadsheet.csv",
-                  fig_spreadsheet = "../../test/figure_spreadsheet.csv")
+AKesp::render_esp(
+  dir = "../test",
+  ref_spreadsheet = "../test/references_spreadsheet.csv",
+  tab_spreadsheet = "../../test/table_spreadsheet.csv",
+  fig_spreadsheet = "../../test/figure_spreadsheet.csv"
+)
 ```
 
 <p align="center">

@@ -53,28 +53,28 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
 
       # colors by sign/value combo
     } else if (dat$DATA_VALUE[i] > (dat$avg[i] + dat$stdev[i])) {
-        status[i] <- "high"
-        if (is.na(dat$SIGN[i])) {
-          color[i] <- "white"
-        } else if (dat$SIGN[i] == 1) {
-          color[i] <- "cornflowerblue"
-        } else if (dat$SIGN[i] == -1) {
-          color[i] <- "brown1"
-        }
-      } else if (dat$DATA_VALUE[i] < (dat$avg[i] - dat$stdev[i])) {
-        status[i] <- "low"
-        if (is.na(dat$SIGN[i])) {
-          color[i] <- "white"
-        } else if (dat$SIGN[i] == -1) {
-          color[i] <- "cornflowerblue"
-        } else if (dat$SIGN[i] == 1) {
-          color[i] <- "brown1"
-        }
-      } else {
-        status[i] <- "neutral"
+      status[i] <- "high"
+      if (is.na(dat$SIGN[i])) {
         color[i] <- "white"
+      } else if (dat$SIGN[i] == 1) {
+        color[i] <- "cornflowerblue"
+      } else if (dat$SIGN[i] == -1) {
+        color[i] <- "brown1"
       }
+    } else if (dat$DATA_VALUE[i] < (dat$avg[i] - dat$stdev[i])) {
+      status[i] <- "low"
+      if (is.na(dat$SIGN[i])) {
+        color[i] <- "white"
+      } else if (dat$SIGN[i] == -1) {
+        color[i] <- "cornflowerblue"
+      } else if (dat$SIGN[i] == 1) {
+        color[i] <- "brown1"
+      }
+    } else {
+      status[i] <- "neutral"
+      color[i] <- "white"
     }
+  }
 
   dat$status <- status
   dat$color <- color
@@ -133,12 +133,12 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
     }
   }
 
-  for(i in 1:nrow(tbl_dat)) {
-    for(j in 1:ncol(tbl_dat)) {
-      if(color_dat[i,j] == "brown1") {
+  for (i in 1:nrow(tbl_dat)) {
+    for (j in 1:ncol(tbl_dat)) {
+      if (color_dat[i, j] == "brown1") {
         ft <- flextable::bold(ft, i = i, j = j)
       }
-      if(color_dat[i,j] == "cornflowerblue") {
+      if (color_dat[i, j] == "cornflowerblue") {
         ft <- flextable::italic(ft, i = i, j = j)
       }
     }

@@ -1,3 +1,39 @@
+#' @title Bristol Bay Red King Crab data (long format)
+#' @description DATASET_DESCRIPTION
+#' @format A data frame with 546 rows and 27 variables:
+#' \describe{
+#'   \item{\code{YEAR}}{integer COLUMN_DESCRIPTION}
+#'   \item{\code{INDICATOR_NAME}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{DATA_VALUE}}{double COLUMN_DESCRIPTION}
+#'   \item{\code{DATA_SOURCE_NAME}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{DATA_SOURCE_DESCRIPTION}}{logical COLUMN_DESCRIPTION}
+#'   \item{\code{DATABASE_NAME}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{PRODUCT}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{PRODUCT_DESCRIPTION}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{INDICATOR_TYPE}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{CATEGORY}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{CONTACT}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{INTENDED_ESP}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{FREQUENCY}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{ESR}}{logical COLUMN_DESCRIPTION}
+#'   \item{\code{TIME_START}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{TIME_END}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{TRENDS}}{logical COLUMN_DESCRIPTION}
+#'   \item{\code{INFLUENTIAL_FACTORS}}{logical COLUMN_DESCRIPTION}
+#'   \item{\code{STOCK_IMPLICATIONS}}{logical COLUMN_DESCRIPTION}
+#'   \item{\code{REPORT_CARD_TITLE}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{REFERENCE}}{logical COLUMN_DESCRIPTION}
+#'   \item{\code{ESP}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{SUBMISSION_YEAR}}{integer COLUMN_DESCRIPTION}
+#'   \item{\code{GATE1_YEAR}}{integer COLUMN_DESCRIPTION}
+#'   \item{\code{GATE2_YEAR}}{logical COLUMN_DESCRIPTION}
+#'   \item{\code{SIGN}}{integer COLUMN_DESCRIPTION}
+#'   \item{\code{SCORE}}{integer COLUMN_DESCRIPTION}
+#' }
+#' @details DETAILS
+"bbrkc_long"
+
+
 #' @title Eastern Bering Sea Pacific Cod ESP data
 #' @description DATASET_DESCRIPTION
 #' @format A data frame with 44 rows and 19 variables:
@@ -238,6 +274,6 @@
 #'   \item{\code{WEIGHT}}{integer Relative importance of the indicator for the stock}
 #'   \item{\code{ORDER}}{integer Order to display indicators in (no repeated numbers)}
 #'   \item{\code{ORDER2}}{integer Order to display indicators in (repeated numbers)}
-#'}
+#' }
 #' @details DETAILS
 "indicator_order"

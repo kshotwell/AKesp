@@ -22,7 +22,7 @@
   }
 </script>
 
-<title>Plot indicator traffic light figure — esp_traffic_long • AKesp</title>
+<title>Bristol Bay Red King Crab data (long format) — bbrkc_long • AKesp</title>
 
 
 <!-- jquery -->
@@ -65,8 +65,8 @@
 
 
 
-<meta property="og:title" content="Plot indicator traffic light figure — esp_traffic_long" />
-<meta property="og:description" content="This function plots ESP indicator traffic light figures" />
+<meta property="og:title" content="Bristol Bay Red King Crab data (long format) — bbrkc_long" />
+<meta property="og:description" content="DATASET_DESCRIPTION" />
 
 
 
@@ -169,71 +169,54 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot indicator traffic light figure</h1>
+    <h1>Bristol Bay Red King Crab data (long format)</h1>
     
-    <div class="hidden name"><code>esp_traffic_long.Rd</code></div>
+    <div class="hidden name"><code>bbrkc_long.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function plots ESP indicator traffic light figures</p>
+    <p>DATASET_DESCRIPTION</p>
     </div>
 
-    <pre class="usage"><span class='fu'>esp_traffic_long</span><span class='op'>(</span>
-  <span class='va'>data</span>,
-  <span class='va'>name</span>,
-  out <span class='op'>=</span> <span class='st'>"ggplot"</span>,
-  paginate <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  label <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  caption <span class='op'>=</span> <span class='st'>""</span>,
-  ncolumn <span class='op'>=</span> <span class='fl'>1</span>,
-  silent <span class='op'>=</span> <span class='cn'>FALSE</span>,
-  <span class='va'>...</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='va'>bbrkc_long</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>data</th>
-      <td><p>The ESP indicator data. Should have a column for Year and a column for each indicator.</p></td>
-    </tr>
-    <tr>
-      <th>name</th>
-      <td><p>The file name for the image. Will be saved relative to the working directory.</p></td>
-    </tr>
-    <tr>
-      <th>out</th>
-      <td><p>Whether the function should save the plot, or return a ggplot object. One of c("ggplot", "save")</p></td>
-    </tr>
-    <tr>
-      <th>paginate</th>
-      <td><p>Whether to paginate the plots with <code><a href='https://ggforce.data-imaginist.com/reference/facet_wrap_paginate.html'>ggforce::facet_wrap_paginate</a></code></p></td>
-    </tr>
-    <tr>
-      <th>label</th>
-      <td><p>Whether to label the facets</p></td>
-    </tr>
-    <tr>
-      <th>caption</th>
-      <td><p>A caption for the figure</p></td>
-    </tr>
-    <tr>
-      <th>ncolumn</th>
-      <td><p>How many columns the figure should have (1 by default)</p></td>
-    </tr>
-    <tr>
-      <th>silent</th>
-      <td><p>Whether to print the caption</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Passed to <code><a href='https://ggplot2.tidyverse.org/reference/ggsave.html'>ggplot2::ggsave</a></code></p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>An image file</p>
+    <p>A data frame with 546 rows and 27 variables:</p><dl>
+<dt><code>YEAR</code></dt><dd><p>integer COLUMN_DESCRIPTION</p></dd>
+<dt><code>INDICATOR_NAME</code></dt><dd><p>character COLUMN_DESCRIPTION</p></dd>
+<dt><code>DATA_VALUE</code></dt><dd><p>double COLUMN_DESCRIPTION</p></dd>
+<dt><code>DATA_SOURCE_NAME</code></dt><dd><p>character COLUMN_DESCRIPTION</p></dd>
+<dt><code>DATA_SOURCE_DESCRIPTION</code></dt><dd><p>logical COLUMN_DESCRIPTION</p></dd>
+<dt><code>DATABASE_NAME</code></dt><dd><p>character COLUMN_DESCRIPTION</p></dd>
+<dt><code>PRODUCT</code></dt><dd><p>character COLUMN_DESCRIPTION</p></dd>
+<dt><code>PRODUCT_DESCRIPTION</code></dt><dd><p>character COLUMN_DESCRIPTION</p></dd>
+<dt><code>INDICATOR_TYPE</code></dt><dd><p>character COLUMN_DESCRIPTION</p></dd>
+<dt><code>CATEGORY</code></dt><dd><p>character COLUMN_DESCRIPTION</p></dd>
+<dt><code>CONTACT</code></dt><dd><p>character COLUMN_DESCRIPTION</p></dd>
+<dt><code>INTENDED_ESP</code></dt><dd><p>character COLUMN_DESCRIPTION</p></dd>
+<dt><code>FREQUENCY</code></dt><dd><p>character COLUMN_DESCRIPTION</p></dd>
+<dt><code>ESR</code></dt><dd><p>logical COLUMN_DESCRIPTION</p></dd>
+<dt><code>TIME_START</code></dt><dd><p>character COLUMN_DESCRIPTION</p></dd>
+<dt><code>TIME_END</code></dt><dd><p>character COLUMN_DESCRIPTION</p></dd>
+<dt><code>TRENDS</code></dt><dd><p>logical COLUMN_DESCRIPTION</p></dd>
+<dt><code>INFLUENTIAL_FACTORS</code></dt><dd><p>logical COLUMN_DESCRIPTION</p></dd>
+<dt><code>STOCK_IMPLICATIONS</code></dt><dd><p>logical COLUMN_DESCRIPTION</p></dd>
+<dt><code>REPORT_CARD_TITLE</code></dt><dd><p>character COLUMN_DESCRIPTION</p></dd>
+<dt><code>REFERENCE</code></dt><dd><p>logical COLUMN_DESCRIPTION</p></dd>
+<dt><code>ESP</code></dt><dd><p>character COLUMN_DESCRIPTION</p></dd>
+<dt><code>SUBMISSION_YEAR</code></dt><dd><p>integer COLUMN_DESCRIPTION</p></dd>
+<dt><code>GATE1_YEAR</code></dt><dd><p>integer COLUMN_DESCRIPTION</p></dd>
+<dt><code>GATE2_YEAR</code></dt><dd><p>logical COLUMN_DESCRIPTION</p></dd>
+<dt><code>SIGN</code></dt><dd><p>integer COLUMN_DESCRIPTION</p></dd>
+<dt><code>SCORE</code></dt><dd><p>integer COLUMN_DESCRIPTION</p></dd>
+
+</dl>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>DETAILS</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -23,6 +23,7 @@ Imports:
     ggcorrplot,
     ggforce,
     ggpubr,
+    httr,
     knitr,
     magrittr,
     rlang,
