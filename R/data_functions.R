@@ -47,6 +47,71 @@ esp_stock_options <- function() {
 
 # esp_stock_options()
 
+
+#' Prep indicator data
+#'
+#' This function prepares indicator data. Adds SCORE column.
+#' @param data The data (pulled from AKFIN)
+#' @param recent Boolean. Whether to calculate the score only for the most recent year.
+#' @return A tibble
+#' @export
+#'
+
+prep_ind_data <- function(data, recent = TRUE, label_width = 50) {
+  maxyear <- max(data$YEAR)
+  minyear <- maxyear - 1
+
+  dat <- data %>%
+    dplyr::filter(!is.na(.data$GATE2_YEAR),
+                  !is.na(.data$REMOVED_YEAR)) %>%
+    dplyr::select(
+      INDICATOR_NAME, CATEGORY, INDICATOR_TYPE,
+      YEAR, DATA_VALUE, SIGN, WEIGHT,
+      INTENDED_ESP_NAME, REPORT_CARD_TITLE
+    ) %>%
+    dplyr::group_by(INDICATOR_NAME) %>%
+    dplyr::mutate(
+      name = INDICATOR_NAME %>%
+        stringr::str_replace_all("_", " ") %>%
+        stringr::str_wrap(width = label_width),
+      quant10 = stats::quantile(.data$DATA_VALUE,
+                                probs = 0.1,
+                                na.rm = TRUE
+      ),
+      mean = mean(.data$DATA_VALUE,
+                  na.rm = TRUE
+      ),
+      sd = sd(.data$DATA_VALUE,
+              na.rm = TRUE
+      ),
+      quant90 = stats::quantile(.data$DATA_VALUE,
+                                probs = 0.9,
+                                na.rm = TRUE
+      ),
+      recent = (.data$YEAR == maxyear | .data$YEAR == minyear),
+      label = ifelse(
+        # if(recent){.data$YEAR == maxyear} else {
+        is.na(.data$DATA_VALUE) == FALSE
+        # }
+        ,
+        ifelse(.data$DATA_VALUE < (.data$mean + .data$sd),
+               ifelse(.data$DATA_VALUE > (.data$mean - .data$sd),
+                      "neutral", "low"
+               ),
+               "high"
+        ),
+        NA
+      ),
+      label_num = ifelse(.data$label == "low", -1,
+                         ifelse(.data$label == "high", 1, 0)
+      ),
+      score = as.character(.data$label_num * .data$SIGN * .data$WEIGHT)
+    ) %>%
+    dplyr::ungroup()
+
+  return(dat)
+}
+
 #' Join order information to ESP data
 #'
 #' This function joins order information to ESP data.
