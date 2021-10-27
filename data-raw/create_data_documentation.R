@@ -18,5 +18,5 @@ lapply(sheetnames, my_save)
 sink()
 
 sink("R/data2.R")
-my_save("metric_panel")
+my_save("indicator_order")
 sink()

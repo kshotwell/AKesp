@@ -136,16 +136,7 @@ esp_traffic_long <- function(data,
     dat <- prep_ind_data(data, label_width = 30)
   }
 
-  dat$CATEGORY <- factor(dat$CATEGORY, levels = c("Physical",
-                                                  "Lower Trophic",
-                                                  "Upper Trophic",
-                                                  "Fishery Performance",
-                                                  "Economic",
-                                                  "Community"))
-  dat <- dat %>%
-    dplyr::arrange(CATEGORY)
-
-  dat$name <- factor(dat$name, levels = unique(dat$name))
+  dat <- join_order(dat)
 
   plt <- ggplot2::ggplot(
     dat,
@@ -191,21 +182,47 @@ esp_traffic_long <- function(data,
     ggplot2::geom_point() +
     ggplot2::geom_line(data = dat %>%
       tidyr::drop_na(.data$DATA_VALUE)) +
+    # red boxes, bold
     ggplot2::geom_label(
       data = dat %>%
-        dplyr::filter(.data$YEAR == maxyear),
+        dplyr::filter(.data$YEAR == maxyear,
+                      .data$score > 0),
       ggplot2::aes(
         label = .data$label,
-        y = .data$mean,
-        fill = .data$score
+        y = .data$mean
       ),
       nudge_x = 4,
-      show.legend = FALSE
+      show.legend = FALSE,
+      fontface = "bold",
+      fill = "brown1"
     ) +
-    # set label colors based on score
-    ggplot2::scale_fill_manual(values = c("-1" = "brown1",
-                                          "1" = "cornflowerblue",
-                                          "0" = "beige")) +
+    # blue boxes, italic
+    ggplot2::geom_label(
+      data = dat %>%
+        dplyr::filter(.data$YEAR == maxyear,
+                      .data$score < 0),
+      ggplot2::aes(
+        label = .data$label,
+        y = .data$mean
+      ),
+      nudge_x = 4,
+      show.legend = FALSE,
+      fontface = "italic",
+      fill = "cornflowerblue"
+    ) +
+    # beige boxes, neutral
+    ggplot2::geom_label(
+      data = dat %>%
+        dplyr::filter(.data$YEAR == maxyear,
+                      .data$score == 0),
+      ggplot2::aes(
+        label = .data$label,
+        y = .data$mean
+      ),
+      nudge_x = 4,
+      show.legend = FALSE,
+      fill = "beige"
+    ) +
     ggplot2::ylab("") +
     ggplot2::scale_y_continuous(labels = scales::comma) +
     ggplot2::theme_bw(base_size = 16) +

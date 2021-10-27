@@ -221,3 +221,23 @@
 #' }
 #' @details DETAILS
 "metric_panel"
+
+#' @title Indicator order key for graphics
+#' @description Indicator order key for graphics
+#' @format A data frame with 148 rows and 12 variables:
+#' \describe{
+#'   \item{\code{SOURCE_TARGET_NAME}}{character Indicator name (shortened)}
+#'   \item{\code{PRODUCT}}{character Indicator name}
+#'   \item{\code{REPORT_CARD_TITLE}}{character Indicator name (human-friendly)}
+#'   \item{\code{Intended.ESP}}{character Stock name to which the indicator applies}
+#'   \item{\code{SUBMISSION_YEAR}}{integer Year the indicator was first included}
+#'   \item{\code{GATE1_YEAR}}{integer Year the indicator was added to the ESP}
+#'   \item{\code{GATE2_YEAR}}{integer Year the indicator was added to the stock assessment model}
+#'   \item{\code{REMOVED_YEAR}}{integer Year the indicator was removed from the ESP}
+#'   \item{\code{SIGN}}{integer +1 for positive effect on stock, -1 for negative effect}
+#'   \item{\code{WEIGHT}}{integer Relative importance of the indicator for the stock}
+#'   \item{\code{ORDER}}{integer Order to display indicators in (no repeated numbers)}
+#'   \item{\code{ORDER2}}{integer Order to display indicators in (repeated numbers)}
+#'}
+#' @details DETAILS
+"indicator_order"

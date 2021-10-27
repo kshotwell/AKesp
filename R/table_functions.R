@@ -33,10 +33,12 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
     dplyr::filter(.data$this_year == TRUE) %>%
     dplyr::select(
       .data$CATEGORY, .data$YEAR, .data$name, .data$DATA_VALUE,
-      .data$avg, .data$stdev, .data$SIGN, .data$INDICATOR_TYPE
+      .data$avg, .data$stdev, .data$SIGN, .data$INDICATOR_TYPE,
+      .data$INTENDED_ESP_NAME, .data$REPORT_CARD_TITLE
     ) %>%
-    dplyr::arrange(.data$CATEGORY, .data$name) %>%
     dplyr::ungroup()
+
+  dat <- join_order(dat)
 
   status <- c()
   color <- c()

@@ -72,7 +72,8 @@ prep_ind_data <- function(data, recent = TRUE, label_width = 50) {
                   !is.na(.data$REMOVED_YEAR)) %>%
     dplyr::select(
       INDICATOR_NAME, CATEGORY, INDICATOR_TYPE,
-      YEAR, DATA_VALUE, SIGN, WEIGHT
+      YEAR, DATA_VALUE, SIGN, WEIGHT,
+      INTENDED_ESP_NAME, REPORT_CARD_TITLE
     ) %>%
     dplyr::group_by(INDICATOR_NAME) %>%
     dplyr::mutate(

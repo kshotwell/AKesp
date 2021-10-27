@@ -46,3 +46,26 @@ esp_stock_options <- function() {
 }
 
 # esp_stock_options()
+
+#' Join order information to ESP data
+#'
+#' This function joins order information to ESP data.
+#' @param data The ESP data
+#' @return A tibble
+#' @importFrom magrittr %>%
+#' @importFrom rlang .data
+#' @export
+
+join_order <- function(data) {
+  order_key <- AKesp::indicator_order %>%
+    dplyr::select(.data$REPORT_CARD_TITLE, .data$Intended.ESP, .data$ORDER2) %>%
+    dplyr::rename(INTENDED_ESP_NAME = Intended.ESP)
+
+  data <- data %>%
+    dplyr::left_join(order_key,
+                     by = c("INTENDED_ESP_NAME", "REPORT_CARD_TITLE")) %>%
+    dplyr::arrange(ORDER2)
+
+  data$name <- factor(data$name, levels = unique(data$name))
+  return(data)
+}

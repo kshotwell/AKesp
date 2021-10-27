@@ -17,3 +17,6 @@ usethis::use_data(metric_panel)
 
 bbrkc_long <- read.csv(here::here("data-raw/bbrkc_long.csv"))
 usethis::use_data(bbrkc_long)
+
+indicator_order <- read.csv(here::here("data-raw/ESP_Lookup_Order.csv"))
+usethis::use_data(indicator_order)
