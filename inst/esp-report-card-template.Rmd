@@ -35,6 +35,8 @@ knitr::opts_chunk$set(
   message = FALSE,
   results = "asis"
 )
+
+`%>%` <- magrittr::`%>%`
 ```
 
 ```{r, title-fig}

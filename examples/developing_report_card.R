@@ -1,7 +1,7 @@
 # example rendering of ESP report card
 
 # install package
-devtools::install_github("atyrell3/AKesp")
+devtools::install_github("atyrell3/AKesp", upgrade = "never")
 
 # score is calculated by the functions
 # can change where output renders - defaults to working directory
@@ -17,9 +17,9 @@ rmarkdown::render(system.file("esp-report-card-template.Rmd",
     esp_data = AKesp::get_esp_data("Alaska Sablefish"),
     fish = "Sablefish",
     region = "Alaska",
-    stock_image = "inst/images/noaa.jpg",
-    con_model_path = "inst/images/noaa.jpg",
-    bayes_path = "inst/images/noaa.jpg"
+    stock_image = here::here("inst/images/noaa.jpg"),
+    con_model_path = here::here("inst/images/noaa.jpg"),
+    bayes_path = here::here("inst/images/noaa.jpg")
   )
 )
 
@@ -37,8 +37,8 @@ rmarkdown::render(system.file("esp-report-card-template.Rmd",
     esp_data = AKesp::bbrkc_long,
     fish = "Red King Crab",
     region = "Bristol Bay",
-    stock_image = "inst/images/noaa.jpg",
-    con_model_path = "inst/images/noaa.jpg",
-    bayes_path = "inst/images/noaa.jpg"
+    stock_image = here::here("inst/images/noaa.jpg"),
+    con_model_path = here::here("inst/images/noaa.jpg"),
+    bayes_path = here::here("inst/images/noaa.jpg")
   )
 )
