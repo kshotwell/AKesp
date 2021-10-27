@@ -18,14 +18,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-First, open `AKesp.Rproj` and run:
-```{r}
-devtools::load_all()
-```
-
-Eventually the package will be on Github!
-
-After loading the package, you can use the functions to create figures. You can use your own input data, or you can use some of the prior ESP data that is included in the package. When you run these functions locally, it will probably be more helpful to set `out = "save"` and specify a file name for the plot so that the plots are saved rather than displayed in RStudio. This is because the plots all display a large amount of data that will be very squashed in the RStudio image viewer. You may also need to adjust the `width` and `height` options to produce a figure of satisfactory dimensions.
+After installing the package, you can use the functions to create figures. You can use your own input data, or you can use some of the prior ESP data that is included in the package. When you run these functions locally, it will probably be more helpful to set `out = "save"` and specify a file name for the plot so that the plots are saved rather than displayed in RStudio. This is because the plots all display a large amount of data that will be very squashed in the RStudio image viewer. You may also need to adjust the `width` and `height` options to produce a figure of satisfactory dimensions.
 
 ## Metrics panel
 ```{r, fig.width = 8, fig.height = 7.5}

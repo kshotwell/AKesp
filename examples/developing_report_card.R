@@ -1,5 +1,7 @@
 # example rendering of ESP report card
 
+# remove package before re-installing
+remove.packages("AKesp")
 # install package
 devtools::install_github("atyrell3/AKesp", upgrade = "never")
 
@@ -11,7 +13,6 @@ devtools::install_github("atyrell3/AKesp", upgrade = "never")
 rmarkdown::render(system.file("esp-report-card-template.Rmd",
   package = "AKesp"
   ),
-  clean = TRUE,
   output_dir = getwd(),
   params = list(
     esp_data = AKesp::get_esp_data("Alaska Sablefish"),
@@ -31,7 +32,6 @@ rmarkdown::render(system.file("esp-report-card-template.Rmd",
 rmarkdown::render(system.file("esp-report-card-template.Rmd",
   package = "AKesp"
   ),
-  clean = TRUE,
   output_dir = getwd(),
   params = list(
     esp_data = AKesp::bbrkc_long,

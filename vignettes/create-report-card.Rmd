@@ -17,3 +17,21 @@ knitr::opts_chunk$set(
   fig.align = "center"
 )
 ```
+
+An ESP report card can be generated from the RMarkdown template in the `AKesp` package. An indicator table, traffic light figure, and overall score figure will be automatically generated from the ESP data. File paths to images of the conceptual model figure (`con_model_path`) and Bayesian model figure (`bayes_path`) must be included, or else a placeholder NOAA logo will be included in their place. You can also include a file path to an image of the stock (`stock_image`), which will be included on the cover page. The directory of the output file (`output_dir`) defaults to the working directory, but it can be changed. I strongly suggest using the `here` package for all file paths. 
+
+```{r, eval = FALSE}
+rmarkdown::render(system.file("esp-report-card-template.Rmd",
+  package = "AKesp"
+  ),
+  output_dir = getwd(),
+  params = list(
+    esp_data = AKesp::get_esp_data("Alaska Sablefish"),
+    fish = "Sablefish",
+    region = "Alaska",
+    stock_image = here::here("inst/images/noaa.jpg"),
+    con_model_path = here::here("inst/images/noaa.jpg"),
+    bayes_path = here::here("inst/images/noaa.jpg")
+  )
+)
+```

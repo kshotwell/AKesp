@@ -1,4 +1,4 @@
-url:
+url: https://atyrell.github.io/AKesp/
 
 news:
   one_page: true
@@ -20,7 +20,7 @@ navbar:
       -  text: "Create tables"
          href: articles/create-tables.html
       -  text: "Create an ESP report card"
-         href: articles/create-report-card.htm
+         href: articles/create-report-card.html
       -  text: "Create a partial or full ESP"
          href: articles/create-ESP.html
     - text: "Functions"
@@ -31,9 +31,9 @@ navbar:
     - icon: fas fa-paper-plane fa-lg
       href: mailto:abigail.tyrell@noaa.gov
     - icon: fas fa-question-circle fa-lg
-      href: https://github.com/
+      href: https://github.com/atyrell3/AKesp/issues/
     - icon: fab fa-github fa-lg
-      href: https://github.com/
+      href: https://github.com/atyrell3/AKesp
 
 articles:
     toc:

@@ -17,21 +17,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-First, open `AKesp.Rproj` and run:
-```{r}
-devtools::load_all()
-```
-
-Eventually the package will be on Github!
-
 ## Create your template
 
-The `AKesp::create_template` function creates an ESP template at the specified path.
-
-Since `AKesp` needs to be loaded locally because it is not yet available on Github, file paths need to be specified relative to the `AKesp` folder. Once `AKesp` can be installed from Github, this will no longer be necessary.
+The `AKesp::create_template` function creates an ESP template at the specified path. I strongly suggest using the `here` package to reference file paths.
 
 ```{r, eval = FALSE}
-AKesp::create_template(path = "../test", type = "full")
+AKesp::create_template(path = here::here(), type = "full")
 ```
 
 ```{r, echo = FALSE, fig.width = 10}
@@ -59,10 +50,10 @@ After creating a full ESP template, running `AKesp::render_esp` with the default
 
 ```{r, eval = FALSE}
 AKesp::render_esp(
-  dir = "../test",
-  ref_spreadsheet = "../test/references_spreadsheet.csv",
-  tab_spreadsheet = "../../test/table_spreadsheet.csv",
-  fig_spreadsheet = "../../test/figure_spreadsheet.csv"
+  dir = here::here(),
+  ref_spreadsheet = here::here("references_spreadsheet.csv"),
+  tab_spreadsheet = here::here("table_spreadsheet.csv"),
+  fig_spreadsheet = here::here("figure_spreadsheet.csv")
 )
 ```
 

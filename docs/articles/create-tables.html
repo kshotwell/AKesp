@@ -62,13 +62,22 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/install-package.html">Install package</a>
+    </li>
+    <li>
+      <a href="../articles/query-data.html">Query data</a>
+    </li>
+    <li>
       <a href="../articles/create-figures.html">Create figures</a>
     </li>
     <li>
       <a href="../articles/create-tables.html">Create tables</a>
     </li>
     <li>
-      <a href="../articles/create-ESP.html">Create an ESP</a>
+      <a href="../articles/create-report-card.html">Create an ESP report card</a>
+    </li>
+    <li>
+      <a href="../articles/create-ESP.html">Create a partial or full ESP</a>
     </li>
   </ul>
 </li>
@@ -87,13 +96,13 @@
   </a>
 </li>
 <li>
-  <a href="https://github.com/">
+  <a href="https://github.com/atyrell3/AKesp/issues/">
     <span class="fas fa-question-circle fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/">
+  <a href="https://github.com/atyrell3/AKesp">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -126,21 +135,19 @@
 
     
     
-<p>First, open <code>AKesp.Rproj</code> and run:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/load_all.html">load_all</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>Eventually the package will be on Github!</p>
-<p>Most tables are automatically created from the <code>table_spreadsheet.csv</code> and the <code>.csv</code> files in the <code>tables</code> folder. However, the <code>AKesp</code> package can also create some tables that require data analysis.</p>
+<p>Tables can be automatically created from the <code>table_spreadsheet.csv</code> and the <code>.csv</code> files in the <code>tables</code> folder. Additionally, the <code>AKesp</code> package can also create some tables that require data analysis.</p>
 <div id="traffic-light-scores" class="section level2">
 <h2 class="hasAnchor">
 <a href="#traffic-light-scores" class="anchor"></a>Traffic light scores</h2>
 <p>A traffic light table can be automatically created from a spreadsheet that has a column for year and a column for each indicator.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/get_esp_data.html">get_esp_data</a></span><span class="op">(</span><span class="st">"Alaska Sablefish"</span><span class="op">)</span>
 
-<span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/esp_traffic_tab_long.html">esp_traffic_tab_long</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat</span>, 
-                       year <span class="op">=</span> <span class="fl">2020</span><span class="op">)</span></code></pre></div>
-<template id="156a5ad4-11ca-435e-b427-4e05263ab50e"><style>
+<span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/esp_traffic_tab_long.html">esp_traffic_tab_long</a></span><span class="op">(</span>
+  data <span class="op">=</span> <span class="va">dat</span>,
+  year <span class="op">=</span> <span class="fl">2020</span>
+<span class="op">)</span></code></pre></div>
+<template id="d3df15d1-c6a4-4319-93f9-7a029f6b8ee0"><style>
 .tabwid table{
   border-collapse:collapse;
   line-height:1;
@@ -176,138 +183,138 @@ background-color: transparent;
 }
 </style>
 <div class="tabwid">
-<style>.cl-84c2ffa0{border-collapse:collapse;}.cl-84bac6aa{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-84bac6ab{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-84bac6ac{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-84baedba{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-84baedbb{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-84bb3b9e{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb3b9f{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb3ba0{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb3ba1{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb3ba2{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb3ba3{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb3ba4{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb3ba5{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb3ba6{width:81.7pt;background-clip: padding-box;background-color:rgba(204, 204, 204, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb3ba7{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb3ba8{width:81.7pt;background-clip: padding-box;background-color:rgba(204, 204, 204, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb6290{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb6291{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb6292{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb6293{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb6294{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb6295{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb6296{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb6297{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb6298{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb6299{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb629a{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb898c{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84bb898d{width:81.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table class="table cl-84c2ffa0">
+<style>.cl-0b0f4e0c{border-collapse:collapse;}.cl-0b067bb0{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-0b067bb1{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-0b067bb2{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-0b06a176{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-0b06a177{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-0b071656{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b071657{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b071658{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b071659{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b07165a{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b07165b{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b07165c{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b07165d{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b07165e{width:81.7pt;background-clip: padding-box;background-color:rgba(204, 204, 204, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b07165f{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b071660{width:81.7pt;background-clip: padding-box;background-color:rgba(204, 204, 204, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b073e7e{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b073e7f{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b073e80{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b073e81{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b073e82{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b073e83{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b073e84{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b073e85{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b073e86{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b073e87{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b073e88{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b076584{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b076585{width:81.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table class="table cl-0b0f4e0c">
 <caption class="Table Caption">Traffic light scoring</caption>
 <thead><tr style="overflow-wrap:break-word;">
-<td class="cl-84bb629a"><p class="cl-84baedba"><span class="cl-84bac6aa">Indicator category</span></p></td>
-<td class="cl-84bb898c"><p class="cl-84baedba"><span class="cl-84bac6aa">Indicator</span></p></td>
-<td class="cl-84bb898d"><p class="cl-84baedba"><span class="cl-84bac6aa">2020 Status</span></p></td>
+<td class="cl-0b073e88"><p class="cl-0b06a176"><span class="cl-0b067bb0">Indicator category</span></p></td>
+<td class="cl-0b076584"><p class="cl-0b06a176"><span class="cl-0b067bb0">Indicator</span></p></td>
+<td class="cl-0b076585"><p class="cl-0b06a176"><span class="cl-0b067bb0">2020 Status</span></p></td>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td rowspan="4" class="cl-84bb3b9f"><p class="cl-84baedba"><span class="cl-84bac6ab">Physical</span></p></td>
-<td class="cl-84bb3ba0"><p class="cl-84baedba"><span class="cl-84bac6ab">Annual Heatwave GOA Model</span></p></td>
-<td class="cl-84bb3b9e"><p class="cl-84baedbb"><span class="cl-84bac6ab">neutral</span></p></td>
+<td rowspan="4" class="cl-0b071657"><p class="cl-0b06a176"><span class="cl-0b067bb1">Physical</span></p></td>
+<td class="cl-0b071658"><p class="cl-0b06a176"><span class="cl-0b067bb1">Annual Heatwave GOA Model</span></p></td>
+<td class="cl-0b071656"><p class="cl-0b06a177"><span class="cl-0b067bb1">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba2"><p class="cl-84baedba"><span class="cl-84bac6ab">Spring Temperature Surface EGOA Satellite</span></p></td>
-<td class="cl-84bb3ba3"><p class="cl-84baedbb"><span class="cl-84bac6ab">neutral</span></p></td>
+<td class="cl-0b07165a"><p class="cl-0b06a176"><span class="cl-0b067bb1">Spring Temperature Surface EGOA Satellite</span></p></td>
+<td class="cl-0b07165b"><p class="cl-0b06a177"><span class="cl-0b067bb1">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba5"><p class="cl-84baedba"><span class="cl-84bac6ab">Spring Temperature Surface SEBS Satellite</span></p></td>
-<td class="cl-84bb6294"><p class="cl-84baedbb"><span class="cl-84bac6ac">high</span></p></td>
+<td class="cl-0b07165d"><p class="cl-0b06a176"><span class="cl-0b067bb1">Spring Temperature Surface SEBS Satellite</span></p></td>
+<td class="cl-0b073e82"><p class="cl-0b06a177"><span class="cl-0b067bb2">high</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba2"><p class="cl-84baedba"><span class="cl-84bac6ab">Summer Temperature 250m GOA Survey</span></p></td>
-<td class="cl-84bb3ba3"><p class="cl-84baedbb"><span class="cl-84bac6ab">neutral</span></p></td>
+<td class="cl-0b07165a"><p class="cl-0b06a176"><span class="cl-0b067bb1">Summer Temperature 250m GOA Survey</span></p></td>
+<td class="cl-0b07165b"><p class="cl-0b06a177"><span class="cl-0b067bb1">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td rowspan="8" class="cl-84bb3ba1"><p class="cl-84baedba"><span class="cl-84bac6ab">Lower Trophic</span></p></td>
-<td class="cl-84bb3ba2"><p class="cl-84baedba"><span class="cl-84bac6ab">Spring Chlorophylla Biomass EGOA Satellite</span></p></td>
-<td class="cl-84bb6295"><p class="cl-84baedbb"><span class="cl-84bac6aa">low</span></p></td>
+<td rowspan="8" class="cl-0b071659"><p class="cl-0b06a176"><span class="cl-0b067bb1">Lower Trophic</span></p></td>
+<td class="cl-0b07165a"><p class="cl-0b06a176"><span class="cl-0b067bb1">Spring Chlorophylla Biomass EGOA Satellite</span></p></td>
+<td class="cl-0b073e83"><p class="cl-0b06a177"><span class="cl-0b067bb0">low</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba5"><p class="cl-84baedba"><span class="cl-84bac6ab">Spring Chlorophylla Biomass SEBS Satellite</span></p></td>
-<td class="cl-84bb6299"><p class="cl-84baedbb"><span class="cl-84bac6ab">neutral</span></p></td>
+<td class="cl-0b07165d"><p class="cl-0b06a176"><span class="cl-0b067bb1">Spring Chlorophylla Biomass SEBS Satellite</span></p></td>
+<td class="cl-0b073e87"><p class="cl-0b06a177"><span class="cl-0b067bb1">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba2"><p class="cl-84baedba"><span class="cl-84bac6ab">Spring Chlorophylla Peak EGOA Satellite</span></p></td>
-<td class="cl-84bb3ba7"><p class="cl-84baedbb"><span class="cl-84bac6ac">low</span></p></td>
+<td class="cl-0b07165a"><p class="cl-0b06a176"><span class="cl-0b067bb1">Spring Chlorophylla Peak EGOA Satellite</span></p></td>
+<td class="cl-0b07165f"><p class="cl-0b06a177"><span class="cl-0b067bb2">low</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba5"><p class="cl-84baedba"><span class="cl-84bac6ab">Spring Chlorophylla Peak SEBS Satellite</span></p></td>
-<td class="cl-84bb6299"><p class="cl-84baedbb"><span class="cl-84bac6ab">neutral</span></p></td>
+<td class="cl-0b07165d"><p class="cl-0b06a176"><span class="cl-0b067bb1">Spring Chlorophylla Peak SEBS Satellite</span></p></td>
+<td class="cl-0b073e87"><p class="cl-0b06a177"><span class="cl-0b067bb1">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba2"><p class="cl-84baedba"><span class="cl-84bac6ab">Annual Copepod Community Size EGOA Survey</span></p></td>
-<td class="cl-84bb3ba3"><p class="cl-84baedbb"><span class="cl-84bac6ab">neutral</span></p></td>
+<td class="cl-0b07165a"><p class="cl-0b06a176"><span class="cl-0b067bb1">Annual Copepod Community Size EGOA Survey</span></p></td>
+<td class="cl-0b07165b"><p class="cl-0b06a177"><span class="cl-0b067bb1">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba2"><p class="cl-84baedba"><span class="cl-84bac6ab">Annual Copepod Community Size WGOA Survey</span></p></td>
-<td class="cl-84bb3ba3"><p class="cl-84baedbb"><span class="cl-84bac6ab">neutral</span></p></td>
+<td class="cl-0b07165a"><p class="cl-0b06a176"><span class="cl-0b067bb1">Annual Copepod Community Size WGOA Survey</span></p></td>
+<td class="cl-0b07165b"><p class="cl-0b06a177"><span class="cl-0b067bb1">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba5"><p class="cl-84baedba"><span class="cl-84bac6ab">Summer Euphausiid Abundance Kodiak Survey</span></p></td>
-<td class="cl-84bb3ba6"><p class="cl-84baedbb"><span class="cl-84bac6ab">NA</span></p></td>
+<td class="cl-0b07165d"><p class="cl-0b06a176"><span class="cl-0b067bb1">Summer Euphausiid Abundance Kodiak Survey</span></p></td>
+<td class="cl-0b07165e"><p class="cl-0b06a177"><span class="cl-0b067bb1">NA</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba2"><p class="cl-84baedba"><span class="cl-84bac6ab">Annual Sablefish Growth YOY Middleton Survey</span></p></td>
-<td class="cl-84bb3ba3"><p class="cl-84baedbb"><span class="cl-84bac6ab">neutral</span></p></td>
+<td class="cl-0b07165a"><p class="cl-0b06a176"><span class="cl-0b067bb1">Annual Sablefish Growth YOY Middleton Survey</span></p></td>
+<td class="cl-0b07165b"><p class="cl-0b06a177"><span class="cl-0b067bb1">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td rowspan="8" class="cl-84bb3ba1"><p class="cl-84baedba"><span class="cl-84bac6ab">Upper Trophic</span></p></td>
-<td class="cl-84bb3ba2"><p class="cl-84baedba"><span class="cl-84bac6ab">Summer Sablefish CPUE Juvenile Nearshore GOAAI Survey</span></p></td>
-<td class="cl-84bb3ba7"><p class="cl-84baedbb"><span class="cl-84bac6ac">high</span></p></td>
+<td rowspan="8" class="cl-0b071659"><p class="cl-0b06a176"><span class="cl-0b067bb1">Upper Trophic</span></p></td>
+<td class="cl-0b07165a"><p class="cl-0b06a176"><span class="cl-0b067bb1">Summer Sablefish CPUE Juvenile Nearshore GOAAI Survey</span></p></td>
+<td class="cl-0b07165f"><p class="cl-0b06a177"><span class="cl-0b067bb2">high</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba2"><p class="cl-84baedba"><span class="cl-84bac6ab">Summer Sablefish CPUE Juvenile GOA Survey</span></p></td>
-<td class="cl-84bb3ba8"><p class="cl-84baedbb"><span class="cl-84bac6ab">NA</span></p></td>
+<td class="cl-0b07165a"><p class="cl-0b06a176"><span class="cl-0b067bb1">Summer Sablefish CPUE Juvenile GOA Survey</span></p></td>
+<td class="cl-0b071660"><p class="cl-0b06a177"><span class="cl-0b067bb1">NA</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba5"><p class="cl-84baedba"><span class="cl-84bac6ab">Annual Sablefish Mean Age Female Adult Model</span></p></td>
-<td class="cl-84bb6290"><p class="cl-84baedbb"><span class="cl-84bac6aa">low</span></p></td>
+<td class="cl-0b07165d"><p class="cl-0b06a176"><span class="cl-0b067bb1">Annual Sablefish Mean Age Female Adult Model</span></p></td>
+<td class="cl-0b073e7e"><p class="cl-0b06a177"><span class="cl-0b067bb0">low</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba5"><p class="cl-84baedba"><span class="cl-84bac6ab">Annual Sablefish Age Evenness Female Adult Model</span></p></td>
-<td class="cl-84bb6290"><p class="cl-84baedbb"><span class="cl-84bac6aa">low</span></p></td>
+<td class="cl-0b07165d"><p class="cl-0b06a176"><span class="cl-0b067bb1">Annual Sablefish Age Evenness Female Adult Model</span></p></td>
+<td class="cl-0b073e7e"><p class="cl-0b06a177"><span class="cl-0b067bb0">low</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba2"><p class="cl-84baedba"><span class="cl-84bac6ab">Summer Sablefish Condition Female Age4 GOA Survey</span></p></td>
-<td class="cl-84bb3ba3"><p class="cl-84baedbb"><span class="cl-84bac6ab">neutral</span></p></td>
+<td class="cl-0b07165a"><p class="cl-0b06a176"><span class="cl-0b067bb1">Summer Sablefish Condition Female Age4 GOA Survey</span></p></td>
+<td class="cl-0b07165b"><p class="cl-0b06a177"><span class="cl-0b067bb1">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb6293"><p class="cl-84baedba"><span class="cl-84bac6ab">Annual Arrowtooth Biomass GOA Model</span></p></td>
-<td class="cl-84bb6291"><p class="cl-84baedbb"><span class="cl-84bac6ab">neutral</span></p></td>
+<td class="cl-0b073e81"><p class="cl-0b06a176"><span class="cl-0b067bb1">Annual Arrowtooth Biomass GOA Model</span></p></td>
+<td class="cl-0b073e7f"><p class="cl-0b06a177"><span class="cl-0b067bb1">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba2"><p class="cl-84baedba"><span class="cl-84bac6ab">Annual Sablefish Incidental Catch Arrowtooth Target GOA Fishery</span></p></td>
-<td class="cl-84bb3ba3"><p class="cl-84baedbb"><span class="cl-84bac6ab">neutral</span></p></td>
+<td class="cl-0b07165a"><p class="cl-0b06a176"><span class="cl-0b067bb1">Annual Sablefish Incidental Catch Arrowtooth Target GOA Fishery</span></p></td>
+<td class="cl-0b07165b"><p class="cl-0b06a177"><span class="cl-0b067bb1">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba2"><p class="cl-84baedba"><span class="cl-84bac6ab">Summer Sablefish Condition Female Adult GOA Survey</span></p></td>
-<td class="cl-84bb3ba3"><p class="cl-84baedbb"><span class="cl-84bac6ab">neutral</span></p></td>
+<td class="cl-0b07165a"><p class="cl-0b06a176"><span class="cl-0b067bb1">Summer Sablefish Condition Female Adult GOA Survey</span></p></td>
+<td class="cl-0b07165b"><p class="cl-0b06a177"><span class="cl-0b067bb1">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td rowspan="6" class="cl-84bb3ba1"><p class="cl-84baedba"><span class="cl-84bac6ab">Fishery Performance</span></p></td>
-<td class="cl-84bb3ba2"><p class="cl-84baedba"><span class="cl-84bac6ab">Annual Sablefish Longline CPUE GOA Fishery</span></p></td>
-<td class="cl-84bb3ba3"><p class="cl-84baedbb"><span class="cl-84bac6ab">neutral</span></p></td>
+<td rowspan="6" class="cl-0b071659"><p class="cl-0b06a176"><span class="cl-0b067bb1">Fishery Performance</span></p></td>
+<td class="cl-0b07165a"><p class="cl-0b06a176"><span class="cl-0b067bb1">Annual Sablefish Longline CPUE GOA Fishery</span></p></td>
+<td class="cl-0b07165b"><p class="cl-0b06a177"><span class="cl-0b067bb1">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba5"><p class="cl-84baedba"><span class="cl-84bac6ab">Annual Sablefish Pot CPUE EBS Fishery</span></p></td>
-<td class="cl-84bb6294"><p class="cl-84baedbb"><span class="cl-84bac6ac">high</span></p></td>
+<td class="cl-0b07165d"><p class="cl-0b06a176"><span class="cl-0b067bb1">Annual Sablefish Pot CPUE EBS Fishery</span></p></td>
+<td class="cl-0b073e82"><p class="cl-0b06a177"><span class="cl-0b067bb2">high</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba2"><p class="cl-84baedba"><span class="cl-84bac6ab">Annual Sablefish Incidental Catch GOA Fishery</span></p></td>
-<td class="cl-84bb6295"><p class="cl-84baedbb"><span class="cl-84bac6aa">high</span></p></td>
+<td class="cl-0b07165a"><p class="cl-0b06a176"><span class="cl-0b067bb1">Annual Sablefish Incidental Catch GOA Fishery</span></p></td>
+<td class="cl-0b073e83"><p class="cl-0b06a177"><span class="cl-0b067bb0">high</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba5"><p class="cl-84baedba"><span class="cl-84bac6ab">Annual Sablefish Incidental Catch BSAI Fishery</span></p></td>
-<td class="cl-84bb6290"><p class="cl-84baedbb"><span class="cl-84bac6aa">high</span></p></td>
+<td class="cl-0b07165d"><p class="cl-0b06a176"><span class="cl-0b067bb1">Annual Sablefish Incidental Catch BSAI Fishery</span></p></td>
+<td class="cl-0b073e7e"><p class="cl-0b06a177"><span class="cl-0b067bb0">high</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba2"><p class="cl-84baedba"><span class="cl-84bac6ab">Annual Sablefish Condition Female Adult GOA Fishery</span></p></td>
-<td class="cl-84bb3ba7"><p class="cl-84baedbb"><span class="cl-84bac6ac">high</span></p></td>
+<td class="cl-0b07165a"><p class="cl-0b06a176"><span class="cl-0b067bb1">Annual Sablefish Condition Female Adult GOA Fishery</span></p></td>
+<td class="cl-0b07165f"><p class="cl-0b06a177"><span class="cl-0b067bb2">high</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb3ba5"><p class="cl-84baedba"><span class="cl-84bac6ab">Annual Sablefish Condition Female Adult BSAI Fishery</span></p></td>
-<td class="cl-84bb3ba6"><p class="cl-84baedbb"><span class="cl-84bac6ab">NA</span></p></td>
+<td class="cl-0b07165d"><p class="cl-0b06a176"><span class="cl-0b067bb1">Annual Sablefish Condition Female Adult BSAI Fishery</span></p></td>
+<td class="cl-0b07165e"><p class="cl-0b06a177"><span class="cl-0b067bb1">NA</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td rowspan="2" class="cl-84bb3ba4"><p class="cl-84baedba"><span class="cl-84bac6ab">Economic</span></p></td>
-<td class="cl-84bb3ba5"><p class="cl-84baedba"><span class="cl-84bac6ab">Annual Sablefish Real Exvessel Value Fishery</span></p></td>
-<td class="cl-84bb6290"><p class="cl-84baedbb"><span class="cl-84bac6aa">low</span></p></td>
+<td rowspan="2" class="cl-0b07165c"><p class="cl-0b06a176"><span class="cl-0b067bb1">Economic</span></p></td>
+<td class="cl-0b07165d"><p class="cl-0b06a176"><span class="cl-0b067bb1">Annual Sablefish Real Exvessel Value Fishery</span></p></td>
+<td class="cl-0b073e7e"><p class="cl-0b06a177"><span class="cl-0b067bb0">low</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84bb6296"><p class="cl-84baedba"><span class="cl-84bac6ab">Annual Sablefish Real Exvessel Price Fishery</span></p></td>
-<td class="cl-84bb6297"><p class="cl-84baedbb"><span class="cl-84bac6aa">low</span></p></td>
+<td class="cl-0b073e84"><p class="cl-0b06a176"><span class="cl-0b067bb1">Annual Sablefish Real Exvessel Price Fishery</span></p></td>
+<td class="cl-0b073e85"><p class="cl-0b06a177"><span class="cl-0b067bb0">low</span></p></td>
 </tr>
 </tbody>
 </table>
-</div></template><div class="flextable-shadow-host" id="fe032f67-4b6a-495a-a38e-234ad6da4538"></div>
+</div></template><div class="flextable-shadow-host" id="7db3f10e-faae-4716-b769-6deefc972adf"></div>
 <script>
-var dest = document.getElementById("fe032f67-4b6a-495a-a38e-234ad6da4538");
-var template = document.getElementById("156a5ad4-11ca-435e-b427-4e05263ab50e");
+var dest = document.getElementById("7db3f10e-faae-4716-b769-6deefc972adf");
+var template = document.getElementById("d3df15d1-c6a4-4319-93f9-7a029f6b8ee0");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";
@@ -319,10 +326,12 @@ var fantome = dest.attachShadow({mode: 'open'});
 var templateContent = template.content;
 fantome.appendChild(templateContent);
 </script><p>Multiple years can be shown.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/esp_traffic_tab_long.html">esp_traffic_tab_long</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat</span>, 
-                       year <span class="op">=</span> <span class="fl">2016</span><span class="op">:</span><span class="fl">2020</span><span class="op">)</span></code></pre></div>
-<template id="68b473fa-bc51-4e90-afb0-2fdc79acbe15"><style>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/esp_traffic_tab_long.html">esp_traffic_tab_long</a></span><span class="op">(</span>
+  data <span class="op">=</span> <span class="va">dat</span>,
+  year <span class="op">=</span> <span class="fl">2016</span><span class="op">:</span><span class="fl">2020</span>
+<span class="op">)</span></code></pre></div>
+<template id="1ba3ba6e-fe0d-42c6-b5c9-119d5b9b4fcb"><style>
 .tabwid table{
   border-collapse:collapse;
   line-height:1;
@@ -358,254 +367,254 @@ background-color: transparent;
 }
 </style>
 <div class="tabwid">
-<style>.cl-8504e492{border-collapse:collapse;}.cl-84fc85e0{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-84fc85e1{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-84fc85e2{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-84fc85e3{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-84fc85e4{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-84fcfae8{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fcfae9{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fcfaea{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fcfaeb{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fcfaec{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fcfaed{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fcfaee{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fcfaef{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fcfaf0{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fcfaf1{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fcfaf2{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fd2194{width:81.7pt;background-clip: padding-box;background-color:rgba(204, 204, 204, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fd2195{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fd2196{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fd2197{width:81.7pt;background-clip: padding-box;background-color:rgba(204, 204, 204, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fd2198{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fd2199{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fd219a{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fd219b{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fd219c{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fd219d{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fd219e{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fd4796{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fd4797{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fd4798{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fd4799{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-84fd479a{width:81.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
-<table class="table cl-8504e492">
+<style>.cl-0b47ec3a{border-collapse:collapse;}.cl-0b3fdb62{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-0b3fdb63{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-0b3fdb64{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-0b400290{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-0b400291{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-0b405024{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b405025{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b405026{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b405027{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b405028{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b405029{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b40502a{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b40502b{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b40502c{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b40502d{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b40502e{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b407734{width:81.7pt;background-clip: padding-box;background-color:rgba(204, 204, 204, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b407735{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b407736{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b407737{width:81.7pt;background-clip: padding-box;background-color:rgba(204, 204, 204, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b407738{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b407739{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b40773a{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b40773b{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b40773c{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b40773d{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b40773e{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b409e26{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b409e27{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b409e28{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b409e29{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0b409e2a{width:81.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style>
+<table class="table cl-0b47ec3a">
 <caption class="Table Caption">Traffic light scoring</caption>
 <thead><tr style="overflow-wrap:break-word;">
-<td class="cl-84fd4798"><p class="cl-84fc85e3"><span class="cl-84fc85e0">Indicator category</span></p></td>
-<td class="cl-84fd4799"><p class="cl-84fc85e3"><span class="cl-84fc85e0">Indicator</span></p></td>
-<td class="cl-84fd479a"><p class="cl-84fc85e3"><span class="cl-84fc85e0">2016 Status</span></p></td>
-<td class="cl-84fd479a"><p class="cl-84fc85e3"><span class="cl-84fc85e0">2017 Status</span></p></td>
-<td class="cl-84fd479a"><p class="cl-84fc85e3"><span class="cl-84fc85e0">2018 Status</span></p></td>
-<td class="cl-84fd479a"><p class="cl-84fc85e3"><span class="cl-84fc85e0">2019 Status</span></p></td>
-<td class="cl-84fd479a"><p class="cl-84fc85e3"><span class="cl-84fc85e0">2020 Status</span></p></td>
+<td class="cl-0b409e28"><p class="cl-0b400290"><span class="cl-0b3fdb62">Indicator category</span></p></td>
+<td class="cl-0b409e29"><p class="cl-0b400290"><span class="cl-0b3fdb62">Indicator</span></p></td>
+<td class="cl-0b409e2a"><p class="cl-0b400290"><span class="cl-0b3fdb62">2016 Status</span></p></td>
+<td class="cl-0b409e2a"><p class="cl-0b400290"><span class="cl-0b3fdb62">2017 Status</span></p></td>
+<td class="cl-0b409e2a"><p class="cl-0b400290"><span class="cl-0b3fdb62">2018 Status</span></p></td>
+<td class="cl-0b409e2a"><p class="cl-0b400290"><span class="cl-0b3fdb62">2019 Status</span></p></td>
+<td class="cl-0b409e2a"><p class="cl-0b400290"><span class="cl-0b3fdb62">2020 Status</span></p></td>
 </tr></thead>
 <tbody>
 <tr style="overflow-wrap:break-word;">
-<td rowspan="4" class="cl-84fcfae9"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Physical</span></p></td>
-<td class="cl-84fcfaeb"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Annual Heatwave GOA Model</span></p></td>
-<td class="cl-84fcfaea"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
-<td class="cl-84fcfae8"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfae8"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaea"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
-<td class="cl-84fcfae8"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
+<td rowspan="4" class="cl-0b405025"><p class="cl-0b400290"><span class="cl-0b3fdb63">Physical</span></p></td>
+<td class="cl-0b405027"><p class="cl-0b400290"><span class="cl-0b3fdb63">Annual Heatwave GOA Model</span></p></td>
+<td class="cl-0b405026"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
+<td class="cl-0b405024"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405024"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405026"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
+<td class="cl-0b405024"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaed"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Spring Temperature Surface EGOA Satellite</span></p></td>
-<td class="cl-84fcfaee"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaee"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
+<td class="cl-0b405029"><p class="cl-0b400290"><span class="cl-0b3fdb63">Spring Temperature Surface EGOA Satellite</span></p></td>
+<td class="cl-0b40502a"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502a"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaf2"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Spring Temperature Surface SEBS Satellite</span></p></td>
-<td class="cl-84fd219b"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd219b"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
-<td class="cl-84fd219b"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
-<td class="cl-84fd219b"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
+<td class="cl-0b40502e"><p class="cl-0b400290"><span class="cl-0b3fdb63">Spring Temperature Surface SEBS Satellite</span></p></td>
+<td class="cl-0b40773b"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40773b"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
+<td class="cl-0b40773b"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
+<td class="cl-0b40773b"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaed"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Summer Temperature 250m GOA Survey</span></p></td>
-<td class="cl-84fcfaee"><p class="cl-84fc85e4"><span class="cl-84fc85e2">low</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
+<td class="cl-0b405029"><p class="cl-0b400290"><span class="cl-0b3fdb63">Summer Temperature 250m GOA Survey</span></p></td>
+<td class="cl-0b40502a"><p class="cl-0b400291"><span class="cl-0b3fdb64">low</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td rowspan="8" class="cl-84fcfaf0"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Lower Trophic</span></p></td>
-<td class="cl-84fcfaed"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Spring Chlorophylla Biomass EGOA Satellite</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
+<td rowspan="8" class="cl-0b40502c"><p class="cl-0b400290"><span class="cl-0b3fdb63">Lower Trophic</span></p></td>
+<td class="cl-0b405029"><p class="cl-0b400290"><span class="cl-0b3fdb63">Spring Chlorophylla Biomass EGOA Satellite</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaf2"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Spring Chlorophylla Biomass SEBS Satellite</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd2196"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd2196"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
+<td class="cl-0b40502e"><p class="cl-0b400290"><span class="cl-0b3fdb63">Spring Chlorophylla Biomass SEBS Satellite</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b407736"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b407736"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaed"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Spring Chlorophylla Peak EGOA Satellite</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaee"><p class="cl-84fc85e4"><span class="cl-84fc85e2">low</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaee"><p class="cl-84fc85e4"><span class="cl-84fc85e2">low</span></p></td>
+<td class="cl-0b405029"><p class="cl-0b400290"><span class="cl-0b3fdb63">Spring Chlorophylla Peak EGOA Satellite</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502a"><p class="cl-0b400291"><span class="cl-0b3fdb64">low</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502a"><p class="cl-0b400291"><span class="cl-0b3fdb64">low</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaf2"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Spring Chlorophylla Peak SEBS Satellite</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd219b"><p class="cl-84fc85e4"><span class="cl-84fc85e2">low</span></p></td>
-<td class="cl-84fd2196"><p class="cl-84fc85e4"><span class="cl-84fc85e0">high</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
+<td class="cl-0b40502e"><p class="cl-0b400290"><span class="cl-0b3fdb63">Spring Chlorophylla Peak SEBS Satellite</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40773b"><p class="cl-0b400291"><span class="cl-0b3fdb64">low</span></p></td>
+<td class="cl-0b407736"><p class="cl-0b400291"><span class="cl-0b3fdb62">high</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaed"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Annual Copepod Community Size EGOA Survey</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
+<td class="cl-0b405029"><p class="cl-0b400290"><span class="cl-0b3fdb63">Annual Copepod Community Size EGOA Survey</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaed"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Annual Copepod Community Size WGOA Survey</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fcfaee"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
+<td class="cl-0b405029"><p class="cl-0b400290"><span class="cl-0b3fdb63">Annual Copepod Community Size WGOA Survey</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b40502a"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaf2"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Summer Euphausiid Abundance Kodiak Survey</span></p></td>
-<td class="cl-84fd2194"><p class="cl-84fc85e4"><span class="cl-84fc85e1">NA</span></p></td>
-<td class="cl-84fd2196"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fd2194"><p class="cl-84fc85e4"><span class="cl-84fc85e1">NA</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd2194"><p class="cl-84fc85e4"><span class="cl-84fc85e1">NA</span></p></td>
+<td class="cl-0b40502e"><p class="cl-0b400290"><span class="cl-0b3fdb63">Summer Euphausiid Abundance Kodiak Survey</span></p></td>
+<td class="cl-0b407734"><p class="cl-0b400291"><span class="cl-0b3fdb63">NA</span></p></td>
+<td class="cl-0b407736"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b407734"><p class="cl-0b400291"><span class="cl-0b3fdb63">NA</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b407734"><p class="cl-0b400291"><span class="cl-0b3fdb63">NA</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaed"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Annual Sablefish Growth YOY Middleton Survey</span></p></td>
-<td class="cl-84fcfaee"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaee"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
+<td class="cl-0b405029"><p class="cl-0b400290"><span class="cl-0b3fdb63">Annual Sablefish Growth YOY Middleton Survey</span></p></td>
+<td class="cl-0b40502a"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502a"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td rowspan="8" class="cl-84fcfaf0"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Upper Trophic</span></p></td>
-<td class="cl-84fcfaed"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Summer Sablefish CPUE Juvenile Nearshore GOAAI Survey</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaee"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
-<td class="cl-84fcfaee"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
-<td class="cl-84fcfaee"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
+<td rowspan="8" class="cl-0b40502c"><p class="cl-0b400290"><span class="cl-0b3fdb63">Upper Trophic</span></p></td>
+<td class="cl-0b405029"><p class="cl-0b400290"><span class="cl-0b3fdb63">Summer Sablefish CPUE Juvenile Nearshore GOAAI Survey</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502a"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
+<td class="cl-0b40502a"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
+<td class="cl-0b40502a"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaed"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Summer Sablefish CPUE Juvenile GOA Survey</span></p></td>
-<td class="cl-84fd2197"><p class="cl-84fc85e4"><span class="cl-84fc85e1">NA</span></p></td>
-<td class="cl-84fcfaee"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
-<td class="cl-84fd2197"><p class="cl-84fc85e4"><span class="cl-84fc85e1">NA</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd2197"><p class="cl-84fc85e4"><span class="cl-84fc85e1">NA</span></p></td>
+<td class="cl-0b405029"><p class="cl-0b400290"><span class="cl-0b3fdb63">Summer Sablefish CPUE Juvenile GOA Survey</span></p></td>
+<td class="cl-0b407737"><p class="cl-0b400291"><span class="cl-0b3fdb63">NA</span></p></td>
+<td class="cl-0b40502a"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
+<td class="cl-0b407737"><p class="cl-0b400291"><span class="cl-0b3fdb63">NA</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b407737"><p class="cl-0b400291"><span class="cl-0b3fdb63">NA</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaf2"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Annual Sablefish Mean Age Female Adult Model</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd2196"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fd2196"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
+<td class="cl-0b40502e"><p class="cl-0b400290"><span class="cl-0b3fdb63">Annual Sablefish Mean Age Female Adult Model</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b407736"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b407736"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaf2"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Annual Sablefish Age Evenness Female Adult Model</span></p></td>
-<td class="cl-84fd2196"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fd2196"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fd2196"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fd2196"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fd2196"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
+<td class="cl-0b40502e"><p class="cl-0b400290"><span class="cl-0b3fdb63">Annual Sablefish Age Evenness Female Adult Model</span></p></td>
+<td class="cl-0b407736"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b407736"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b407736"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b407736"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b407736"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaed"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Summer Sablefish Condition Female Age4 GOA Survey</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
+<td class="cl-0b405029"><p class="cl-0b400290"><span class="cl-0b3fdb63">Summer Sablefish Condition Female Age4 GOA Survey</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fd2199"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Annual Arrowtooth Biomass GOA Model</span></p></td>
-<td class="cl-84fd2198"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd2198"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd2198"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd2198"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd2198"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
+<td class="cl-0b407739"><p class="cl-0b400290"><span class="cl-0b3fdb63">Annual Arrowtooth Biomass GOA Model</span></p></td>
+<td class="cl-0b407738"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b407738"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b407738"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b407738"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b407738"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaed"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Annual Sablefish Incidental Catch Arrowtooth Target GOA Fishery</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">high</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">high</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">high</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
+<td class="cl-0b405029"><p class="cl-0b400290"><span class="cl-0b3fdb63">Annual Sablefish Incidental Catch Arrowtooth Target GOA Fishery</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">high</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">high</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">high</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaed"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Summer Sablefish Condition Female Adult GOA Survey</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
+<td class="cl-0b405029"><p class="cl-0b400290"><span class="cl-0b3fdb63">Summer Sablefish Condition Female Adult GOA Survey</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td rowspan="6" class="cl-84fcfaf0"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Fishery Performance</span></p></td>
-<td class="cl-84fcfaed"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Annual Sablefish Longline CPUE GOA Fishery</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
+<td rowspan="6" class="cl-0b40502c"><p class="cl-0b400290"><span class="cl-0b3fdb63">Fishery Performance</span></p></td>
+<td class="cl-0b405029"><p class="cl-0b400290"><span class="cl-0b3fdb63">Annual Sablefish Longline CPUE GOA Fishery</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaf2"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Annual Sablefish Pot CPUE EBS Fishery</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd219b"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
-<td class="cl-84fd219b"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
-<td class="cl-84fd219b"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
+<td class="cl-0b40502e"><p class="cl-0b400290"><span class="cl-0b3fdb63">Annual Sablefish Pot CPUE EBS Fishery</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40773b"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
+<td class="cl-0b40773b"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
+<td class="cl-0b40773b"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaed"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Annual Sablefish Incidental Catch GOA Fishery</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">high</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">high</span></p></td>
-<td class="cl-84fcfaef"><p class="cl-84fc85e4"><span class="cl-84fc85e0">high</span></p></td>
+<td class="cl-0b405029"><p class="cl-0b400290"><span class="cl-0b3fdb63">Annual Sablefish Incidental Catch GOA Fishery</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">high</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">high</span></p></td>
+<td class="cl-0b40502b"><p class="cl-0b400291"><span class="cl-0b3fdb62">high</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaf2"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Annual Sablefish Incidental Catch BSAI Fishery</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd2196"><p class="cl-84fc85e4"><span class="cl-84fc85e0">high</span></p></td>
-<td class="cl-84fd2196"><p class="cl-84fc85e4"><span class="cl-84fc85e0">high</span></p></td>
+<td class="cl-0b40502e"><p class="cl-0b400290"><span class="cl-0b3fdb63">Annual Sablefish Incidental Catch BSAI Fishery</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b407736"><p class="cl-0b400291"><span class="cl-0b3fdb62">high</span></p></td>
+<td class="cl-0b407736"><p class="cl-0b400291"><span class="cl-0b3fdb62">high</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaed"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Annual Sablefish Condition Female Adult GOA Fishery</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaec"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaee"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
+<td class="cl-0b405029"><p class="cl-0b400290"><span class="cl-0b3fdb63">Annual Sablefish Condition Female Adult GOA Fishery</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b405028"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502a"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fcfaf2"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Annual Sablefish Condition Female Adult BSAI Fishery</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd2194"><p class="cl-84fc85e4"><span class="cl-84fc85e1">NA</span></p></td>
-<td class="cl-84fd2194"><p class="cl-84fc85e4"><span class="cl-84fc85e1">NA</span></p></td>
-<td class="cl-84fd2194"><p class="cl-84fc85e4"><span class="cl-84fc85e1">NA</span></p></td>
-<td class="cl-84fd2194"><p class="cl-84fc85e4"><span class="cl-84fc85e1">NA</span></p></td>
+<td class="cl-0b40502e"><p class="cl-0b400290"><span class="cl-0b3fdb63">Annual Sablefish Condition Female Adult BSAI Fishery</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b407734"><p class="cl-0b400291"><span class="cl-0b3fdb63">NA</span></p></td>
+<td class="cl-0b407734"><p class="cl-0b400291"><span class="cl-0b3fdb63">NA</span></p></td>
+<td class="cl-0b407734"><p class="cl-0b400291"><span class="cl-0b3fdb63">NA</span></p></td>
+<td class="cl-0b407734"><p class="cl-0b400291"><span class="cl-0b3fdb63">NA</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td rowspan="2" class="cl-84fd2195"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Economic</span></p></td>
-<td class="cl-84fcfaf2"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Annual Sablefish Real Exvessel Value Fishery</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fcfaf1"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd2196"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fd2196"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
+<td rowspan="2" class="cl-0b407735"><p class="cl-0b400290"><span class="cl-0b3fdb63">Economic</span></p></td>
+<td class="cl-0b40502e"><p class="cl-0b400290"><span class="cl-0b3fdb63">Annual Sablefish Real Exvessel Value Fishery</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40502d"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b407736"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b407736"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
 </tr>
 <tr style="overflow-wrap:break-word;">
-<td class="cl-84fd219d"><p class="cl-84fc85e3"><span class="cl-84fc85e1">Annual Sablefish Real Exvessel Price Fishery</span></p></td>
-<td class="cl-84fd219c"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd4796"><p class="cl-84fc85e4"><span class="cl-84fc85e2">high</span></p></td>
-<td class="cl-84fd219c"><p class="cl-84fc85e4"><span class="cl-84fc85e1">neutral</span></p></td>
-<td class="cl-84fd219e"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
-<td class="cl-84fd219e"><p class="cl-84fc85e4"><span class="cl-84fc85e0">low</span></p></td>
+<td class="cl-0b40773d"><p class="cl-0b400290"><span class="cl-0b3fdb63">Annual Sablefish Real Exvessel Price Fishery</span></p></td>
+<td class="cl-0b40773c"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b409e26"><p class="cl-0b400291"><span class="cl-0b3fdb64">high</span></p></td>
+<td class="cl-0b40773c"><p class="cl-0b400291"><span class="cl-0b3fdb63">neutral</span></p></td>
+<td class="cl-0b40773e"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
+<td class="cl-0b40773e"><p class="cl-0b400291"><span class="cl-0b3fdb62">low</span></p></td>
 </tr>
 </tbody>
 </table>
-</div></template><div class="flextable-shadow-host" id="b10acf39-30d2-4095-8886-3444a3206ce5"></div>
+</div></template><div class="flextable-shadow-host" id="a67f64da-9308-4b55-9253-f81975ca0b76"></div>
 <script>
-var dest = document.getElementById("b10acf39-30d2-4095-8886-3444a3206ce5");
-var template = document.getElementById("68b473fa-bc51-4e90-afb0-2fdc79acbe15");
+var dest = document.getElementById("a67f64da-9308-4b55-9253-f81975ca0b76");
+var template = document.getElementById("1ba3ba6e-fe0d-42c6-b5c9-119d5b9b4fcb");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";

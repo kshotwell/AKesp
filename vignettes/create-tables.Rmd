@@ -18,14 +18,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-First, open `AKesp.Rproj` and run:
-```{r}
-devtools::load_all()
-```
-
-Eventually the package will be on Github!
-
-Most tables are automatically created from the `table_spreadsheet.csv` and the `.csv` files in the `tables` folder. However, the `AKesp` package can also create some tables that require data analysis. 
+Tables can be automatically created from the `table_spreadsheet.csv` and the `.csv` files in the `tables` folder. Additionally, the `AKesp` package can also create some tables that require data analysis. 
 
 ## Traffic light scores
 
