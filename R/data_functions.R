@@ -64,10 +64,8 @@ prep_ind_data <- function(data, recent = TRUE, label_width = 50) {
 
   dat <- data %>%
     dplyr::filter(
-      # is.na(.data$GATE2_YEAR),
-      # is.na(.data$REMOVED_YEAR)
-      .data$GATE2_YEAR == "NA",
-      .data$REMOVED_YEAR == "NA"
+      (.data$GATE2_YEAR == "NA" | is.na(.data$GATE2_YEAR)),
+      (.data$REMOVED_YEAR == "NA" | is.na(.data$REMOVED_YEAR))
     ) %>%
     dplyr::select(
       .data$INDICATOR_NAME, .data$CATEGORY, .data$INDICATOR_TYPE,

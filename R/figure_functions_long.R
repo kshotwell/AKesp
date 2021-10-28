@@ -411,6 +411,7 @@ esp_metrics <- function(data, species, region, approved = TRUE, order = FALSE, o
 #' This function plots a visual of overall ESP scores over time.
 #' @param data The ESP indicator data (LONG format).
 #' @param species The species name
+#' @param region The stock region
 #' @param out Whether the function should save the plot, or return a ggplot object. One of c("ggplot", "save")
 #' @param name The file name for the image. Will be saved relative to the working directory. Only needed if saving the plot.
 #' @param ... Passed to `ggplot2::ggsave`
@@ -419,7 +420,7 @@ esp_metrics <- function(data, species, region, approved = TRUE, order = FALSE, o
 #' @importFrom rlang .data
 #' @export
 
-esp_overall_score <- function(data, species, out = "ggplot", name, ...) {
+esp_overall_score <- function(data, species, region, out = "ggplot", name, ...) {
   dat <- data %>%
     prep_ind_data() %>%
     dplyr::filter(.data$YEAR >= 2000) %>%
@@ -470,9 +471,10 @@ esp_overall_score <- function(data, species, out = "ggplot", name, ...) {
       legend.title = ggplot2::element_blank(),
       legend.position = "bottom",
       legend.direction = "vertical",
+      plot.title = ggplot2::element_text(size=14)
     ) +
     ggplot2::guides(color = ggplot2::guide_legend(ncol = 2)) +
-    ggplot2::ggtitle(label = paste("Overall Stage 1 Score for", species)) +
+    ggplot2::ggtitle(label = paste("Overall Stage 1 Score for", region, species)) +
     ggplot2::ylim(-ymax, ymax) +
     ggplot2::facet_grid(rows = ggplot2::vars(.data$INDICATOR_TYPE))
 

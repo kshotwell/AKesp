@@ -197,12 +197,13 @@ AKesp::esp_traffic_long(
 
 ```{r, overall, fig.height = 7, results = "asis"}
 alt <- "Alt text"
-cap <- c("Simple traffic light score for overall ecosystem and socioeconomic categories from", min(params$esp_data$YEAR), "to present.")
+cap <- c("Simple traffic light score for overall ecosystem and socioeconomic categories from 2000 to present.")
 
 knitr::opts_chunk$set(fig.cap = alt)
 AKesp::esp_overall_score(
   data = params$esp_data,
-  species = params$fish
+  species = params$fish,
+  region = params$region
 )
 
 cat("##### Figure \\@ref(fig:overall).", cap, "{-}")

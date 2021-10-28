@@ -2,7 +2,7 @@
 #' Create indicator traffic light table - LONG data
 #'
 #' This function creates an ESP indicator traffic light table
-#' @param data The ESP indicator data. Should have a column for Year and a column for each indicator.
+#' @param data The ESP indicator data.
 #' @param year The year(s) to use for the traffic light analysis. Either a single number or a numeric vector.
 #' @param cap The table caption.
 #' @return A flextable
@@ -18,6 +18,10 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
   ))
 
   dat <- data %>%
+    dplyr::filter(
+      (.data$GATE2_YEAR == "NA" | is.na(.data$GATE2_YEAR)),
+      (.data$REMOVED_YEAR == "NA" | is.na(.data$REMOVED_YEAR))
+    ) %>%
     dplyr::group_by(.data$INDICATOR_NAME) %>%
     dplyr::mutate(
       name = .data$INDICATOR_NAME %>%
