@@ -192,7 +192,7 @@ esp_traffic_long <- function(data,
       data = dat %>%
         dplyr::filter(
           .data$YEAR == maxyear,
-          .data$score > 0
+          .data$score < 0
         ),
       ggplot2::aes(
         label = .data$label,
@@ -208,7 +208,7 @@ esp_traffic_long <- function(data,
       data = dat %>%
         dplyr::filter(
           .data$YEAR == maxyear,
-          .data$score < 0
+          .data$score > 0
         ),
       ggplot2::aes(
         label = .data$label,

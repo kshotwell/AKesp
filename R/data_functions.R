@@ -37,9 +37,9 @@ esp_stock_options <- function() {
     type = "application/json"
   ) %>%
     dplyr::bind_rows() %>%
-    dplyr::select(.data$INTENDED_ESP) %>%
+    dplyr::select(.data$INTENDED_ESP_NAME) %>%
     dplyr::distinct() %>%
-    dplyr::rename("Stocks" = "INTENDED_ESP") %>%
+    dplyr::rename("Stocks" = "INTENDED_ESP_NAME") %>%
     dplyr::filter(.data$Stocks != "Multiple ESPs")
 
   return(data)
@@ -64,8 +64,10 @@ prep_ind_data <- function(data, recent = TRUE, label_width = 50) {
 
   dat <- data %>%
     dplyr::filter(
-      !is.na(.data$GATE2_YEAR),
-      !is.na(.data$REMOVED_YEAR)
+      # is.na(.data$GATE2_YEAR),
+      # is.na(.data$REMOVED_YEAR)
+      .data$GATE2_YEAR == "NA",
+      .data$REMOVED_YEAR == "NA"
     ) %>%
     dplyr::select(
       .data$INDICATOR_NAME, .data$CATEGORY, .data$INDICATOR_TYPE,
