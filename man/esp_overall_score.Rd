@@ -4,12 +4,14 @@
 \alias{esp_overall_score}
 \title{Plot a figure of overall ESP scores}
 \usage{
-esp_overall_score(data, species, out = "ggplot", name, ...)
+esp_overall_score(data, species, region, out = "ggplot", name, ...)
 }
 \arguments{
 \item{data}{The ESP indicator data (LONG format).}
 
 \item{species}{The species name}
+
+\item{region}{The stock region}
 
 \item{out}{Whether the function should save the plot, or return a ggplot object. One of c("ggplot", "save")}
 

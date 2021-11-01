@@ -39,6 +39,22 @@ rmarkdown::render(system.file("esp-report-card-template.Rmd",
   )
 )
 
+# ebs pcod - using a minimum year
+rmarkdown::render(system.file("esp-report-card-template.Rmd",
+                              package = "AKesp"
+),
+output_dir = getwd(),
+params = list(
+  esp_data = AKesp::get_esp_data("EBS Pacific Cod"),
+  fish = "Pacific Cod",
+  region = "EBS",
+  min_year = 1977,
+  stock_image = here::here("inst/images/noaa.jpg"),
+  con_model_path = here::here("inst/images/noaa.jpg"),
+  bayes_path = here::here("inst/images/noaa.jpg")
+)
+)
+
 # AKesp::bbrkc_long
 # can change where output renders - defaults to working directory
 # replace dummy figure paths with path to real figures (suggest to use `here` package)

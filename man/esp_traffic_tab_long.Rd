@@ -7,7 +7,7 @@
 esp_traffic_tab_long(data, year, cap = "Traffic light scoring")
 }
 \arguments{
-\item{data}{The ESP indicator data. Should have a column for Year and a column for each indicator.}
+\item{data}{The ESP indicator data.}
 
 \item{year}{The year(s) to use for the traffic light analysis. Either a single number or a numeric vector.}
 

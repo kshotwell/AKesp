@@ -13,6 +13,7 @@ esp_traffic_long(
   caption = "",
   ncolumn = 1,
   silent = FALSE,
+  min_year = NULL,
   ...
 )
 }
@@ -32,6 +33,8 @@ esp_traffic_long(
 \item{ncolumn}{How many columns the figure should have (1 by default)}
 
 \item{silent}{Whether to print the caption}
+
+\item{min_year}{The minimum year to show on the plots. If left NULL (the default), the minimum year will be the first year of the dataset.}
 
 \item{...}{Passed to \code{ggplot2::ggsave}}
 }

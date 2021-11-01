@@ -21,6 +21,7 @@ params:
   con_model_path: system.file("images/noaa.jpg", package = "AKesp")
   bayes_path: system.file("images/noaa.jpg", package = "AKesp")
   ncolumn: 1
+  min_year: NULL
 ---
 
 ```{r setup, include = FALSE}
@@ -175,7 +176,8 @@ AKesp::esp_traffic_long(
     dplyr::filter(INDICATOR_TYPE == "Ecosystem"),
   paginate = TRUE,
   caption = cap,
-  ncolumn = params$ncolumn
+  ncolumn = params$ncolumn,
+  min_year = params$min_year
 )
 ```
 
