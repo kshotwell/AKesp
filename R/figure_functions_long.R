@@ -14,9 +14,11 @@
 esp_cor_matrix_long <- function(data, name, out, ...) {
   data <- data %>%
     dplyr::select(.data$YEAR, .data$INDICATOR_NAME, .data$DATA_VALUE) %>%
-    tidyr::pivot_wider(id_cols = .data$YEAR,
-                       names_from = .data$INDICATOR_NAME,
-                       values_from = .data$DATA_VALUE)
+    tidyr::pivot_wider(
+      id_cols = .data$YEAR,
+      names_from = .data$INDICATOR_NAME,
+      values_from = .data$DATA_VALUE
+    )
 
   traffic1_cor <- round(
     stats::cor(data,
@@ -113,7 +115,8 @@ esp_hist_long <- function(data, name, out, ...) {
 #' @param name The file name for the image. Will be saved relative to the working directory.
 #' @param out Whether the function should save the plot, or return a ggplot object. One of c("ggplot", "save")
 #' @param paginate Whether to paginate the plots with `ggforce::facet_wrap_paginate`
-#' @param label Whether to label the facets
+#' @param label Whether to label the facets with a, b, c, etc.
+#' @param status Whether to label the facets with the indicator status
 #' @param caption A caption for the figure
 #' @param ncolumn How many columns the figure should have (1 by default)
 #' @param silent Whether to print the caption
@@ -129,6 +132,7 @@ esp_traffic_long <- function(data,
                              out = "ggplot",
                              paginate = FALSE,
                              label = TRUE,
+                             status = TRUE,
                              caption = "",
                              ncolumn = 1,
                              silent = FALSE,
@@ -189,8 +193,14 @@ esp_traffic_long <- function(data,
     ggplot2::geom_point() +
     ggplot2::geom_line(data = dat %>%
       tidyr::drop_na(.data$DATA_VALUE)) +
+    ggplot2::ylab("") +
+    ggplot2::scale_y_continuous(labels = scales::comma) +
+    ggplot2::theme_bw(base_size = 16) +
+    ggplot2::theme(strip.text = ggplot2::element_text(size = 10))
+
+  if (status) {
     # red boxes, bold
-    ggplot2::geom_label(
+    plt <- plt + ggplot2::geom_label(
       data = dat %>%
         dplyr::filter(
           .data$YEAR == maxyear,
@@ -205,48 +215,57 @@ esp_traffic_long <- function(data,
       fontface = "bold",
       fill = "brown1"
     ) +
-    # blue boxes, italic
-    ggplot2::geom_label(
-      data = dat %>%
-        dplyr::filter(
-          .data$YEAR == maxyear,
-          .data$score > 0
+      # blue boxes, italic
+      ggplot2::geom_label(
+        data = dat %>%
+          dplyr::filter(
+            .data$YEAR == maxyear,
+            .data$score > 0
+          ),
+        ggplot2::aes(
+          label = .data$label,
+          y = .data$mean
         ),
-      ggplot2::aes(
-        label = .data$label,
-        y = .data$mean
-      ),
-      nudge_x = 4,
-      show.legend = FALSE,
-      fontface = "italic",
-      fill = "cornflowerblue"
-    ) +
-    # beige boxes, neutral
-    ggplot2::geom_label(
-      data = dat %>%
-        dplyr::filter(
-          .data$YEAR == maxyear,
-          .data$score == 0
+        nudge_x = 4,
+        show.legend = FALSE,
+        fontface = "italic",
+        fill = "cornflowerblue"
+      ) +
+      # beige boxes, neutral
+      ggplot2::geom_label(
+        data = dat %>%
+          dplyr::filter(
+            .data$YEAR == maxyear,
+            .data$score == 0
+          ),
+        ggplot2::aes(
+          label = .data$label,
+          y = .data$mean
         ),
-      ggplot2::aes(
-        label = .data$label,
-        y = .data$mean
-      ),
-      nudge_x = 4,
-      show.legend = FALSE,
-      fill = "beige"
-    ) +
-    ggplot2::ylab("") +
-    ggplot2::scale_y_continuous(labels = scales::comma) +
-    ggplot2::theme_bw(base_size = 16) +
-    ggplot2::theme(strip.text = ggplot2::element_text(size = 10))
+        nudge_x = 4,
+        show.legend = FALSE,
+        fill = "beige"
+      )
+  }
 
-  if(is.null(min_year)){
+  if(status){
+  if (is.null(min_year)) {
     plt <- plt +
       ggplot2::xlim(c(min(dat$YEAR), max(dat$YEAR) + 6))
   } else {
     plt <- plt +
       ggplot2::xlim(c(min_year, max(dat$YEAR) + 6))
+  }
+  }
+
+  if(!status){
+  if (is.null(min_year)) {
+    plt <- plt +
+      ggplot2::xlim(c(min(dat$YEAR), max(dat$YEAR) + 0.5))
+  } else {
+    plt <- plt +
+      ggplot2::xlim(c(min_year, max(dat$YEAR) + 0.5))
+  }
   }
 
   finish_fig <- function() {
@@ -260,7 +279,7 @@ esp_traffic_long <- function(data,
     } else if (out == "ggplot") {
       print(plt)
       cat("\n\n")
-      if(silent == FALSE){
+      if (silent == FALSE) {
         cat("##### Figure \\@ref(fig:traffic).", caption, "{-}")
       }
       cat("\n\n")
@@ -480,7 +499,7 @@ esp_overall_score <- function(data, species, region, out = "ggplot", name, ...) 
       legend.title = ggplot2::element_blank(),
       legend.position = "bottom",
       legend.direction = "vertical",
-      plot.title = ggplot2::element_text(size=14)
+      plot.title = ggplot2::element_text(size = 14)
     ) +
     ggplot2::guides(color = ggplot2::guide_legend(ncol = 2)) +
     ggplot2::ggtitle(label = paste("Overall Stage 1 Score for", region, species)) +

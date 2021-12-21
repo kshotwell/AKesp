@@ -10,6 +10,7 @@ esp_traffic_long(
   out = "ggplot",
   paginate = FALSE,
   label = TRUE,
+  status = TRUE,
   caption = "",
   ncolumn = 1,
   silent = FALSE,
@@ -26,7 +27,9 @@ esp_traffic_long(
 
 \item{paginate}{Whether to paginate the plots with \code{ggforce::facet_wrap_paginate}}
 
-\item{label}{Whether to label the facets}
+\item{label}{Whether to label the facets with a, b, c, etc.}
+
+\item{status}{Whether to label the facets with the indicator status}
 
 \item{caption}{A caption for the figure}
 
