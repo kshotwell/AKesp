@@ -83,6 +83,14 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
   dat$status <- status
   dat$color <- color
 
+  # make all socioeconomic indicators white
+  for(i in 1:nrow(dat)){
+    dat$color[i] <- ifelse(dat$INDICATOR_TYPE[i] == "Socioeconomic",
+                           "white", dat$color[i])
+    dat$color[i] <- ifelse(is.na(dat$DATA_VALUE[i]),
+                           "grey80", dat$color[i])
+  }
+
   tbl_dat <- dat %>%
     dplyr::select(.data$CATEGORY, .data$name, .data$YEAR, .data$status) %>%
     tidyr::pivot_wider(
@@ -155,4 +163,4 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
 }
 
 # `%>%` <- magrittr::`%>%`
-# esp_traffic_tab_long(bbrkc_long, year = 2016:2020)
+esp_traffic_tab_long(dat, year = 2017:2021)

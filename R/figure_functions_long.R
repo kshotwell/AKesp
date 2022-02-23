@@ -157,27 +157,15 @@ esp_traffic_long <- function(data,
       group = name
     )
   ) +
-    ggplot2::geom_rect(
-      data = dat %>%
-        dplyr::filter(.data$recent == TRUE),
-      ggplot2::aes(
-        xmin = min(.data$YEAR) + 0.5,
-        xmax = max(.data$YEAR) + 0.5,
-        ymin = .data$quant10,
-        ymax = .data$quant90,
-        group = .data$name
-      ),
-      fill = "lightgreen"
-    ) +
     ggplot2::geom_hline(ggplot2::aes(
-      yintercept = .data$quant10,
+      yintercept = .data$mean + .data$sd,
       group = .data$name
     ),
     color = "darkgreen",
     linetype = "solid"
     ) +
     ggplot2::geom_hline(ggplot2::aes(
-      yintercept = .data$quant90,
+      yintercept = .data$mean - .data$sd,
       group = .data$name
     ),
     color = "darkgreen",
@@ -323,7 +311,7 @@ esp_traffic_long <- function(data,
   }
 }
 
-# esp_traffic_long(AKesp::bbrkc_long, out = "ggplot", paginate = TRUE)
+esp_traffic_long(dat, out = "ggplot", paginate = TRUE)
 
 #' Plot a metric panel figure
 #'
