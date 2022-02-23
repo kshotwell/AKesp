@@ -283,7 +283,10 @@ esp_traffic_long <- function(data,
         cat("##### Figure \\@ref(fig:traffic).", caption, "{-}")
       }
       cat("\n\n")
-    } else {
+    } else if (out == "one_pager") {
+      return(plt)
+    }
+    else {
       stop("Please specify output format")
     }
   }
@@ -511,6 +514,8 @@ esp_overall_score <- function(data, species, region, out = "ggplot", name, ...) 
   } else if (out == "ggplot") {
     print(plt)
     cat("\n\n")
+  } else if (out == "one_pager") {
+    return(plt)
   } else {
     stop("Please specify output format")
   }
