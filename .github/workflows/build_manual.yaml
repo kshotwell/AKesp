@@ -1,0 +1,50 @@
+on:
+  workflow_dispatch:
+
+name: Build package manual pdf
+
+jobs: 
+  build1:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+    
+    steps:
+          
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Install Pandoc
+        run: brew install pandoc
+        shell: bash
+
+      - name: Install command line packages
+        run: |        
+          sudo apt update
+          sudo apt-get install  libgdal-dev libcurl4-gnutls-dev libgit2-dev libudunits2-dev
+        shell: bash
+        
+      - name: Set up R
+        uses: r-lib/actions/setup-r@master
+        with: 
+          r-version: '4.0.3' # problem with using 4.0.4        
+          
+      - name: Install packages
+        run: |
+          Rscript -e '
+          install.packages("devtools", dependencies = TRUE)
+          devtools::install_github("atyrell3/AKesp", dependencies = TRUE)'
+          
+      - name: Compile pdf manual
+        run: |
+          Rscript -e '
+          devtools::build_manual(path = ".")'
+          
+      - name: Send manual to Github
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          folder: . # The folder the action should deploy.
+          target-folder: .
+          clean: false # do NOT automatically remove deleted files from the deploy branch
