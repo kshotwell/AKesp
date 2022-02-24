@@ -33,13 +33,34 @@ jobs:
       - name: Install packages
         run: |
           Rscript -e '
-          install.packages("devtools", dependencies = TRUE)
+          install.packages(c("devtools", "tinytex", "fs"), dependencies = TRUE)
           devtools::install_github("atyrell3/AKesp", dependencies = TRUE)'
           
       - name: Compile pdf manual
         run: |
           Rscript -e '
-          devtools::build_manual(path = ".")'
+            pkg = "."
+            path = "."
+  
+            `%||%` <- rlang::`%||%`
+  
+            pkg <- devtools::as.package(pkg)
+            path <- path %||% fs::path_dir(pkg$path)
+            name <- paste0(pkg$package, "_", pkg$version, ".pdf", 
+                 collapse = " ")
+             tryCatch(msg <- callr::rcmd("Rd2pdf", 
+                              cmdargs = c("--force", 
+                                          paste0("--output=", path, "/", name), 
+                                          pkg$path), 
+                              fail_on_status = FALSE, 
+                              stderr = "2>&1", 
+                              spinner = FALSE), 
+           error = function(e) {
+             cat(e$stdout)
+             stop("Failed to build manual", call. = FALSE)
+           })
+           cat(msg$stdout)
+           invisible(msg)'
           
       - name: Send manual to Github
         uses: JamesIves/github-pages-deploy-action@4.1.1
