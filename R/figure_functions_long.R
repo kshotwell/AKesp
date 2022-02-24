@@ -187,74 +187,105 @@ esp_traffic_long <- function(data,
     ggplot2::theme(strip.text = ggplot2::element_text(size = 10))
 
   if (status) {
-    # red boxes, bold
-    plt <- plt + ggplot2::geom_label(
-      data = dat %>%
-        dplyr::filter(
-          .data$YEAR == maxyear,
-          .data$score < 0
-        ),
-      ggplot2::aes(
-        label = .data$label,
-        y = .data$mean
-      ),
-      nudge_x = 4,
-      show.legend = FALSE,
-      fontface = "bold",
-      fill = "brown1"
-    ) +
-      # blue boxes, italic
-      ggplot2::geom_label(
-        data = dat %>%
-          dplyr::filter(
-            .data$YEAR == maxyear,
-            .data$score > 0
-          ),
-        ggplot2::aes(
-          label = .data$label,
-          y = .data$mean
-        ),
-        nudge_x = 4,
-        show.legend = FALSE,
-        fontface = "italic",
-        fill = "cornflowerblue"
-      ) +
-      # beige boxes, neutral
-      ggplot2::geom_label(
-        data = dat %>%
-          dplyr::filter(
-            .data$YEAR == maxyear,
-            .data$score == 0
-          ),
-        ggplot2::aes(
-          label = .data$label,
-          y = .data$mean
-        ),
-        nudge_x = 4,
-        show.legend = FALSE,
-        fill = "beige"
+    stat_dat <- dat %>%
+      dplyr::filter(
+        .data$YEAR == maxyear
       )
+
+    # set fills, shapes
+    for(i in 1:nrow(stat_dat)){
+      stat_dat$shape[i] <- ifelse(stat_dat$label_num[i] == -1, 25,
+                    ifelse(stat_dat$label_num[i] == 1, 24,
+                           21))
+
+    stat_dat$color[i] <- ifelse(stat_dat$score[i] == -1, "brown1",
+                                ifelse(stat_dat$score[i] == 1, "cornflowerblue",
+                                       "beige"))
+    }
+
+    # status shapes/colors
+    plt <- plt + ggplot2::geom_point(
+      data = stat_dat,
+      ggplot2::aes(
+        x = .data$YEAR + 1,
+        y = .data$mean,
+        shape = as.factor(.data$label_num),
+        fill = as.factor(.data$score)
+      ),
+      show.legend = FALSE,
+      cex = 4
+    ) +
+      ggplot2::scale_shape_manual(values = c("-1" = 25, "0" = 21, "1" = 24)) +
+      ggplot2::scale_fill_manual(values = c("-1" = "brown1", "0" = "beige", "1" = "cornflowerblue"))
+
+    # also add + - for 508
+    plt <- plt +
+      ggnewscale::new_scale(new_aes = "shape") +
+      ggplot2::geom_point(
+      data = stat_dat,
+      ggplot2::aes(
+        x = .data$YEAR + 1.05,
+        y = .data$mean,
+        shape = as.factor(.data$score)
+      ),
+      show.legend = FALSE,
+      cex = 4,
+      inherit.aes = FALSE
+
+    ) +
+      ggplot2::scale_shape_manual(values = c("-1" = "-", "0" = NA, "1" = "+"))
+      # # blue boxes, italic
+      # ggplot2::geom_label(
+      #   data = dat %>%
+      #     dplyr::filter(
+      #       .data$YEAR == maxyear,
+      #       .data$score > 0
+      #     ),
+      #   ggplot2::aes(
+      #     label = .data$label,
+      #     y = .data$mean
+      #   ),
+      #   nudge_x = 4,
+      #   show.legend = FALSE,
+      #   fontface = "italic",
+      #   fill = "cornflowerblue"
+      # ) +
+      # # beige boxes, neutral
+      # ggplot2::geom_label(
+      #   data = dat %>%
+      #     dplyr::filter(
+      #       .data$YEAR == maxyear,
+      #       .data$score == 0
+      #     ),
+      #   ggplot2::aes(
+      #     label = .data$label,
+      #     y = .data$mean
+      #   ),
+      #   nudge_x = 4,
+      #   show.legend = FALSE,
+      #   fill = "beige"
+      # )
   }
 
-  if(status){
-  if (is.null(min_year)) {
-    plt <- plt +
-      ggplot2::xlim(c(min(dat$YEAR), max(dat$YEAR) + 6))
-  } else {
-    plt <- plt +
-      ggplot2::xlim(c(min_year, max(dat$YEAR) + 6))
-  }
-  }
+  # if(status){
+  # if (is.null(min_year)) {
+  #   plt <- plt +
+  #     ggplot2::xlim(c(min(dat$YEAR), max(dat$YEAR) + 6))
+  # } else {
+  #   plt <- plt +
+  #     ggplot2::xlim(c(min_year, max(dat$YEAR) + 6))
+  # }
+  # }
 
-  if(!status){
+  # if(!status){
   if (is.null(min_year)) {
     plt <- plt +
-      ggplot2::xlim(c(min(dat$YEAR), max(dat$YEAR) + 0.5))
+      ggplot2::xlim(c(min(dat$YEAR), max(dat$YEAR) + 1.5))
   } else {
     plt <- plt +
-      ggplot2::xlim(c(min_year, max(dat$YEAR) + 0.5))
+      ggplot2::xlim(c(min_year, max(dat$YEAR) + 1.5))
   }
-  }
+  # }
 
   finish_fig <- function() {
     if (label) {
@@ -311,7 +342,7 @@ esp_traffic_long <- function(data,
   }
 }
 
-esp_traffic_long(dat, out = "ggplot", paginate = TRUE)
+# esp_traffic_long(dat, out = "ggplot", paginate = TRUE)
 
 #' Plot a metric panel figure
 #'

@@ -163,4 +163,4 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
 }
 
 # `%>%` <- magrittr::`%>%`
-esp_traffic_tab_long(dat, year = 2017:2021)
+#esp_traffic_tab_long(dat, year = 2017:2021)
