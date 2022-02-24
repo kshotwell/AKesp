@@ -6,6 +6,8 @@ news:
 authors:
   Abigail Tyrell:
     href: https://github.com/atyrell3
+  Kalei Shotwell:
+    href: https://github.com/kshotwell
 
 navbar:
   left:
@@ -51,10 +53,12 @@ reference:
   - subtitle: Create tables
     contents:
       - '`esp_traffic_tab_long`'
-  - subtitle: Create a full or partial ESP
+  - subtitle: Create various ESP reports
     contents:
       - '`create_template`'
       - '`render_esp`'
+      - '`one_pager`'
+      - '`render_rpt_card`'
   - subtitle: ESP report utilities
     contents:
       - '`get_esp_data`'

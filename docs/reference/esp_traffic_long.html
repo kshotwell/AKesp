@@ -193,9 +193,11 @@
   out <span class='op'>=</span> <span class='st'>"ggplot"</span>,
   paginate <span class='op'>=</span> <span class='cn'>FALSE</span>,
   label <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  status <span class='op'>=</span> <span class='cn'>TRUE</span>,
   caption <span class='op'>=</span> <span class='st'>""</span>,
   ncolumn <span class='op'>=</span> <span class='fl'>1</span>,
   silent <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  min_year <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>...</span>
 <span class='op'>)</span></pre>
 
@@ -220,7 +222,11 @@
     </tr>
     <tr>
       <th>label</th>
-      <td><p>Whether to label the facets</p></td>
+      <td><p>Whether to label the facets with a, b, c, etc.</p></td>
+    </tr>
+    <tr>
+      <th>status</th>
+      <td><p>Whether to label the facets with the indicator status</p></td>
     </tr>
     <tr>
       <th>caption</th>
@@ -233,6 +239,10 @@
     <tr>
       <th>silent</th>
       <td><p>Whether to print the caption</p></td>
+    </tr>
+    <tr>
+      <th>min_year</th>
+      <td><p>The minimum year to show on the plots. If left NULL (the default), the minimum year will be the first year of the dataset.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -255,7 +265,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://github.com/atyrell3'>Abigail Tyrell</a>.</p>
+  <p>Developed by <a href='https://github.com/atyrell3'>Abigail Tyrell</a>, <a href='https://github.com/kshotwell'>Kalei Shotwell</a>.</p>
 </div>
 
 <div class="pkgdown">

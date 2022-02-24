@@ -1,0 +1,52 @@
+---
+title: "AKesp User Manual"
+author: "Abigail Tyrell"
+date: "`r format(Sys.time(), '%d %b %Y')`"
+site: bookdown::bookdown_site
+output: 
+  bookdown::gitbook:
+    split_by: section
+  bookdown::pdf_book:
+documentclass: book
+always_allow_html: true
+github-repo: atyrell/AKesp
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE,
+                      fig.align = "center")
+```
+
+# Introduction
+
+This package was created to facilitate the development and maintenance of the Alaska Fisheries Science Center's Ecosystem and Socioeconomic Profiles.
+
+## What is an ESP
+
+## Why is this an R package
+
+ESP reports are an ideal use case for automation in Rmarkdown. Once an ESP is established for a stock, it is updated each year with the most recent data. By creating a reproducible workflow in R/Rmarkdown, all that is needed to create a new report is to re-run the report creation function with the most recent data, plus minimal text editing afterwards to finalize the ESP. The output contains all necessary figures and tables and a skeleton outline of text, all compiled in the proper order in a Word document. This workflow drastically reduces the time required to create and update ESPs, as well as reducing the number of opportunities for human error. 
+
+This package was developed based on this [excellent book by Hadley Wickham and Jenny Bryan](https://r-pkgs.org/). Briefly, we tried to:
+>Do as little as possible by hand. Do as much as possible with functions. 
+
+## What does this package do
+
+### Create figures and tables
+
+This package can quickly generate styled figures and tables based on indicator input data. It is not anticipated that the user will need to edit these figures after creating them, but figures created in R (not created as Rmarkdown outputs) can be edited in R (as outputs are `ggplot` objects) or saved figures can be edited in an external graphic design software. Tables in the outputted Word document can be edited there.
+
+### Create ESP templates and reports
+
+1. This package can create templates for ESP report cards. Up-to-date data is pulled from AKFIN and processed into figures and tables. The text is populated with default information and placeholders. The report is knit to Word, where it can be edited.
+
+2. This package can create templates for partial and full ESP reports. After the user fills out these templates, this package can knit a final Word report, including pulling in figures and tables. 
+
+## How to install this R package
+
+The `AKesp` package can be installed from GitHub.
+
+```{r, eval = FALSE}
+devtools::install_github("atyrell3/AKesp")
+```

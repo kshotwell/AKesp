@@ -2,11 +2,15 @@ Package: AKesp
 Title: A package to create ESPs based on data, image, and text input
 Version: 0.0.1
 Authors@R: 
-    person(given = "Abigail",
+    c(person(given = "Abigail",
            family = "Tyrell",
            role = c("aut", "cre"),
            email = "abigail.tyrell@noaa.gov",
-           comment = c(ORCID = "0000-0002-6656-8470"))
+           comment = c(ORCID = "0000-0002-6656-8470")),
+    person(given = "Kalei",
+           family = "Shotwell",
+           role = c("aut"),
+           email = "kalei.shotwell@noaa.gov"))
 Description: What the package does (one paragraph).
 License: file LICENSE
 Encoding: UTF-8

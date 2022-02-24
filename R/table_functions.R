@@ -84,11 +84,13 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
   dat$color <- color
 
   # make all socioeconomic indicators white
-  for(i in 1:nrow(dat)){
+  for (i in 1:nrow(dat)) {
     dat$color[i] <- ifelse(dat$INDICATOR_TYPE[i] == "Socioeconomic",
-                           "white", dat$color[i])
+      "white", dat$color[i]
+    )
     dat$color[i] <- ifelse(is.na(dat$DATA_VALUE[i]),
-                           "grey80", dat$color[i])
+      "grey80", dat$color[i]
+    )
   }
 
   tbl_dat <- dat %>%
@@ -163,4 +165,4 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
 }
 
 # `%>%` <- magrittr::`%>%`
-#esp_traffic_tab_long(dat, year = 2017:2021)
+# esp_traffic_tab_long(dat, year = 2017:2021)

@@ -1,0 +1,86 @@
+# What's going on behind the scenes?
+
+## Querying data from AKFIN
+
+The `AKesp` package queries ESP data from the AKFIN web server. The ESP data can be used with the functions in this package to make an ESP report, but of course it can also be used for other purposes. See [here](atyrell3.github.io/AKesp/reference/get_esp_data.html) for documentation of `get_esp_data()`, the data querying function.
+
+## Functions to create figures and tables
+
+After installing the package, you can use the functions to create figures. You can use your own input data, or you can use some of the prior ESP data that is included in the package. When you run these functions locally, it will probably be more helpful to set `out = "save"` and specify a file name for the plot so that the plots are saved rather than displayed in RStudio. This is because the plots all display a large amount of data that will be very squashed in the RStudio image viewer. You may also need to adjust the `width` and `height` options to produce a figure of satisfactory dimensions.
+
+### Metrics panel
+```{r, fig.width = 8, fig.height = 7.5}
+AKesp::esp_metrics(
+  data = AKesp::metric_panel,
+  species = "Sablefish",
+  region = "GOA",
+  approved = TRUE,
+  order = TRUE,
+  out = "ggplot"
+)
+```
+
+### Correlation matrices
+```{r, fig.width = 15, fig.height = 20}
+dat <- AKesp::get_esp_data("Alaska Sablefish")
+
+AKesp::esp_cor_matrix_long(
+  data = dat,
+  out = "ggplot"
+)
+```
+
+### Indicator histograms
+```{r, fig.width = 10, fig.height = 20}
+AKesp::esp_hist_long(
+  data = dat,
+  out = "ggplot"
+)
+```
+
+### Traffic plots
+Traffic light plots are broken into multiple images, each with 5 plots.
+```{r, fig.width = 8, fig.height = 10}
+AKesp::esp_traffic_long(
+  data = dat,
+  paginate = TRUE,
+  out = "ggplot",
+  silent = TRUE
+)
+```
+
+### Tables from spreadsheets
+
+Tables can be automatically created from the `table_spreadsheet.csv` and the `.csv` files in the `tables` folder. Additionally, the `AKesp` package can also create some tables that require data analysis. 
+
+### Traffic light score table
+
+A traffic light table can be automatically created from a spreadsheet that has a column for year and a column for each indicator.
+```{r}
+dat <- AKesp::get_esp_data("Alaska Sablefish")
+
+AKesp::esp_traffic_tab_long(
+  data = dat,
+  year = 2021
+)
+```
+
+Multiple years can be shown.
+```{r}
+AKesp::esp_traffic_tab_long(
+  data = dat,
+  year = 2017:2021
+)
+```
+
+## Text templates and .Rmd templates
+
+Automated ESP reports are generated with the help of text templates and .Rmd templates. The full and partial ESP workflows allow the user to modify the text templates, but the report card has a set template. Text and .Rmd templates can be found in the `inst` folder of the package.
+
+## Helper functions
+
+Some functions within this package are used behind the scenes to format the data.
+
+## Report rendering functions
+
+All four types of ESP reports (full, partial, report card, and one-pager) can be created with a call to a single function.

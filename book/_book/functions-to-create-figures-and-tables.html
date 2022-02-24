@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3.2 Functions to create figures and tables | AKesp User Manual</title>
+  <meta name="description" content="3.2 Functions to create figures and tables | AKesp User Manual" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3.2 Functions to create figures and tables | AKesp User Manual" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="atyrell/AKesp" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3.2 Functions to create figures and tables | AKesp User Manual" />
+  
+  
+  
+
+<meta name="author" content="Abigail Tyrell" />
+
+
+<meta name="date" content="2022-02-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="querying-data-from-akfin.html"/>
+<link rel="next" href="text-templates-and-rmd-templates.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="what-is-an-esp.html"><a href="what-is-an-esp.html"><i class="fa fa-check"></i><b>1.1</b> What is an ESP</a></li>
+<li class="chapter" data-level="1.2" data-path="why-is-this-an-r-package.html"><a href="why-is-this-an-r-package.html"><i class="fa fa-check"></i><b>1.2</b> Why is this an R package</a></li>
+<li class="chapter" data-level="1.3" data-path="what-does-this-package-do.html"><a href="what-does-this-package-do.html"><i class="fa fa-check"></i><b>1.3</b> What does this package do</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="what-does-this-package-do.html"><a href="what-does-this-package-do.html#create-figures-and-tables"><i class="fa fa-check"></i><b>1.3.1</b> Create figures and tables</a></li>
+<li class="chapter" data-level="1.3.2" data-path="what-does-this-package-do.html"><a href="what-does-this-package-do.html#create-esp-templates-and-reports"><i class="fa fa-check"></i><b>1.3.2</b> Create ESP templates and reports</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="how-to-install-this-r-package.html"><a href="how-to-install-this-r-package.html"><i class="fa fa-check"></i><b>1.4</b> How to install this R package</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="how-to-create-reports-with-this-package.html"><a href="how-to-create-reports-with-this-package.html"><i class="fa fa-check"></i><b>2</b> How to create reports with this package</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="esp-report-card.html"><a href="esp-report-card.html"><i class="fa fa-check"></i><b>2.1</b> ESP report card</a></li>
+<li class="chapter" data-level="2.2" data-path="esp-one-pager.html"><a href="esp-one-pager.html"><i class="fa fa-check"></i><b>2.2</b> ESP one-pager</a></li>
+<li class="chapter" data-level="2.3" data-path="full-and-partial-esps.html"><a href="full-and-partial-esps.html"><i class="fa fa-check"></i><b>2.3</b> Full and partial ESPs</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="full-and-partial-esps.html"><a href="full-and-partial-esps.html#create-your-template"><i class="fa fa-check"></i><b>2.3.1</b> Create your template</a></li>
+<li class="chapter" data-level="2.3.2" data-path="full-and-partial-esps.html"><a href="full-and-partial-esps.html#create-your-content"><i class="fa fa-check"></i><b>2.3.2</b> Create your content</a></li>
+<li class="chapter" data-level="2.3.3" data-path="full-and-partial-esps.html"><a href="full-and-partial-esps.html#create-the-esp"><i class="fa fa-check"></i><b>2.3.3</b> Create the ESP</a></li>
+<li class="chapter" data-level="2.3.4" data-path="full-and-partial-esps.html"><a href="full-and-partial-esps.html#example-full-esp"><i class="fa fa-check"></i><b>2.3.4</b> Example full ESP</a></li>
+<li class="chapter" data-level="2.3.5" data-path="full-and-partial-esps.html"><a href="full-and-partial-esps.html#esp-parameters"><i class="fa fa-check"></i><b>2.3.5</b> ESP parameters</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="whats-going-on-behind-the-scenes.html"><a href="whats-going-on-behind-the-scenes.html"><i class="fa fa-check"></i><b>3</b> What’s going on behind the scenes?</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="querying-data-from-akfin.html"><a href="querying-data-from-akfin.html"><i class="fa fa-check"></i><b>3.1</b> Querying data from AKFIN</a></li>
+<li class="chapter" data-level="3.2" data-path="functions-to-create-figures-and-tables.html"><a href="functions-to-create-figures-and-tables.html"><i class="fa fa-check"></i><b>3.2</b> Functions to create figures and tables</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="functions-to-create-figures-and-tables.html"><a href="functions-to-create-figures-and-tables.html#metrics-panel"><i class="fa fa-check"></i><b>3.2.1</b> Metrics panel</a></li>
+<li class="chapter" data-level="3.2.2" data-path="functions-to-create-figures-and-tables.html"><a href="functions-to-create-figures-and-tables.html#correlation-matrices"><i class="fa fa-check"></i><b>3.2.2</b> Correlation matrices</a></li>
+<li class="chapter" data-level="3.2.3" data-path="functions-to-create-figures-and-tables.html"><a href="functions-to-create-figures-and-tables.html#indicator-histograms"><i class="fa fa-check"></i><b>3.2.3</b> Indicator histograms</a></li>
+<li class="chapter" data-level="3.2.4" data-path="functions-to-create-figures-and-tables.html"><a href="functions-to-create-figures-and-tables.html#traffic-plots"><i class="fa fa-check"></i><b>3.2.4</b> Traffic plots</a></li>
+<li class="chapter" data-level="3.2.5" data-path="functions-to-create-figures-and-tables.html"><a href="functions-to-create-figures-and-tables.html#tables-from-spreadsheets"><i class="fa fa-check"></i><b>3.2.5</b> Tables from spreadsheets</a></li>
+<li class="chapter" data-level="3.2.6" data-path="functions-to-create-figures-and-tables.html"><a href="functions-to-create-figures-and-tables.html#traffic-light-score-table"><i class="fa fa-check"></i><b>3.2.6</b> Traffic light score table</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="text-templates-and-rmd-templates.html"><a href="text-templates-and-rmd-templates.html"><i class="fa fa-check"></i><b>3.3</b> Text templates and .Rmd templates</a></li>
+<li class="chapter" data-level="3.4" data-path="helper-functions.html"><a href="helper-functions.html"><i class="fa fa-check"></i><b>3.4</b> Helper functions</a></li>
+<li class="chapter" data-level="3.5" data-path="report-rendering-functions.html"><a href="report-rendering-functions.html"><i class="fa fa-check"></i><b>3.5</b> Report rendering functions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="maintenance-and-limitations.html"><a href="maintenance-and-limitations.html"><i class="fa fa-check"></i><b>4</b> Maintenance and limitations</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">AKesp User Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="functions-to-create-figures-and-tables" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Functions to create figures and tables</h2>
+<p>After installing the package, you can use the functions to create figures. You can use your own input data, or you can use some of the prior ESP data that is included in the package. When you run these functions locally, it will probably be more helpful to set <code>out = "save"</code> and specify a file name for the plot so that the plots are saved rather than displayed in RStudio. This is because the plots all display a large amount of data that will be very squashed in the RStudio image viewer. You may also need to adjust the <code>width</code> and <code>height</code> options to produce a figure of satisfactory dimensions.</p>
+<div id="metrics-panel" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Metrics panel</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="functions-to-create-figures-and-tables.html#cb6-1" aria-hidden="true" tabindex="-1"></a>AKesp<span class="sc">::</span><span class="fu">esp_metrics</span>(</span>
+<span id="cb6-2"><a href="functions-to-create-figures-and-tables.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> AKesp<span class="sc">::</span>metric_panel,</span>
+<span id="cb6-3"><a href="functions-to-create-figures-and-tables.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">species =</span> <span class="st">&quot;Sablefish&quot;</span>,</span>
+<span id="cb6-4"><a href="functions-to-create-figures-and-tables.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="st">&quot;GOA&quot;</span>,</span>
+<span id="cb6-5"><a href="functions-to-create-figures-and-tables.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">approved =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-6"><a href="functions-to-create-figures-and-tables.html#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">order =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-7"><a href="functions-to-create-figures-and-tables.html#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">out =</span> <span class="st">&quot;ggplot&quot;</span></span>
+<span id="cb6-8"><a href="functions-to-create-figures-and-tables.html#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="AKesp-manual_files/figure-html/unnamed-chunk-9-1.png" width="768" style="display: block; margin: auto;" /></p>
+</div>
+<div id="correlation-matrices" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Correlation matrices</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="functions-to-create-figures-and-tables.html#cb7-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> AKesp<span class="sc">::</span><span class="fu">get_esp_data</span>(<span class="st">&quot;Alaska Sablefish&quot;</span>)</span>
+<span id="cb7-2"><a href="functions-to-create-figures-and-tables.html#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="functions-to-create-figures-and-tables.html#cb7-3" aria-hidden="true" tabindex="-1"></a>AKesp<span class="sc">::</span><span class="fu">esp_cor_matrix_long</span>(</span>
+<span id="cb7-4"><a href="functions-to-create-figures-and-tables.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dat,</span>
+<span id="cb7-5"><a href="functions-to-create-figures-and-tables.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">out =</span> <span class="st">&quot;ggplot&quot;</span></span>
+<span id="cb7-6"><a href="functions-to-create-figures-and-tables.html#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="AKesp-manual_files/figure-html/unnamed-chunk-10-1.png" width="1440" style="display: block; margin: auto;" /></p>
+</div>
+<div id="indicator-histograms" class="section level3" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Indicator histograms</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="functions-to-create-figures-and-tables.html#cb8-1" aria-hidden="true" tabindex="-1"></a>AKesp<span class="sc">::</span><span class="fu">esp_hist_long</span>(</span>
+<span id="cb8-2"><a href="functions-to-create-figures-and-tables.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dat,</span>
+<span id="cb8-3"><a href="functions-to-create-figures-and-tables.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">out =</span> <span class="st">&quot;ggplot&quot;</span></span>
+<span id="cb8-4"><a href="functions-to-create-figures-and-tables.html#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="AKesp-manual_files/figure-html/unnamed-chunk-11-1.png" width="960" style="display: block; margin: auto;" /></p>
+</div>
+<div id="traffic-plots" class="section level3" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Traffic plots</h3>
+<p>Traffic light plots are broken into multiple images, each with 5 plots.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="functions-to-create-figures-and-tables.html#cb9-1" aria-hidden="true" tabindex="-1"></a>AKesp<span class="sc">::</span><span class="fu">esp_traffic_long</span>(</span>
+<span id="cb9-2"><a href="functions-to-create-figures-and-tables.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dat,</span>
+<span id="cb9-3"><a href="functions-to-create-figures-and-tables.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">paginate =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-4"><a href="functions-to-create-figures-and-tables.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">out =</span> <span class="st">&quot;ggplot&quot;</span>,</span>
+<span id="cb9-5"><a href="functions-to-create-figures-and-tables.html#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">silent =</span> <span class="cn">TRUE</span></span>
+<span id="cb9-6"><a href="functions-to-create-figures-and-tables.html#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="AKesp-manual_files/figure-html/unnamed-chunk-12-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="AKesp-manual_files/figure-html/unnamed-chunk-12-2.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="AKesp-manual_files/figure-html/unnamed-chunk-12-3.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="AKesp-manual_files/figure-html/unnamed-chunk-12-4.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="AKesp-manual_files/figure-html/unnamed-chunk-12-5.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="AKesp-manual_files/figure-html/unnamed-chunk-12-6.png" width="768" style="display: block; margin: auto;" /></p>
+</div>
+<div id="tables-from-spreadsheets" class="section level3" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> Tables from spreadsheets</h3>
+<p>Tables can be automatically created from the <code>table_spreadsheet.csv</code> and the <code>.csv</code> files in the <code>tables</code> folder. Additionally, the <code>AKesp</code> package can also create some tables that require data analysis.</p>
+</div>
+<div id="traffic-light-score-table" class="section level3" number="3.2.6">
+<h3><span class="header-section-number">3.2.6</span> Traffic light score table</h3>
+<p>A traffic light table can be automatically created from a spreadsheet that has a column for year and a column for each indicator.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="functions-to-create-figures-and-tables.html#cb10-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> AKesp<span class="sc">::</span><span class="fu">get_esp_data</span>(<span class="st">&quot;Alaska Sablefish&quot;</span>)</span>
+<span id="cb10-2"><a href="functions-to-create-figures-and-tables.html#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="functions-to-create-figures-and-tables.html#cb10-3" aria-hidden="true" tabindex="-1"></a>AKesp<span class="sc">::</span><span class="fu">esp_traffic_tab_long</span>(</span>
+<span id="cb10-4"><a href="functions-to-create-figures-and-tables.html#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dat,</span>
+<span id="cb10-5"><a href="functions-to-create-figures-and-tables.html#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2021</span></span>
+<span id="cb10-6"><a href="functions-to-create-figures-and-tables.html#cb10-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<template id="0ab2cd9a-17fc-4b33-9628-2d75a8fb5b38"><style>
+.tabwid table{
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-spacing: 0;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-6e16a41c{border-collapse:collapse;}.cl-6e0ee006{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6e0ee007{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6e0ee008{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6e0ee009{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-6e0ee00a{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-6e0f54e6{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f54e7{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f54e8{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f54e9{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f54ea{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f54eb{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f54ec{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f54ed{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f54ee{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f54ef{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f54f0{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f7be2{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f7be3{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f7be4{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f7be5{width:81.7pt;background-clip: padding-box;background-color:rgba(204, 204, 204, 1.00);vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f7be6{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f7be7{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f7be8{width:81.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e0f7be9{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-6e16a41c'>
+<caption class="Table Caption">
+<span id="tab:unnamed-chunk-13">Table 3.1: </span>Traffic light scoring
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-6e0f7be7"><p class="cl-6e0ee009"><span class="cl-6e0ee006">Indicator category</span></p></td><td class="cl-6e0f7be9"><p class="cl-6e0ee009"><span class="cl-6e0ee006">Indicator</span></p></td><td class="cl-6e0f7be8"><p class="cl-6e0ee009"><span class="cl-6e0ee006">2021 Status</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td  rowspan="4"class="cl-6e0f54e7"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Physical</span></p></td><td class="cl-6e0f54e8"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Annual Heatwave GOA Model</span></p></td><td class="cl-6e0f54e6"><p class="cl-6e0ee00a"><span class="cl-6e0ee007">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e0f54e9"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Spring Temperature Surface EGOA Satellite</span></p></td><td class="cl-6e0f54ec"><p class="cl-6e0ee00a"><span class="cl-6e0ee007">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e0f54ee"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Spring Temperature Surface SEBS Satellite</span></p></td><td class="cl-6e0f7be6"><p class="cl-6e0ee00a"><span class="cl-6e0ee007">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e0f54e9"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Summer Temperature 250m GOA Survey</span></p></td><td class="cl-6e0f54ec"><p class="cl-6e0ee00a"><span class="cl-6e0ee007">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  rowspan="5"class="cl-6e0f54ea"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Lower Trophic</span></p></td><td class="cl-6e0f54e9"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Spring Chlorophylla Biomass EGOA Satellite</span></p></td><td class="cl-6e0f54ec"><p class="cl-6e0ee00a"><span class="cl-6e0ee007">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e0f54ee"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Spring Chlorophylla Biomass SEBS Satellite</span></p></td><td class="cl-6e0f7be6"><p class="cl-6e0ee00a"><span class="cl-6e0ee007">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e0f54e9"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Spring Chlorophylla Peak EGOA Satellite</span></p></td><td class="cl-6e0f54ec"><p class="cl-6e0ee00a"><span class="cl-6e0ee007">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e0f54ee"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Spring Chlorophylla Peak SEBS Satellite</span></p></td><td class="cl-6e0f7be6"><p class="cl-6e0ee00a"><span class="cl-6e0ee007">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e0f54e9"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Annual Sablefish Growth YOY Middleton Survey</span></p></td><td class="cl-6e0f54ec"><p class="cl-6e0ee00a"><span class="cl-6e0ee007">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  rowspan="4"class="cl-6e0f54ea"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Upper Trophic</span></p></td><td class="cl-6e0f54e9"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Summer Sablefish CPUE Juvenile Nearshore GOAAI Survey</span></p></td><td class="cl-6e0f54eb"><p class="cl-6e0ee00a"><span class="cl-6e0ee008">high</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e0f54e9"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Summer Sablefish CPUE Juvenile GOA Survey</span></p></td><td class="cl-6e0f54ec"><p class="cl-6e0ee00a"><span class="cl-6e0ee007">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e0f54e9"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Annual Sablefish Incidental Catch Arrowtooth Target GOA Fishery</span></p></td><td class="cl-6e0f54ec"><p class="cl-6e0ee00a"><span class="cl-6e0ee007">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e0f54e9"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Summer Sablefish Condition Female Adult GOA Survey</span></p></td><td class="cl-6e0f54ec"><p class="cl-6e0ee00a"><span class="cl-6e0ee007">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  rowspan="6"class="cl-6e0f54ea"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Fishery Performance</span></p></td><td class="cl-6e0f54e9"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Annual Sablefish Longline CPUE GOA Fishery</span></p></td><td class="cl-6e0f54ec"><p class="cl-6e0ee00a"><span class="cl-6e0ee007">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e0f54ee"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Annual Sablefish Pot CPUE EBS Fishery</span></p></td><td class="cl-6e0f54ef"><p class="cl-6e0ee00a"><span class="cl-6e0ee008">high</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e0f54e9"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Annual Sablefish Incidental Catch GOA Fishery</span></p></td><td class="cl-6e0f54eb"><p class="cl-6e0ee00a"><span class="cl-6e0ee008">low</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e0f54ee"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Annual Sablefish Incidental Catch BSAI Fishery</span></p></td><td class="cl-6e0f54f0"><p class="cl-6e0ee00a"><span class="cl-6e0ee006">high</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e0f54e9"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Annual Sablefish Condition Female Adult GOA Fishery</span></p></td><td class="cl-6e0f7be2"><p class="cl-6e0ee00a"><span class="cl-6e0ee006">low</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e0f7be3"><p class="cl-6e0ee009"><span class="cl-6e0ee007">Annual Sablefish Condition Female Adult BSAI Fishery</span></p></td><td class="cl-6e0f7be5"><p class="cl-6e0ee00a"><span class="cl-6e0ee007">NA</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="40a9a0cc-0378-48cd-ad18-d987ff743581"></div>
+<script>
+var dest = document.getElementById("40a9a0cc-0378-48cd-ad18-d987ff743581");
+var template = document.getElementById("0ab2cd9a-17fc-4b33-9628-2d75a8fb5b38");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>Multiple years can be shown.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="functions-to-create-figures-and-tables.html#cb11-1" aria-hidden="true" tabindex="-1"></a>AKesp<span class="sc">::</span><span class="fu">esp_traffic_tab_long</span>(</span>
+<span id="cb11-2"><a href="functions-to-create-figures-and-tables.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> dat,</span>
+<span id="cb11-3"><a href="functions-to-create-figures-and-tables.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="dv">2017</span><span class="sc">:</span><span class="dv">2021</span></span>
+<span id="cb11-4"><a href="functions-to-create-figures-and-tables.html#cb11-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<template id="979038dc-1751-4110-82ea-22b3bd46894d"><style>
+.tabwid table{
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-spacing: 0;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-6e4ea4d4{border-collapse:collapse;}.cl-6e466d1e{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6e466d1f{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6e466d20{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-6e469442{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-6e469443{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-6e46e1ea{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e46e1eb{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e46e1ec{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e46e1ed{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e46e1ee{width:81.7pt;background-clip: padding-box;background-color:rgba(204, 204, 204, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e46e1ef{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e46e1f0{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e46e1f1{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e46e1f2{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e46e1f3{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e46e1f4{width:81.7pt;background-clip: padding-box;background-color:rgba(204, 204, 204, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e4708fa{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e4708fb{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e4708fc{width:81.7pt;background-clip: padding-box;background-color:rgba(204, 204, 204, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e4708fd{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e4708fe{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e4708ff{width:81.7pt;background-clip: padding-box;background-color:rgba(204, 204, 204, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e470900{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e470901{width:81.7pt;background-clip: padding-box;background-color:rgba(204, 204, 204, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e470902{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e470903{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e470904{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e472fe2{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 64, 64, 1.00);vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e472fe3{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e472fe4{width:81.7pt;background-clip: padding-box;background-color:rgba(204, 204, 204, 1.00);vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e472fe5{width:81.7pt;background-clip: padding-box;background-color:rgba(255, 255, 255, 1.00);vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e472fe6{width:81.7pt;background-clip: padding-box;background-color:rgba(100, 149, 237, 1.00);vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e472fe7{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e472fe8{width:122.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e472fe9{width:342.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-6e472fea{width:81.7pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-6e4ea4d4'>
+<caption class="Table Caption">
+<span id="tab:unnamed-chunk-14">Table 3.2: </span>Traffic light scoring
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-6e472fe8"><p class="cl-6e469442"><span class="cl-6e466d1e">Indicator category</span></p></td><td class="cl-6e472fe9"><p class="cl-6e469442"><span class="cl-6e466d1e">Indicator</span></p></td><td class="cl-6e472fea"><p class="cl-6e469442"><span class="cl-6e466d1e">2017 Status</span></p></td><td class="cl-6e472fea"><p class="cl-6e469442"><span class="cl-6e466d1e">2018 Status</span></p></td><td class="cl-6e472fea"><p class="cl-6e469442"><span class="cl-6e466d1e">2019 Status</span></p></td><td class="cl-6e472fea"><p class="cl-6e469442"><span class="cl-6e466d1e">2020 Status</span></p></td><td class="cl-6e472fea"><p class="cl-6e469442"><span class="cl-6e466d1e">2021 Status</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td  rowspan="4"class="cl-6e46e1eb"><p class="cl-6e469442"><span class="cl-6e466d1f">Physical</span></p></td><td class="cl-6e46e1ec"><p class="cl-6e469442"><span class="cl-6e466d1f">Annual Heatwave GOA Model</span></p></td><td class="cl-6e46e1ea"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1ea"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1ed"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td><td class="cl-6e46e1ea"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1ea"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e46e1ef"><p class="cl-6e469442"><span class="cl-6e466d1f">Spring Temperature Surface EGOA Satellite</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f1"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e4708fa"><p class="cl-6e469442"><span class="cl-6e466d1f">Spring Temperature Surface SEBS Satellite</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e470904"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td><td class="cl-6e470904"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td><td class="cl-6e470904"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e46e1ef"><p class="cl-6e469442"><span class="cl-6e466d1f">Summer Temperature 250m GOA Survey</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  rowspan="8"class="cl-6e46e1f2"><p class="cl-6e469442"><span class="cl-6e466d1f">Lower Trophic</span></p></td><td class="cl-6e46e1ef"><p class="cl-6e469442"><span class="cl-6e466d1f">Spring Chlorophylla Biomass EGOA Satellite</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e4708fa"><p class="cl-6e469442"><span class="cl-6e466d1f">Spring Chlorophylla Biomass SEBS Satellite</span></p></td><td class="cl-6e4708fe"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e4708fe"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e46e1ef"><p class="cl-6e469442"><span class="cl-6e466d1f">Spring Chlorophylla Peak EGOA Satellite</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f1"><p class="cl-6e469443"><span class="cl-6e466d20">low</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f1"><p class="cl-6e469443"><span class="cl-6e466d20">low</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e4708fa"><p class="cl-6e469442"><span class="cl-6e466d1f">Spring Chlorophylla Peak SEBS Satellite</span></p></td><td class="cl-6e470904"><p class="cl-6e469443"><span class="cl-6e466d20">low</span></p></td><td class="cl-6e4708fe"><p class="cl-6e469443"><span class="cl-6e466d1e">high</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e46e1ef"><p class="cl-6e469442"><span class="cl-6e466d1f">Annual Copepod Community Size EGOA Survey</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1ee"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e46e1ef"><p class="cl-6e469442"><span class="cl-6e466d1f">Annual Copepod Community Size WGOA Survey</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e46e1f1"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1ee"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e4708fa"><p class="cl-6e469442"><span class="cl-6e466d1f">Summer Euphausiid Abundance Kodiak Survey</span></p></td><td class="cl-6e4708fe"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e46e1f4"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f4"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td><td class="cl-6e4708fc"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e46e1ef"><p class="cl-6e469442"><span class="cl-6e466d1f">Annual Sablefish Growth YOY Middleton Survey</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f1"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  rowspan="8"class="cl-6e46e1f2"><p class="cl-6e469442"><span class="cl-6e466d1f">Upper Trophic</span></p></td><td class="cl-6e46e1ef"><p class="cl-6e469442"><span class="cl-6e466d1f">Summer Sablefish CPUE Juvenile Nearshore GOAAI Survey</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f1"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td><td class="cl-6e46e1f1"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td><td class="cl-6e46e1f1"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td><td class="cl-6e46e1f1"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e46e1ef"><p class="cl-6e469442"><span class="cl-6e466d1f">Summer Sablefish CPUE Juvenile GOA Survey</span></p></td><td class="cl-6e46e1f1"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td><td class="cl-6e4708ff"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e4708ff"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e4708fa"><p class="cl-6e469442"><span class="cl-6e466d1f">Annual Sablefish Mean Age Female Adult Model</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e4708fe"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e4708fe"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e4708fc"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e4708fa"><p class="cl-6e469442"><span class="cl-6e466d1f">Annual Sablefish Age Evenness Female Adult Model</span></p></td><td class="cl-6e4708fe"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e4708fe"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e4708fe"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e4708fe"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e4708fc"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e46e1ef"><p class="cl-6e469442"><span class="cl-6e466d1f">Summer Sablefish Condition Female Age4 GOA Survey</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1ee"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e470902"><p class="cl-6e469442"><span class="cl-6e466d1f">Annual Arrowtooth Biomass GOA Model</span></p></td><td class="cl-6e470900"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e470900"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e470900"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e470900"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e470901"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e46e1ef"><p class="cl-6e469442"><span class="cl-6e466d1f">Annual Sablefish Incidental Catch Arrowtooth Target GOA Fishery</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">high</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">high</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">high</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e46e1ef"><p class="cl-6e469442"><span class="cl-6e466d1f">Summer Sablefish Condition Female Adult GOA Survey</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  rowspan="6"class="cl-6e46e1f2"><p class="cl-6e469442"><span class="cl-6e466d1f">Fishery Performance</span></p></td><td class="cl-6e46e1ef"><p class="cl-6e469442"><span class="cl-6e466d1f">Annual Sablefish Longline CPUE GOA Fishery</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e4708fa"><p class="cl-6e469442"><span class="cl-6e466d1f">Annual Sablefish Pot CPUE EBS Fishery</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e470904"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td><td class="cl-6e470904"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td><td class="cl-6e470904"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e46e1ef"><p class="cl-6e469442"><span class="cl-6e466d1f">Annual Sablefish Incidental Catch GOA Fishery</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">high</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">high</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">high</span></p></td><td class="cl-6e46e1f1"><p class="cl-6e469443"><span class="cl-6e466d20">low</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e4708fa"><p class="cl-6e469442"><span class="cl-6e466d1f">Annual Sablefish Incidental Catch BSAI Fishery</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e4708fe"><p class="cl-6e469443"><span class="cl-6e466d1e">high</span></p></td><td class="cl-6e4708fe"><p class="cl-6e469443"><span class="cl-6e466d1e">high</span></p></td><td class="cl-6e4708fe"><p class="cl-6e469443"><span class="cl-6e466d1e">high</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e46e1ef"><p class="cl-6e469442"><span class="cl-6e466d1f">Annual Sablefish Condition Female Adult GOA Fishery</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f0"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e46e1f1"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td><td class="cl-6e46e1f3"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e4708fa"><p class="cl-6e469442"><span class="cl-6e466d1f">Annual Sablefish Condition Female Adult BSAI Fishery</span></p></td><td class="cl-6e46e1f4"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td><td class="cl-6e46e1f4"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td><td class="cl-6e46e1f4"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td><td class="cl-6e46e1f4"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td><td class="cl-6e46e1f4"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  rowspan="2"class="cl-6e4708fd"><p class="cl-6e469442"><span class="cl-6e466d1f">Economic</span></p></td><td class="cl-6e4708fa"><p class="cl-6e469442"><span class="cl-6e466d1f">Annual Sablefish Real Exvessel Value Fishery</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e4708fb"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e4708fe"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e4708fe"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e4708fc"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-6e472fe3"><p class="cl-6e469442"><span class="cl-6e466d1f">Annual Sablefish Real Exvessel Price Fishery</span></p></td><td class="cl-6e472fe6"><p class="cl-6e469443"><span class="cl-6e466d20">high</span></p></td><td class="cl-6e472fe5"><p class="cl-6e469443"><span class="cl-6e466d1f">neutral</span></p></td><td class="cl-6e472fe2"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e472fe2"><p class="cl-6e469443"><span class="cl-6e466d1e">low</span></p></td><td class="cl-6e472fe4"><p class="cl-6e469443"><span class="cl-6e466d1f">NA</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="1c3e8db8-ba40-49f0-ad94-e19f0c666d23"></div>
+<script>
+var dest = document.getElementById("1c3e8db8-ba40-49f0-ad94-e19f0c666d23");
+var template = document.getElementById("979038dc-1751-4110-82ea-22b3bd46894d");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="querying-data-from-akfin.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="text-templates-and-rmd-templates.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
