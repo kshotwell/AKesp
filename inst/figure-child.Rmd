@@ -1,0 +1,64 @@
+```{r, conceptual-model, fig.height = 8, eval = TRUE}
+AKesp::render_fig(
+  img = params$con_model_path,
+  lab = "con-model",
+  cap = paste0("Life history conceptual model for ", params$fish, " summarizing ecological information and key ecosystem processes affecting survival by life history stage. Red text means increases in process negatively affect survival, while blue text means increases in process positively affect survival."),
+  alt = "Alt text"
+)
+```
+
+
+```{r, traffic-eco, fig.height = 7, fig.width = 6}
+alt <- "Alt text"
+cap <- c("Selected ecosystem indicators for", params$fish, " with time series ranging from", min(params$esp_data$YEAR), "– present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results.")
+
+knitr::opts_chunk$set(fig.cap = alt)
+AKesp::esp_traffic_long(
+  dat = params$esp_data %>%
+    dplyr::filter(INDICATOR_TYPE == "Ecosystem"),
+  paginate = TRUE,
+  caption = cap,
+  ncolumn = params$ncolumn,
+  min_year = params$min_year
+)
+```
+
+
+```{r, traffic-socio, fig.height = 7, fig.width = 6, eval = "Socioeconomic" %in% params$esp_data$INDICATOR_TYPE}
+alt <- "Alt text"
+cap <- c("Selected socioeconomic indicators for", params$fish, " with time series ranging from", min(params$esp_data$YEAR), "– present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results.")
+
+knitr::opts_chunk$set(fig.cap = alt)
+AKesp::esp_traffic_long(
+  dat = params$esp_data %>%
+    dplyr::filter(INDICATOR_TYPE == "Socioeconomic"),
+  paginate = TRUE,
+  caption = cap,
+  ncolumn = params$ncolumn
+)
+```
+
+
+```{r, overall, fig.height = 7, results = "asis"}
+alt <- "Alt text"
+cap <- c("Simple traffic light score for overall ecosystem and socioeconomic categories from 2000 to present.")
+
+knitr::opts_chunk$set(fig.cap = alt)
+AKesp::esp_overall_score(
+  data = params$esp_data,
+  species = params$fish,
+  region = params$region
+)
+
+cat("##### Figure \\@ref(fig:overall).", cap, "{-}")
+```
+
+
+```{r, bayesian, fig.height = 8}
+AKesp::render_fig(
+  img = params$bayes_path,
+  lab = "bayes",
+  cap = paste0("Bayesian adaptive sampling output showing (a) standardized covariates prior to subsetting and (b) the mean relationship and uncertainty (95% confidence intervals) with log ", params$fish, " recruitment, in each estimated effect (left bottom graph), and marginal inclusion probabilities (right bottom graph) for each predictor variable of the subsetted covariate set"),
+  alt = "Alt text"
+)
+```

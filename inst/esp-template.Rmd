@@ -1,18 +1,18 @@
 ---
-title: "Appendix `r params$num`. Ecosystem and Socioeconomic Profile of the `r params$fish` stock in the `r params$region`"
+title: "Appendix `r params$num`. Ecosystem and Socioeconomic Profile of the `r params$fish` stock in the `r params$region` `r ifelse(params$esp_type == 'report_card', '- Report Card', ifelse(params$esp_type == 'partial', '- Partial Update', ''))`"
 author: "`r params$authors`"
 date: "Draft `r params$year`"
 output: 
   bookdown::word_document2:
-    reference_docx: "template.docx"
+    reference_docx: "template.docx" 
     fig_caption: false
     
-bibliography: references.bib
+#bibliography: references.bib
 
 params:
   num: 1
   authors: "Kalei Shotwell, Abby Tyrell"
-  year: 2021
+  year: 2022
   contributors: "Kalei Shotwell, Abby Tyrell"
   fish: "Myfish"
   region: "Myarea"
@@ -21,7 +21,10 @@ params:
   esp_text: "full-esp-text-template.docx"
   stock_image: "default"
   esp_data: NULL
-  con_model_path: NULL
+  con_model_path: system.file("images/noaa.jpg", package = "AKesp")
+  bayes_path: system.file("images/noaa.jpg", package = "AKesp")
+  ncolumn: 1
+  min_year: NULL
   esp_type: "full"
 ---
 
@@ -53,24 +56,29 @@ knitr::include_graphics(pat)
 
 \newpage
 
-```{r, text}
-temp_file <- "temp-text.txt"
+```{r, text-report-card, eval = params$esp_type == "report_card"}
+child <- knitr::knit_child(system.file("esp-report-card-child.Rmd", package = "AKesp"),
+                  quiet = TRUE)
+cat(child, sep = "\n\n")
+```
+
+```{r, text, eval = params$esp_type != "report_card"}
+if(class(try(readtext::readtext(params$esp_text))) == "try-error"){
+  print("Can't find text template!")
+} else {
+  temp_file <- "temp-text.txt"
 invisible(file.create(temp_file))
-# print(getwd())
 
 text <- readtext::readtext(params$esp_text)
 writeLines(text = text$text, con = temp_file)
 
 new_text <- readLines(temp_file)
 # remove instructions section
-if (esp_type == "report card") {
-  new_text <- new_text[stringr::str_which(new_text, "# Recommendation"):length(new_text)]
-} else {
-  new_text <- new_text[stringr::str_which(new_text, "# Executive Summary"):length(new_text)]
-}
+new_text <- new_text[stringr::str_which(new_text, "# Executive Summary"):length(new_text)]
 
 cat(new_text, sep = "\n\n")
 invisible(file.remove(temp_file))
+}
 ```
 
 \newpage
@@ -78,27 +86,29 @@ invisible(file.remove(temp_file))
 # Tables {-}
 
 ```{r, tables, message = FALSE}
-if (params$esp_type == "report card") {
-  dat <- params$esp_data %>%
-    dplyr::mutate(INDICATOR_NAME = .data$INDICATOR_NAME %>%
-      stringr::str_replace_all("_", " ") %>%
-      stringr::str_wrap(width = 20))
+# make traffic light table if creating report card
+# or if traffic light table position isn't specified for other reports
+if(params$esp_type == "report_card" |
+   class(try(read.csv(params$tab_spreadsheet))) == "try-error" |
+   !"traffic light table" %in% try(read.csv(params$tab_spreadsheet))
+   ) {
+  child <- knitr::knit_child(system.file("table-child.Rmd", package = "AKesp"),
+                  quiet = TRUE)
+cat(child, sep = "\n\n")
+} 
 
-  esp_traffic_tab_long(
-    data = dat,
-    year = (params$year - 4):params$year,
-    cap = paste0("First stage ecosystem indicator analysis for ", params$fish, ', including indicator title and the indicator status of the last five years. The indicator status is designated with text, (greater than = "high", less than = "low", or within 1 standard deviation = "neutral" of long-term mean). Fill color of the cell is based on the sign of the anticipated relationship between the indicator and sablefish (blue = good conditions for sablefish, red = poor conditions, white = average conditions). A gray fill and text = "missing" will appear if there were no data for that year.')
-  ) %>%
-    flextable::width(j = 1, width = 2) %>%
-    flextable::width(j = 2:6, width = 0.75)
-} else {
+# make all other tables if table spreadsheet exists
+if(params$esp_type != "report_card" &
+   class(try(read.csv(params$tab_spreadsheet))) != "try-error") {
   tabs <- read.csv(params$tab_spreadsheet)
   for (i in 1:nrow(tabs)) {
+    cat("\n\n")
     tab <- tabs$file_name[i]
-    render_tab(
+    AKesp::render_tab(
       lab = tabs$chunk_name[i],
       cap = tabs$caption[i]
     )
+    cat("\n\n")
   }
 }
 ```
@@ -107,19 +117,18 @@ if (params$esp_type == "report card") {
 
 # Figures {-}
 ```{r, figures, fig.height = 8}
+# make standard figures for all reports
+  child <- knitr::knit_child(system.file("figure-child.Rmd", package = "AKesp"),
+                  quiet = TRUE)
+cat(child, sep = "\n\n")
+
+# pull in extra figs if specified
+if(params$esp_type != "report_card" &
+   class(try(read.csv(params$fig_spreadsheet))) != "try-error"){
+
   figs <- read.csv(params$fig_spreadsheet)
   for (i in 1:nrow(figs)) {
-    
-    if (figs$chunk_name[i] == "traffic"){
-      try(make_traffic_plot(dat = params$esp_data))
-    
-      } else if (figs$chunk_name[i] == "overall-score") {
-     # make_overall_plot()
-      print("not plotting")
-    
-        } else {
-
-    try(render_fig(
+    try(AKesp::render_fig(
       img = figs$file_name[i],
       lab = figs$chunk_name[i],
       cap = figs$caption[i],
@@ -127,52 +136,4 @@ if (params$esp_type == "report card") {
     ))
     }
   }
-
-```
-
-```{r, figures2, fig.height = 8, eval = FALSE}
-if (params$esp_type == "report card") {
-  # conceptual model
-  img <- params$con_model_path
-  render_fig(
-    lab = "con-model",
-    cap = paste0("Life history conceptual model for ", params$fish, " summarizing ecological information and key ecosystem processes affecting survival by life history stage. Red text means increases in process negatively affect survival, while blue text means increases in process positively affect survival. Trend of current year value compared to last year’s value depicted with arrows on the right. NA means no indicators for that category."),
-    alt = "Alt text"
-  )
-  cat("\n\n")
-
-  # traffic light figures
-  knitr::opts_chunk$set(fig.cap = "Alt text")
-  esp_traffic_long(data = params$esp_data, out = "ggplot")
-  cat("\n\n")
-  
-  cat(knitr::knit_expand(
-    text = paste0("#### Figure \\@ref(fig:figures). Selected indicators for ", params$fish, " with time series ranging from 1977 – present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results. {-}")
-  ))
-  cat("\n\n")
-    
-  # overall stage 1 score
-  knitr::opts_chunk$set(fig.cap = "Alt text",
-                        ref.label = "overall-score")
-  esp_overall_score(data = params$esp_data, 
-                    species = params$fish,
-                    out = "ggplot")
-  cat("\n\n")
-  
-  cat(knitr::knit_expand(
-    text = paste0("#### Figure \\@ref(fig:overall-score). Simple traffic light score for overall ecosystem and socioeconomic categories from ", min(params$esp_data$YEAR), " to present. {-}")
-  ))
-  cat("\n\n")
-  
-} else {
-  figs <- read.csv(params$fig_spreadsheet)
-  for (i in 1:nrow(figs)) {
-    render_fig(
-      img = figs$file_name[i],
-      lab = figs$chunk_name[i],
-      cap = figs$caption[i],
-      alt = figs$alt_text[i]
-    )
-  }
-}
 ```

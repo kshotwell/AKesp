@@ -182,7 +182,7 @@ AKesp::esp_traffic_long(
 ```
 
 
-```{r, traffic-socio, fig.height = 7, fig.width = 6}
+```{r, traffic-socio, fig.height = 7, fig.width = 6, eval = "Socioeconomic" %in% params$esp_data$INDICATOR_TYPE}
 alt <- "Alt text"
 cap <- c("Selected socioeconomic indicators for", params$fish, " with time series ranging from", min(params$esp_data$YEAR), "– present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results.")
 

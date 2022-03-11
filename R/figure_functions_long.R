@@ -113,7 +113,7 @@ esp_hist_long <- function(data, name, out, ...) {
 #' This function plots ESP indicator traffic light figures
 #' @param data The ESP indicator data. Should have a column for Year and a column for each indicator.
 #' @param name The file name for the image. Will be saved relative to the working directory.
-#' @param out Whether the function should save the plot, or return a ggplot object. One of c("ggplot", "save")
+#' @param out Whether the function should save the plot, print a ggplot object in markdown, or return a ggplot object to the working environment (for use with `one_pager()`). One of c("ggplot", "save", "one_pager")
 #' @param paginate Whether to paginate the plots with `ggforce::facet_wrap_paginate`
 #' @param label Whether to label the facets with a, b, c, etc.
 #' @param status Whether to label the facets with the indicator status

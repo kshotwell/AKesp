@@ -1,0 +1,59 @@
+# Current Year Update {-}
+
+The ecosystem and socioeconomic profile or ESP is a standardized framework for compiling and evaluating relevant stock-specific ecosystem and socioeconomic indicators and communicating linkages and potential drivers of the stock within the stock assessment process (Shotwell et al., In Review). The ESP process creates a traceable pathway from the initial development of indicators to management advice and serves as an on-ramp for developing ecosystem-linked stock assessments. 
+Please refer to the last full ESP and partial ESP documents for further information regarding the ecosystem and socioeconomic linkages for this stock (*list references*).
+
+## Management Considerations {-}
+
+Summary conclusions from ESP for ABC (risk table) 
+
+## Modeling Considerations {-}
+
+Summary of indicators with high importance in the Bayesian adaptive sampling routine and discussion of which indicators have had consistent high importance. 
+List of research ecosystem model runs that are currently ongoing and potential for operational use in the future. 
+
+# Assessment {-}
+
+## Ecosystem and Socioeconomic Processes {-}
+
+One paragraph description of ecosystem and socioeconomic (if available) conceptual model(s)
+
+## Indicator Suite {-}
+
+One paragraph description of LME level indicators relevant to stock (ESR summary)
+
+### Ecosystem Indicators: {-}
+```{r, eco_ind} 
+eco <- AKesp::list_indicators(data = params$esp_data, 
+                              indicator_type = "Ecosystem")
+cat(eco)
+```
+
+### Socioeconomic Indicators: {-}
+
+```{r, socio_ind}
+socio <- AKesp::list_indicators(data = params$esp_data, 
+                                indicator_type = "Socioeconomic")
+cat(socio, sep = "\n\n")
+```
+
+## Indicator Monitoring Analysis {-}
+
+References for statistical tests for monitoring indicator suite by stage where relevant 
+
+### Beginning Stage: Traffic Light Test {-}
+
+One paragraph summary of indicator status and trends over time and last five years trend
+Report scores by category (if applicable) and overall ecosystem and socioeconomic indicators. 
+
+### Intermediate Stage: Importance Test {-}
+
+One paragraph summary of importance results with analysis of highly explanatory variables for stock assessment input of interest (e.g., recruitment estimates)
+
+### Advanced Stage: Research Model Test {-}
+
+Update on ecosystem linked model in development and link to relevant literature or report on model 
+
+# Data Gaps and Future Research Priorities {-}
+
+Copy from full ESP
