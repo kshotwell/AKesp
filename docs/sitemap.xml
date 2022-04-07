@@ -88,6 +88,9 @@
     <loc>https://atyrell.github.io/AKesp//reference/SMBKC.html</loc>
   </url>
   <url>
+    <loc>https://atyrell.github.io/AKesp//reference/use_google_files.html</loc>
+  </url>
+  <url>
     <loc>https://atyrell.github.io/AKesp//articles/create-ESP.html</loc>
   </url>
   <url>
@@ -104,5 +107,8 @@
   </url>
   <url>
     <loc>https://atyrell.github.io/AKesp//articles/query-data.html</loc>
+  </url>
+  <url>
+    <loc>https://atyrell.github.io/AKesp//articles/use-google.html</loc>
   </url>
 </urlset>

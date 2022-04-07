@@ -1,0 +1,46 @@
+---
+title: "Using Google Drive"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using Google Drive}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE,
+  eval = TRUE,
+  fig.align = "center"
+)
+```
+
+It is useful to connect to Google Drive to facilitate the sharing of files that are not ready to be publicly accessible on github. 
+
+# Connect R to Google Drive
+
+First, install the necessary packages:
+```{r, eval = FALSE}
+install.packages(c("googledrive", "gargle"))
+```
+
+Next, connect to your Google account:
+```{r, eval = FALSE}
+googledrive::drive_auth()
+```
+Follow the prompts to connect your account. 
+
+# Render an ESP using Google files
+
+You can render an ESP using files on Google Drive by specifying the URL of the folder containing the files. All file paths inputted elsewhere in the code and in the spreadsheets should include only the file name, no folder names (Google's file organization system is different from your desktop machine's). When you specify a URL, the `render_esp` function downloads the files in that folder to a local temporary folder, and they are deleted after the ESP is generated. Please note, you cannot use a mix of Google files and local files to create an ESP at this time.
+```{r, eval = FALSE}
+render_esp(out_dir = here::here("test"), 
+           esp_data = AKesp::get_esp_data("Alaska Sablefish"),
+           con_model_path = "sablefish_con_model.png",
+           stock_image = "sablefish.png",
+           bayes_path = "sablefish_bayes.png",
+           google_folder_url = "https://drive.google.com/drive/folders/1d7bzQfbDb5j-jTbb366vWtHpx5t8wxWe")
+```

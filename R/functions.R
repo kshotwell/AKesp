@@ -39,7 +39,7 @@ create_template <- function(path = getwd(),
 #'
 #' This function creates an ESP from a template. If left empty, an example report will be created.
 #' @param out_name The file name for the report
-#' @param dir The directory that the template is in. Defaults to the working directory.
+#' @param out_dir The directory to save the ESP in.
 #' @param num The appendix number of the EPS
 #' @param authors The names of the authors, as a single character string
 #' @param year The year of the ESP
@@ -57,7 +57,7 @@ create_template <- function(path = getwd(),
 #' @export
 
 render_esp <- function(out_name = "EXAMPLE-FULL-ESP.docx",
-                       dir = getwd(),
+                       out_dir = getwd(),
                        num = 1, # Appendix number
                        authors = "Kalei Shotwell, Abby Tyrell",
                        year = 2021,
@@ -70,22 +70,53 @@ render_esp <- function(out_name = "EXAMPLE-FULL-ESP.docx",
                        esp_text = "full-esp-text-template.docx",
                        esp_type = "full",
                        esp_data = NULL,
-                       con_model_path = "images/con_model.png",
-                       stock_image = "default") {
+                       con_model_path = "default",
+                       stock_image = "default",
+                       bayes_path = "default",
+                       google_folder_url = NULL
+                       ) {
+  # if using a google folder, download files and point to temp folder
+
+  if(!is.null(google_folder_url)){
+    # download files
+    google <- use_google_files(google_folder_url,
+                               overwrite = TRUE)
+
+    # reassign file paths to point to temp folder downloads
+
+    fig_spreadsheet <- paste(google, fig_spreadsheet, sep = "/")
+    tab_spreadsheet <- paste(google, tab_spreadsheet, sep = "/")
+    ref_spreadsheet <- paste(google, ref_spreadsheet, sep = "/")
+    esp_text <- paste(google, esp_text, sep = "/")
+
+    if(stock_image != "default"){
+      stock_image <- paste(google, stock_image, sep = "/")
+    }
+
+    if(con_model_path != "default"){
+      con_model_path <- paste(google, con_model_path, sep = "/")
+    }
+
+    if(bayes_path != "default"){
+      bayes_path <- paste(google, bayes_path, sep = "/")
+    }
+
+    dir <- google
+  } else { dir <- out_dir }
 
   # create references.bib
-  print(getwd())
+ # message(getwd())
   AKesp::render_ref(refs = ref_spreadsheet, dir = dir)
 
   args <- list(
     num, authors, year, contributors, fish, region,
     fig_spreadsheet, tab_spreadsheet, esp_text, esp_type,
-    esp_data, con_model_path
+    esp_data, con_model_path, bayes_path, stock_image
   )
   names(args) <- c(
     "num", "authors", "year", "contributors", "fish", "region",
     "fig_spreadsheet", "tab_spreadsheet", "esp_text", "esp_type",
-    "esp_data", "con_model_path"
+    "esp_data", "con_model_path", "bayes_path", "stock_image"
   )
 
   rmarkdown::render(system.file("esp-template.Rmd",
@@ -95,9 +126,14 @@ render_esp <- function(out_name = "EXAMPLE-FULL-ESP.docx",
   params = args,
   output_file = out_name,
   #  knit_root_dir = dir,
-  output_dir = dir,
+  output_dir = out_dir,
   intermediates_dir = dir
   )
+
+  if(!is.null(google_folder_url)){
+    unlink(google)
+    message("Downloaded google files successfully removed!")
+  }
 
   # clean = TRUE removes .bib file
   # delete files manually instead
@@ -123,7 +159,7 @@ render_fig <- function(img, # the file path to the image
                        cap = "no-caption",
                        alt = "no-alt") {
   txt <- '```{r, {{label}}, fig.cap = "{{alttext}}"}
-      knitr::include_graphics("{{path}}")
+      knitr::include_graphics(path = "{{path}}")
       ```'
 
   if (stringr::str_detect(img, "system.file")) {
@@ -132,8 +168,8 @@ render_fig <- function(img, # the file path to the image
 
   res <- knitr::knit_child(
     text = knitr::knit_expand(
-      path = img,
       text = txt,
+      path = img,
       label = lab,
       caption = cap,
       alttext = alt
@@ -167,7 +203,7 @@ render_tab <- function(tab, # the file path to the table
     text = knitr::knit_expand(
       text =
         '```{r, {{label}} }
-      data <- read.csv(tab)
+      data <- read.csv(file = tab)
       flextable::flextable(data) %>%
           flextable::theme_vanilla() %>%
           flextable::set_caption(caption = "{{caption}}") %>%
@@ -194,7 +230,7 @@ render_ref <- function(refs = "references_spreadsheet.csv", # the file path to t
 ) {
   data <- utils::read.csv(refs)
   file <- paste0(dir, "/references.bib")
-  print(file)
+ # print(file)
   sink(file)
 
   for (i in 1:nrow(data)) {

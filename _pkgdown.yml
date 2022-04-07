@@ -25,6 +25,8 @@ navbar:
          href: articles/create-report-card.html
       -  text: "Create a partial or full ESP"
          href: articles/create-ESP.html
+      -  text: "Use Google Drive"
+         href: articles/use-google.html
     - text: "Functions"
       href: reference/index.html
     - text: "News"
@@ -68,6 +70,7 @@ reference:
       - '`render_fig`'
       - '`render_tab`'
       - '`render_ref`'
+      - '`use_google_files`'
   - subtitle: Utilities
     contents:
       - '`label_facets`'

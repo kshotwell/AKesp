@@ -23,7 +23,7 @@ esp_traffic_long(
 
 \item{name}{The file name for the image. Will be saved relative to the working directory.}
 
-\item{out}{Whether the function should save the plot, or return a ggplot object. One of c("ggplot", "save")}
+\item{out}{Whether the function should save the plot, print a ggplot object in markdown, or return a ggplot object to the working environment (for use with \code{one_pager()}). One of c("ggplot", "save", "one_pager")}
 
 \item{paginate}{Whether to paginate the plots with \code{ggforce::facet_wrap_paginate}}
 

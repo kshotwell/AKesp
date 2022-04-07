@@ -6,7 +6,7 @@
 \usage{
 render_esp(
   out_name = "EXAMPLE-FULL-ESP.docx",
-  dir = getwd(),
+  out_dir = getwd(),
   num = 1,
   authors = "Kalei Shotwell, Abby Tyrell",
   year = 2021,
@@ -19,14 +19,16 @@ render_esp(
   esp_text = "full-esp-text-template.docx",
   esp_type = "full",
   esp_data = NULL,
-  con_model_path = "images/con_model.png",
-  stock_image = "default"
+  con_model_path = "default",
+  stock_image = "default",
+  bayes_path = "default",
+  google_folder_url = NULL
 )
 }
 \arguments{
 \item{out_name}{The file name for the report}
 
-\item{dir}{The directory that the template is in. Defaults to the working directory.}
+\item{out_dir}{The directory to save the ESP in.}
 
 \item{num}{The appendix number of the EPS}
 

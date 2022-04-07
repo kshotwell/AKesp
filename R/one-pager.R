@@ -160,7 +160,7 @@ one_pager <- function(data,
   )
 }
 
-one_pager(data = dat2, overall_data = dat)
+# one_pager(data = dat2, overall_data = dat)
 
 # with patchwork ----
 library(patchwork)

@@ -7,7 +7,7 @@ output:
     reference_docx: "template.docx" 
     fig_caption: false
     
-#bibliography: references.bib
+bibliography: references.bib
 
 params:
   num: 1
@@ -21,8 +21,8 @@ params:
   esp_text: "full-esp-text-template.docx"
   stock_image: "default"
   esp_data: NULL
-  con_model_path: system.file("images/noaa.jpg", package = "AKesp")
-  bayes_path: system.file("images/noaa.jpg", package = "AKesp")
+  con_model_path: "default"
+  bayes_path: "default"
   ncolumn: 1
   min_year: NULL
   esp_type: "full"
@@ -39,15 +39,30 @@ knitr::opts_chunk$set(
   warning = FALSE,
   results = "asis"
 )
+
+fig_spreadsheet <- params$fig_spreadsheet
+tab_spreadsheet <- params$tab_spreadsheet
+ref_spreadsheet <- params$ref_spreadsheet
+esp_text <- params$esp_text
+con_model_path <- params$con_model_path
+bayes_path <- params$bayes_path
+stock_image <- params$stock_image
+
+if(stock_image == "default"){
+  stock_image <- system.file("images/noaa.jpg", package = "AKesp")
+}
+
+if(con_model_path == "default"){
+  con_model_path <- system.file("images/noaa.jpg", package = "AKesp")
+}
+
+if(bayes_path == "default"){
+  bayes_path <- system.file("images/noaa.jpg", package = "AKesp")
+}
 ```
 
 ```{r, title-fig}
-if (params$stock_image == "default") {
-  pat <- system.file("images/noaa.jpg", package = "AKesp")
-} else {
-  pat <- params$stock_image
-}
-knitr::include_graphics(pat)
+knitr::include_graphics(path = stock_image)
 ```
 
 *With Contributions from:*
@@ -63,13 +78,13 @@ cat(child, sep = "\n\n")
 ```
 
 ```{r, text, eval = params$esp_type != "report_card"}
-if(class(try(readtext::readtext(params$esp_text))) == "try-error"){
+if(class(try(readtext::readtext(esp_text)))[1] == "try-error"){
   print("Can't find text template!")
 } else {
   temp_file <- "temp-text.txt"
 invisible(file.create(temp_file))
 
-text <- readtext::readtext(params$esp_text)
+text <- readtext::readtext(file = esp_text)
 writeLines(text = text$text, con = temp_file)
 
 new_text <- readLines(temp_file)
@@ -89,8 +104,8 @@ invisible(file.remove(temp_file))
 # make traffic light table if creating report card
 # or if traffic light table position isn't specified for other reports
 if(params$esp_type == "report_card" |
-   class(try(read.csv(params$tab_spreadsheet))) == "try-error" |
-   !"traffic light table" %in% try(read.csv(params$tab_spreadsheet))
+   class(try(read.csv(file = tab_spreadsheet)))[1] == "try-error" |
+   !"traffic light table" %in% try(read.csv(file = tab_spreadsheet))
    ) {
   child <- knitr::knit_child(system.file("table-child.Rmd", package = "AKesp"),
                   quiet = TRUE)
@@ -99,8 +114,8 @@ cat(child, sep = "\n\n")
 
 # make all other tables if table spreadsheet exists
 if(params$esp_type != "report_card" &
-   class(try(read.csv(params$tab_spreadsheet))) != "try-error") {
-  tabs <- read.csv(params$tab_spreadsheet)
+   class(try(read.csv(file = tab_spreadsheet)))[1] != "try-error") {
+  tabs <- read.csv(file = tab_spreadsheet)
   for (i in 1:nrow(tabs)) {
     cat("\n\n")
     tab <- tabs$file_name[i]
@@ -117,16 +132,15 @@ if(params$esp_type != "report_card" &
 
 # Figures {-}
 ```{r, figures, fig.height = 8}
-# make standard figures for all reports
-  child <- knitr::knit_child(system.file("figure-child.Rmd", package = "AKesp"),
+child <- knitr::knit_child(system.file("figure-child.Rmd", package = "AKesp"),
                   quiet = TRUE)
 cat(child, sep = "\n\n")
 
 # pull in extra figs if specified
 if(params$esp_type != "report_card" &
-   class(try(read.csv(params$fig_spreadsheet))) != "try-error"){
+   class(try(read.csv(file = fig_spreadsheet)))[1] != "try-error"){
 
-  figs <- read.csv(params$fig_spreadsheet)
+  figs <- read.csv(file = fig_spreadsheet)
   for (i in 1:nrow(figs)) {
     try(AKesp::render_fig(
       img = figs$file_name[i],

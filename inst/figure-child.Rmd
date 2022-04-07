@@ -1,6 +1,6 @@
 ```{r, conceptual-model, fig.height = 8, eval = TRUE}
 AKesp::render_fig(
-  img = params$con_model_path,
+  img = con_model_path,
   lab = "con-model",
   cap = paste0("Life history conceptual model for ", params$fish, " summarizing ecological information and key ecosystem processes affecting survival by life history stage. Red text means increases in process negatively affect survival, while blue text means increases in process positively affect survival."),
   alt = "Alt text"
@@ -56,7 +56,7 @@ cat("##### Figure \\@ref(fig:overall).", cap, "{-}")
 
 ```{r, bayesian, fig.height = 8}
 AKesp::render_fig(
-  img = params$bayes_path,
+  img = bayes_path,
   lab = "bayes",
   cap = paste0("Bayesian adaptive sampling output showing (a) standardized covariates prior to subsetting and (b) the mean relationship and uncertainty (95% confidence intervals) with log ", params$fish, " recruitment, in each estimated effect (left bottom graph), and marginal inclusion probabilities (right bottom graph) for each predictor variable of the subsetted covariate set"),
   alt = "Alt text"
