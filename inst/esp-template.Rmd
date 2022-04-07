@@ -16,6 +16,7 @@ params:
   contributors: "Kalei Shotwell, Abby Tyrell"
   fish: "Myfish"
   region: "Myarea"
+  region_abbreviation: "Myabbrev"
   fig_spreadsheet: "figure_spreadsheet.csv"
   tab_spreadsheet: "table_spreadsheet.csv"
   esp_text: "full-esp-text-template.docx"
