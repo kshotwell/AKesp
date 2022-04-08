@@ -106,6 +106,7 @@ render_esp <- function(out_name = "EXAMPLE-FULL-ESP.docx",
 
   # create references.bib
  # message(getwd())
+  message("creating .bib file...")
   AKesp::render_ref(refs = ref_spreadsheet, dir = dir)
 
   args <- list(
@@ -119,6 +120,7 @@ render_esp <- function(out_name = "EXAMPLE-FULL-ESP.docx",
     "esp_data", "con_model_path", "bayes_path", "stock_image"
   )
 
+  message("knitting ESP...")
   rmarkdown::render(system.file("esp-template.Rmd",
     package = "AKesp"
   ),
@@ -228,7 +230,7 @@ render_tab <- function(tab, # the file path to the table
 render_ref <- function(refs = "references_spreadsheet.csv", # the file path to the reference spreadsheet
                        dir # directory where references.bib should be saved. only needed because of packaging issues
 ) {
-  data <- utils::read.csv(refs)
+  data <- utils::read.csv(file = paste(dir, refs, sep = "/"))
   file <- paste0(dir, "/references.bib")
  # print(file)
   sink(file)

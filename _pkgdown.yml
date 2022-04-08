@@ -71,6 +71,7 @@ reference:
       - '`render_tab`'
       - '`render_ref`'
       - '`use_google_files`'
+      - '`list_indicators`'
   - subtitle: Utilities
     contents:
       - '`label_facets`'
