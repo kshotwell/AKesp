@@ -123,7 +123,8 @@ if(params$esp_type != "report_card" &
     AKesp::render_tab(
       lab = tabs$chunk_name[i],
       cap = tabs$caption[i]
-    )
+    ) %>%
+      try()
     cat("\n\n")
   }
 }

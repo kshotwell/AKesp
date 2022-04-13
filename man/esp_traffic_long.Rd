@@ -15,6 +15,7 @@ esp_traffic_long(
   ncolumn = 1,
   silent = FALSE,
   min_year = NULL,
+  chunk_label = "traffic",
   ...
 )
 }
