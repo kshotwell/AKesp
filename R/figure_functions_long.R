@@ -137,6 +137,7 @@ esp_traffic_long <- function(data,
                              ncolumn = 1,
                              silent = FALSE,
                              min_year = NULL,
+                             chunk_label = "traffic",
                              ...) {
   maxyear <- max(data$YEAR)
   minyear <- maxyear - 1
@@ -260,7 +261,7 @@ esp_traffic_long <- function(data,
       print(plt)
       cat("\n\n")
       if (silent == FALSE) {
-        cat("##### Figure \\@ref(fig:traffic).", caption, "{-}")
+        cat("##### Figure \\@ref(fig:", chunk_label, "). ", caption, " {-}", sep = "")
       }
       cat("\n\n")
     } else if (out == "one_pager") {

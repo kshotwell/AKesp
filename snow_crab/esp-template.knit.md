@@ -166,7 +166,7 @@ Include DOI or links to papers where possible
 
 ::: {custom-style="Table Caption"}
 
-<caption>(\#tab:eco-table)`<w:bookmarkStart w:id="cdd42957-8063-45a3-922d-65025398cded" w:name="tab:eco-table"/><w:r><w:t xml:space="preserve">First stage ecosystem indicator analysis for Snow Crab, including indicator title and the indicator status of the last five years. The indicator status is designated with text, (greater than = "high", less than = "low", or within 1 standard deviation = "neutral" of long-term mean). Fill color of the cell is based on the sign of the anticipated relationship between the indicator and sablefish (blue = good conditions for sablefish, red = poor conditions, white = average conditions). A gray fill and text = "missing" will appear if there were no data for that year.</w:t></w:r><w:bookmarkEnd w:id="cdd42957-8063-45a3-922d-65025398cded"/>`{=openxml}</caption>
+<caption>(\#tab:eco-table)`<w:bookmarkStart w:id="232124fd-3cc4-4302-a5da-983e8f70a7b9" w:name="tab:eco-table"/><w:r><w:t xml:space="preserve">First stage ecosystem indicator analysis for Snow Crab, including indicator title and the indicator status of the last five years. The indicator status is designated with text, (greater than = "high", less than = "low", or within 1 standard deviation = "neutral" of long-term mean). Fill color of the cell is based on the sign of the anticipated relationship between the indicator and sablefish (blue = good conditions for sablefish, red = poor conditions, white = average conditions). A gray fill and text = "missing" will appear if there were no data for that year.</w:t></w:r><w:bookmarkEnd w:id="232124fd-3cc4-4302-a5da-983e8f70a7b9"/>`{=openxml}</caption>
 
 :::
 
@@ -181,7 +181,7 @@ Include DOI or links to papers where possible
 
 ::: {custom-style="Table Caption"}
 
-<caption>(\#tab:example)`<w:bookmarkStart w:id="10484033-1fc6-4747-9778-d9d01ce854a5" w:name="tab:example"/><w:r><w:t xml:space="preserve">An example table</w:t></w:r><w:bookmarkEnd w:id="10484033-1fc6-4747-9778-d9d01ce854a5"/>`{=openxml}</caption>
+<caption>(\#tab:example)`<w:bookmarkStart w:id="90185506-5616-4fef-9fc6-5fd4b54a5c7c" w:name="tab:example"/><w:r><w:t xml:space="preserve">An example table</w:t></w:r><w:bookmarkEnd w:id="90185506-5616-4fef-9fc6-5fd4b54a5c7c"/>`{=openxml}</caption>
 
 :::
 
@@ -197,19 +197,21 @@ Include DOI or links to papers where possible
 
 ##### Figure \@ref(fig:con-model). Life history conceptual model for Snow Crab summarizing ecological information and key ecosystem processes affecting survival by life history stage. Red text means increases in process negatively affect survival, while blue text means increases in process positively affect survival. {-}
 
+![(\#fig:traffic-eco-dummy)dummy caption](C:/Users/abigail.tyrell/Documents/AKesp/inst/images/noaa.jpg)delete the above figure!
 
 ![](C:/Users/abigail.tyrell/Documents/AKesp/snow_crab/snow_crab_test_files/figure-docx/traffic-eco-1.png)
 
-##### Figure \@ref(fig:traffic). Selected ecosystem indicators for Snow Crab  with time series ranging from 1977 – present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results. {-}
+##### Figure \@ref(fig:traffic-eco-dummy). Selected ecosystem indicators forSnow Crab with time series ranging from1977– present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results. {-}
 
 ![](C:/Users/abigail.tyrell/Documents/AKesp/snow_crab/snow_crab_test_files/figure-docx/traffic-eco-2.png)
 
-##### Figure \@ref(fig:traffic). Selected ecosystem indicators for Snow Crab  with time series ranging from 1977 – present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results. {-}
+##### Figure \@ref(fig:traffic-eco-dummy). Selected ecosystem indicators forSnow Crab with time series ranging from1977– present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results. {-}
 
 ![](C:/Users/abigail.tyrell/Documents/AKesp/snow_crab/snow_crab_test_files/figure-docx/traffic-eco-3.png)
 
-##### Figure \@ref(fig:traffic). Selected ecosystem indicators for Snow Crab  with time series ranging from 1977 – present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results. {-}
+##### Figure \@ref(fig:traffic-eco-dummy). Selected ecosystem indicators forSnow Crab with time series ranging from1977– present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results. {-}
 
+![(\#fig:traffic-socio-dummy)dummy caption](C:/Users/abigail.tyrell/Documents/AKesp/inst/images/noaa.jpg)delete the above figure!
 
 
 

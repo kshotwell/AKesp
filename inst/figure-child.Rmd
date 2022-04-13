@@ -7,6 +7,10 @@ AKesp::render_fig(
 )
 ```
 
+```{r, traffic-eco-dummy, fig.cap = "dummy caption"}
+knitr::include_graphics(path = system.file("images/noaa.jpg", package = "AKesp"))
+cat("delete the above figure!")
+```
 
 ```{r, traffic-eco, fig.height = 7, fig.width = 6}
 alt <- "Alt text"
@@ -19,14 +23,19 @@ AKesp::esp_traffic_long(
   paginate = TRUE,
   caption = cap,
   ncolumn = params$ncolumn,
-  min_year = params$min_year
+  min_year = params$min_year,
+  chunk_label = "traffic-eco-dummy"
 )
 ```
 
+```{r, traffic-socio-dummy, fig.cap = "dummy caption"}
+knitr::include_graphics(path = system.file("images/noaa.jpg", package = "AKesp"))
+cat("delete the above figure!")
+```
 
 ```{r, traffic-socio, fig.height = 7, fig.width = 6, eval = "Socioeconomic" %in% params$esp_data$INDICATOR_TYPE}
 alt <- "Alt text"
-cap <- c("Selected socioeconomic indicators for", params$fish, " with time series ranging from", min(params$esp_data$YEAR), "– present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results.")
+cap <- c("Selected socioeconomic indicators for ", params$fish, " with time series ranging from ", min(params$esp_data$YEAR), "– present. Upper and lower solid green horizontal lines are plus and minus one standard deviation of the time series mean. Dotted green horizontal line is the mean of the time series.")
 
 knitr::opts_chunk$set(fig.cap = alt)
 AKesp::esp_traffic_long(
@@ -34,7 +43,8 @@ AKesp::esp_traffic_long(
     dplyr::filter(INDICATOR_TYPE == "Socioeconomic"),
   paginate = TRUE,
   caption = cap,
-  ncolumn = params$ncolumn
+  ncolumn = params$ncolumn,
+  chunk_label = "traffic-socio-dummy"
 )
 ```
 
