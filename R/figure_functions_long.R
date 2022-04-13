@@ -460,6 +460,9 @@ esp_overall_score <- function(data, species, region, out = "ggplot", name, ...) 
 
   ymax <- max(abs(dat$mean_score))
 
+  title <- paste("Overall Stage 1 Score for", region, species) %>%
+    stringr::str_wrap(width = 40)
+
   plt <- ggplot2::ggplot(
     dat,
     ggplot2::aes(
@@ -485,7 +488,7 @@ esp_overall_score <- function(data, species, region, out = "ggplot", name, ...) 
       plot.title = ggplot2::element_text(size = 14)
     ) +
     ggplot2::guides(color = ggplot2::guide_legend(ncol = 2)) +
-    ggplot2::ggtitle(label = paste("Overall Stage 1 Score for", region, species)) +
+    ggplot2::ggtitle(label = title) +
     ggplot2::ylim(-ymax, ymax) +
     ggplot2::facet_grid(rows = ggplot2::vars(.data$INDICATOR_TYPE))
 

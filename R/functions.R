@@ -10,7 +10,7 @@ create_template <- function(path = getwd(),
                             type = "full") {
   file.copy(
     from = system.file(c("images", "tables", "figure_spreadsheet.csv", "table_spreadsheet.csv", "references_spreadsheet.csv"),
-      package = "AKesp"
+                       package = "AKesp"
     ),
     to = path,
     recursive = TRUE,
@@ -19,14 +19,14 @@ create_template <- function(path = getwd(),
   if (type == "full") {
     file.copy(
       from = system.file("full-esp-text-template.docx",
-        package = "AKesp"
+                         package = "AKesp"
       ),
       to = path
     )
   } else if (type == "partial") {
     file.copy(
       from = system.file("partial-esp-text-template.docx",
-        package = "AKesp"
+                         package = "AKesp"
       ),
       to = path
     )
@@ -74,7 +74,7 @@ render_esp <- function(out_name = "EXAMPLE-FULL-ESP.docx",
                        stock_image = "default",
                        bayes_path = "default",
                        google_folder_url = NULL
-                       ) {
+) {
   # if using a google folder, download files and point to temp folder
 
   if(!is.null(google_folder_url)){
@@ -105,7 +105,7 @@ render_esp <- function(out_name = "EXAMPLE-FULL-ESP.docx",
   } else { dir <- out_dir }
 
   # create references.bib
- # message(getwd())
+  # message(getwd())
   message("creating .bib file...")
   AKesp::render_ref(refs = ref_spreadsheet, dir = dir)
 
@@ -122,7 +122,7 @@ render_esp <- function(out_name = "EXAMPLE-FULL-ESP.docx",
 
   message("knitting ESP...")
   rmarkdown::render(system.file("esp-template.Rmd",
-    package = "AKesp"
+                                package = "AKesp"
   ),
   clean = FALSE,
   params = args,
@@ -180,12 +180,12 @@ render_fig <- function(img, # the file path to the image
   )
 
   cat(res,
-    knitr::knit_expand(
-      text = "##### Figure \\@ref(fig:{{label}}). {{caption}} {-}",
-      label = lab,
-      caption = cap
-    ),
-    sep = "\n\n"
+      knitr::knit_expand(
+        text = "##### Figure \\@ref(fig:{{label}}). {{caption}} {-}",
+        label = lab,
+        caption = cap
+      ),
+      sep = "\n\n"
   )
 }
 
@@ -232,7 +232,7 @@ render_ref <- function(refs = "references_spreadsheet.csv", # the file path to t
 ) {
   data <- utils::read.csv(file = paste(dir, refs, sep = "/"))
   file <- paste0(dir, "/references.bib")
- # print(file)
+  # print(file)
   sink(file)
 
   for (i in 1:nrow(data)) {

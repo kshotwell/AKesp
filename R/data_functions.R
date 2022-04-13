@@ -138,3 +138,45 @@ join_order <- function(data) {
   data$name <- factor(data$name, levels = unique(data$name))
   return(data)
 }
+
+#' Check ESP data columns
+#'
+#' This function checks that the ESP data has the expected columns.
+#' If any columns are missing, they are filled with NAs.
+#' @param data The ESP data
+#' @param fill Whether to add missing columns and fill with NAs
+#' @return A tibble
+#' @importFrom magrittr %>%
+#' @importFrom rlang .data
+#' @export
+
+check_data <- function(data, fill = TRUE) {
+  expected_colnames <- c("YEAR", "INDICATOR_NAME", "DATA_VALUE",
+                         "DATA_SOURCE_NAME", "DATABASE_NAME", "PRODUCT",
+                         "PRODUCT_DESCRIPTION", "INDICATOR_TYPE", "CATEGORY",
+                         "CONTACT", "FREQUENCY", "REGION", "TIME_START",
+                         "TIME_END", "AKFIN", "ESR", "REFERENCE", "PRELIMINARY",
+                         "REPORT_CARD_TITLE", "INTENDED_ESP_NAME",
+                         "SUBMISSION_YEAR", "GATE1_YEAR", "GATE2_YEAR",
+                         "REMOVED_YEAR", "SIGN", "WEIGHT", "STATUS_TRENDS",
+                         "INFLUENTIAL_FACTORS")
+
+  data_colnames <- colnames(data)
+
+  match <- length(expected_colnames) == length(data_colnames)
+
+  if(match){
+    message("all expected columns present in data")
+  } else if(fill) {
+    missing_cols <- expected_colnames[which(! expected_colnames %in% data_colnames)]
+    for(i in missing_cols) {
+      data[,i] <- NA
+      message("missing columns -- filled with NAs")
+    }
+  } else {
+    message("missing columns -- not filling!")
+  }
+return(data)
+}
+
+# dat2 <- check_data(dat)
