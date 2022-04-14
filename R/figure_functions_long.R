@@ -121,6 +121,7 @@ esp_hist_long <- function(data, name, out, ...) {
 #' @param ncolumn How many columns the figure should have (1 by default)
 #' @param silent Whether to print the caption
 #' @param min_year The minimum year to show on the plots. If left NULL (the default), the minimum year will be the first year of the dataset.
+#' @param chunk_label The label name to look for to create the figure number. This is a work-around to deal with figure pagination.
 #' @param ... Passed to `ggplot2::ggsave`
 #' @return An image file
 #' @importFrom magrittr %>%

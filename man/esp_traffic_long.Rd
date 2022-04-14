@@ -40,6 +40,8 @@ esp_traffic_long(
 
 \item{min_year}{The minimum year to show on the plots. If left NULL (the default), the minimum year will be the first year of the dataset.}
 
+\item{chunk_label}{The label name to look for to create the figure number. This is a work-around to deal with figure pagination.}
+
 \item{...}{Passed to \code{ggplot2::ggsave}}
 }
 \value{

@@ -6,3 +6,14 @@
 ^docs$
 ^pkgdown$
 ^examples
+^\.github
+^bayes\.png$
+^book
+^header\.png$
+^one-pager-patchwork\.pdf$
+^one-pager\.pdf$
+^run_esps_examples\.R$
+^shiny
+^snow_crab
+^test
+^test\.pdf$

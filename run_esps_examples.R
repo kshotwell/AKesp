@@ -19,18 +19,16 @@ render_esp(out_dir = here::here("snow_crab"),
            year = 2022,
            fish = "Snow Crab",
            region = "Eastern Bering Sea",
+           tab_spreadsheet = 1,
            esp_data = AKesp::get_esp_data("BS Snow Crab") %>% check_data())
 
 # test snow crab report card
-render_esp(esp_type = "report card",
+render_esp(esp_type = "report_card",
            out_dir = here::here("test"),
            out_name = "snow_crab_test_rc.docx",
-           esp_data = AKesp::get_esp_data("BS Snow Crab"),
-           con_model_path = "sablefish_con_model.png",
-           stock_image = "sablefish.png",
-           bayes_path = "sablefish_bayes.png",
+           esp_data = AKesp::get_esp_data("BS Snow Crab") %>% check_data(),
            authors = "Erin Fedewa, Kalei Shotwell, Abby Tyrell",
            year = 2022,
            fish = "Snow Crab",
            region = "Eastern Bering Sea",
-           google_folder_url = "https://drive.google.com/drive/folders/1d7bzQfbDb5j-jTbb366vWtHpx5t8wxWe")
+           render_ref = FALSE)

@@ -22,7 +22,8 @@ render_esp(
   con_model_path = "default",
   stock_image = "default",
   bayes_path = "default",
-  google_folder_url = NULL
+  google_folder_url = NULL,
+  render_ref = TRUE
 )
 }
 \arguments{
@@ -57,6 +58,12 @@ render_esp(
 \item{con_model_path}{The path to the conceptual model. Currently only required for report card ESPs.}
 
 \item{stock_image}{The path to an image to use on the cover page. Shows the NOAA logo as a default.}
+
+\item{bayes_path}{The path to the image of Bayesian Adaptive Sampling results}
+
+\item{google_folder_url}{The URL of the google drive folder holding the template materials (optional)}
+
+\item{render_ref}{Whether to render references in markdown from a references spreadsheet}
 }
 \description{
 This function creates an ESP from a template. If left empty, an example report will be created.

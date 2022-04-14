@@ -54,6 +54,9 @@ create_template <- function(path = getwd(),
 #' @param esp_data The data to use for automated analyses. Currently only required for report card ESPs.
 #' @param con_model_path The path to the conceptual model. Currently only required for report card ESPs.
 #' @param stock_image The path to an image to use on the cover page. Shows the NOAA logo as a default.
+#' @param bayes_path The path to the image of Bayesian Adaptive Sampling results
+#' @param google_folder_url The URL of the google drive folder holding the template materials (optional)
+#' @param render_ref Whether to render references in markdown from a references spreadsheet
 #' @export
 
 render_esp <- function(out_name = "EXAMPLE-FULL-ESP.docx",
@@ -73,7 +76,8 @@ render_esp <- function(out_name = "EXAMPLE-FULL-ESP.docx",
                        con_model_path = "default",
                        stock_image = "default",
                        bayes_path = "default",
-                       google_folder_url = NULL
+                       google_folder_url = NULL,
+                       render_ref = TRUE
 ) {
   # if using a google folder, download files and point to temp folder
 
@@ -106,8 +110,10 @@ render_esp <- function(out_name = "EXAMPLE-FULL-ESP.docx",
 
   # create references.bib
   # message(getwd())
+  if(render_ref) {
   message("creating .bib file...")
   AKesp::render_ref(refs = ref_spreadsheet, dir = dir)
+  }
 
   args <- list(
     num, authors, year, contributors, fish, region,
