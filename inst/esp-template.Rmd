@@ -92,8 +92,19 @@ new_text <- readLines(temp_file)
 # remove instructions section
 new_text <- new_text[stringr::str_which(new_text, "# Executive Summary"):length(new_text)]
 
-cat(new_text, sep = "\n\n")
-invisible(file.remove(temp_file))
+# knit to new .txt
+knit_Rmd <- ("temp-text-knit.txt")
+invisible(file.create(knit_Rmd))
+
+knitr::knit(text = new_text,
+            output = knit_Rmd,
+            quiet = TRUE)
+
+# include knitted text
+cat(readLines(knit_Rmd), sep = "\n\n")
+
+# clean up temp files
+invisible(file.remove(temp_file, knit_Rmd))
 }
 ```
 
@@ -137,6 +148,13 @@ if(params$esp_type != "report_card" &
 child <- knitr::knit_child(system.file("figure-child.Rmd", package = "AKesp"),
                   quiet = TRUE)
 cat(child, sep = "\n\n")
+# the child doc automatically pulls in (from paths specified in .Rmd params):
+# fig 1: conceptual model 
+# fig 2: ecosystem traffic light figs
+# fig 3: socioeconomic traffic light figs
+# fig 4: overall traffic score summary
+# fig 5: bayesian summary
+# additional figures will be added after these, if a fig_spreadsheet exists
 
 # pull in extra figs if specified
 if(params$esp_type != "report_card" &
