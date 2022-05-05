@@ -70,7 +70,7 @@ prep_ind_data <- function(data, recent = TRUE, label_width = 50) {
     dplyr::select(
       .data$INDICATOR_NAME, .data$CATEGORY, .data$INDICATOR_TYPE,
       .data$YEAR, .data$DATA_VALUE, .data$SIGN, .data$WEIGHT,
-      .data$INTENDED_ESP_NAME, .data$REPORT_CARD_TITLE
+      .data$INTENDED_ESP_NAME, .data$REPORT_CARD_TITLE, .data$UNITS
     ) %>%
     dplyr::group_by(.data$INDICATOR_NAME) %>%
     dplyr::mutate(

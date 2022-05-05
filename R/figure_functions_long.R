@@ -122,6 +122,7 @@ esp_hist_long <- function(data, name, out, ...) {
 #' @param silent Whether to print the caption
 #' @param min_year The minimum year to show on the plots. If left NULL (the default), the minimum year will be the first year of the dataset.
 #' @param chunk_label The label name to look for to create the figure number. This is a work-around to deal with figure pagination.
+#' @param units Whether to add units in the facet header
 #' @param ... Passed to `ggplot2::ggsave`
 #' @return An image file
 #' @importFrom magrittr %>%
@@ -139,6 +140,7 @@ esp_traffic_long <- function(data,
                              silent = FALSE,
                              min_year = NULL,
                              chunk_label = "traffic",
+                             units = TRUE,
                              ...) {
   maxyear <- max(data$YEAR)
   minyear <- maxyear - 1
@@ -150,6 +152,11 @@ esp_traffic_long <- function(data,
   }
 
   dat <- join_order(dat)
+
+  if(units){
+  dat <- dat %>%
+    dplyr::mutate(name = paste0(.data$name, "\n", .data$UNITS))
+  }
 
   plt <- ggplot2::ggplot(
     dat,
@@ -187,6 +194,13 @@ esp_traffic_long <- function(data,
     ggplot2::scale_y_continuous(labels = scales::comma) +
     ggplot2::theme_bw(base_size = 16) +
     ggplot2::theme(strip.text = ggplot2::element_text(size = 10))
+
+  # key <- dat %>%
+  #   dplyr::select(name, UNITS) %>%
+  #   dplyr::distinct()
+  #
+  # ylabels <- key$UNITS
+  # names(ylabels) <- key$name
 
   if (status) {
     stat_dat <- dat %>%
@@ -289,7 +303,8 @@ esp_traffic_long <- function(data,
           ncol = ncolumn,
           nrow = 5,
           scales = "free_y",
-          page = i
+          page = i#,
+          #labeller = ggplot2::labeller(name = ylabels)
         )
 
       finish_fig()
@@ -298,7 +313,8 @@ esp_traffic_long <- function(data,
     plt <- plt +
       ggplot2::facet_wrap(~name,
         ncol = ncolumn,
-        scales = "free_y"
+        scales = "free_y"#,
+       # labeller = ggplot2::labeller(name = ylabels)
       )
 
     finish_fig()
