@@ -16,7 +16,8 @@ esp_traffic_long(
   silent = FALSE,
   min_year = NULL,
   chunk_label = "traffic",
-  units = TRUE,
+  f_units = FALSE,
+  y_units = TRUE,
   ...
 )
 }
@@ -43,7 +44,9 @@ esp_traffic_long(
 
 \item{chunk_label}{The label name to look for to create the figure number. This is a work-around to deal with figure pagination.}
 
-\item{units}{Whether to add units in the facet header}
+\item{f_units}{Whether to add units in the facet header}
+
+\item{y_units}{Whether to add units to the y-axis}
 
 \item{...}{Passed to \code{ggplot2::ggsave}}
 }

@@ -122,7 +122,8 @@ esp_hist_long <- function(data, name, out, ...) {
 #' @param silent Whether to print the caption
 #' @param min_year The minimum year to show on the plots. If left NULL (the default), the minimum year will be the first year of the dataset.
 #' @param chunk_label The label name to look for to create the figure number. This is a work-around to deal with figure pagination.
-#' @param units Whether to add units in the facet header
+#' @param f_units Whether to add units in the facet header
+#' @param y_units Whether to add units to the y-axis
 #' @param ... Passed to `ggplot2::ggsave`
 #' @return An image file
 #' @importFrom magrittr %>%
@@ -140,7 +141,8 @@ esp_traffic_long <- function(data,
                              silent = FALSE,
                              min_year = NULL,
                              chunk_label = "traffic",
-                             units = TRUE,
+                             f_units = FALSE,
+                             y_units = TRUE,
                              ...) {
   maxyear <- max(data$YEAR)
   minyear <- maxyear - 1
@@ -153,7 +155,8 @@ esp_traffic_long <- function(data,
 
   dat <- join_order(dat)
 
-  if(units){
+  # add units on facet ----
+  if(f_units){
   dat <- dat %>%
     dplyr::mutate(name = paste0(.data$name, "\n", .data$UNITS))
   }
@@ -195,12 +198,32 @@ esp_traffic_long <- function(data,
     ggplot2::theme_bw(base_size = 16) +
     ggplot2::theme(strip.text = ggplot2::element_text(size = 10))
 
-  # key <- dat %>%
-  #   dplyr::select(name, UNITS) %>%
-  #   dplyr::distinct()
-  #
-  # ylabels <- key$UNITS
-  # names(ylabels) <- key$name
+  # try to add units on y axis ----
+  if(y_units){
+    key <- dat %>%
+      dplyr::select(.data$name, .data$UNITS, .data$DATA_VALUE, .data$YEAR) %>%
+      dplyr::mutate(min_year = min(.data$YEAR, na.rm = TRUE)) %>%
+      dplyr::group_by(.data$name, .data$UNITS, .data$min_year) %>%
+      dplyr::summarise(mean = mean(.data$DATA_VALUE, na.rm = TRUE))
+
+    plt <- plt +
+      ggplot2::geom_text(data = key,
+                         inherit.aes = FALSE,
+                         ggplot2::aes(x = min_year,
+                                      y = mean,
+                                      label = paste(stringr::str_wrap(UNITS, 10),
+                                                    "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")),
+                         angle = 90,
+                         lineheight = 0.75) +
+      ggplot2::theme(plot.margin = ggplot2::unit(c(1, 1, 1, 6), "lines")) +
+      ggplot2::coord_cartesian(clip = "off") +
+      ggplot2::scale_y_continuous(labels = scales::label_scientific(),
+                                  breaks = scales::breaks_pretty(n = 3))
+
+    # ylabels <- key$UNITS
+    # names(ylabels) <- key$name
+      }
+
 
   if (status) {
     stat_dat <- dat %>%
@@ -289,7 +312,11 @@ esp_traffic_long <- function(data,
 
   if (paginate == TRUE) {
     plt2 <- plt +
-      ggforce::facet_wrap_paginate(~name,
+      ggforce::facet_wrap_paginate(
+      ~name,
+      # ggforce::facet_grid_paginate(
+      #   rows = ggplot2::vars(name),
+      #   cols = ggplot2::vars(UNITS),
         ncol = ncolumn,
         nrow = 5,
         scales = "free_y"
