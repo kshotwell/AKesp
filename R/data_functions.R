@@ -159,7 +159,7 @@ check_data <- function(data, fill = TRUE) {
                          "REPORT_CARD_TITLE", "INTENDED_ESP_NAME",
                          "SUBMISSION_YEAR", "GATE1_YEAR", "GATE2_YEAR",
                          "REMOVED_YEAR", "SIGN", "WEIGHT", "STATUS_TRENDS",
-                         "INFLUENTIAL_FACTORS")
+                         "INFLUENTIAL_FACTORS", "UNITS")
 
   data_colnames <- colnames(data)
 
