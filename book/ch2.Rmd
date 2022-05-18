@@ -22,7 +22,8 @@ AKesp::esp_metrics(
 
 ### Correlation matrices
 ```{r, fig.width = 15, fig.height = 20}
-dat <- AKesp::get_esp_data("Alaska Sablefish")
+dat <- AKesp::get_esp_data("Alaska Sablefish") %>%
+  AKesp::check_data() # add NA columns if any columns are missing
 
 AKesp::esp_cor_matrix_long(
   data = dat,
@@ -57,8 +58,6 @@ Tables can be automatically created from the `table_spreadsheet.csv` and the `.c
 
 A traffic light table can be automatically created from a spreadsheet that has a column for year and a column for each indicator.
 ```{r}
-dat <- AKesp::get_esp_data("Alaska Sablefish")
-
 AKesp::esp_traffic_tab_long(
   data = dat,
   year = 2021
