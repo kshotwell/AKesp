@@ -9,6 +9,7 @@
 list_indicators <- function(data, indicator_type) {
   dat <- data %>%
     dplyr::select(
+      .data$INDICATOR_NAME,
       .data$REPORT_CARD_TITLE,
       .data$CONTACT,
       .data$STATUS_TRENDS,
@@ -38,9 +39,11 @@ list_indicators <- function(data, indicator_type) {
 
     dat1 <- dat %>%
       dplyr::filter(.data$CATEGORY == j)
+
     for (k in unique(dat1$REPORT_CARD_TITLE)) {
       dat2 <- dat1 %>%
         dplyr::select(
+          .data$INDICATOR_NAME,
           .data$REPORT_CARD_TITLE,
           .data$CONTACT,
           .data$STATUS_TRENDS,
@@ -50,8 +53,8 @@ list_indicators <- function(data, indicator_type) {
         dplyr::filter(.data$REPORT_CARD_TITLE == k)
 
       text <- paste0(
-        letters[letter_index], ".) ", k, ": ",
-        dat2$REPORT_CARD_TITLE, " (contact: ", dat2$CONTACT, ")",
+        letters[letter_index], ".) ", dat2$INDICATOR_NAME, ": ", k,
+        " (contact: ", dat2$CONTACT, ")",
         "\n\n", "Status and trends: ", dat2$STATUS_TRENDS,
         "\n\n", "Influential factors: ", dat2$INFLUENTIAL_FACTORS
       )
