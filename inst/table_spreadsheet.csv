@@ -1,2 +1,4 @@
 file_name,chunk_name,description,caption
 tables/example.csv,example,example table,An example table
+,eco-table,shortcut for creating the ecosystem traffic light table,will be automatically produced
+,socio-table,shortcut for creating the socioeconomic traffic light table,will be automatically produced

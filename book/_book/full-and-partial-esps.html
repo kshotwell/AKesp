@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.3 Full and partial ESPs | AKesp User Manual</title>
   <meta name="description" content="2.3 Full and partial ESPs | AKesp User Manual" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.3 Full and partial ESPs | AKesp User Manual" />
   <meta property="og:type" content="book" />
-  
   
   
   <meta name="github-repo" content="atyrell/AKesp" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Abigail Tyrell" />
 
 
-<meta name="date" content="2022-02-24" />
+<meta name="date" content="2022-05-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="esp-one-pager.html"/>
 <link rel="next" href="whats-going-on-behind-the-scenes.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,7 +49,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 
 
@@ -119,6 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 </head>
 
 <body>
@@ -167,7 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.5" data-path="functions-to-create-figures-and-tables.html"><a href="functions-to-create-figures-and-tables.html#tables-from-spreadsheets"><i class="fa fa-check"></i><b>3.2.5</b> Tables from spreadsheets</a></li>
 <li class="chapter" data-level="3.2.6" data-path="functions-to-create-figures-and-tables.html"><a href="functions-to-create-figures-and-tables.html#traffic-light-score-table"><i class="fa fa-check"></i><b>3.2.6</b> Traffic light score table</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="text-templates-and-rmd-templates.html"><a href="text-templates-and-rmd-templates.html"><i class="fa fa-check"></i><b>3.3</b> Text templates and .Rmd templates</a></li>
+<li class="chapter" data-level="3.3" data-path="text-templates-and-.rmd-templates.html"><a href="text-templates-and-.rmd-templates.html"><i class="fa fa-check"></i><b>3.3</b> Text templates and .Rmd templates</a></li>
 <li class="chapter" data-level="3.4" data-path="helper-functions.html"><a href="helper-functions.html"><i class="fa fa-check"></i><b>3.4</b> Helper functions</a></li>
 <li class="chapter" data-level="3.5" data-path="report-rendering-functions.html"><a href="report-rendering-functions.html"><i class="fa fa-check"></i><b>3.5</b> Report rendering functions</a></li>
 </ul></li>
@@ -189,16 +191,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="full-and-partial-esps" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Full and partial ESPs</h2>
-<div id="create-your-template" class="section level3" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Create your template</h3>
+<div id="full-and-partial-esps" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Full and partial ESPs<a href="full-and-partial-esps.html#full-and-partial-esps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="create-your-template" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Create your template<a href="full-and-partial-esps.html#create-your-template" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>AKesp::create_template</code> function creates an ESP template at the specified path. I strongly suggest using the <code>here</code> package to reference file paths.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="full-and-partial-esps.html#cb3-1" aria-hidden="true" tabindex="-1"></a>AKesp<span class="sc">::</span><span class="fu">create_template</span>(<span class="at">path =</span> here<span class="sc">::</span><span class="fu">here</span>(), <span class="at">type =</span> <span class="st">&quot;full&quot;</span>)</span></code></pre></div>
 <p><img src="images/files.png" width="971" style="display: block; margin: auto;" /></p>
 </div>
-<div id="create-your-content" class="section level3" number="2.3.2">
-<h3><span class="header-section-number">2.3.2</span> Create your content</h3>
+<div id="create-your-content" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Create your content<a href="full-and-partial-esps.html#create-your-content" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>Put all figures in the <code>images</code> folder (.png or .jpeg format) and fill out <code>figure_spreadsheet.csv</code>. Enter figures into the spreadsheet in the order you want them to appear.</p></li>
 <li><p>Put all tables in the <code>tables</code> folder (.csv format) and fill out <code>table_spreadsheet.csv</code>. Enter tables into the spreadsheet in the order you want them to appear.</p></li>
@@ -206,12 +208,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Edit <code>...-esp-text-template.docx</code> (can be done on Google Drive and then downloaded). Remember to follow markdown formatting syntax for tables, figures, and references using keywords from the respective spreadsheets.</p></li>
 </ul>
 </div>
-<div id="create-the-esp" class="section level3" number="2.3.3">
-<h3><span class="header-section-number">2.3.3</span> Create the ESP</h3>
+<div id="create-the-esp" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Create the ESP<a href="full-and-partial-esps.html#create-the-esp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Finally, use <code>AKesp::render_esp</code> to generate your ESP from the template content.</p>
 </div>
-<div id="example-full-esp" class="section level3" number="2.3.4">
-<h3><span class="header-section-number">2.3.4</span> Example full ESP</h3>
+<div id="example-full-esp" class="section level3 hasAnchor" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Example full ESP<a href="full-and-partial-esps.html#example-full-esp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>After creating a full ESP template, running <code>AKesp::render_esp</code> with the default parameters will produce an example ESP. However, since <code>AKesp</code> needs to be loaded locally, the directory with your ESP template needs to be specified relative to the <code>AKesp</code> folder. Once <code>AKesp</code> can be installed from Github, this will no longer be necessary, and <code>here::here()</code> can be used instead.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="full-and-partial-esps.html#cb4-1" aria-hidden="true" tabindex="-1"></a>AKesp<span class="sc">::</span><span class="fu">render_esp</span>(</span>
 <span id="cb4-2"><a href="full-and-partial-esps.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">dir =</span> here<span class="sc">::</span><span class="fu">here</span>(),</span>
@@ -223,8 +225,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="images/EXAMPLE-FULL-ESP_Page_1.png" width="80%" style="background-color: #9ecff7; padding:5px;" style="display: block; margin: auto;" /><img src="images/EXAMPLE-FULL-ESP_Page_2.png" width="80%" style="background-color: #9ecff7; padding:5px;" style="display: block; margin: auto;" /><img src="images/EXAMPLE-FULL-ESP_Page_3.png" width="80%" style="background-color: #9ecff7; padding:5px;" style="display: block; margin: auto;" /><img src="images/EXAMPLE-FULL-ESP_Page_4.png" width="80%" style="background-color: #9ecff7; padding:5px;" style="display: block; margin: auto;" /><img src="images/EXAMPLE-FULL-ESP_Page_5.png" width="80%" style="background-color: #9ecff7; padding:5px;" style="display: block; margin: auto;" /><img src="images/EXAMPLE-FULL-ESP_Page_6.png" width="80%" style="background-color: #9ecff7; padding:5px;" style="display: block; margin: auto;" />
 </p>
 </div>
-<div id="esp-parameters" class="section level3" number="2.3.5">
-<h3><span class="header-section-number">2.3.5</span> ESP parameters</h3>
+<div id="esp-parameters" class="section level3 hasAnchor" number="2.3.5">
+<h3><span class="header-section-number">2.3.5</span> ESP parameters<a href="full-and-partial-esps.html#esp-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To see the parameters that can be changed for the ESP:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="full-and-partial-esps.html#cb5-1" aria-hidden="true" tabindex="-1"></a>?AKesp<span class="sc">::</span><span class="fu">render_esp</span>()</span></code></pre></div>
 <p><img src="images/help.png" width="70%" style="display: block; margin: auto;" /></p>
@@ -242,7 +244,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -261,6 +262,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -281,6 +283,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

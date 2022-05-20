@@ -111,8 +111,8 @@ render_esp <- function(out_name = "EXAMPLE-FULL-ESP.docx",
   # create references.bib
   # message(getwd())
   if(render_ref) {
-  message("creating .bib file...")
-  AKesp::render_ref(refs = ref_spreadsheet, dir = dir)
+    message("creating .bib file...")
+    AKesp::render_ref(refs = ref_spreadsheet, dir = dir)
   }
 
   args <- list(
@@ -152,6 +152,7 @@ render_esp <- function(out_name = "EXAMPLE-FULL-ESP.docx",
   #   paste0(dir, "/template.docx")
   # )
 }
+
 
 #' Render the figure section
 #'

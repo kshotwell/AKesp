@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.2 ESP one-pager | AKesp User Manual</title>
   <meta name="description" content="2.2 ESP one-pager | AKesp User Manual" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.2 ESP one-pager | AKesp User Manual" />
   <meta property="og:type" content="book" />
-  
   
   
   <meta name="github-repo" content="atyrell/AKesp" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Abigail Tyrell" />
 
 
-<meta name="date" content="2022-02-24" />
+<meta name="date" content="2022-05-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="esp-report-card.html"/>
 <link rel="next" href="full-and-partial-esps.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,7 +49,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 
 
@@ -119,6 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 </head>
 
 <body>
@@ -167,7 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.5" data-path="functions-to-create-figures-and-tables.html"><a href="functions-to-create-figures-and-tables.html#tables-from-spreadsheets"><i class="fa fa-check"></i><b>3.2.5</b> Tables from spreadsheets</a></li>
 <li class="chapter" data-level="3.2.6" data-path="functions-to-create-figures-and-tables.html"><a href="functions-to-create-figures-and-tables.html#traffic-light-score-table"><i class="fa fa-check"></i><b>3.2.6</b> Traffic light score table</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="text-templates-and-rmd-templates.html"><a href="text-templates-and-rmd-templates.html"><i class="fa fa-check"></i><b>3.3</b> Text templates and .Rmd templates</a></li>
+<li class="chapter" data-level="3.3" data-path="text-templates-and-.rmd-templates.html"><a href="text-templates-and-.rmd-templates.html"><i class="fa fa-check"></i><b>3.3</b> Text templates and .Rmd templates</a></li>
 <li class="chapter" data-level="3.4" data-path="helper-functions.html"><a href="helper-functions.html"><i class="fa fa-check"></i><b>3.4</b> Helper functions</a></li>
 <li class="chapter" data-level="3.5" data-path="report-rendering-functions.html"><a href="report-rendering-functions.html"><i class="fa fa-check"></i><b>3.5</b> Report rendering functions</a></li>
 </ul></li>
@@ -189,8 +191,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="esp-one-pager" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> ESP one-pager</h2>
+<div id="esp-one-pager" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> ESP one-pager<a href="esp-one-pager.html#esp-one-pager" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
             </section>
 
@@ -202,7 +204,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -221,6 +222,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -241,6 +243,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
