@@ -38,6 +38,7 @@ params:
 knitr::opts_chunk$set(
   echo = FALSE,
   warning = FALSE,
+  message = FALSE,
   results = "asis"
 )
 
@@ -117,8 +118,7 @@ if (class(try(readtext::readtext(esp_text)))[1] == "try-error") {
 
 ```{r, standard-tables, message = FALSE, include = params$esp_type == "report_card"}
 child <- knitr::knit_child(system.file("table-child.Rmd", package = "AKesp"),
-  quiet = TRUE
-)
+  quiet = TRUE)
 cat(child, sep = "\n\n")
 ```
 
@@ -163,11 +163,11 @@ for (i in 1:nrow(tabs)) {
 \newpage
 
 # Figures {-}
+
 ```{r, standard-figures, fig.height = 8, include = params$esp_type == "report_card"}
-  child <- knitr::knit_child(system.file("figure-child.Rmd", package = "AKesp"),
-    quiet = TRUE
-  )
-  cat(child, sep = "\n\n")
+child <- knitr::knit_child(system.file("figure-child.Rmd", package = "AKesp"),
+    quiet = TRUE)
+cat(child, sep = "\n\n")
 ```
 
 ```{r, figures, eval = params$esp_type != "report_card"}
@@ -179,6 +179,8 @@ for (i in 1:nrow(tabs)) {
 # fig 5: bayesian summary
 
 # otherwise, all figures need to be specified
+
+
 if (class(try(read.csv(file = fig_spreadsheet)))[1] != "try-error") {
   
   figs <- read.csv(file = fig_spreadsheet)
@@ -186,35 +188,45 @@ if (class(try(read.csv(file = fig_spreadsheet)))[1] != "try-error") {
   for (i in 1:nrow(figs)) {
     if (figs$chunk_name[i] == "conceptual-model") {
 
-       child <- knitr::knit_child(text = "```{r, con-model}
+       child <- knitr::knit_child(text = "```{r, conceptual-model, fig.height = 8}
                                 ```",
-  quiet = TRUE
-)
-cat(child, sep = "\n\n")
-    } else if (figs$chunk_name[i] == "traffic-eco") {
-       child <- knitr::knit_child(text = "```{r, traffic-eco}
+                                quiet = TRUE)
+       cat(child, sep = "\n\n")
+    
+} else if (figs$chunk_name[i] == "traffic-eco") {
+       child <- knitr::knit_child(text = "```{r, traffic-eco-setup}
                                 ```",
-  quiet = TRUE
-)
-cat(child, sep = "\n\n")
+                                quiet = TRUE)
+       cat(child, sep = "\n\n")
+       
+       child <- knitr::knit_child(text = "```{r, traffic-eco, fig.height = 7, fig.width = 6, fig.keep = 1}
+                                ```",
+                                quiet = TRUE)
+       cat(child, sep = "\n\n")
+
     } else if (figs$chunk_name[i] == "traffic-socio") {
-       child <- knitr::knit_child(text = "```{r, traffic-socio}
+             child <- knitr::knit_child(text = "```{r, traffic-socio-setup, fig.cap = 'dummy caption'}
                                 ```",
-  quiet = TRUE
-)
-cat(child, sep = "\n\n")
+                                quiet = TRUE)
+             cat(child, sep = "\n\n")
+
+       child <- knitr::knit_child(text = "```{r, traffic-socio, fig.height = 7, fig.width = 6, fig.keep = 1}
+                                ```",
+                                quiet = TRUE)
+       cat(child, sep = "\n\n")
+
     } else if (figs$chunk_name[i] == "overall") {
-       child <- knitr::knit_child(text = "```{r, overall}
+       child <- knitr::knit_child(text = "```{r, overall, fig.height = 7}
                                 ```",
-  quiet = TRUE
-)
-cat(child, sep = "\n\n")
+                                quiet = TRUE)
+       cat(child, sep = "\n\n")
+
     } else if (figs$chunk_name[i] == "bayesian") {
-       child <- knitr::knit_child(text = "```{r, bayes}
+       child <- knitr::knit_child(text = "```{r, bayesian, fig.height = 8}
                                 ```",
-  quiet = TRUE
-)
-cat(child, sep = "\n\n")
+                                quiet = TRUE)
+       cat(child, sep = "\n\n")
+
     } else {
       try(AKesp::render_fig(
         img = figs$file_name[i],
@@ -224,6 +236,38 @@ cat(child, sep = "\n\n")
       ))
     }
   }
+  
+  if("traffic-eco" %in% figs$chunk_name) {
+    
+           child <- knitr::knit_child(text = "## Full ecosystem traffic figures
+           Manually move these to their proper location above
+           ```{r, traffic-eco-setup}
+                                ```",
+                                quiet = TRUE)
+       cat(child, sep = "\n\n")
+       
+       child <- knitr::knit_child(text = "```{r, traffic-eco, fig.height = 7, fig.width = 6}
+                                ```",
+                                quiet = TRUE)
+       cat(child, sep = "\n\n")
+  }
+  
+  if("traffic-socio" %in% figs$chunk_name) {
+       
+       child <- knitr::knit_child(text = "## Full socioeconomic traffic figures
+           Manually move these to their proper location above
+           ```{r, traffic-socio-setup}
+                                ```",
+                                quiet = TRUE)
+       cat(child, sep = "\n\n")
+
+       child <- knitr::knit_child(text = "```{r, traffic-socio, fig.height = 7, fig.width = 6}
+                                ```",
+                                quiet = TRUE)
+       cat(child, sep = "\n\n")
+    
+  }
+  
 } else {
   message("You are not creating a report card, and the figure spreadsheet is missing!")
 }

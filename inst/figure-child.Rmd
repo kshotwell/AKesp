@@ -1,4 +1,4 @@
-```{r, conceptual-model, fig.height = 8, eval = TRUE}
+```{r, conceptual-model, fig.height = 8, eval = params$esp_type == "report_card"}
 AKesp::render_fig(
   img = con_model_path,
   lab = "con-model",
@@ -7,16 +7,15 @@ AKesp::render_fig(
 )
 ```
 
-```{r, traffic-eco-dummy, fig.cap = "dummy caption"}
-knitr::include_graphics(path = system.file("images/noaa.jpg", package = "AKesp"))
-cat("delete the above figure!")
-```
-
-```{r, traffic-eco, fig.height = 7, fig.width = 6}
+```{r, traffic-eco-setup, eval = params$esp_type == "report_card"}
 alt <- "Alt text"
-cap <- c("Selected ecosystem indicators for", params$fish, " with time series ranging from", min(params$esp_data$YEAR), "– present. Upper and lower solid green horizontal lines are 90th and 10th percentiles of time series. Dotted green horizontal line is the mean of the time series. Light green shaded areas represent the most recent year of the traffic light analysis results.")
+cap <- c("Selected ecosystem indicators for ", params$fish, " with time series ranging from ", min(params$esp_data$YEAR), " – present. Upper and lower solid green horizontal lines are plus and minus one standard deviation of the time series mean. Dotted green horizontal line is the mean of the time series.")
 
 knitr::opts_chunk$set(fig.cap = alt)
+```
+
+
+```{r, traffic-eco, fig.height = 7, fig.width = 6, eval = params$esp_type == "report_card"}
 AKesp::esp_traffic_long(
   dat = params$esp_data %>%
     dplyr::filter(INDICATOR_TYPE == "Ecosystem"),
@@ -24,36 +23,41 @@ AKesp::esp_traffic_long(
   caption = cap,
   ncolumn = params$ncolumn,
   min_year = params$min_year,
-  chunk_label = "traffic-eco-dummy"
+  chunk_label = "traffic-eco"
 )
 ```
 
-```{r, traffic-socio-dummy, fig.cap = "dummy caption"}
-knitr::include_graphics(path = system.file("images/noaa.jpg", package = "AKesp"))
-cat("delete the above figure!")
-```
 
-```{r, traffic-socio, fig.height = 7, fig.width = 6, eval = "Socioeconomic" %in% params$esp_data$INDICATOR_TYPE}
+```{r, traffic-socio-setup, fig.height = 7, fig.width = 6, eval = "Socioeconomic" %in% params$esp_data$INDICATOR_TYPE &  params$esp_type == "report_card"}
 alt <- "Alt text"
-cap <- c("Selected socioeconomic indicators for ", params$fish, " with time series ranging from ", min(params$esp_data$YEAR), "– present. Upper and lower solid green horizontal lines are plus and minus one standard deviation of the time series mean. Dotted green horizontal line is the mean of the time series.")
+cap <- c("Selected socioeconomic indicators for ", params$fish, " with time series ranging from ", min(params$esp_data$YEAR), " – present. Upper and lower solid green horizontal lines are plus and minus one standard deviation of the time series mean. Dotted green horizontal line is the mean of the time series.")
 
 knitr::opts_chunk$set(fig.cap = alt)
+```
+
+
+```{r, traffic-socio, fig.height = 7, fig.width = 6, eval = "Socioeconomic" %in% params$esp_data$INDICATOR_TYPE & params$esp_type == "report_card"}
 AKesp::esp_traffic_long(
   dat = params$esp_data %>%
     dplyr::filter(INDICATOR_TYPE == "Socioeconomic"),
   paginate = TRUE,
   caption = cap,
   ncolumn = params$ncolumn,
-  chunk_label = "traffic-socio-dummy"
+  min_year = params$min_year,
+  chunk_label = "traffic-socio"
 )
 ```
 
 
-```{r, overall, fig.height = 7, results = "asis"}
+```{r, overall-setup, eval = params$esp_type == "report_card"}
 alt <- "Alt text"
 cap <- c("Simple traffic light score for overall ecosystem and socioeconomic categories from 2000 to present.")
 
 knitr::opts_chunk$set(fig.cap = alt)
+```
+
+
+```{r, overall, fig.height = 7, eval = params$esp_type == "report_card"}
 AKesp::esp_overall_score(
   data = params$esp_data,
   species = params$fish,
@@ -64,7 +68,7 @@ cat("##### Figure \\@ref(fig:overall).", cap, "{-}")
 ```
 
 
-```{r, bayesian, fig.height = 8}
+```{r, bayesian, fig.height = 8, eval = params$esp_type == "report_card"}
 AKesp::render_fig(
   img = bayes_path,
   lab = "bayes",

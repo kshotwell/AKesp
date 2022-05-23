@@ -224,6 +224,7 @@ esp_traffic_long <- function(data,
     # names(ylabels) <- key$name
       }
 
+  # status ----
 
   if (status) {
     stat_dat <- dat %>%
@@ -550,3 +551,14 @@ esp_overall_score <- function(data, species, region, out = "ggplot", name, ...) 
 }
 
 # esp_overall_score(AKesp::bbrkc_long, species = "BBRKC")
+
+# create_dummy_figs <- function(chunk_names){
+#   for(i in chunk_names){
+#     res <- knitr::knit_child(
+#       text = paste0("```{r,", i, "-dummy, fig.width = 1, fig.height = 1, fig.cap = 'dummy figure'}
+#       knitr::include_graphics(path = system.file('images/noaa.jpg', package = 'AKesp'))
+#       ```"),
+#       quiet = TRUE)
+#     cat(res, sep = "\n\n")
+#   }
+# }
