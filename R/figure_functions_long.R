@@ -148,9 +148,9 @@ esp_traffic_long <- function(data,
   minyear <- maxyear - 1
 
   if (ncolumn == 1) {
-    dat <- prep_ind_data(data, label_width = 70)
+    dat <- prep_ind_data(data, label_width = 50)
   } else {
-    dat <- prep_ind_data(data, label_width = 30)
+    dat <- prep_ind_data(data, label_width = 25)
   }
 
   dat <- join_order(dat)

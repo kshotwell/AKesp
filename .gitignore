@@ -1,2 +1,5 @@
 .Rproj.user
-snow_crab/*
+
+snow_crab/**
+sablefish_2022/**
+_targets/**
