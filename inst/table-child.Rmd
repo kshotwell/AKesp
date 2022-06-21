@@ -10,7 +10,7 @@ dat <- params$esp_data %>%
 this_dat <- dat %>%
   dplyr::filter(INDICATOR_TYPE == "Ecosystem")
 
-AKesp::esp_traffic_tab_long(
+AKesp::esp_traffic_tab(
   data = this_dat,
   year = (params$year - 4):params$year,
   cap = paste0("First stage ecosystem indicator analysis for ", params$fish, ', including indicator title and the indicator status of the last five years. The indicator status is designated with text, (greater than = "high", less than = "low", or within 1 standard deviation = "neutral" of long-term mean). Fill color of the cell is based on the sign of the anticipated relationship between the indicator and sablefish (blue = good conditions for sablefish, red = poor conditions, white = average conditions). A gray fill and text = "missing" will appear if there were no data for that year.')
@@ -23,7 +23,7 @@ AKesp::esp_traffic_tab_long(
 this_dat <- dat %>%
   dplyr::filter(INDICATOR_TYPE == "Socioeconomic")
 
-AKesp::esp_traffic_tab_long(
+AKesp::esp_traffic_tab(
   data = this_dat,
   year = (params$year - 4):params$year,
   cap = paste0("First stage socioeconomic indicator analysis for ", params$fish, ', including indicator title and the indicator status of the last five years. The indicator status is designated with text, (greater than = "high", less than = "low", or within 1 standard deviation = "neutral" of long-term mean). Fill color of the cell is based on the sign of the anticipated relationship between the indicator and sablefish (blue = good conditions for sablefish, red = poor conditions, white = average conditions). A gray fill and text = "missing" will appear if there were no data for that year.')

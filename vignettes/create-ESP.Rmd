@@ -45,7 +45,7 @@ Finally, use `AKesp::render_esp` to generate your ESP from the template content.
 
 ### Exammple full ESP
 
-After creating a full ESP template, running `AKesp::render_esp` with the default parameters will produce an example ESP. However, since `AKesp` needs to be loaded locally, the directory with your ESP template needs to be specified relative to the `AKesp` folder. Once `AKesp` can be installed from Github, this will no longer be necessary, and `here::here()` can be used instead.
+After creating a full ESP template, running `AKesp::render_esp` with the default parameters will produce an example ESP.
 
 
 ```{r, eval = FALSE}

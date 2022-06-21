@@ -10,7 +10,7 @@
 #' @importFrom rlang .data
 #' @export
 
-esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
+esp_traffic_tab <- function(data, year, cap = "Traffic light scoring") {
   data$CATEGORY <- factor(data$CATEGORY, c(
     "Physical", "Lower Trophic",
     "Upper Trophic", "Fishery Performance",
@@ -164,5 +164,3 @@ esp_traffic_tab_long <- function(data, year, cap = "Traffic light scoring") {
   return(ft)
 }
 
-# `%>%` <- magrittr::`%>%`
-# esp_traffic_tab_long(dat, year = 2017:2021)

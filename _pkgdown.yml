@@ -21,9 +21,7 @@ navbar:
          href: articles/create-figures.html
       -  text: "Create tables"
          href: articles/create-tables.html
-      -  text: "Create an ESP report card"
-         href: articles/create-report-card.html
-      -  text: "Create a partial or full ESP"
+      -  text: "Create an ESP"
          href: articles/create-ESP.html
       -  text: "Use Google Drive"
          href: articles/use-google.html
@@ -48,19 +46,18 @@ reference:
   - subtitle: Create figures
     contents:
       - '`esp_metrics`'
-      - '`esp_cor_matrix_long`'
-      - '`esp_hist_long`'
-      - '`esp_traffic_long`'
+      - '`esp_cor_matrix`'
+      - '`esp_hist`'
+      - '`esp_traffic`'
       - '`esp_overall_score`'
   - subtitle: Create tables
     contents:
-      - '`esp_traffic_tab_long`'
+      - '`esp_traffic_tab`'
   - subtitle: Create various ESP reports
     contents:
       - '`create_template`'
       - '`render_esp`'
       - '`one_pager`'
-      - '`render_rpt_card`'
   - subtitle: ESP report utilities
     contents:
       - '`get_esp_data`'
@@ -72,18 +69,11 @@ reference:
       - '`render_ref`'
       - '`use_google_files`'
       - '`list_indicators`'
-  - subtitle: Utilities
-    contents:
+      - '`check_data`'
+      - '`render_AKesp_book`'
       - '`label_facets`'
   - title: Data
     contents:
-      - '`BBRKC`'
-      - '`bbrkc_long`'
-      - '`goa_pcod`'
-      - '`goa_pollock`'
-      - '`sablefish`'
-      - '`SMBKC`'
-      - '`ebs_pcod`'
       - '`metric_panel`'
       - '`indicator_order`'
 

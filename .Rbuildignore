@@ -17,3 +17,4 @@
 ^snow_crab
 ^test
 ^test\.pdf$
+^reports/*

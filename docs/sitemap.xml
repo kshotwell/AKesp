@@ -4,22 +4,16 @@
     <loc>https://atyrell.github.io/AKesp//index.html</loc>
   </url>
   <url>
-    <loc>https://atyrell.github.io/AKesp//reference/BBRKC.html</loc>
-  </url>
-  <url>
-    <loc>https://atyrell.github.io/AKesp//reference/bbrkc_long.html</loc>
+    <loc>https://atyrell.github.io/AKesp//reference/check_data.html</loc>
   </url>
   <url>
     <loc>https://atyrell.github.io/AKesp//reference/create_template.html</loc>
   </url>
   <url>
-    <loc>https://atyrell.github.io/AKesp//reference/ebs_pcod.html</loc>
+    <loc>https://atyrell.github.io/AKesp//reference/esp_cor_matrix.html</loc>
   </url>
   <url>
-    <loc>https://atyrell.github.io/AKesp//reference/esp_cor_matrix_long.html</loc>
-  </url>
-  <url>
-    <loc>https://atyrell.github.io/AKesp//reference/esp_hist_long.html</loc>
+    <loc>https://atyrell.github.io/AKesp//reference/esp_hist.html</loc>
   </url>
   <url>
     <loc>https://atyrell.github.io/AKesp//reference/esp_metrics.html</loc>
@@ -31,19 +25,13 @@
     <loc>https://atyrell.github.io/AKesp//reference/esp_stock_options.html</loc>
   </url>
   <url>
-    <loc>https://atyrell.github.io/AKesp//reference/esp_traffic_long.html</loc>
+    <loc>https://atyrell.github.io/AKesp//reference/esp_traffic.html</loc>
   </url>
   <url>
-    <loc>https://atyrell.github.io/AKesp//reference/esp_traffic_tab_long.html</loc>
+    <loc>https://atyrell.github.io/AKesp//reference/esp_traffic_tab.html</loc>
   </url>
   <url>
     <loc>https://atyrell.github.io/AKesp//reference/get_esp_data.html</loc>
-  </url>
-  <url>
-    <loc>https://atyrell.github.io/AKesp//reference/goa_pcod.html</loc>
-  </url>
-  <url>
-    <loc>https://atyrell.github.io/AKesp//reference/goa_pollock.html</loc>
   </url>
   <url>
     <loc>https://atyrell.github.io/AKesp//reference/indicator_order.html</loc>
@@ -67,6 +55,9 @@
     <loc>https://atyrell.github.io/AKesp//reference/prep_ind_data.html</loc>
   </url>
   <url>
+    <loc>https://atyrell.github.io/AKesp//reference/render_AKesp_book.html</loc>
+  </url>
+  <url>
     <loc>https://atyrell.github.io/AKesp//reference/render_esp.html</loc>
   </url>
   <url>
@@ -76,16 +67,7 @@
     <loc>https://atyrell.github.io/AKesp//reference/render_ref.html</loc>
   </url>
   <url>
-    <loc>https://atyrell.github.io/AKesp//reference/render_rpt_card.html</loc>
-  </url>
-  <url>
     <loc>https://atyrell.github.io/AKesp//reference/render_tab.html</loc>
-  </url>
-  <url>
-    <loc>https://atyrell.github.io/AKesp//reference/sablefish.html</loc>
-  </url>
-  <url>
-    <loc>https://atyrell.github.io/AKesp//reference/SMBKC.html</loc>
   </url>
   <url>
     <loc>https://atyrell.github.io/AKesp//reference/use_google_files.html</loc>

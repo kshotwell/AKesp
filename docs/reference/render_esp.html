@@ -108,7 +108,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Vignettes
      
     <span class="caret"></span>
@@ -208,7 +208,8 @@
   con_model_path <span class='op'>=</span> <span class='st'>"default"</span>,
   stock_image <span class='op'>=</span> <span class='st'>"default"</span>,
   bayes_path <span class='op'>=</span> <span class='st'>"default"</span>,
-  google_folder_url <span class='op'>=</span> <span class='cn'>NULL</span>
+  google_folder_url <span class='op'>=</span> <span class='cn'>NULL</span>,
+  render_ref <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -277,6 +278,18 @@
     <tr>
       <th>stock_image</th>
       <td><p>The path to an image to use on the cover page. Shows the NOAA logo as a default.</p></td>
+    </tr>
+    <tr>
+      <th>bayes_path</th>
+      <td><p>The path to the image of Bayesian Adaptive Sampling results</p></td>
+    </tr>
+    <tr>
+      <th>google_folder_url</th>
+      <td><p>The URL of the google drive folder holding the template materials (optional)</p></td>
+    </tr>
+    <tr>
+      <th>render_ref</th>
+      <td><p>Whether to render references in markdown from a references spreadsheet</p></td>
     </tr>
     </table>
 

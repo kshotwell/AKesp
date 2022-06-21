@@ -11,7 +11,7 @@
 #' @importFrom magrittr %>%
 #' @export
 
-esp_cor_matrix_long <- function(data, name, out, ...) {
+esp_cor_matrix <- function(data, name, out, ...) {
   data <- data %>%
     dplyr::select(.data$YEAR, .data$INDICATOR_NAME, .data$DATA_VALUE) %>%
     tidyr::pivot_wider(
@@ -55,9 +55,6 @@ esp_cor_matrix_long <- function(data, name, out, ...) {
   }
 }
 
-# esp_cor_matrix_long(AKesp::bbrkc_long, out = "save", name = "test.png",
-#                    width = 15, height = 20, dpi = 72)
-
 #' Plot indicator histograms
 #'
 #' This function plots ESP indicator histograms
@@ -70,7 +67,7 @@ esp_cor_matrix_long <- function(data, name, out, ...) {
 #' @importFrom rlang .data
 #' @export
 
-esp_hist_long <- function(data, name, out, ...) {
+esp_hist <- function(data, name, out, ...) {
   dat <- data %>%
     dplyr::mutate(name = .data$INDICATOR_NAME %>%
       stringr::str_replace_all("_", " ") %>%
@@ -104,8 +101,6 @@ esp_hist_long <- function(data, name, out, ...) {
   }
 }
 
-# esp_hist_long(AKesp::bbrkc_long, out = "ggplot")
-
 # check for normalcy/zeros - none of these look normal
 
 #' Plot indicator traffic light figure
@@ -130,7 +125,7 @@ esp_hist_long <- function(data, name, out, ...) {
 #' @importFrom rlang .data
 #' @export
 
-esp_traffic_long <- function(data,
+esp_traffic <- function(data,
                              name,
                              out = "ggplot",
                              paginate = FALSE,
@@ -211,7 +206,7 @@ esp_traffic_long <- function(data,
                          inherit.aes = FALSE,
                          ggplot2::aes(x = min_year,
                                       y = mean,
-                                      label = paste(stringr::str_wrap(UNITS, 10),
+                                      label = paste(stringr::str_wrap(.data$UNITS, 10),
                                                     "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")),
                          angle = 90,
                          lineheight = 0.75) +
@@ -348,8 +343,6 @@ esp_traffic_long <- function(data,
     finish_fig()
   }
 }
-
-# esp_traffic_long(dat, out = "ggplot", paginate = TRUE)
 
 #' Plot a metric panel figure
 #'

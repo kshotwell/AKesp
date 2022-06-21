@@ -6,11 +6,11 @@ server <- function(input, output, session) {
 
     height <- length(unique(data$INDICATOR_NAME)) * 200
 
-    output$traffic <- renderPlot(AKesp::esp_traffic_long(data = data,
+    output$traffic <- renderPlot(AKesp::esp_traffic(data = data,
                                               name = input$stock),
                                  height = height)
 
-    output$table <- renderUI(AKesp::esp_traffic_tab_long(data = data,
+    output$table <- renderUI(AKesp::esp_traffic_tab(data = data,
                                                          year = c(2017:2021)) %>%
                                flextable::htmltools_value()
                              )

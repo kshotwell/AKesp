@@ -26,7 +26,7 @@ A traffic light table can be automatically created from a spreadsheet that has a
 ```{r}
 dat <- AKesp::get_esp_data("Alaska Sablefish")
 
-AKesp::esp_traffic_tab_long(
+AKesp::esp_traffic_tab(
   data = dat,
   year = 2020
 )
@@ -34,7 +34,7 @@ AKesp::esp_traffic_tab_long(
 
 Multiple years can be shown.
 ```{r}
-AKesp::esp_traffic_tab_long(
+AKesp::esp_traffic_tab(
   data = dat,
   year = 2016:2020
 )

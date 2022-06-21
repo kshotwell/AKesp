@@ -4,8 +4,8 @@ devtools::load_all()
 
 dat <- AKesp::get_esp_data("BS Snow Crab") %>%
   check_data()
-esp_traffic_long(dat, paginate = TRUE)
-esp_traffic_tab_long(data = dat, year = 2016:2021)
+esp_traffic(dat, paginate = TRUE)
+esp_traffic_tab(data = dat, year = 2016:2021)
 
 # sablefish (google example)
 render_esp(out_dir = here::here("test"),

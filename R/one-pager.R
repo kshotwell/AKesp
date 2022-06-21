@@ -18,11 +18,11 @@ one_pager <- function(data,
                       years = 2017:2021,
                       head_text = "some text",
                       foot_text = "more text",
-                      bayes_path = here::here("bayes.png"),
-                      header_path = here::here("header.png"),
+                      bayes_path = system.file("images/bayes.png", package = "AKesp"),
+                      header_path = system.file("images/header.png", package = "AKesp"),
                       output_name = "one-pager.pdf") {
   # indicator figure ----
-  fig <- AKesp::esp_traffic_long(
+  fig <- AKesp::esp_traffic(
     data = data,
     paginate = FALSE,
     out = "one_pager",
@@ -74,7 +74,7 @@ one_pager <- function(data,
     ggplot2::ylab(ggplot2::element_blank())
 
   # make a table ----
-  tab <- AKesp::esp_traffic_tab_long(data,
+  tab <- AKesp::esp_traffic_tab(data,
     year = years,
     cap = ""
   ) %>%

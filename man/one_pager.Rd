@@ -10,8 +10,8 @@ one_pager(
   years = 2017:2021,
   head_text = "some text",
   foot_text = "more text",
-  bayes_path = here::here("bayes.png"),
-  header_path = here::here("header.png"),
+  bayes_path = system.file("images/bayes.png", package = "AKesp"),
+  header_path = system.file("images/header.png", package = "AKesp"),
   output_name = "one-pager.pdf"
 )
 }

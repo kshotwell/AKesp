@@ -108,12 +108,18 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Vignettes
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/install-package.html">Install package</a>
+    </li>
+    <li>
+      <a href="../articles/query-data.html">Query data</a>
+    </li>
     <li>
       <a href="../articles/create-figures.html">Create figures</a>
     </li>
@@ -121,7 +127,13 @@
       <a href="../articles/create-tables.html">Create tables</a>
     </li>
     <li>
-      <a href="../articles/create-ESP.html">Create an ESP</a>
+      <a href="../articles/create-report-card.html">Create an ESP report card</a>
+    </li>
+    <li>
+      <a href="../articles/create-ESP.html">Create a partial or full ESP</a>
+    </li>
+    <li>
+      <a href="../articles/use-google.html">Use Google Drive</a>
     </li>
   </ul>
 </li>
@@ -141,13 +153,13 @@
   </a>
 </li>
 <li>
-  <a href="https://github.com/">
+  <a href="https://github.com/atyrell3/AKesp/issues/">
     <span class="fas fa-question-circle fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://github.com/">
+  <a href="https://github.com/atyrell3/AKesp">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -178,7 +190,22 @@
     <p>This function plots ESP indicator traffic light figures</p>
     </div>
 
-    <pre class="usage"><span class='fu'>esp_traffic</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>name</span>, <span class='va'>out</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>esp_traffic</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  <span class='va'>name</span>,
+  out <span class='op'>=</span> <span class='st'>"ggplot"</span>,
+  paginate <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  label <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  status <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  caption <span class='op'>=</span> <span class='st'>""</span>,
+  ncolumn <span class='op'>=</span> <span class='fl'>1</span>,
+  silent <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  min_year <span class='op'>=</span> <span class='cn'>NULL</span>,
+  chunk_label <span class='op'>=</span> <span class='st'>"traffic"</span>,
+  f_units <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  y_units <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -193,7 +220,47 @@
     </tr>
     <tr>
       <th>out</th>
-      <td><p>Whether the function should save the plot, or return a ggplot object. One of c("ggplot", "save")</p></td>
+      <td><p>Whether the function should save the plot, print a ggplot object in markdown, or return a ggplot object to the working environment (for use with <code><a href='one_pager.html'>one_pager()</a></code>). One of c("ggplot", "save", "one_pager")</p></td>
+    </tr>
+    <tr>
+      <th>paginate</th>
+      <td><p>Whether to paginate the plots with <code><a href='https://ggforce.data-imaginist.com/reference/facet_wrap_paginate.html'>ggforce::facet_wrap_paginate</a></code></p></td>
+    </tr>
+    <tr>
+      <th>label</th>
+      <td><p>Whether to label the facets with a, b, c, etc.</p></td>
+    </tr>
+    <tr>
+      <th>status</th>
+      <td><p>Whether to label the facets with the indicator status</p></td>
+    </tr>
+    <tr>
+      <th>caption</th>
+      <td><p>A caption for the figure</p></td>
+    </tr>
+    <tr>
+      <th>ncolumn</th>
+      <td><p>How many columns the figure should have (1 by default)</p></td>
+    </tr>
+    <tr>
+      <th>silent</th>
+      <td><p>Whether to print the caption</p></td>
+    </tr>
+    <tr>
+      <th>min_year</th>
+      <td><p>The minimum year to show on the plots. If left NULL (the default), the minimum year will be the first year of the dataset.</p></td>
+    </tr>
+    <tr>
+      <th>chunk_label</th>
+      <td><p>The label name to look for to create the figure number. This is a work-around to deal with figure pagination.</p></td>
+    </tr>
+    <tr>
+      <th>f_units</th>
+      <td><p>Whether to add units in the facet header</p></td>
+    </tr>
+    <tr>
+      <th>y_units</th>
+      <td><p>Whether to add units to the y-axis</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -216,7 +283,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='https://github.com/atyrell3'>Abigail Tyrell</a>.</p>
+  <p>Developed by <a href='https://github.com/atyrell3'>Abigail Tyrell</a>, <a href='https://github.com/kshotwell'>Kalei Shotwell</a>.</p>
 </div>
 
 <div class="pkgdown">
