@@ -9,7 +9,7 @@ AKesp::render_fig(
 
 ```{r, traffic-eco-setup, eval = params$esp_type == "report_card"}
 alt <- "Alt text"
-cap <- c("Selected ecosystem indicators for ", params$fish, " with time series ranging from ", min(params$esp_data$YEAR), " – present. Upper and lower solid green horizontal lines are plus and minus one standard deviation of the time series mean. Dotted green horizontal line is the mean of the time series.")
+cap <- c("Selected ecosystem indicators for ", params$fish, " with time series ranging from ", min(esp_data$YEAR), " – present. Upper and lower solid green horizontal lines are plus and minus one standard deviation of the time series mean. Dotted green horizontal line is the mean of the time series.")
 
 knitr::opts_chunk$set(fig.cap = alt)
 ```
@@ -17,7 +17,7 @@ knitr::opts_chunk$set(fig.cap = alt)
 
 ```{r, traffic-eco, fig.height = 7, fig.width = 6, eval = params$esp_type == "report_card"}
 AKesp::esp_traffic(
-  dat = params$esp_data %>%
+  dat = esp_data %>%
     dplyr::filter(INDICATOR_TYPE == "Ecosystem"),
   paginate = TRUE,
   caption = cap,
@@ -28,17 +28,17 @@ AKesp::esp_traffic(
 ```
 
 
-```{r, traffic-socio-setup, fig.height = 7, fig.width = 6, eval = "Socioeconomic" %in% params$esp_data$INDICATOR_TYPE &  params$esp_type == "report_card"}
+```{r, traffic-socio-setup, fig.height = 7, fig.width = 6, eval = "Socioeconomic" %in% esp_data$INDICATOR_TYPE &  params$esp_type == "report_card"}
 alt <- "Alt text"
-cap <- c("Selected socioeconomic indicators for ", params$fish, " with time series ranging from ", min(params$esp_data$YEAR), " – present. Upper and lower solid green horizontal lines are plus and minus one standard deviation of the time series mean. Dotted green horizontal line is the mean of the time series.")
+cap <- c("Selected socioeconomic indicators for ", params$fish, " with time series ranging from ", min(esp_data$YEAR), " – present. Upper and lower solid green horizontal lines are plus and minus one standard deviation of the time series mean. Dotted green horizontal line is the mean of the time series.")
 
 knitr::opts_chunk$set(fig.cap = alt)
 ```
 
 
-```{r, traffic-socio, fig.height = 7, fig.width = 6, eval = "Socioeconomic" %in% params$esp_data$INDICATOR_TYPE & params$esp_type == "report_card"}
+```{r, traffic-socio, fig.height = 7, fig.width = 6, eval = "Socioeconomic" %in% esp_data$INDICATOR_TYPE & params$esp_type == "report_card"}
 AKesp::esp_traffic(
-  dat = params$esp_data %>%
+  dat = esp_data %>%
     dplyr::filter(INDICATOR_TYPE == "Socioeconomic"),
   paginate = TRUE,
   caption = cap,
@@ -59,7 +59,7 @@ knitr::opts_chunk$set(fig.cap = alt)
 
 ```{r, overall, fig.height = 7, eval = params$esp_type == "report_card"}
 AKesp::esp_overall_score(
-  data = params$esp_data,
+  data = esp_data,
   species = params$fish,
   region = params$region
 )

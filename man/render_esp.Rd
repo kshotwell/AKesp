@@ -7,21 +7,9 @@
 render_esp(
   out_name = "EXAMPLE-FULL-ESP.docx",
   out_dir = getwd(),
-  num = 1,
-  authors = "Kalei Shotwell, Abby Tyrell",
-  year = 2021,
-  contributors = "Kalei Shotwell, Abby Tyrell",
-  fish = "Myfish",
-  region = "Myarea",
-  fig_spreadsheet = "figure_spreadsheet.csv",
-  tab_spreadsheet = "table_spreadsheet.csv",
+  ...,
   ref_spreadsheet = "references_spreadsheet.csv",
-  esp_text = "full-esp-text-template.docx",
-  esp_type = "full",
   esp_data = NULL,
-  con_model_path = "default",
-  stock_image = "default",
-  bayes_path = "default",
   google_folder_url = NULL,
   render_ref = TRUE
 )
@@ -31,35 +19,11 @@ render_esp(
 
 \item{out_dir}{The directory to save the ESP in.}
 
-\item{num}{The appendix number of the EPS}
-
-\item{authors}{The names of the authors, as a single character string}
-
-\item{year}{The year of the ESP}
-
-\item{contributors}{The names of the contributors, as a single character string}
-
-\item{fish}{The name of the fish species}
-
-\item{region}{The name of the stock area}
-
-\item{fig_spreadsheet}{The file path to the filled out figure spreadsheet (one of the template documents)}
-
-\item{tab_spreadsheet}{The file path to the filled out table spreadsheet (one of the template documents)}
+\item{...}{Parameters passed to the Rmarkdown. See details.}
 
 \item{ref_spreadsheet}{The file path to the filled out references spreadsheet (one of the template documents)}
 
-\item{esp_text}{The file path to the filled out text template (one of the template documents)}
-
-\item{esp_type}{The type of ESP to make. One of c("full", "partial", "report card", "one pager")}
-
 \item{esp_data}{The data to use for automated analyses. Currently only required for report card ESPs.}
-
-\item{con_model_path}{The path to the conceptual model. Currently only required for report card ESPs.}
-
-\item{stock_image}{The path to an image to use on the cover page. Shows the NOAA logo as a default.}
-
-\item{bayes_path}{The path to the image of Bayesian Adaptive Sampling results}
 
 \item{google_folder_url}{The URL of the google drive folder holding the template materials (optional)}
 
@@ -67,4 +31,21 @@ render_esp(
 }
 \description{
 This function creates an ESP from a template. If left empty, an example report will be created.
+}
+\details{
+Additional arguments are passed as parameters to the ESP Rmarkdown report.
+Suggestions for parameters are:
+-num: The appendix number of the EPS
+-authors: The names of the authors, as a single character string
+-year: The year of the ESP
+-contributors: The names of the contributors, as a single character string
+-fish: The name of the fish species
+-region: The name of the stock area
+-fig_spreadsheet: The file path to the filled out figure spreadsheet (one of the template documents)
+-tab_spreadsheet: The file path to the filled out table spreadsheet (one of the template documents)
+-esp_text: The file path to the filled out text template (one of the template documents)
+-esp_type: The type of ESP to make. One of c("full", "partial", "report card", "one pager")
+-con_model_path: The path to the conceptual model. Currently only required for report card ESPs.
+-stock_image: The path to an image to use on the cover page. Shows the NOAA logo as a default.
+-bayes_path: The path to the image of Bayesian Adaptive Sampling results
 }

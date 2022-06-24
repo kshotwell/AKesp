@@ -17,9 +17,9 @@ params:
   fish: "Myfish"
   region: "Myarea"
   region_abbreviation: "Myabbrev"
-  fig_spreadsheet: "figure_spreadsheet.csv"
-  tab_spreadsheet: "table_spreadsheet.csv"
-  esp_text: "full-esp-text-template.docx"
+  fig_spreadsheet: 
+  tab_spreadsheet: 
+  esp_text: 
   stock_image: "default"
   esp_data: NULL
   con_model_path: "default"
@@ -34,6 +34,12 @@ params:
 # The text content is read in from a word document
 # The word document should be created based on the template
 # Headings and table/figure references must follow specific formatting
+
+# message((params$esp_data))
+
+esp_data <- eval(params$esp_data)
+
+# message(head(esp_data))
 
 knitr::opts_chunk$set(
   echo = FALSE,

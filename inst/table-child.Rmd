@@ -1,5 +1,5 @@
 ```{r, table-set-up, message = FALSE}
-dat <- params$esp_data %>%
+dat <- esp_data %>%
   dplyr::ungroup() %>%
   dplyr::mutate(INDICATOR_NAME = .data$INDICATOR_NAME %>%
     stringr::str_replace_all("_", " ") %>%
@@ -19,7 +19,7 @@ AKesp::esp_traffic_tab(
   flextable::width(j = c(1, 3:6), width = 0.75)
 ```
 
-```{r, socio-table, eval = "Socioeconomic" %in% params$esp_data$INDICATOR_TYPE}
+```{r, socio-table, eval = "Socioeconomic" %in% esp_data$INDICATOR_TYPE}
 this_dat <- dat %>%
   dplyr::filter(INDICATOR_TYPE == "Socioeconomic")
 

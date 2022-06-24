@@ -40,42 +40,35 @@ create_template <- function(path = getwd(),
 #' This function creates an ESP from a template. If left empty, an example report will be created.
 #' @param out_name The file name for the report
 #' @param out_dir The directory to save the ESP in.
-#' @param num The appendix number of the EPS
-#' @param authors The names of the authors, as a single character string
-#' @param year The year of the ESP
-#' @param contributors The names of the contributors, as a single character string
-#' @param fish The name of the fish species
-#' @param region The name of the stock area
-#' @param fig_spreadsheet The file path to the filled out figure spreadsheet (one of the template documents)
-#' @param tab_spreadsheet The file path to the filled out table spreadsheet (one of the template documents)
+#' @param ... Parameters passed to the Rmarkdown. See details.
 #' @param ref_spreadsheet The file path to the filled out references spreadsheet (one of the template documents)
-#' @param esp_text The file path to the filled out text template (one of the template documents)
-#' @param esp_type The type of ESP to make. One of c("full", "partial", "report card", "one pager")
 #' @param esp_data The data to use for automated analyses. Currently only required for report card ESPs.
-#' @param con_model_path The path to the conceptual model. Currently only required for report card ESPs.
-#' @param stock_image The path to an image to use on the cover page. Shows the NOAA logo as a default.
-#' @param bayes_path The path to the image of Bayesian Adaptive Sampling results
 #' @param google_folder_url The URL of the google drive folder holding the template materials (optional)
 #' @param render_ref Whether to render references in markdown from a references spreadsheet
+#'
+#' @details Additional arguments are passed as parameters to the ESP Rmarkdown report.
+#' Suggestions for parameters are:
+#' -num: The appendix number of the EPS
+#' -authors: The names of the authors, as a single character string
+#' -year: The year of the ESP
+#' -contributors: The names of the contributors, as a single character string
+#' -fish: The name of the fish species
+#' -region: The name of the stock area
+#' -fig_spreadsheet: The file path to the filled out figure spreadsheet (one of the template documents)
+#' -tab_spreadsheet: The file path to the filled out table spreadsheet (one of the template documents)
+#' -esp_text: The file path to the filled out text template (one of the template documents)
+#' -esp_type: The type of ESP to make. One of c("full", "partial", "report card", "one pager")
+#' -con_model_path: The path to the conceptual model. Currently only required for report card ESPs.
+#' -stock_image: The path to an image to use on the cover page. Shows the NOAA logo as a default.
+#' -bayes_path: The path to the image of Bayesian Adaptive Sampling results
+#'
 #' @export
 
 render_esp <- function(out_name = "EXAMPLE-FULL-ESP.docx",
                        out_dir = getwd(),
-                       num = 1, # Appendix number
-                       authors = "Kalei Shotwell, Abby Tyrell",
-                       year = 2021,
-                       contributors = "Kalei Shotwell, Abby Tyrell",
-                       fish = "Myfish",
-                       region = "Myarea",
-                       fig_spreadsheet = "figure_spreadsheet.csv",
-                       tab_spreadsheet = "table_spreadsheet.csv",
-                       ref_spreadsheet = "references_spreadsheet.csv",
-                       esp_text = "full-esp-text-template.docx",
-                       esp_type = "full",
-                       esp_data = NULL,
-                       con_model_path = "default",
-                       stock_image = "default",
-                       bayes_path = "default",
+                       ...,
+                        ref_spreadsheet = "references_spreadsheet.csv",
+                        esp_data = NULL,
                        google_folder_url = NULL,
                        render_ref = TRUE
 ) {
@@ -109,22 +102,15 @@ render_esp <- function(out_name = "EXAMPLE-FULL-ESP.docx",
   } else { dir <- out_dir }
 
   # create references.bib
-  # message(getwd())
   if(render_ref) {
     message("creating .bib file...")
     AKesp::render_ref(refs = ref_spreadsheet, dir = dir)
   }
 
-  args <- list(
-    num, authors, year, contributors, fish, region,
-    fig_spreadsheet, tab_spreadsheet, esp_text, esp_type,
-    esp_data, con_model_path, bayes_path, stock_image
-  )
-  names(args) <- c(
-    "num", "authors", "year", "contributors", "fish", "region",
-    "fig_spreadsheet", "tab_spreadsheet", "esp_text", "esp_type",
-    "esp_data", "con_model_path", "bayes_path", "stock_image"
-  )
+  args <- list(eval(quote(list(...))))
+  args[[1]]$esp_data <- substitute(esp_data)
+
+  args <- unlist(args)
 
   message("knitting ESP...")
   rmarkdown::render(system.file("esp-template.Rmd",
