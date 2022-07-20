@@ -1,3 +1,5 @@
+
+
 # Current Year Update {-}
 
 The ecosystem and socioeconomic profile or ESP is a standardized framework for compiling and evaluating relevant stock-specific ecosystem and socioeconomic indicators and communicating linkages and potential drivers of the stock within the stock assessment process (Shotwell et al., In Review). The ESP process creates a traceable pathway from the initial development of indicators to management advice and serves as an on-ramp for developing ecosystem-linked stock assessments. 
@@ -23,17 +25,19 @@ One paragraph description of ecosystem and socioeconomic (if available) conceptu
 One paragraph description of LME level indicators relevant to stock (ESR summary)
 
 ### Ecosystem Indicators: {-}
-```{r, eco_ind} 
-eco <- AKesp::list_indicators(data = params$esp_data, 
-                              indicator_type = "Ecosystem")
+```{r, eco_ind, message = TRUE} 
+eco <- AKesp::list_indicators(data = esp_data, # must be defined in parent doc
+                              indicator_type = "Ecosystem") %>%
+  try()
 cat(eco)
 ```
 
 ### Socioeconomic Indicators: {-}
 
-```{r, socio_ind}
-socio <- AKesp::list_indicators(data = params$esp_data, 
-                                indicator_type = "Socioeconomic")
+```{r, socio_ind, message = TRUE}
+socio <- AKesp::list_indicators(data = esp_data, # must be defined in parent doc 
+                                indicator_type = "Socioeconomic") %>%
+  try()
 cat(socio, sep = "\n\n")
 ```
 

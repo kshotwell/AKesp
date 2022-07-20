@@ -25,6 +25,8 @@ AKesp::render_rpt_card(
 
 The `AKesp::create_template` function creates an ESP template at the specified path. I strongly suggest using the `here` package to reference file paths.
 
+More text!!!
+
 ```{r, eval = FALSE}
 AKesp::create_template(path = here::here(), type = "full")
 ```
