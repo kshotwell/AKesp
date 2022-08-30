@@ -4,18 +4,24 @@
 devtools::load_all()
 `%>%` <- magrittr::`%>%`
 
-# get data ----
+# get data ---- have three different calls for Crab ESPs, start here and change dat by ESP
+dat <- get_esp_data("St. Matthew Blue King Crab") %>%
+  check_data()
+dat <- get_esp_data("Bristol Bay Red King Crab") %>%
+  check_data()
 dat <- get_esp_data("BS Snow Crab") %>%
+  check_data()
+dat <- get_esp_data("Alaska Sablefish") %>%
   check_data()
 
 # a generic figure ----
 esp_traffic(dat, paginate = TRUE)
 
 # a generic table ----
-esp_traffic_tab(data = dat, year = 2016:2021)
+esp_traffic_tab(data = dat, year = 2017:2022)
 
 # make a folder to save stuff in
-dir.create(here::here("snow_crab_workshop"))
+dir.create(here::here("bbrkc_2022"))
 
 # a one pager ----
 AKesp::one_pager(data = dat %>%
@@ -29,27 +35,27 @@ AKesp::one_pager(data = dat %>%
 
 # a report card ----
 render_esp(esp_type = "report_card",
-           out_dir = here::here("snow_crab_workshop"),
-           out_name = "snow_crab_workshop_rc.docx",
+           out_dir = here::here("bbrkc_2022"),
+           out_name = "bbrkc_2022_rc.docx",
            esp_data = dat,
-           authors = "Erin Fedewa, Kalei Shotwell, Abby Tyrell",
+           authors = "Erin Fedewa, Kalei Shotwell, Brian Garber Yonts",
            year = 2022,
-           fish = "Snow Crab",
-           region = "Eastern Bering Sea",
+           fish = "Red King Crab",
+           region = "Bristol Bay",
            render_ref = FALSE)
 
 # a full ESP ----
 
 ## template creation example
-create_template(path = here::here("snow_crab_workshop"))
+create_template(path = here::here("bbrkc_2022"))
 
 ## knit the ESP based off of existing info
-render_esp(out_dir = here::here("snow_crab_workshop"),
-           out_name = "snow_crab_test.docx",
-           authors = "Erin Fedewa, Kalei Shotwell, Abby Tyrell",
+render_esp(out_dir = here::here("bbrkc_2022"),
+           out_name = "bbrkc_2022.docx",
+           authors = "Erin Fedewa, Kalei Shotwell, Brian Garber Yonts",
            year = 2022,
-           fish = "Snow Crab",
-           region = "Eastern Bering Sea",
+           fish = "Red King Crab",
+           region = "Bristol Bay",
 
            tab_spreadsheet = here::here("old/snow_crab/snow_crab_table_spreadsheet.csv"),
            fig_spreadsheet = here::here("old/snow_crab/snow_crab_figure_spreadsheet.csv"),
