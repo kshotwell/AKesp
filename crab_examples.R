@@ -21,7 +21,7 @@ esp_traffic(dat, paginate = TRUE)
 esp_traffic_tab(data = dat, year = 2017:2022)
 
 # make a folder to save stuff in
-dir.create(here::here("bbrkc_2022"))
+dir.create(here::here("play/bbrkc_2022"))
 
 # a one pager ----
 AKesp::one_pager(data = dat %>%
@@ -35,7 +35,7 @@ AKesp::one_pager(data = dat %>%
 
 # a report card ----
 render_esp(esp_type = "report_card",
-           out_dir = here::here("bbrkc_2022"),
+           out_dir = here::here("play/bbrkc_2022"),
            out_name = "bbrkc_2022_rc.docx",
            esp_data = dat,
            authors = "Erin Fedewa, Kalei Shotwell, Brian Garber Yonts",
