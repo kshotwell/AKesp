@@ -207,7 +207,7 @@ esp_traffic <- function(data,
                          ggplot2::aes(x = min_year,
                                       y = mean,
                                       label = paste(stringr::str_wrap(.data$UNITS, 10),
-                                                    "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")),
+                                                    "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")),
                          angle = 90,
                          lineheight = 0.75) +
       ggplot2::theme(plot.margin = ggplot2::unit(c(1, 1, 1, 6), "lines")) +
