@@ -70,7 +70,8 @@ prep_ind_data <- function(data, recent = TRUE, label_width = 50) {
     dplyr::select(
       .data$INDICATOR_NAME, .data$CATEGORY, .data$INDICATOR_TYPE,
       .data$YEAR, .data$DATA_VALUE, .data$SIGN, .data$WEIGHT,
-      .data$INTENDED_ESP_NAME, .data$REPORT_CARD_TITLE, .data$UNITS
+      .data$INTENDED_ESP_NAME, .data$REPORT_CARD_TITLE, .data$UNITS,
+      .data$INDICATOR_ORDER
     ) %>%
     dplyr::group_by(.data$INDICATOR_NAME) %>%
     dplyr::mutate(
@@ -159,7 +160,7 @@ check_data <- function(data, fill = TRUE) {
                          "REPORT_CARD_TITLE", "INTENDED_ESP_NAME",
                          "SUBMISSION_YEAR", "GATE1_YEAR", "GATE2_YEAR",
                          "REMOVED_YEAR", "SIGN", "WEIGHT", "STATUS_TRENDS",
-                         "INFLUENTIAL_FACTORS", "UNITS")
+                         "INFLUENTIAL_FACTORS", "UNITS", "INDICATOR_ORDER")
 
   data_colnames <- colnames(data)
 

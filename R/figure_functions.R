@@ -148,7 +148,9 @@ esp_traffic <- function(data,
     dat <- prep_ind_data(data, label_width = 25)
   }
 
-  dat <- join_order(dat)
+  dat <- dat %>%
+    dplyr::arrange(INDICATOR_ORDER)
+  dat$name <- factor(dat$name, levels = unique(dat$name))
 
   # add units on facet ----
   if(f_units){
