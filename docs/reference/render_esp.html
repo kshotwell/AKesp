@@ -107,13 +107,13 @@
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">render_esp</span><span class="op">(</span></span>
-<span>  out_name <span class="op">=</span> <span class="st">"EXAMPLE-FULL-ESP.docx"</span>,</span>
+<span>  out_name <span class="op">=</span> <span class="st">"EXAMPLE-ESP.docx"</span>,</span>
 <span>  out_dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span>,</span>
 <span>  ref_spreadsheet <span class="op">=</span> <span class="st">"references_spreadsheet.csv"</span>,</span>
 <span>  esp_data <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  google_folder_url <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  render_ref <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  render_ref <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -160,7 +160,7 @@
 <li><p>fig_spreadsheet: The file path to the filled out figure spreadsheet (one of the template documents)</p></li>
 <li><p>tab_spreadsheet: The file path to the filled out table spreadsheet (one of the template documents)</p></li>
 <li><p>esp_text: The file path to the filled out text template (one of the template documents)</p></li>
-<li><p>esp_type: The type of ESP to make. One of c("full", "partial", "report_card", "one pager")</p></li>
+<li><p>esp_type: The type of ESP to make. One of c("full", "partial", "report_card")</p></li>
 <li><p>con_model_path: The path to the conceptual model. Currently only required for report card ESPs.</p></li>
 <li><p>stock_image: The path to an image to use on the cover page. Shows the NOAA logo as a default.</p></li>
 <li><p>bayes_path: The path to the image of Bayesian Adaptive Sampling results</p></li>

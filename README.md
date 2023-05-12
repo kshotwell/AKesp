@@ -17,7 +17,7 @@ This package can quickly generate styled figures based on indicator input data.
 ## Repo organization
 
 This schematic shows the relationship between the several functions and files that are used to produce the ESP outputs.
-![repo visal]("images/pkg_visual.png")
+![](vignettes/pkg_visual.png)
 
 ## Files
 
