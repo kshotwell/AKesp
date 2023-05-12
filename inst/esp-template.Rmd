@@ -186,7 +186,6 @@ cat(child, sep = "\n\n")
 
 # otherwise, all figures need to be specified
 
-
 if (class(try(read.csv(file = fig_spreadsheet)))[1] != "try-error") {
   
   figs <- read.csv(file = fig_spreadsheet)

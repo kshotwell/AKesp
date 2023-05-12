@@ -21,7 +21,7 @@ navbar:
          href: articles/create-figures.html
       -  text: "Create tables"
          href: articles/create-tables.html
-      -  text: "Create an ESP"
+      -  text: "Create ESP reports"
          href: articles/create-ESP.html
       -  text: "Use Google Drive"
          href: articles/use-google.html
@@ -36,10 +36,6 @@ navbar:
       href: https://github.com/atyrell3/AKesp/issues/
     - icon: fab fa-github fa-lg
       href: https://github.com/atyrell3/AKesp
-
-articles:
-    toc:
-      depth: 3
 
 reference:
   - title: Functions

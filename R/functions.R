@@ -47,30 +47,31 @@ create_template <- function(path = getwd(),
 #' @param render_ref Whether to render references in markdown from a references spreadsheet
 #'
 #' @details Additional arguments are passed as parameters to the ESP Rmarkdown report.
+#' @return
 #' Suggestions for parameters are:
-#' -num: The appendix number of the EPS
-#' -authors: The names of the authors, as a single character string
-#' -year: The year of the ESP
-#' -contributors: The names of the contributors, as a single character string
-#' -fish: The name of the fish species
-#' -region: The name of the stock area
-#' -fig_spreadsheet: The file path to the filled out figure spreadsheet (one of the template documents)
-#' -tab_spreadsheet: The file path to the filled out table spreadsheet (one of the template documents)
-#' -esp_text: The file path to the filled out text template (one of the template documents)
-#' -esp_type: The type of ESP to make. One of c("full", "partial", "report card", "one pager")
-#' -con_model_path: The path to the conceptual model. Currently only required for report card ESPs.
-#' -stock_image: The path to an image to use on the cover page. Shows the NOAA logo as a default.
-#' -bayes_path: The path to the image of Bayesian Adaptive Sampling results
+#' * num: The appendix number of the EPS
+#' * authors: The names of the authors, as a single character string
+#' * year: The year of the ESP
+#' * contributors: The names of the contributors, as a single character string
+#' * fish: The name of the fish species
+#' * region: The name of the stock area
+#' * fig_spreadsheet: The file path to the filled out figure spreadsheet (one of the template documents)
+#' * tab_spreadsheet: The file path to the filled out table spreadsheet (one of the template documents)
+#' * esp_text: The file path to the filled out text template (one of the template documents)
+#' * esp_type: The type of ESP to make. One of c("full", "partial", "report_card")
+#' * con_model_path: The path to the conceptual model. Currently only required for report card ESPs.
+#' * stock_image: The path to an image to use on the cover page. Shows the NOAA logo as a default.
+#' * bayes_path: The path to the image of Bayesian Adaptive Sampling results
 #'
 #' @export
 
-render_esp <- function(out_name = "EXAMPLE-FULL-ESP.docx",
+render_esp <- function(out_name = "EXAMPLE-ESP.docx",
                        out_dir = getwd(),
                        ...,
                         ref_spreadsheet = "references_spreadsheet.csv",
                         esp_data = NULL,
                        google_folder_url = NULL,
-                       render_ref = TRUE
+                       render_ref = FALSE
 ) {
   # if using a google folder, download files and point to temp folder
 

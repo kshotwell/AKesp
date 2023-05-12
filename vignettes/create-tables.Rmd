@@ -1,6 +1,7 @@
 ---
 title: "Create tables"
 output: rmarkdown::html_vignette
+
 vignette: >
   %\VignetteIndexEntry{Create tables}
   %\VignetteEngine{knitr::rmarkdown}

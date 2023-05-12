@@ -1,0 +1,7 @@
+file_name,chunk_name,description,caption,alt_text
+images/noaa.jpg,noaa,NOAA logo,The NOAA logo.,An image of the NOAA logo
+,conceptual-model,shortcut to include conceptual model,will be automatically produced,
+,traffic-eco,shortcut to include ecosystem traffic light figure,will be automatically produced,
+,traffic-socio,shortcut to include socioeconomic traffic light figure,will be automatically produced,
+,overall,shortcut to include overall traffic score figure,will be automatically produced,
+,bayesian,shortcut to include bayesian summary figure,will be automatically produced,
