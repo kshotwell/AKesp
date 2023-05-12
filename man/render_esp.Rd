@@ -5,13 +5,13 @@
 \title{Create an ESP}
 \usage{
 render_esp(
-  out_name = "EXAMPLE-FULL-ESP.docx",
+  out_name = "EXAMPLE-ESP.docx",
   out_dir = getwd(),
   ...,
   ref_spreadsheet = "references_spreadsheet.csv",
   esp_data = NULL,
   google_folder_url = NULL,
-  render_ref = TRUE
+  render_ref = FALSE
 )
 }
 \arguments{
@@ -41,7 +41,7 @@ Suggestions for parameters are:
 \item fig_spreadsheet: The file path to the filled out figure spreadsheet (one of the template documents)
 \item tab_spreadsheet: The file path to the filled out table spreadsheet (one of the template documents)
 \item esp_text: The file path to the filled out text template (one of the template documents)
-\item esp_type: The type of ESP to make. One of c("full", "partial", "report_card", "one pager")
+\item esp_type: The type of ESP to make. One of c("full", "partial", "report_card")
 \item con_model_path: The path to the conceptual model. Currently only required for report card ESPs.
 \item stock_image: The path to an image to use on the cover page. Shows the NOAA logo as a default.
 \item bayes_path: The path to the image of Bayesian Adaptive Sampling results
