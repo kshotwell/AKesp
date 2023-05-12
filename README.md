@@ -14,6 +14,11 @@ This package can quickly generate styled figures based on indicator input data.
 
 2. This package can create templates for partial and full ESP reports. After the user fills out these templates, this package can knit a final Word report, including pulling in figures and tables. 
 
+## Repo organization
+
+This schematic shows the relationship between the several functions and files that are used to produce the ESP outputs.
+![repo visal]("images/pkg_visual.png")
+
 ## Files
 
 ### R folder
