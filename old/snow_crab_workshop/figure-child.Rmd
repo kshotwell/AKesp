@@ -1,0 +1,78 @@
+```{r, conceptual-model, fig.height = 8, eval = params$esp_type == "report_card"}
+AKesp::render_fig(
+  img = con_model_path,
+  lab = "con-model",
+  cap = paste0("Life history conceptual model for ", params$fish, " summarizing ecological information and key ecosystem processes affecting survival by life history stage. Red text means increases in process negatively affect survival, while blue text means increases in process positively affect survival."),
+  alt = "Alt text"
+)
+```
+
+```{r, traffic-eco-setup, eval = params$esp_type == "report_card"}
+alt <- "Alt text"
+cap <- c("Selected ecosystem indicators for ", params$fish, " with time series ranging from ", min(esp_data$YEAR), " – present. Upper and lower solid green horizontal lines are plus and minus one standard deviation of the time series mean. Dotted green horizontal line is the mean of the time series.")
+
+knitr::opts_chunk$set(fig.cap = alt)
+```
+
+
+```{r, traffic-eco, fig.height = 7, fig.width = 6, eval = params$esp_type == "report_card"}
+AKesp::esp_traffic(
+  dat = esp_data %>%
+    dplyr::filter(INDICATOR_TYPE == "Ecosystem"),
+  paginate = TRUE,
+  caption = cap,
+  ncolumn = params$ncolumn,
+  min_year = params$min_year,
+  chunk_label = "traffic-eco"
+)
+```
+
+
+```{r, traffic-socio-setup, fig.height = 7, fig.width = 6, eval = "Socioeconomic" %in% esp_data$INDICATOR_TYPE &  params$esp_type == "report_card"}
+alt <- "Alt text"
+cap <- c("Selected socioeconomic indicators for ", params$fish, " with time series ranging from ", min(esp_data$YEAR), " – present. Upper and lower solid green horizontal lines are plus and minus one standard deviation of the time series mean. Dotted green horizontal line is the mean of the time series.")
+
+knitr::opts_chunk$set(fig.cap = alt)
+```
+
+
+```{r, traffic-socio, fig.height = 7, fig.width = 6, eval = "Socioeconomic" %in% esp_data$INDICATOR_TYPE & params$esp_type == "report_card"}
+AKesp::esp_traffic(
+  dat = esp_data %>%
+    dplyr::filter(INDICATOR_TYPE == "Socioeconomic"),
+  paginate = TRUE,
+  caption = cap,
+  ncolumn = params$ncolumn,
+  min_year = params$min_year,
+  chunk_label = "traffic-socio"
+)
+```
+
+
+```{r, overall-setup, eval = params$esp_type == "report_card"}
+alt <- "Alt text"
+cap <- c("Simple traffic light score for overall ecosystem and socioeconomic categories from 2000 to present.")
+
+knitr::opts_chunk$set(fig.cap = alt)
+```
+
+
+```{r, overall, fig.height = 7, eval = params$esp_type == "report_card"}
+AKesp::esp_overall_score(
+  data = esp_data,
+  species = params$fish,
+  region = params$region
+)
+
+cat("##### Figure \\@ref(fig:overall).", cap, "{-}")
+```
+
+
+```{r, bayesian, fig.height = 8, eval = params$esp_type == "report_card"}
+AKesp::render_fig(
+  img = bayes_path,
+  lab = "bayes",
+  cap = paste0("Bayesian adaptive sampling output showing (a) standardized covariates prior to subsetting and (b) the mean relationship and uncertainty (95% confidence intervals) with log ", params$fish, " recruitment, in each estimated effect (left bottom graph), and marginal inclusion probabilities (right bottom graph) for each predictor variable of the subsetted covariate set"),
+  alt = "Alt text"
+)
+```

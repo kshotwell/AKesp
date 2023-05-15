@@ -5,13 +5,13 @@
 \title{Create an ESP}
 \usage{
 render_esp(
-  out_name = "EXAMPLE-FULL-ESP.docx",
+  out_name = "EXAMPLE-ESP.docx",
   out_dir = getwd(),
   ...,
   ref_spreadsheet = "references_spreadsheet.csv",
   esp_data = NULL,
   google_folder_url = NULL,
-  render_ref = TRUE
+  render_ref = FALSE
 )
 }
 \arguments{
@@ -29,23 +29,27 @@ render_esp(
 
 \item{render_ref}{Whether to render references in markdown from a references spreadsheet}
 }
+\value{
+Suggestions for parameters are:
+\itemize{
+\item num: The appendix number of the EPS
+\item authors: The names of the authors, as a single character string
+\item year: The year of the ESP
+\item contributors: The names of the contributors, as a single character string
+\item fish: The name of the fish species
+\item region: The name of the stock area
+\item fig_spreadsheet: The file path to the filled out figure spreadsheet (one of the template documents)
+\item tab_spreadsheet: The file path to the filled out table spreadsheet (one of the template documents)
+\item esp_text: The file path to the filled out text template (one of the template documents)
+\item esp_type: The type of ESP to make. One of c("full", "partial", "report_card")
+\item con_model_path: The path to the conceptual model. Currently only required for report card ESPs.
+\item stock_image: The path to an image to use on the cover page. Shows the NOAA logo as a default.
+\item bayes_path: The path to the image of Bayesian Adaptive Sampling results
+}
+}
 \description{
 This function creates an ESP from a template. If left empty, an example report will be created.
 }
 \details{
 Additional arguments are passed as parameters to the ESP Rmarkdown report.
-Suggestions for parameters are:
--num: The appendix number of the EPS
--authors: The names of the authors, as a single character string
--year: The year of the ESP
--contributors: The names of the contributors, as a single character string
--fish: The name of the fish species
--region: The name of the stock area
--fig_spreadsheet: The file path to the filled out figure spreadsheet (one of the template documents)
--tab_spreadsheet: The file path to the filled out table spreadsheet (one of the template documents)
--esp_text: The file path to the filled out text template (one of the template documents)
--esp_type: The type of ESP to make. One of c("full", "partial", "report card", "one pager")
--con_model_path: The path to the conceptual model. Currently only required for report card ESPs.
--stock_image: The path to an image to use on the cover page. Shows the NOAA logo as a default.
--bayes_path: The path to the image of Bayesian Adaptive Sampling results
 }

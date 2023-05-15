@@ -29,7 +29,9 @@ one_pager <- function(data,
     silent = TRUE,
     ncolumn = 2,
     label = FALSE,
-    status = FALSE
+    status = FALSE,
+    f_units = TRUE,
+    y_units = FALSE
   ) +
     ggplot2::ggtitle("Indicators") +
     ggplot2::theme_bw(base_size = 8) +

@@ -21,5 +21,5 @@ knitr::opts_chunk$set(
 The `AKesp` package can be installed from GitHub.
 
 ```{r, eval = FALSE}
-devtools::install_github("atyrell3/AKesp")
+devtools::install_github("kshotwell/AKesp")
 ```

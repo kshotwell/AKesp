@@ -1,8 +1,8 @@
 ---
-title: "Create a partial or full ESP"
+title: "Create ESP reports"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Create a partial or full ESP}
+  %\VignetteIndexEntry{Create ESP reports}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,16 +17,35 @@ knitr::opts_chunk$set(
 )
 ```
 
+# ESP report cards
+
+An ESP report card with default settings can be produced using the code below. Run `?AKesp::render_esp()` to see the help file and learn how to update the parameters to incorporate specific information on your stock of interest.  
+
+```{r, eval = FALSE}
+AKesp::render_esp(
+  esp_data = AKesp::get_esp_data("Alaska Sablefish"),
+  esp_type = "report_card"
+)
+```
+
+# Partial and full ESPs
+
 ## Create your template
 
 The `AKesp::create_template` function creates an ESP template at the specified path. I strongly suggest using the `here` package to reference file paths.
 
 ```{r, eval = FALSE}
-AKesp::create_template(path = here::here(), type = "full")
+AKesp::create_template(
+  path = here::here(),
+  type = "full"
+  )
 ```
 
 ```{r, echo = FALSE, fig.width = 10}
-knitr::include_graphics(path = "images/files.png", dpi = 72)
+knitr::include_graphics(
+  path = "images/files.png", 
+  dpi = 72
+  )
 ```
 
 ## Create your content
@@ -43,17 +62,17 @@ knitr::include_graphics(path = "images/files.png", dpi = 72)
 
 Finally, use `AKesp::render_esp` to generate your ESP from the template content. 
 
-### Exammple full ESP
+### Example full ESP
 
-After creating a full ESP template, running `AKesp::render_esp` with the default parameters will produce an example ESP.
-
+After creating a full ESP template, running `AKesp::render_esp` will produce an example ESP using the data and parameters that you specify. Due to the pagination of the traffic light figures combined with Rmarkdown figure rendering limitations, you will need to copy and paste the traffic light figures into the correct order and delete repetitive captions (these sections are marked in the output).
 
 ```{r, eval = FALSE}
 AKesp::render_esp(
-  dir = here::here(),
-  ref_spreadsheet = here::here("references_spreadsheet.csv"),
-  tab_spreadsheet = here::here("table_spreadsheet.csv"),
-  fig_spreadsheet = here::here("figure_spreadsheet.csv")
+  esp_type = "full",
+  esp_data = AKesp::get_esp_data("Alaska Sablefish"),
+  esp_text = "full-esp-text-template.docx",
+  fig_spreadsheet = "figure_spreadsheet.csv",
+  tab_spreadsheet = "table_spreadsheet.csv"
 )
 ```
 
@@ -79,3 +98,19 @@ To see the parameters that can be changed for the ESP:
 knitr::include_graphics(path = "images/help.png", dpi = 72)
 ```
 
+# ESP one pager
+
+A "one pager" is shorter than a report card and summarizes the ESP in a single page. See `?AKesp::one_pager()` for more information on how to update the parameters to customize your one pager.
+
+```{r, eval = FALSE}
+dat <- AKesp::get_esp_data("Alaska Sablefish")
+AKesp::one_pager(
+  overall_data = dat,
+  data = dat %>%
+    dplyr::filter(CATEGORY == "Lower Trophic")
+)
+```
+
+```{r, echo = FALSE, out.width = "70%", fig.align = "center"}
+knitr::include_graphics(path = "images/one-pager.png", dpi = 72)
+```
