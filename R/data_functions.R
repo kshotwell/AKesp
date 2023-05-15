@@ -21,7 +21,7 @@ get_esp_data <- function(stock) {
   return(data)
 }
 
-# get_esp_data("Alaska Sablefish")
+#get_esp_data("GOA Pollock")
 
 #' View AKFIN ESP stock options
 #'
