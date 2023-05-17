@@ -71,10 +71,12 @@ list_indicators <- function(data, indicator_type) {
       .data$STATUS_TRENDS,
       .data$INFLUENTIAL_FACTORS,
       .data$INDICATOR_TYPE,
-      .data$CATEGORY
+      .data$CATEGORY,
+      .data$INDICATOR_ORDER
     ) %>%
     dplyr::distinct() %>%
-    dplyr::filter(.data$INDICATOR_TYPE == indicator_type)
+    dplyr::filter(.data$INDICATOR_TYPE == indicator_type) %>%
+    dplyr::arrange(INDICATOR_ORDER)
 
   num_index <- 1
   total_text <- NULL
