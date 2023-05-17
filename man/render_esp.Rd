@@ -6,7 +6,7 @@
 \usage{
 render_esp(
   out_name = "EXAMPLE-ESP.docx",
-  out_dir = getwd(),
+  esp_dir = getwd(),
   ...,
   ref_spreadsheet = "references_spreadsheet.csv",
   esp_data = NULL,
@@ -17,13 +17,13 @@ render_esp(
 \arguments{
 \item{out_name}{The file name for the report}
 
-\item{out_dir}{The directory to save the ESP in.}
+\item{esp_dir}{The directory with your ESP files. This folders should have been populated with the ESP template files. The ESP will be saved here.}
 
 \item{...}{Parameters passed to the Rmarkdown. See details.}
 
-\item{ref_spreadsheet}{The file path to the filled out references spreadsheet (one of the template documents)}
+\item{ref_spreadsheet}{The file path to the filled out references spreadsheet (one of the template documents; optional)}
 
-\item{esp_data}{The data to use for automated analyses. Currently only required for report card ESPs.}
+\item{esp_data}{The data to use for automated analyses.}
 
 \item{google_folder_url}{The URL of the google drive folder holding the template materials (optional)}
 

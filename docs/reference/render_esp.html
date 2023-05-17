@@ -58,6 +58,9 @@
     <li>
       <a href="../articles/use-google.html">Use Google Drive</a>
     </li>
+    <li>
+      <a href="../articles/update-pkg.html">Updating this package</a>
+    </li>
   </ul></li>
 <li>
   <a href="../reference/index.html">Functions</a>
@@ -108,7 +111,7 @@
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">render_esp</span><span class="op">(</span></span>
 <span>  out_name <span class="op">=</span> <span class="st">"EXAMPLE-ESP.docx"</span>,</span>
-<span>  out_dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  esp_dir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span>,</span>
 <span>  ref_spreadsheet <span class="op">=</span> <span class="st">"references_spreadsheet.csv"</span>,</span>
 <span>  esp_data <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -123,8 +126,8 @@
 <dd><p>The file name for the report</p></dd>
 
 
-<dt>out_dir</dt>
-<dd><p>The directory to save the ESP in.</p></dd>
+<dt>esp_dir</dt>
+<dd><p>The directory with your ESP files. This folders should have been populated with the ESP template files. The ESP will be saved here.</p></dd>
 
 
 <dt>...</dt>
@@ -132,11 +135,11 @@
 
 
 <dt>ref_spreadsheet</dt>
-<dd><p>The file path to the filled out references spreadsheet (one of the template documents)</p></dd>
+<dd><p>The file path to the filled out references spreadsheet (one of the template documents; optional)</p></dd>
 
 
 <dt>esp_data</dt>
-<dd><p>The data to use for automated analyses. Currently only required for report card ESPs.</p></dd>
+<dd><p>The data to use for automated analyses.</p></dd>
 
 
 <dt>google_folder_url</dt>

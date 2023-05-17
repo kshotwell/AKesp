@@ -5,4 +5,9 @@ snow_crab/**
 sablefish_2022/**
 reports/**
 _targets/**
+<<<<<<< HEAD
 .Rhistory
+=======
+**Rhistory$
+.Rhistory
+>>>>>>> 69354c408501e33ca6e4588d6ae593596d96cf9a

@@ -78,7 +78,7 @@ AKesp::one_pager(data = dat %>%
 render_esp(esp_type = "report_card",
            out_dir = here::here("play/sablefish_2022"),
            out_name = "sablefish_2022_rc.docx",
-           esp_data = dat,
+           esp_data = AKesp::get_esp_data("Alaska Sablefish") %>% check_data(),
            authors = "Kalei Shotwell",
            year = 2022,
            fish = "Alaska Sablefish",
@@ -88,24 +88,34 @@ render_esp(esp_type = "report_card",
 # a full ESP ----
 
 ## template creation example
-create_template(path = here::here("bbrkc_2022"))
+dir.create(here::here("test"))
+create_template(path = here::here("test"))
+setwd(here::here("test"))
 
 ## knit the ESP based off of existing info
-render_esp(out_dir = here::here("bbrkc_2022"),
-           out_name = "bbrkc_2022.docx",
+render_esp(out_dir = here::here("test"),
+           # working_dir = here::here("test"),
+           out_name = "test_ESP.docx",
            authors = "Erin Fedewa, Kalei Shotwell, Brian Garber Yonts",
            year = 2022,
            fish = "Red King Crab",
            region = "Bristol Bay",
+           esp_type = "full",
 
-           tab_spreadsheet = here::here("old/snow_crab/snow_crab_table_spreadsheet.csv"),
-           fig_spreadsheet = here::here("old/snow_crab/snow_crab_figure_spreadsheet.csv"),
-           esp_text = here::here("old/snow_crab/snow-crab-full-esp-text-template.docx"),
+           tab_spreadsheet = here::here("test/snow_crab_table_spreadsheet.csv"),
+           fig_spreadsheet = here::here("test/snow_crab_figure_spreadsheet.csv"),
+           esp_text = here::here("test/snow-crab-full-esp-text-template.docx"),
 
-           esp_data = AKesp::get_esp_data("BS Snow Crab") %>% check_data(),
+           esp_data = AKesp::get_esp_data("Alaska Sablefish") %>% check_data(),
+           # esp_data = AKesp::get_esp_data("BS Snow Crab") %>% check_data(),
 
-           con_model_path = here::here("old/snow_crab/images/snow-crab-con-model.png"),
-           stock_image = here::here("old/snow_crab/images/alaska-snow-crab.png"),
-           bayes_path = here::here("old/snow_crab/images/snow-crab-bayes-model.png"))
+           con_model_path = here::here("test/images/snow-crab-con-model.png"),
+           stock_image = here::here("test/images/alaska-snow-crab.png"),
+           bayes_path = here::here("test/images/snow-crab-bayes-model.png"),
 
+           render_ref = FALSE)
+
+dat <- AKesp::get_esp_data("BS Snow Crab") %>%
+  check_data()
+esp_traffic_tab(data = dat, year = 2018:2022)
 

@@ -158,6 +158,7 @@ esp_traffic <- function(data,
     dplyr::mutate(name = paste0(.data$name, "\n", .data$UNITS))
   }
 
+  # plot ----
   plt <- ggplot2::ggplot(
     dat,
     ggplot2::aes(
@@ -194,6 +195,15 @@ esp_traffic <- function(data,
     ggplot2::scale_y_continuous(labels = scales::comma) +
     ggplot2::theme_bw(base_size = 16) +
     ggplot2::theme(strip.text = ggplot2::element_text(size = 10))
+
+  # add colored points based on score column (created by prep_ind_data fxn)
+  plt <- plt +
+    ggplot2::geom_point(data = dat %>%
+                          dplyr::filter(score == 1),
+                        color = "cornflowerblue") +
+    ggplot2::geom_point(data = dat %>%
+                          dplyr::filter(score == -1),
+                        color = "brown1")
 
   # try to add units on y axis ----
   if(y_units){

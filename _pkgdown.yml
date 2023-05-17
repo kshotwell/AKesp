@@ -25,6 +25,8 @@ navbar:
          href: articles/create-ESP.html
       -  text: "Use Google Drive"
          href: articles/use-google.html
+      -  text: "Updating this package"
+         href: articles/update-pkg.html
     - text: "Functions"
       href: reference/index.html
     - text: "News"

@@ -9,7 +9,9 @@
 create_template <- function(path = getwd(),
                             type = "full") {
   file.copy(
-    from = system.file(c("images", "tables", "figure_spreadsheet.csv", "table_spreadsheet.csv", "references_spreadsheet.csv"),
+    from = system.file(c("images", "tables", "figure_spreadsheet.csv",
+                         "table_spreadsheet.csv", "references_spreadsheet.csv",
+                         "esp-template.Rmd", "template.docx"),
                        package = "AKesp"
     ),
     to = path,
@@ -39,10 +41,10 @@ create_template <- function(path = getwd(),
 #'
 #' This function creates an ESP from a template. If left empty, an example report will be created.
 #' @param out_name The file name for the report
-#' @param out_dir The directory to save the ESP in.
+#' @param esp_dir The directory with your ESP files. This folders should have been populated with the ESP template files. The ESP will be saved here.
 #' @param ... Parameters passed to the Rmarkdown. See details.
-#' @param ref_spreadsheet The file path to the filled out references spreadsheet (one of the template documents)
-#' @param esp_data The data to use for automated analyses. Currently only required for report card ESPs.
+#' @param ref_spreadsheet The file path to the filled out references spreadsheet (one of the template documents; optional)
+#' @param esp_data The data to use for automated analyses.
 #' @param google_folder_url The URL of the google drive folder holding the template materials (optional)
 #' @param render_ref Whether to render references in markdown from a references spreadsheet
 #'
@@ -66,7 +68,7 @@ create_template <- function(path = getwd(),
 #' @export
 
 render_esp <- function(out_name = "EXAMPLE-ESP.docx",
-                       out_dir = getwd(),
+                       esp_dir = getwd(),
                        ...,
                         ref_spreadsheet = "references_spreadsheet.csv",
                         esp_data = NULL,
@@ -100,12 +102,15 @@ render_esp <- function(out_name = "EXAMPLE-ESP.docx",
     }
 
     dir <- google
-  } else { dir <- out_dir }
+  } else { dir <- esp_dir }
 
   # create references.bib
   if(render_ref) {
     message("creating .bib file...")
-    AKesp::render_ref(refs = ref_spreadsheet, dir = dir)
+    AKesp::render_ref(refs = ref_spreadsheet,
+                      dir = dir)
+  } else {
+    file.create("references.bib")
   }
 
   args <- list(eval(quote(list(...))))
@@ -114,15 +119,10 @@ render_esp <- function(out_name = "EXAMPLE-ESP.docx",
   args <- unlist(args)
 
   message("knitting ESP...")
-  rmarkdown::render(system.file("esp-template.Rmd",
-                                package = "AKesp"
-  ),
+  rmarkdown::render(here::here(esp_dir, "esp-template.Rmd"),
   clean = FALSE,
   params = args,
-  output_file = out_name,
-  #  knit_root_dir = dir,
-  output_dir = out_dir,
-  intermediates_dir = dir
+  output_file = here::here(esp_dir, out_name)
   )
 
   if(!is.null(google_folder_url)){
@@ -155,8 +155,10 @@ render_fig <- function(img, # the file path to the image
                        cap = "no-caption",
                        alt = "no-alt") {
   txt <- '```{r, {{label}}, fig.cap = "{{alttext}}"}
-      knitr::include_graphics(path = "{{path}}")
+      knitr::include_graphics(path = "{{img}}")
       ```'
+
+  message(img)
 
   if (stringr::str_detect(img, "system.file")) {
     img <- eval(parse(text = img))
@@ -222,7 +224,7 @@ render_tab <- function(tab, # the file path to the table
 #' @export
 
 render_ref <- function(refs = "references_spreadsheet.csv", # the file path to the reference spreadsheet
-                       dir # directory where references.bib should be saved. only needed because of packaging issues
+                       dir # directory where references.bib should be saved.
 ) {
   data <- utils::read.csv(file = paste(dir, refs, sep = "/"))
   file <- paste0(dir, "/references.bib")

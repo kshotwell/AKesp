@@ -1,0 +1,48 @@
+---
+title: "How to update this R package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{How to update this R package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Why to update this R package
+
+This package is not future proof. It is possible that an update to one of the underlying packages (ggplot2, dplyr, etc.) may affect the ability of this code to run successfully. In that case, this package would need to be updated to accommodate the changes in the underlying packages (for example, by changing code syntax). Hopefully this situation will not occur frequently, if at all.
+
+It is more likely that future ESP authors and users will want to adjust the ESP output produced by this package to better meet scientific and management needs. In that case, the functions and templates in the R package can be updated to reflect the desired changes.
+
+# How to update this R package
+
+First of all: proceed with caution. I cannot guarantee that the package will work as intended after it is updated. That being said... all changes *can* be reverted, so feel free to play around!
+
+R package structure and best practices are described in detail [in this ebook by Hadley Wickham and Jenny Bryan](https://r-pkgs.org/). Here I will describe the minimal amount of information needed for an R user to start updating the package.
+
+1. *Update functions*
+
+All of the R functions within the package are stored in the R folder. Find the function you want to update and make the changes you want. (Simple right??)
+
+2. *Roxygen documentation*
+
+You will notice that each function is preceded by text with metadata (these are the lines marked with #'). This information is automatically turned into the help file (that you can access with the notation `?function_name`) by the `roxygen2` package. In short, you should update this documentation so it reflects any of the changes you made to the function. Please refer to the [ebook documentation chapter](https://r-pkgs.org/man.html) for more details.
+
+3. *Reload package*
+
+After making your changes, you need to tell R to use your updates instead of the old version of the package. If you're working locally, you can run `devtools::load_all()`. If you're ready to push your changes to github and share them out with other AKesp package users, you'll need to "roxygenise" your package (which updates all the help files) using `roxygen2::roxygenise()` (it's also ok to use this instead of `devtools::load_all()`). Neither of these functions require any arguments.
+
+# Troubleshooting
+
+Here are some of the most common issues you could run into.
+
+1. *R folder*
+
+The R folder should *only* include R functions and their documentation. No lines of code! No scripts! When you load the R package, R executes all of the code in the R folder. If you have a script in there, R will try to run it. It will probably break (ex, if your code is referencing data that is no longer loaded). If the package isn't loading, this is probably why. Make sure all unnecessary code is commented out.
+
+2. *File paths*
+
+This R package contains a lot of references to files... template files, input files, Rmarkdown files. If any file paths are misspecified, things will break. Also, how you think R is handling file paths may be different from how R is actually handling file paths, especially when using Rmarkdown. I strongly recommend using the [here R package](https://github.com/jennybc/here_here) to avoid as many file path issues as possible. However, the here package is not foolproof with some of the idiosyncrasies of Rmarkdown, so if you are getting "file not found" messages, I recommend printing out the file path that R is actually using so you can figure out where things are going wrong.
+
+3. *Broken packages*
+
+Like I mentioned above, sometimes an update to one of the underlying packages will break things. Check the documentation of the updated package and see how their function has changed. Hopefully it will be a simple issue (like a different default setting for a parameter), which you can easily update in your own code.
