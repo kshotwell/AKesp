@@ -199,10 +199,12 @@ esp_traffic <- function(data,
   # add colored points based on score column (created by prep_ind_data fxn)
   plt <- plt +
     ggplot2::geom_point(data = dat %>%
-                          dplyr::filter(score == 1),
+                          dplyr::filter(score == 1,
+                                        INDICATOR_TYPE == "Ecosystem"),
                         color = "cornflowerblue") +
     ggplot2::geom_point(data = dat %>%
-                          dplyr::filter(score == -1),
+                          dplyr::filter(score == -1,
+                                        INDICATOR_TYPE == "Ecosystem"),
                         color = "brown1")
 
   # try to add units on y axis ----
@@ -237,7 +239,9 @@ esp_traffic <- function(data,
     stat_dat <- dat %>%
       dplyr::filter(
         .data$YEAR == maxyear
-      )
+      ) %>%
+      dplyr::mutate(score = ifelse(INDICATOR_TYPE == "Socioeconomic",
+                                   0, score))
 
     # status shapes/colors
     plt <- plt + ggplot2::geom_point(
