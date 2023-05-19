@@ -171,12 +171,127 @@ template at the specified path. I strongly suggest using the
 <h3 id="create-your-content">Create your content<a class="anchor" aria-label="anchor" href="#create-your-content"></a>
 </h3>
 <ul>
-<li><p>Put all figures in the <code>images</code> folder (.png or .jpeg
+<li>Put all figures in the <code>images</code> folder (.png or .jpeg
 format) and fill out <code>figure_spreadsheet.csv</code>. Enter figures
-into the spreadsheet in the order you want them to appear.</p></li>
-<li><p>Put all tables in the <code>tables</code> folder (.csv format)
-and fill out <code>table_spreadsheet.csv</code>. Enter tables into the
-spreadsheet in the order you want them to appear.</p></li>
+into the spreadsheet in the order you want them to appear. If you’d like
+to include any of the “standard” ESP figures, you can use a keyword in
+the chunk_name column (these keywords are automatically included in the
+template <code>figure_spreadsheet.csv</code>):</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"figure_spreadsheet.csv"</span>,</span>
+<span>                package <span class="op">=</span> <span class="st">"AKesp"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></span></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="11%">
+<col width="11%">
+<col width="37%">
+<col width="21%">
+<col width="17%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">file_name</th>
+<th align="left">chunk_name</th>
+<th align="left">description</th>
+<th align="left">caption</th>
+<th align="left">alt_text</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">images/noaa.jpg</td>
+<td align="left">noaa</td>
+<td align="left">NOAA logo</td>
+<td align="left">The NOAA logo.</td>
+<td align="left">An image of the NOAA logo</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">conceptual-model</td>
+<td align="left">shortcut to include conceptual model</td>
+<td align="left">will be automatically produced</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">traffic-eco</td>
+<td align="left">shortcut to include ecosystem traffic light figure</td>
+<td align="left">will be automatically produced</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">traffic-socio</td>
+<td align="left">shortcut to include socioeconomic traffic light
+figure</td>
+<td align="left">will be automatically produced</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">overall</td>
+<td align="left">shortcut to include overall traffic score figure</td>
+<td align="left">will be automatically produced</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">bayesian</td>
+<td align="left">shortcut to include bayesian summary figure</td>
+<td align="left">will be automatically produced</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Put all tables in the <code>tables</code> folder (.csv format) and
+fill out <code>table_spreadsheet.csv</code>. Enter tables into the
+spreadsheet in the order you want them to appear. If you’d like to
+include the “standard” ESP tables, you can use a keyword in the
+chunk_name column (these keywords are automatically included in the
+template <code>table_spreadsheet.csv</code>):</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"table_spreadsheet.csv"</span>,</span>
+<span>                package <span class="op">=</span> <span class="st">"AKesp"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></span></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="15%">
+<col width="9%">
+<col width="49%">
+<col width="25%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">file_name</th>
+<th align="left">chunk_name</th>
+<th align="left">description</th>
+<th align="left">caption</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">tables/example.csv</td>
+<td align="left">example</td>
+<td align="left">example table</td>
+<td align="left">An example table</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">eco-table</td>
+<td align="left">shortcut for creating the ecosystem traffic light
+table</td>
+<td align="left">will be automatically produced</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">socio-table</td>
+<td align="left">shortcut for creating the socioeconomic traffic light
+table</td>
+<td align="left">will be automatically produced</td>
+</tr>
+</tbody>
+</table>
+<ul>
 <li><p>Put all your references in the
 <code>references_spreadsheet.csv</code>, following the example format. A
 <code>references.bib</code> file will be created and used to compile
@@ -202,7 +317,7 @@ traffic light figures combined with Rmarkdown figure rendering
 limitations, you will need to copy and paste the traffic light figures
 into the correct order and delete repetitive captions (these sections
 are marked in the output).</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/render_esp.html">render_esp</a></span><span class="op">(</span></span>
 <span>  esp_type <span class="op">=</span> <span class="st">"full"</span>,</span>
 <span>  esp_data <span class="op">=</span> <span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/get_esp_data.html">get_esp_data</a></span><span class="op">(</span><span class="st">"Alaska Sablefish"</span><span class="op">)</span>,</span>
@@ -217,7 +332,7 @@ are marked in the output).</p>
 <h4 id="esp-parameters">ESP parameters<a class="anchor" aria-label="anchor" href="#esp-parameters"></a>
 </h4>
 <p>To see the parameters that can be changed for the ESP:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/render_esp.html">render_esp</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="images/help.png" width="70%" style="display: block; margin: auto;"></p>
 </div>
@@ -229,7 +344,7 @@ are marked in the output).</p>
 <p>A “one pager” is shorter than a report card and summarizes the ESP in
 a single page. See <code>?AKesp::one_pager()</code> for more information
 on how to update the parameters to customize your one pager.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/get_esp_data.html">get_esp_data</a></span><span class="op">(</span><span class="st">"Alaska Sablefish"</span><span class="op">)</span></span>
 <span><span class="fu">AKesp</span><span class="fu">::</span><span class="fu"><a href="../reference/one_pager.html">one_pager</a></span><span class="op">(</span></span>
 <span>  overall_data <span class="op">=</span> <span class="va">dat</span>,</span>

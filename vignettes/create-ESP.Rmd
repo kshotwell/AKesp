@@ -50,9 +50,21 @@ knitr::include_graphics(
 
 ## Create your content
 
-- Put all figures in the `images` folder (.png or .jpeg format) and fill out `figure_spreadsheet.csv`. Enter figures into the spreadsheet in the order you want them to appear.
+- Put all figures in the `images` folder (.png or .jpeg format) and fill out `figure_spreadsheet.csv`. Enter figures into the spreadsheet in the order you want them to appear. If you'd like to include any of the "standard" ESP figures, you can use a keyword in the chunk_name column (these keywords are automatically included in the template `figure_spreadsheet.csv`):
 
-- Put all tables in the `tables` folder (.csv format) and fill out `table_spreadsheet.csv`. Enter tables into the spreadsheet in the order you want them to appear.
+``` {r}
+dat <- read.csv(system.file("figure_spreadsheet.csv",
+                package = "AKesp"))
+knitr::kable(dat)
+```
+
+- Put all tables in the `tables` folder (.csv format) and fill out `table_spreadsheet.csv`. Enter tables into the spreadsheet in the order you want them to appear.  If you'd like to include the "standard" ESP tables, you can use a keyword in the chunk_name column (these keywords are automatically included in the template `table_spreadsheet.csv`):
+
+``` {r}
+dat <- read.csv(system.file("table_spreadsheet.csv",
+                package = "AKesp"))
+knitr::kable(dat)
+```
 
 - Put all your references in the `references_spreadsheet.csv`, following the example format. A `references.bib` file will be created and used to compile your in-text references and literature cited section.
 
