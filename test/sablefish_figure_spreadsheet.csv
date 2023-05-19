@@ -1,0 +1,4 @@
+file_name,chunk_name,description,caption,alt_text
+images/sablefish-con-model.png,con,conceptual model,Conceptual model of sablefish,An image of the sablefish conceptual model
+images/sablefish-bayes-model.png,bayes,bayesian model output,Bayesian adaptive sampling model of sablefish,An image of the sablefish Bayesian adaptive sampling model output
+images/sablefish.png,imgtest,test,test,test

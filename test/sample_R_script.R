@@ -12,22 +12,23 @@ dat <- get_esp_data("Alaska Sablefish") %>%
 create_template(path = here::here("test"))
 render_esp(esp_dir = here::here("test"),
            # working_dir = here::here("test"),
-           out_name = "test_full_ESP.docx",
-           authors = "Erin Fedewa, Kalei Shotwell, Brian Garber Yonts",
+           out_name = "sablefish_test_full_ESP.docx",
+           authors = "S. Kalei Shotwell, Daniel R. Goethel, Alison Deary, Bridget Ferriss, Katy Echave, Chris
+Lunsford, Kevin Siwicke, Elizabeth Siddon, Jane Sullivan, Marysia Szymkowiak, and Ben Williams",
            year = 2022,
-           fish = "Red King Crab",
-           region = "Bristol Bay",
+           fish = "Sablefish",
+           region = "Alaska",
            esp_type = "full",
 
-           tab_spreadsheet = here::here("test/snow_crab_table_spreadsheet.csv"),
-           fig_spreadsheet = here::here("test/snow_crab_figure_spreadsheet.csv"),
-           esp_text = here::here("test/snow-crab-full-esp-text-template.docx"),
+           tab_spreadsheet = here::here("test/sablefish_table_spreadsheet.csv"),
+           fig_spreadsheet = here::here("test/sablefish_figure_spreadsheet.csv"),
+           esp_text = here::here("test/sablefish-full-esp-text-template.docx"),
 
            esp_data = dat,
 
-           con_model_path = here::here("test/images/snow-crab-con-model.png"),
-           stock_image = here::here("test/images/alaska-snow-crab.png"),
-           bayes_path = here::here("test/images/snow-crab-bayes-model.png"),
+           con_model_path = here::here("test/images/sablefish-con-model.png"),
+           stock_image = here::here("test/images/sablefish.png"),
+           bayes_path = here::here("test/images/sablefish-bayes-model.png"),
 
            render_ref = FALSE)
 
