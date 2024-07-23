@@ -119,7 +119,9 @@ render_esp <- function(out_name = "EXAMPLE-ESP.docx",
   args <- unlist(args)
 
   message("knitting ESP...")
-  rmarkdown::render(here::here(esp_dir, "esp-template.Rmd"),
+  rmarkdown::render(system.file("esp-template.Rmd",
+                                package = "AKesp"
+  ),
   clean = FALSE,
   params = args,
   output_file = here::here(esp_dir, out_name)

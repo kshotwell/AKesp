@@ -29,7 +29,10 @@ One paragraph description of LME level indicators relevant to stock (ESR summary
 eco <- AKesp::list_indicators(data = esp_data, # must be defined in parent doc
                               indicator_type = "Ecosystem") %>%
   try()
-cat(eco)
+# not sure why, but this is creating a double vector with exactly the same info in each element
+# cutting to just the first element bc I can't figure out why this is happening
+# does not happen w socioeco data
+cat(eco[1], sep = "\n\n")
 ```
 
 ### Socioeconomic Indicators: {-}

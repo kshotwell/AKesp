@@ -88,7 +88,7 @@ list_indicators <- function(data, indicator_type) {
   }
 
   for (j in cats) {
-    text <- paste0(num_index, ".) ", j, " Indicators")
+    text <- paste0("#### ", num_index, ". ", j, " Indicators  {-}")
 
     total_text <- paste(total_text, text, sep = "\n\n")
 
@@ -111,10 +111,12 @@ list_indicators <- function(data, indicator_type) {
         dplyr::filter(.data$REPORT_CARD_TITLE == k)
 
       text <- paste0(
-        letters[letter_index], ".) ", dat2$INDICATOR_NAME, ": ", k,
-        " (contact: ", dat2$CONTACT, ")",
-        "\n\n", "Status and trends: ", dat2$STATUS_TRENDS,
-        "\n\n", "Influential factors: ", dat2$INFLUENTIAL_FACTORS
+        "\n\n",
+        letters[letter_index], ". ", dat2$INDICATOR_NAME, ": ", k,
+        "\n", "    + Contact: ", dat2$CONTACT,
+        "\n", "    + Status and trends: ", dat2$STATUS_TRENDS,
+        "\n", "    + Influential factors: ", dat2$INFLUENTIAL_FACTORS,
+        "\n"
       )
 
       total_text <- paste(total_text, text, sep = "\n\n")

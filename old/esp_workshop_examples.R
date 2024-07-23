@@ -1,4 +1,4 @@
-
+`%>%` <- magrittr::`%>%`
 
 # load package ----
 devtools::load_all()
@@ -6,13 +6,16 @@ devtools::load_all()
 
 # get data ----
 dat <- get_esp_data("BS Snow Crab") %>%
-  check_data()
+  check_data() %>%
+  dplyr::mutate(INDICATOR_NAME = dplyr::case_when(
+    INDICATOR_NAME == "Winter_Sea_Ice_Advance_BS_Satellite" ~ paste(INDICATOR_NAME, DATA_SOURCE_NAME, sep = "_"),
+    TRUE ~ INDICATOR_NAME))
 
 # a generic figure ----
 esp_traffic(dat, paginate = TRUE)
 
 # a generic table ----
-esp_traffic_tab(data = dat, year = 2017:2022)
+esp_traffic_tab(data = dat, year = 2018:2023)
 
 # make a folder to save stuff in
 dir.create(here::here("snow_crab_workshop"))
@@ -22,18 +25,20 @@ AKesp::one_pager(data = dat %>%
                    dplyr::filter(INDICATOR_TYPE == "Ecosystem") %>%
                    dplyr::mutate(UNITS = ""),
                  overall_data = dat,
-                 years = 2016:2021,
+                 years = 2018:2023,
                  bayes_path = here::here("old/snow_crab/images/snow-crab-bayes-model.png"),
-                 output_name = here::here("snow_crab_workshop/snow_crab_one_pager.pdf")
+                 output_name = here::here(paste0("old/snow_crab_workshop/snow_crab_one_pager_",
+                                                 Sys.Date(), ".pdf"))
                  )
 
 # a report card ----
+devtools::load_all()
 render_esp(esp_type = "report_card",
-           out_dir = here::here("snow_crab_workshop"),
-           out_name = "snow_crab_workshop_rc.docx",
+           esp_dir = here::here("old/snow_crab_workshop"),
+           out_name = paste0("snow_crab_workshop_rc_", Sys.Date(), ".docx"),
            esp_data = dat,
            authors = "Erin Fedewa, Kalei Shotwell, Abby Tyrell",
-           year = 2022,
+           year = 2023,
            fish = "Snow Crab",
            region = "Eastern Bering Sea",
            render_ref = FALSE)
