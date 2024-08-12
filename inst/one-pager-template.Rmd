@@ -1,0 +1,157 @@
+---
+title: "`r params$stock` \n\n *`r params$sci_name`*"
+subtitle: "`r params$year` Ecosystem and Socioeconomic Profile Report Card"
+output: 
+  bookdown::word_document2:
+    reference_docx: "onepager_template.docx"
+params:
+  stock: "Alaska Sablefish"
+  sci_name: "Anoplopoma fimbria"
+  year: 2024
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+
+`%>%` <- magrittr::`%>%`
+devtools::load_all("..")
+
+```
+
+```{r, create_figs}
+
+# indicator time series ----
+# print(head(params$overall_data))
+
+data <- get_esp_data(params$stock) %>%
+  check_data() %>%
+  dplyr::mutate(INDICATOR_NAME = dplyr::case_when(
+    INDICATOR_NAME == "Winter_Sea_Ice_Advance_BS_Satellite" ~ paste(INDICATOR_NAME, DATA_SOURCE_NAME, sep = "_"),
+    TRUE ~ INDICATOR_NAME)) %>%
+  dplyr::filter(REMOVED_YEAR == "NA")
+
+# set <- params$timeseries_indicators
+set <- sample(unique(data$INDICATOR_NAME), 3)
+
+fig <- data %>%
+  dplyr::filter(INDICATOR_NAME %in% set) %>%
+  AKesp::esp_traffic(
+  paginate = FALSE,
+  out = "one_pager",
+  silent = TRUE,
+  ncolumn = 1,
+  label = FALSE,
+  status = FALSE,
+  f_units = TRUE,
+  y_units = FALSE
+) +
+  ggplot2::ggtitle("Select Indicators") +
+  ggplot2::theme_bw(base_size = 8) +
+  ggplot2::theme(
+    plot.title =
+      ggplot2::element_text(
+        size = 10,
+        hjust = 0.5
+      )
+  ) +
+  ggplot2::xlab(ggplot2::element_blank())
+
+# score figure ----
+score_fig <- AKesp::esp_overall_score(
+  data = data,
+  species = "",
+  region = "",
+  out = "one_pager"
+) +
+  ggplot2::ggtitle("Overall score") +
+  ggplot2::theme(
+    text = ggplot2::element_text(size = 8),
+    plot.title = ggplot2::element_text(
+      size = 10,
+      hjust = 0.5
+    ),
+    
+    aspect.ratio = 0.5,
+    
+    plot.margin = grid::unit(c(0, 8, 0, 0), units = "points"),
+    
+    legend.box.margin = ggplot2::margin(0, 0, 0, 0, unit = "pt"),
+    legend.box.spacing = grid::unit(c(0, 0, 0, 0), units = "points"),
+    
+    legend.spacing = grid::unit(c(0, 0, 0, 0), units = "points"),
+    legend.margin = ggplot2::margin(0, 0, 0, 0, unit = "pt"),
+    legend.text =
+      ggplot2::element_text(
+        margin =
+          ggplot2::margin(0, 0, 0, 0, unit = "pt")
+      ),
+    legend.key.height = grid::unit(c(8, 8, 8, 8), units = "points")
+  ) +
+  ggplot2::ylab(ggplot2::element_blank())
+
+
+# conceptual model ----
+# file <- params$concept_path
+file <-  system.file("images/conceptual_model2.png", package = "AKesp")
+# print(file)
+con <- png::readPNG(file)
+
+concept <- ggplot2::ggplot() +
+  ggplot2::theme_void() +
+  ggplot2::theme(aspect.ratio = 3.5/5) +
+  ggpubr::background_image(con) +
+  ggplot2::ggtitle("Life History Conceptual Model") +
+  ggplot2::theme(
+    plot.title =
+      ggplot2::element_text(
+        size = 10,
+        hjust = 0.5
+      )
+  )
+
+# key text ----
+# txt <- params$key_text
+txt <- system.file("txt_default.txt", package = "AKesp")
+
+# key_txt <- ggplot2::ggplot() +
+#   ggplot2::theme_void() +
+#   ggplot2::annotate("text", x = 1, y = 1, 
+#                     label = cat(readLines(txt), sep = "\n")) +
+#   ggplot2::theme(text = ggplot2::element_text(size = 8))
+```
+
+```{r header, fig.height = 2, fig.width = 2}
+# header_path = system.file("images/header.png", package = "AKesp")
+header_path = system.file("images/esp_pie.png", package = "AKesp")
+
+head <- png::readPNG(header_path)
+
+header <- ggplot2::ggplot() +
+  ggplot2::theme_void() +
+  # ggplot2::theme(aspect.ratio = 1 / 4) +
+  ggplot2::theme(aspect.ratio = 1) +
+  ggpubr::background_image(head)
+
+header
+```
+
+
+```{r top_figs, fig.height = 3.5, fig.width = 3.5}
+score_fig + ggplot2::theme(aspect.ratio = 0.5)
+```
+
+```{r, results = "asis"} 
+child <- knitr::knit_child(text = readLines(txt),
+                           quiet = TRUE)
+cat(child, sep = "\n\n")
+```
+
+```{r bottom_figs, fig.width = 8, fig.height = 3.5}
+ggpubr::ggarrange(concept, fig,
+                  widths = c(5, 3))
+```
+
+Links to AKFIN and other stuff, disclaimers, contact info
+

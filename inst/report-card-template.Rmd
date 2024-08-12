@@ -1,0 +1,114 @@
+---
+title: "Appendix `r params$num`. Ecosystem and Socioeconomic Profile of the `r params$fish` stock in the `r params$region` Report Card"
+author: "`r params$authors`"
+date: "Draft `r params$year`"
+output: 
+  bookdown::word_document2:
+    reference_docx: "template.docx"
+    fig_caption: false
+bibliography: references.bib
+params:
+  num: 1
+  authors: "Kalei Shotwell, Abby Tyrell"
+  year: 2022
+  contributors: "Kalei Shotwell, Abby Tyrell"
+  fish: "Myfish"
+  region: "Myarea"
+  region_abbreviation: "Myabbrev"
+  stock_image: "default"
+  esp_data: NULL
+  akfin_stock_name: NULL
+  con_model_path: "default"
+  bayes_path: "default"
+  ncolumn: 1
+  working_dir:
+  min_year: NULL
+---
+
+```{r setup, include = FALSE}
+# This template can be used to create a full or partial ESP
+# The text content is read in from a word document
+# The word document should be created based on the template
+# Headings and table/figure references must follow specific formatting
+
+# message((params$esp_data))
+
+devtools::load_all()
+
+# esp_data <- dplyr::case_when( is.null(params$akfin_stock_name) ~ eval(params$esp_data),
+#                               is.null(params$esp_data) ~ AKesp::get_esp_data(params$akfin_stock_name),
+#                               TRUE ~ stop("No data! Please add an AKFIN stock name or assign a suitable data table to esp_data"))
+
+esp_data <- eval(params$esp_data)
+if(is.null(esp_data)) {
+  esp_data <- AKesp::get_esp_data(params$akfin_stock_name)
+}
+if(is.null(esp_data)) stop("No data! Please add an akfin_stock_name or assign a suitable data table to esp_data")
+
+# message(head(esp_data))
+
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  results = "asis"
+)
+
+# fig_spreadsheet <- params$fig_spreadsheet
+# tab_spreadsheet <- params$tab_spreadsheet
+ref_spreadsheet <- params$ref_spreadsheet
+# esp_text <- params$esp_text
+con_model_path <- params$con_model_path
+bayes_path <- params$bayes_path
+stock_image <- params$stock_image
+
+if (stock_image == "default") {
+  stock_image <- system.file("images/noaa.jpg", package = "AKesp")
+}
+
+if (con_model_path == "default") {
+  con_model_path <- system.file("images/noaa.jpg", package = "AKesp")
+}
+
+if (bayes_path == "default") {
+  bayes_path <- system.file("images/noaa.jpg", package = "AKesp")
+}
+```
+
+```{r, title-fig}
+knitr::include_graphics(path = stock_image,
+                        rel_path = FALSE)
+```
+
+*With Contributions from:*
+
+`r params$contributors`
+
+\newpage
+
+```{r, text-report-card}
+child <- knitr::knit_child(system.file("esp-report-card-child.Rmd", package = "AKesp"),
+  quiet = TRUE
+)
+cat(child, sep = "\n\n")
+```
+
+\newpage
+
+# Tables {-}
+
+```{r, standard-tables}
+child <- knitr::knit_child(system.file("table-child.Rmd", package = "AKesp"),
+  quiet = TRUE)
+cat(child, sep = "\n\n")
+```
+
+\newpage
+
+# Figures {-}
+
+```{r, standard-figures, fig.height = 8}
+child <- knitr::knit_child(system.file("figure-child.Rmd", package = "AKesp"),
+    quiet = TRUE)
+cat(child, sep = "\n\n")
+```

@@ -1,6 +1,6 @@
 #' Create an ESP template
 #'
-#' This function creates an ESP template at the specified path.
+#' This function creates an ESP template at the specified path. DEPRECATED -- PLAN TO REMOVE
 #' @param path Where to create the template. Defaults to the present working directory.
 #' @param type The type of template. One of c("full", "partial", "report card", "one pager")
 #' @export
@@ -45,7 +45,6 @@ create_template <- function(path = getwd(),
 #' @param ... Parameters passed to the Rmarkdown. See details.
 #' @param ref_spreadsheet The file path to the filled out references spreadsheet (one of the template documents; optional)
 #' @param esp_data The data to use for automated analyses.
-#' @param google_folder_url The URL of the google drive folder holding the template materials (optional)
 #' @param render_ref Whether to render references in markdown from a references spreadsheet
 #'
 #' @details Additional arguments are passed as parameters to the ESP Rmarkdown report.
@@ -72,37 +71,8 @@ render_esp <- function(out_name = "EXAMPLE-ESP.docx",
                        ...,
                         ref_spreadsheet = "references_spreadsheet.csv",
                         esp_data = NULL,
-                       google_folder_url = NULL,
                        render_ref = FALSE
 ) {
-  # if using a google folder, download files and point to temp folder
-
-  if(!is.null(google_folder_url)){
-    # download files
-    google <- use_google_files(google_folder_url,
-                               overwrite = TRUE)
-
-    # reassign file paths to point to temp folder downloads
-
-    fig_spreadsheet <- paste(google, fig_spreadsheet, sep = "/")
-    tab_spreadsheet <- paste(google, tab_spreadsheet, sep = "/")
-    ref_spreadsheet <- paste(google, ref_spreadsheet, sep = "/")
-    esp_text <- paste(google, esp_text, sep = "/")
-
-    if(stock_image != "default"){
-      stock_image <- paste(google, stock_image, sep = "/")
-    }
-
-    if(con_model_path != "default"){
-      con_model_path <- paste(google, con_model_path, sep = "/")
-    }
-
-    if(bayes_path != "default"){
-      bayes_path <- paste(google, bayes_path, sep = "/")
-    }
-
-    dir <- google
-  } else { dir <- esp_dir }
 
   # create references.bib
   if(render_ref) {
@@ -110,27 +80,34 @@ render_esp <- function(out_name = "EXAMPLE-ESP.docx",
     AKesp::render_ref(refs = ref_spreadsheet,
                       dir = dir)
   } else {
-    file.create("references.bib")
+    file.create("references.bib") # empty dummy file
   }
 
   args <- list(eval(quote(list(...))))
-  args[[1]]$esp_data <- substitute(esp_data)
+  print(args)
 
-  args <- unlist(args)
+  if(!is.null(esp_data)) {
+    args[[1]]$esp_data <- substitute(esp_data)
+  }
+  print(args)
+
+args <- unlist(args, recursive = FALSE)
+print(args)
+
+  # if(!is.null(esp_data)) {
+  #   args <- unlist(args)
+  # }
+  #
+  # print(args)
 
   message("knitting ESP...")
-  rmarkdown::render(system.file("esp-template.Rmd",
+  rmarkdown::render(system.file("report-card-template.Rmd",
                                 package = "AKesp"
   ),
   clean = FALSE,
   params = args,
   output_file = here::here(esp_dir, out_name)
   )
-
-  if(!is.null(google_folder_url)){
-    unlink(google)
-    message("Downloaded google files successfully removed!")
-  }
 
   # clean = TRUE removes .bib file
   # delete files manually instead
