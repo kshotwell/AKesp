@@ -34,6 +34,7 @@ render_esp(esp_dir = here::here("data-raw/dev_2024"),
           )
 
 # ALL THE REPORT CARDS!
+# broken maybe due to data problems, I can troubleshoot later --AT
 
 akfin = c("Alaska Sablefish", #"BS Snow Crab",
           "Bristol Bay Red King Crab",
