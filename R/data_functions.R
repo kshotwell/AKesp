@@ -21,6 +21,10 @@ get_esp_data <- function(stock = NULL) {
   ) %>%
     dplyr::bind_rows()
 
+  # temporary fix that should be updated???
+  data <- data %>%
+    dplyr::rename(DATA_VALUE = INDICATOR_VALUE)
+
   return(data)
 }
 
