@@ -21,7 +21,7 @@ AKesp::one_pager(data = dat %>%
 
 # a report card ----
 devtools::load_all()
-render_esp(esp_dir = here::here("data-raw/dev_2024"),
+render_esp(esp_dir = here::here("data-raw/dev_2024/KS_reports"),
            out_name = paste0("report_card_", Sys.Date(), ".docx"),
            akfin_stock_name = "Alaska Sablefish",
            # esp_data = dat,
