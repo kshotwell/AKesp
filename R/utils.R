@@ -69,7 +69,8 @@ list_indicators <- function(data, indicator_type) {
       .data$REPORT_CARD_TITLE,
       .data$CONTACT,
       .data$STATUS_TRENDS,
-      .data$INFLUENTIAL_FACTORS,
+      .data$FACTORS,
+      .data$IMPLICATIONS,
       .data$INDICATOR_TYPE,
       .data$CATEGORY,
       .data$INDICATOR_ORDER
@@ -105,17 +106,21 @@ list_indicators <- function(data, indicator_type) {
           .data$REPORT_CARD_TITLE,
           .data$CONTACT,
           .data$STATUS_TRENDS,
-          .data$INFLUENTIAL_FACTORS
+          .data$FACTORS,
+          .data$IMPLICATIONS
         ) %>%
         dplyr::distinct() %>%
-        dplyr::filter(.data$REPORT_CARD_TITLE == k)
+        dplyr::filter(.data$REPORT_CARD_TITLE == k) %>%
+        dplyr::mutate_all(~dplyr::case_when(is.na(.x) | .x == " " | .x == "NA" | .x == "" ~ "**Information not present in database**",
+                                       TRUE ~ .x))
 
       text <- paste0(
         "\n\n",
         letters[letter_index], ". ", dat2$INDICATOR_NAME, ": ", k,
         "\n", "    + Contact: ", dat2$CONTACT,
         "\n", "    + Status and trends: ", dat2$STATUS_TRENDS,
-        "\n", "    + Influential factors: ", dat2$INFLUENTIAL_FACTORS,
+        "\n", "    + Factors influencing trends: ", dat2$FACTORS,
+        "\n", "    + Implications: ", dat2$IMPLICATIONS,
         "\n"
       )
 

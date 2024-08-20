@@ -8,6 +8,8 @@ dat <- get_esp_data("BS Snow Crab") %>%
     INDICATOR_NAME == "Winter_Sea_Ice_Advance_BS_Satellite" ~ paste(INDICATOR_NAME, DATA_SOURCE_NAME, sep = "_"),
     TRUE ~ INDICATOR_NAME))
 
+dat <- get_esp_data("Alaska Sablefish")
+
 # a one pager ----
 AKesp::one_pager(data = dat %>%
                    dplyr::filter(INDICATOR_TYPE == "Ecosystem") %>%
@@ -27,8 +29,8 @@ render_esp(esp_dir = here::here("data-raw/dev_2024"),
            # esp_data = dat,
            authors = "Erin Fedewa, Kalei Shotwell, Abby Tyrell",
            year = 2023,
-           fish = "Snow Crab",
-           region = "Eastern Bering Sea",
+           fish = "Sablefish",
+           region = "Alaska",
            render_ref = FALSE#,
           # con_model_path = ...
           )
