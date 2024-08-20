@@ -1,5 +1,21 @@
 devtools::load_all()
 `%>%` <- magrittr::`%>%`
+library(tidyverse)
+library(httr)
+library(jsonlite)
+
+#simple function to get all the fields in the ESP webservice for data checking
+get_all_esp <- function() {
+  jsonlite::fromJSON(
+    httr::content(
+      httr::GET("https://apex.psmfc.org/akfin/data_marts/akmp/esp_indicators?"),
+      as="text", encoding="UTF-8")) %>%
+    dplyr::bind_rows() %>%
+    rename_with(tolower)
+}
+
+esp <-get_all_esp()
+# Or just pop the url into a browser to see the column names https://apex.psmfc.org/akfin/data_marts/akmp/esp_indicators
 
 # get data ----
 dat <- get_esp_data("BS Snow Crab") %>%
