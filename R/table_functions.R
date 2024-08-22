@@ -12,8 +12,8 @@
 
 esp_traffic_tab <- function(data, year, cap = "Traffic light scoring") {
   data$CATEGORY <- factor(data$CATEGORY, c(
-    "Physical", "Lower Trophic",
-    "Upper Trophic", "Fishery Performance",
+    "Physical", "Larval", "Lower Trophic", "Juvenile",
+    "Upper Trophic", "Adult", "Fishery Performance",
     "Economic", "Community"
   ))
 

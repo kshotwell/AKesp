@@ -66,10 +66,10 @@ AKesp::one_pager(data = dat %>%
 devtools::load_all()
 render_esp(esp_dir = here::here("data-raw/dev_2024/KS_reports"),
            out_name = paste0("report_card_", Sys.Date(), ".docx"),
-           akfin_stock_name = "Bristol Bay Red King Crab",
+           akfin_stock_name = "EBS Tanner Crab",
            # esp_data = dat,
            authors = "Erin Fedewa, Kalei Shotwell, Abby Tyrell",
-           year = 2023,
+           year = 2024,
            fish = "Bristol Bay Red King Crab",
            region = "Bristol Bay",
            render_ref = FALSE#,
