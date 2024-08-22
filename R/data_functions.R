@@ -74,12 +74,12 @@ prep_ind_data <- function(data, recent = TRUE, label_width = 50) {
       (.data$GATE2_YEAR == "NA" | is.na(.data$GATE2_YEAR)),
       (.data$REMOVED_YEAR == "NA" | is.na(.data$REMOVED_YEAR))
     ) %>%
-    dplyr::select(
-      .data$INDICATOR_NAME, .data$CATEGORY, .data$INDICATOR_TYPE,
-      .data$YEAR, .data$DATA_VALUE, .data$SIGN, .data$WEIGHT,
-      .data$INTENDED_ESP_NAME, .data$REPORT_CARD_TITLE, .data$UNITS,
-      .data$INDICATOR_ORDER
-    ) %>%
+    # dplyr::select(
+    #   .data$INDICATOR_NAME, .data$CATEGORY, .data$INDICATOR_TYPE,
+    #   .data$YEAR, .data$DATA_VALUE, .data$SIGN, .data$WEIGHT,
+    #   .data$INTENDED_ESP_NAME, .data$REPORT_CARD_TITLE, .data$UNITS,
+    #   .data$INDICATOR_ORDER
+    # ) %>%
     dplyr::group_by(.data$INDICATOR_NAME) %>%
     dplyr::mutate(
       name = .data$INDICATOR_NAME %>%

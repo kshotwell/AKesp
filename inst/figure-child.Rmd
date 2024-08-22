@@ -38,15 +38,20 @@ knitr::opts_chunk$set(fig.cap = alt)
 
 
 ```{r, traffic-socio, fig.height = 7, fig.width = 6, eval = "Socioeconomic" %in% esp_data$INDICATOR_TYPE & params$esp_type == "report_card"}
-AKesp::esp_traffic(
-  dat = esp_data %>%
-    dplyr::filter(INDICATOR_TYPE == "Socioeconomic"),
+s_dat <- esp_data %>%
+    dplyr::filter(INDICATOR_TYPE == "Socioeconomic")
+
+if(nrow(s_dat) > 0) {
+  AKesp::esp_traffic(
+  dat = ,
   paginate = TRUE,
   caption = cap,
   ncolumn = params$ncolumn,
   min_year = params$min_year,
   chunk_label = "traffic-socio"
 )
+}
+
 ```
 
 

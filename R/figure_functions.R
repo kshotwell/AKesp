@@ -140,6 +140,7 @@ esp_traffic <- function(data,
                              y_units = TRUE,
                         skip_lines = FALSE,
                              ...) {
+
   maxyear <- max(data$YEAR)
   minyear <- maxyear - 1
 
@@ -154,7 +155,7 @@ esp_traffic <- function(data,
   dat$name <- factor(dat$name, levels = unique(dat$name))
 
   # add units on facet ----
-  if(f_units){
+  if(f_units & "UNITS" %in% colnames(dat)){
   dat <- dat %>%
     dplyr::mutate(name = paste0(.data$name, "\n", .data$UNITS))
   }
@@ -216,7 +217,7 @@ esp_traffic <- function(data,
                         color = "brown1")
 
   # try to add units on y axis ----
-  if(y_units){
+  if(y_units & "UNITS" %in% colnames(dat)){
     key <- dat %>%
       dplyr::select(.data$name, .data$UNITS, .data$DATA_VALUE, .data$YEAR) %>%
       dplyr::mutate(min_year = min(.data$YEAR, na.rm = TRUE)) %>%

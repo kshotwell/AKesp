@@ -83,7 +83,11 @@ list_indicators <- function(data, indicator_type) {
   total_text <- NULL
 
   if (indicator_type == "Ecosystem") {
-    cats <- c("Physical", "Lower Trophic", "Upper Trophic")
+    if("Physical" %in% .data$CATEGORY){
+      cats <- c("Physical", "Lower Trophic", "Upper Trophic")
+    } else {
+      cats <- c("Larval", "Juvenile", "Adult")
+    }
   } else if (indicator_type == "Socioeconomic") {
     cats <- c("Fishery Performance", "Economic", "Community")
   }

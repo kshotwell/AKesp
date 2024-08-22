@@ -9,6 +9,7 @@ dat <- get_esp_data("BS Snow Crab") %>%
     TRUE ~ INDICATOR_NAME))
 
 dat <- get_esp_data("Alaska Sablefish")
+dat <- get_esp_data("EBS Tanner Crab")
 
 # a one pager ----
 AKesp::one_pager(data = dat %>%
@@ -25,13 +26,13 @@ AKesp::one_pager(data = dat %>%
 devtools::load_all()
 render_esp(esp_dir = here::here("data-raw/dev_2024"),
            out_name = paste0("report_card_", Sys.Date(), ".docx"),
-           akfin_stock_name = "Alaska Sablefish",
+           akfin_stock_name = "EBS Tanner Crab",
            # esp_data = dat,
            authors = "Erin Fedewa, Kalei Shotwell, Abby Tyrell",
            year = 2023,
-           fish = "Sablefish",
-           region = "Alaska",
-           render_ref = FALSE
+           fish = "Tabber Crab",
+           region = "EBS",
+           render_ref = FALSE,
            skip_lines = TRUE#,
           # con_model_path = ...
           )
