@@ -2,8 +2,9 @@
 
 # Current Year Update {-}
 
-The ecosystem and socioeconomic profile or ESP is a standardized framework for compiling and evaluating relevant stock-specific ecosystem and socioeconomic indicators and communicating linkages and potential drivers of the stock within the stock assessment process (Shotwell et al., In Review). The ESP process creates a traceable pathway from the initial development of indicators to management advice and serves as an on-ramp for developing ecosystem-linked stock assessments. 
-Please refer to the last full ESP and partial ESP documents for further information regarding the ecosystem and socioeconomic linkages for this stock (*list references*).
+The ecosystem and socioeconomic profile, or ESP, is a standardized framework for compiling and evaluating relevant stock-specific ecosystem and socioeconomic indicators and communicating linkages and potential drivers of the stock within the stock assessment process (Shotwell et al., 2023). The ESP process creates a traceable pathway from the initial development of indicators to management advice and serves as an on-ramp for developing ecosystem-linked stock assessments. 
+
+Please refer to the last full ESP, partial, and report card documents (*list references*) which are available within the `r params$fish` stock assessment and fishery evaluation or SAFE reports for further information regarding the ecosystem and socioeconomic linkages for this stock.
 
 ## Management Considerations {-}
 
