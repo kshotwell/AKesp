@@ -31,7 +31,8 @@ render_esp(esp_dir = here::here("data-raw/dev_2024"),
            year = 2023,
            fish = "Sablefish",
            region = "Alaska",
-           render_ref = FALSE#,
+           render_ref = FALSE
+           skip_lines = TRUE#,
           # con_model_path = ...
           )
 

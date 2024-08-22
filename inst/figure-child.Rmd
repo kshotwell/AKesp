@@ -23,7 +23,8 @@ AKesp::esp_traffic(
   caption = cap,
   ncolumn = params$ncolumn,
   min_year = params$min_year,
-  chunk_label = "traffic-eco"
+  chunk_label = "traffic-eco",
+  skip_lines = params$skip_lines
 )
 ```
 
