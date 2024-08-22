@@ -23,6 +23,7 @@ params:
   ncolumn: 1
   working_dir:
   min_year: NULL
+  skip_lines: TRUE
 ---
 
 ```{r setup, include = FALSE}

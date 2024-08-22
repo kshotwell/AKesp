@@ -138,6 +138,7 @@ esp_traffic <- function(data,
                              chunk_label = "traffic",
                              f_units = FALSE,
                              y_units = TRUE,
+                        skip_lines = FALSE,
                              ...) {
   maxyear <- max(data$YEAR)
   minyear <- maxyear - 1
@@ -156,6 +157,14 @@ esp_traffic <- function(data,
   if(f_units){
   dat <- dat %>%
     dplyr::mutate(name = paste0(.data$name, "\n", .data$UNITS))
+  }
+
+  # line data ----
+  if(skip_lines){
+    line_dat <- dat
+  } else {
+    line_dat <- dat %>%
+      tidyr::drop_na(.data$DATA_VALUE)
   }
 
   # plot ----
@@ -189,8 +198,7 @@ esp_traffic <- function(data,
     linetype = "dotted"
     ) +
     ggplot2::geom_point() +
-    ggplot2::geom_line(data = dat %>%
-      tidyr::drop_na(.data$DATA_VALUE)) +
+    ggplot2::geom_line(data = line_dat) +
     ggplot2::ylab("") +
     ggplot2::scale_y_continuous(labels = scales::comma) +
     ggplot2::theme_bw(base_size = 16) +
