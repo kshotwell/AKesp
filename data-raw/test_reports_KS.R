@@ -1,4 +1,4 @@
-devtools::load_all()
+devtools::load_all()# remember to run this after every change!!!
 `%>%` <- magrittr::`%>%`
 library(tidyverse)
 library(httr)
@@ -24,23 +24,33 @@ esp_list <- esp_stock_options()
 
 # get data ----
 # function to return data frame of given esp stock for inspection
-yr <- 2023 #use just for this year with crab stocks, delete when new changes have been implemented in database and substitute with internal code below
+yr <- 2024 #use just for this year with crab stocks, delete when new changes have been implemented in database and substitute with internal code below
 
 #use purrr here TBD - KS
 
+# get data for a single ESP
 dat <- get_esp_data(paste(esp_list[i,])) %>%
   check_data()
 #%>%
 
+# filter data from all indicators to a category
+dat<-dat %>%
+  dplyr::filter(INDICATOR_TYPE=="Socioeconomic")
+
+# filter dat from all indicators to a single indicator, specify name
+dat<-dat %>%
+  dplyr::filter(INDICATOR_NAME !="Annual_Red_King_Crab_CPUE_BBRKC_Fishery")%>%
+  dplyr::filter(INDICATOR_NAME !="Annual_Red_King_Crab_Total_Potlift_BBRKC_Fishery")%>%
+dplyr::filter(!(INDICATOR_NAME=="Annual_Red_King_Crab_Active_Vessels_BBRKC_Fishery" & DATA_VALUE<2))
+
 # look at data ---
 unique(dat$INDICATOR_NAME)
 summary(dat)
-esp_traffic(dat, paginate = TRUE) #make sure data is plotting correctly
+esp_traffic(dat, skip_lines = TRUE, paginate = TRUE) #make sure data is plotting correctly
 esp_traffic_tab(data = dat, year = (yr-4):yr)
 #esp_traffic_tab(data = dat, year = (as.numeric(max(dat$SUBMISSION_YEAR))-4):as.numeric(max(dat$SUBMISSION_YEAR))) #make sure table look right
 
-dat<-dat %>%
-  dplyr::filter(INDICATOR_TYPE=="Ecosystem")
+
 
 # errata to be fixed in backend ----
 
@@ -65,12 +75,12 @@ AKesp::one_pager(data = dat %>%
 # a report card ----
 devtools::load_all()
 render_esp(esp_dir = here::here("data-raw/dev_2024/KS_reports"),
-           out_name = paste0("report_card_", Sys.Date(), ".docx"),
-           akfin_stock_name = "EBS Tanner Crab",
+           out_name = paste0("report_card ", paste(esp_list[i,])," ", Sys.Date(), ".docx"),
+           akfin_stock_name = paste(esp_list[i,]),
            # esp_data = dat,
            authors = "Erin Fedewa, Kalei Shotwell, Abby Tyrell",
            year = 2024,
-           fish = "Bristol Bay Red King Crab",
+           fish = paste(esp_list[i,]),
            region = "Bristol Bay",
            render_ref = FALSE#,
           # con_model_path = ...
