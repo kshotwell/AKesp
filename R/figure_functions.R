@@ -514,8 +514,11 @@ esp_overall_score <- function(data, species, region, out = "ggplot", name, ...) 
   dat$CATEGORY <- factor(dat$CATEGORY,
     levels = c(
       "Physical",
+      "Larval",
       "Lower Trophic",
+      "Juvenile",
       "Upper Trophic",
+      "Adult",
       "Fishery Performance",
       "Economic",
       "Community"
