@@ -35,7 +35,7 @@ dat <- get_esp_data(paste(esp_list[i,])) %>%
 
 # filter data from all indicators to a category
 dat<-dat %>%
-  dplyr::filter(INDICATOR_TYPE=="Socioeconomic")
+  dplyr::filter(INDICATOR_TYPE=="Ecosystem")
 
 # filter dat from all indicators to a single indicator, specify name
 dat<-dat %>%
@@ -49,8 +49,8 @@ summary(dat)
 esp_traffic(dat, skip_lines = TRUE, paginate = TRUE) #make sure data is plotting correctly
 esp_traffic_tab(data = dat, year = (yr-4):yr)
 #esp_traffic_tab(data = dat, year = (as.numeric(max(dat$SUBMISSION_YEAR))-4):as.numeric(max(dat$SUBMISSION_YEAR))) #make sure table look right
-
-
+esp_overall_score(data=dat,species=paste(esp_list[i,]),region=" ")
+esp_type_score(data=dat,species=paste(esp_list[i,]),region=" ")
 
 # errata to be fixed in backend ----
 
@@ -116,3 +116,74 @@ purrr::pwalk(list(akfin, species, stock), function(a, b, c){
   )
 })
 
+esp_type_score(dat,paste(esp_list[i,]),"Eastern Bering Sea")
+
+#Testing overall score function change to Type
+esp_type_score <- function(data, species, region, out = "ggplot", name, ...) {
+  dat <- data %>%
+    prep_ind_data() %>%
+    dplyr::filter(.data$YEAR >= 2000) %>%
+    dplyr::group_by(.data$INDICATOR_TYPE, .data$YEAR) %>%
+    dplyr::mutate(
+      score = as.numeric(.data$score),
+      mean_score = mean(.data$score, na.rm = TRUE)
+    ) %>%
+    dplyr::select(
+      .data$YEAR, .data$INDICATOR_NAME,
+      .data$INDICATOR_TYPE,
+      .data$score, .data$mean_score
+    ) %>%
+    dplyr::distinct()
+
+  dat$INDICATOR_NAME <- factor(dat$INDICATOR_TYPE,
+                         levels = c(
+                           "Ecosystem",
+                           "Socioeconomic"
+                         )
+  )
+
+  ymax <- max(abs(dat$mean_score))
+
+  title <- paste("Overall Type Stage 1 Score for", region, species) %>%
+    stringr::str_wrap(width = 40)
+
+  plt <- ggplot2::ggplot(
+    dat,
+    ggplot2::aes(
+      x = .data$YEAR,
+      y = .data$mean_score,
+      color = .data$INDICATOR_TYPE,
+      shape = .data$INDICATOR_TYPE
+    )
+  ) +
+    ggplot2::geom_hline(
+      yintercept = 0,
+      lty = "dashed"
+    ) +
+    ggplot2::geom_line() +
+    ggplot2::geom_point() +
+    ggplot2::ylab("Score") +
+    ggplot2::xlab(ggplot2::element_blank()) +
+    ggplot2::theme_bw(base_size = 16) +
+    ggplot2::theme(
+      legend.title = ggplot2::element_blank(),
+      legend.position = "bottom",
+      legend.direction = "vertical",
+      plot.title = ggplot2::element_text(size = 14)
+    ) +
+    ggplot2::guides(color = ggplot2::guide_legend(ncol = 2)) +
+    ggplot2::ggtitle(label = title) +
+    ggplot2::ylim(-ymax, ymax) +
+    ggplot2::facet_grid(rows = ggplot2::vars(.data$INDICATOR_TYPE))
+
+  if (out == "save") {
+    ggplot2::ggsave(plt, filename = name, ...)
+  } else if (out == "ggplot") {
+    print(plt)
+    cat("\n\n")
+  } else if (out == "one_pager") {
+    return(plt)
+  } else {
+    stop("Please specify output format")
+  }
+}
