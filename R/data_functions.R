@@ -171,7 +171,8 @@ check_data <- function(data, fill = TRUE) {
 
   data_colnames <- colnames(data)
 
-  match <- length(expected_colnames) == length(data_colnames)
+  match <- length(expected_colnames) == length(data_colnames) &
+    (sum(sort(expected_colnames) == sort(data_colnames)) == length(expected_colnames))
 
   if(match){
     message("all expected columns present in data")

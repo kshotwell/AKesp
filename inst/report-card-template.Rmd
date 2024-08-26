@@ -40,9 +40,11 @@ devtools::load_all()
 #                               is.null(params$esp_data) ~ AKesp::get_esp_data(params$akfin_stock_name),
 #                               TRUE ~ stop("No data! Please add an AKFIN stock name or assign a suitable data table to esp_data"))
 
-esp_data <- eval(params$esp_data)
+esp_data <- eval(params$esp_data) %>%
+  AKesp::check_data()
 if(is.null(esp_data)) {
-  esp_data <- AKesp::get_esp_data(params$akfin_stock_name)
+  esp_data <- AKesp::get_esp_data(params$akfin_stock_name) %>%
+  AKesp::check_data()
 }
 if(is.null(esp_data)) stop("No data! Please add an akfin_stock_name or assign a suitable data table to esp_data")
 
