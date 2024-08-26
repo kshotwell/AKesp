@@ -49,6 +49,7 @@ summary(dat)
 esp_traffic(dat, skip_lines = TRUE, paginate = TRUE) #make sure data is plotting correctly
 esp_traffic_tab(data = dat, year = (yr-4):yr)
 #esp_traffic_tab(data = dat, year = (as.numeric(max(dat$SUBMISSION_YEAR))-4):as.numeric(max(dat$SUBMISSION_YEAR))) #make sure table look right
+list_indicators(data=dat,indicator_type="Ecosystem")
 esp_overall_score(data=dat,species=paste(esp_list[i,]),region=" ")
 esp_type_score(data=dat,species=paste(esp_list[i,]),region=" ")
 
@@ -57,6 +58,7 @@ esp_type_score(data=dat,species=paste(esp_list[i,]),region=" ")
 #BS Snow crab, two indicators named Winter Sea Ice Advance BS Satellite, need the Copernicus one, use "dplyr::filter(DATA_SOURCE_NAME != "National Snow and Ice Data Center Sea Ice")" if can't fix
 
 #EBS Pacific cod, two indicators named Winter Sea Ice Advance BS Satellite, need the National Snow and Ice one, use "dplyr::filter(DATA_SOURCE_NAME != "Copernicus Marine and Environment Monitoring Service")"
+
 #EBS Pacific cod, two entries were uploaded for the same indicator, Summer Pacific cod adult EBS survey, one of the entries was the EBS and one was the GOA. The GOA needs to be backed out. The product and the indicator name don't match. If can't fix use "dplyr::filter(ESR != "Gulf of Alaska")" to get rid of this data
 
 #BBRKC, active vessels has confidential data (when vessels less than one) that we cannot show so need to have a filter in the database for confidential data. If can't fix then use "dplyr::filter(!(INDICATOR_NAME=="Annual_Red_King_Crab_Active_Vessels_BBRKC_Fishery" & DATA_VALUE<2))". Also note that the current graphing function connects dots when there's no data so it looks odd for this one"
@@ -77,11 +79,11 @@ devtools::load_all()
 render_esp(esp_dir = here::here("data-raw/dev_2024/KS_reports"),
            out_name = paste0("report_card ", paste(esp_list[i,])," ", Sys.Date(), ".docx"),
            akfin_stock_name = paste(esp_list[i,]),
-           # esp_data = dat,
+           esp_data = dat,
            authors = "Erin Fedewa, Kalei Shotwell, Abby Tyrell",
            year = 2024,
            fish = paste(esp_list[i,]),
-           region = "Bristol Bay",
+           region = "Eastern Bering Sea",
            render_ref = FALSE#,
           # con_model_path = ...
           )
@@ -118,7 +120,7 @@ purrr::pwalk(list(akfin, species, stock), function(a, b, c){
 
 esp_type_score(dat,paste(esp_list[i,]),"Eastern Bering Sea")
 
-#Testing overall score function change to Type
+#Testing overall score function change to Type ----
 esp_type_score <- function(data, species, region, out = "ggplot", name, ...) {
   dat <- data %>%
     prep_ind_data() %>%
