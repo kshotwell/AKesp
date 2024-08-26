@@ -63,27 +63,33 @@ label_facets <- function(p,
 #' @export
 
 list_indicators <- function(data, indicator_type) {
+
+  select_cols <- c("INDICATOR_NAME", "REPORT_CARD_TITLE", "CONTACT",
+                   "STATUS_TRENDS", "FACTORS", "IMPLICATIONS",
+                   "INDICATOR_TYPE", "CATEGORY", "INDICATOR_ORDER")
+
   dat <- data %>%
     dplyr::select(
-      .data$INDICATOR_NAME,
-      .data$REPORT_CARD_TITLE,
-      .data$CONTACT,
-      .data$STATUS_TRENDS,
-      .data$FACTORS,
-      .data$IMPLICATIONS,
-      .data$INDICATOR_TYPE,
-      .data$CATEGORY,
-      .data$INDICATOR_ORDER
+      dplyr::any_of(select_cols)
     ) %>%
     dplyr::distinct() %>%
     dplyr::filter(.data$INDICATOR_TYPE == indicator_type) %>%
     dplyr::arrange(INDICATOR_ORDER)
 
+  # add NA if col not present
+  # there is a better way to do this with `apply` or a function
+  if(!"STATUS_TRENDS" %in% colnames(dat)) {
+    dat$STATUS_TRENDS <- NA
+  }
+  if(!"FACTORS" %in% colnames(dat)) {
+    dat$FACTORS <- NA
+  }
+
   num_index <- 1
   total_text <- NULL
 
   if (indicator_type == "Ecosystem") {
-    if("Physical" %in% .data$CATEGORY){
+    if("Physical" %in% unique(dat$CATEGORY)){
       cats <- c("Physical", "Lower Trophic", "Upper Trophic")
     } else {
       cats <- c("Larval", "Juvenile", "Adult")

@@ -30,7 +30,7 @@ render_esp(esp_dir = here::here("data-raw/dev_2024"),
            # esp_data = dat,
            authors = "Erin Fedewa, Kalei Shotwell, Abby Tyrell",
            year = 2023,
-           fish = "Tabber Crab",
+           fish = "Tanner Crab",
            region = "EBS",
            render_ref = FALSE,
            skip_lines = TRUE#,
@@ -40,16 +40,26 @@ render_esp(esp_dir = here::here("data-raw/dev_2024"),
 # ALL THE REPORT CARDS!
 # broken maybe due to data problems, I can troubleshoot later --AT
 
-akfin = c("Alaska Sablefish", #"BS Snow Crab",
+# akfin = c("Alaska Sablefish", #"BS Snow Crab",
+#           "Bristol Bay Red King Crab",
+#           "EBS Pacific Cod", "GOA Pacific Cod", "GOA Pollock",
+#           "St. Matthew Blue King Crab")
+# species = c("Sablefish", #"Snow Crab",
+#             "Red King Crab",
+#             "Pacific Cod", "Pacific Cod", "Pollock", "Blue King Crab")
+# stock = c("Alaska", #"Bering Sea",
+#           "Bristol Bay",
+#           "Eastern Bering Sea", "Gulf of Alaska", "Gulf of Alaska",
+#           "St. Matthew")
+
+akfin = c("BS Snow Crab",
           "Bristol Bay Red King Crab",
-          "EBS Pacific Cod", "GOA Pacific Cod", "GOA Pollock",
           "St. Matthew Blue King Crab")
-species = c("Sablefish", #"Snow Crab",
+species = c("Snow Crab",
             "Red King Crab",
-            "Pacific Cod", "Pacific Cod", "Pollock", "Blue King Crab")
-stock = c("Alaska", #"Bering Sea",
+            "Blue King Crab")
+stock = c("Bering Sea",
           "Bristol Bay",
-          "Eastern Bering Sea", "Gulf of Alaska", "Gulf of Alaska",
           "St. Matthew")
 
 purrr::pwalk(list(akfin, species, stock), function(a, b, c){
