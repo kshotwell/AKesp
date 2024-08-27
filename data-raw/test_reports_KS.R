@@ -32,26 +32,40 @@ yr <- 2024 #use just for this year with crab stocks, delete when new changes hav
 dat <- get_esp_data(paste(esp_list[i,])) %>%
   check_data()
 #%>%
+# For confidentiality of BBRKC, do not show values < 2
+dat<-dat %>%
+  mutate(DATA_VALUE = replace(DATA_VALUE, INDICATOR_NAME=="Annual_Red_King_Crab_Active_Vessels_BBRKC_Fishery" & YEAR==2021, NA)) %>%
+mutate(DATA_VALUE = replace(DATA_VALUE, INDICATOR_NAME=="Annual_Red_King_Crab_Active_Vessels_BBRKC_Fishery" & YEAR==1995, NA)) %>%
+mutate(DATA_VALUE = replace(DATA_VALUE, INDICATOR_NAME=="Annual_Red_King_Crab_Active_Vessels_BBRKC_Fishery" & YEAR==1983, NA))
 
 # filter data from all indicators to a category
 dat<-dat %>%
   dplyr::filter(INDICATOR_TYPE=="Ecosystem")
 
-# filter dat from all indicators to a single indicator, specify name
-dat<-dat %>%
-  dplyr::filter(INDICATOR_NAME !="Annual_Red_King_Crab_CPUE_BBRKC_Fishery")%>%
-  dplyr::filter(INDICATOR_NAME !="Annual_Red_King_Crab_Total_Potlift_BBRKC_Fishery")%>%
-dplyr::filter(!(INDICATOR_NAME=="Annual_Red_King_Crab_Active_Vessels_BBRKC_Fishery" & DATA_VALUE<2))
-
 # look at data ---
 unique(dat$INDICATOR_NAME)
 summary(dat)
 esp_traffic(dat, skip_lines = TRUE, paginate = TRUE) #make sure data is plotting correctly
-esp_traffic_tab(data = dat, year = (yr-4):yr)
-#esp_traffic_tab(data = dat, year = (as.numeric(max(dat$SUBMISSION_YEAR))-4):as.numeric(max(dat$SUBMISSION_YEAR))) #make sure table look right
-list_indicators(data=dat,indicator_type="Ecosystem")
-esp_overall_score(data=dat,species=paste(esp_list[i,]),region=" ")
-esp_type_score(data=dat,species=paste(esp_list[i,]),region=" ")
+esp_traffic_tab(data = dat, year = (yr-4):yr) #make sure table looks right
+list_indicators(data=dat,indicator_type="Ecosystem") #make sure list is working
+list_indicators(data=dat,indicator_type="Socioeconomic") #make sure list is working
+esp_overall_score(data=dat,species=paste(esp_list[i,]),region=" ") #make sure score works
+esp_combo_score(data=dat,species=paste(esp_list[i,]),region=" ") #try another score (see function at bottom)
+
+# filtering options ----
+
+# use dat %>% to assign a dplyr function to the dat tibble
+# use dplyr::filter(INDICATOR_TYPE=="Ecosystem") to look at specific indicators
+# use dplyr::filter(!(INDICATOR_NAME=="indicator name")) to filter out a particular indicator
+# use dplyr::filter(!(INDICATOR_NAME== "indicator name" & YEAR==2021)) to filter out one year of a particular indicator
+# use dplyr::distinct() to get distinct entries if there are more than one
+# use dat["INDICATOR_NAME"][dat["INDICATOR_NAME"]=="old indicator name"]<-"new indicator name" to replace data in a specific column for renaming
+# use dplyr::filter(DATA_SOURCE_NAME != "National Snow and Ice Data Center Sea Ice") %>%
+#   dplyr::distinct() to filter out a data source if getting double entries
+# use inds23<-unique((dat%>%
+#   filter(YEAR==2023 & !is.na(DATA_VALUE)))$INDICATOR_NAME) to filter out NAs when troubleshooting indicator issues
+# use dat<-dat %>%
+#   mutate(DATA_VALUE = replace(DATA_VALUE, INDICATOR_NAME=="Annual_Red_King_Crab_Active_Vessels_BBRKC_Fishery" & YEAR==2021, NA)) to change one particular value to another
 
 # errata to be fixed in backend ----
 
@@ -121,49 +135,58 @@ purrr::pwalk(list(akfin, species, stock), function(a, b, c){
 esp_type_score(dat,paste(esp_list[i,]),"Eastern Bering Sea")
 
 #Testing overall score function change to Type ----
-esp_type_score <- function(data, species, region, out = "ggplot", name, ...) {
+dat <- get_esp_data(paste(esp_list[i,])) %>%
+  check_data()
+data=dat
+esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
   dat <- data %>%
     prep_ind_data() %>%
     dplyr::filter(.data$YEAR >= 2000) %>%
-    dplyr::group_by(.data$INDICATOR_TYPE, .data$YEAR) %>%
+    dplyr::group_by(.data$CATEGORY, .data$YEAR) %>%
     dplyr::mutate(
       score = as.numeric(.data$score),
       mean_score = mean(.data$score, na.rm = TRUE)
     ) %>%
+    dplyr::group_by(.data$INDICATOR_TYPE, .data$YEAR) %>%
+    dplyr::mutate(
+      type_mean_score = mean(.data$score, na.rm = TRUE)
+    ) %>%
     dplyr::select(
       .data$YEAR, .data$INDICATOR_NAME,
-      .data$INDICATOR_TYPE,
-      .data$score, .data$mean_score
+      .data$CATEGORY, .data$INDICATOR_TYPE,
+      .data$score, .data$mean_score,
+      .data$type_mean_score,
     ) %>%
     dplyr::distinct()
 
-  dat$INDICATOR_NAME <- factor(dat$INDICATOR_TYPE,
+  dat$CATEGORY <- factor(dat$CATEGORY,
                          levels = c(
-                           "Ecosystem",
-                           "Socioeconomic"
+                           "Physical",
+                           "Larval",
+                           "Lower Trophic",
+                           "Juvenile",
+                           "Upper Trophic",
+                           "Adult",
+                           "Fishery Performance",
+                           "Economic",
+                           "Community"
                          )
   )
 
   ymax <- max(abs(dat$mean_score))
 
-  title <- paste("Overall Type Stage 1 Score for", region, species) %>%
-    stringr::str_wrap(width = 40)
+ title <- paste("Overall Type Stage 1 Score for", region, species) %>%
+  stringr::str_wrap(width = 40)
 
-  plt <- ggplot2::ggplot(
-    dat,
-    ggplot2::aes(
-      x = .data$YEAR,
-      y = .data$mean_score,
-      color = .data$INDICATOR_TYPE,
-      shape = .data$INDICATOR_TYPE
-    )
-  ) +
+  plt <- ggplot2::ggplot(dat, ggplot2::aes(x = dat$YEAR)) +
+    ggplot2::geom_line(aes(y = dat$type_mean_score, color= dat$INDICATOR_TYPE), linewidth = 1.5) +
+    ggplot2::geom_point(aes(y = dat$type_mean_score, color= dat$INDICATOR_TYPE, shape= dat$INDICATOR_TYPE), size = 3) +
+    ggplot2::geom_line(aes(y = dat$mean_score, color = dat$CATEGORY)) +
+    ggplot2::geom_point(aes(y = dat$mean_score, color = dat$CATEGORY, shape = dat$CATEGORY)) +
     ggplot2::geom_hline(
       yintercept = 0,
       lty = "dashed"
     ) +
-    ggplot2::geom_line() +
-    ggplot2::geom_point() +
     ggplot2::ylab("Score") +
     ggplot2::xlab(ggplot2::element_blank()) +
     ggplot2::theme_bw(base_size = 16) +
