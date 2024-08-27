@@ -571,6 +571,81 @@ esp_overall_score <- function(data, species, region, out = "ggplot", name, ...) 
   }
 }
 
+esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
+  dat <- data %>%
+    prep_ind_data() %>%
+    dplyr::filter(.data$YEAR >= 2000) %>%
+    dplyr::group_by(.data$CATEGORY, .data$YEAR) %>%
+    dplyr::mutate(
+      score = as.numeric(.data$score),
+      mean_score = mean(.data$score, na.rm = TRUE)
+    ) %>%
+    dplyr::group_by(.data$INDICATOR_TYPE, .data$YEAR) %>%
+    dplyr::mutate(
+      type_mean_score = mean(.data$score, na.rm = TRUE)
+    ) %>%
+    dplyr::select(
+      .data$YEAR, .data$INDICATOR_NAME,
+      .data$CATEGORY, .data$INDICATOR_TYPE,
+      .data$score, .data$mean_score,
+      .data$type_mean_score,
+    ) %>%
+    dplyr::distinct()
+
+  dat$CATEGORY <- factor(dat$CATEGORY,
+                         levels = c(
+                           "Physical",
+                           "Larval",
+                           "Lower Trophic",
+                           "Juvenile",
+                           "Upper Trophic",
+                           "Adult",
+                           "Fishery Performance",
+                           "Economic",
+                           "Community"
+                         )
+  )
+
+  ymax <- max(abs(dat$mean_score))
+
+  title <- paste("Overall Type Stage 1 Score for", region, species) %>%
+    stringr::str_wrap(width = 40)
+
+  plt <- ggplot2::ggplot(dat, ggplot2::aes(x = dat$YEAR)) +
+    ggplot2::geom_line(aes(y = dat$type_mean_score, color= dat$INDICATOR_TYPE), linewidth = 1.5) +
+    ggplot2::geom_point(aes(y = dat$type_mean_score, color= dat$INDICATOR_TYPE, shape= dat$INDICATOR_TYPE), size = 0) +
+    ggplot2::geom_line(aes(y = dat$mean_score, color = dat$CATEGORY)) +
+    ggplot2::geom_point(aes(y = dat$mean_score, color = dat$CATEGORY, shape = dat$CATEGORY)) +
+    ggplot2::geom_hline(
+      yintercept = 0,
+      lty = "dashed"
+    ) +
+    ggplot2::ylab("Score") +
+    ggplot2::xlab(ggplot2::element_blank()) +
+    ggplot2::theme_bw(base_size = 16) +
+    ggplot2::theme(
+      legend.title = ggplot2::element_blank(),
+      legend.position = "bottom",
+      legend.direction = "vertical",
+      plot.title = ggplot2::element_text(size = 14)
+    ) +
+    ggplot2::guides(color = ggplot2::guide_legend(ncol = 2)) +
+    ggplot2::ggtitle(label = title) +
+    ggplot2::ylim(-ymax, ymax) +
+    ggplot2::facet_grid(rows = ggplot2::vars(.data$INDICATOR_TYPE))
+
+  if (out == "save") {
+    ggplot2::ggsave(plt, filename = name, ...)
+  } else if (out == "ggplot") {
+    print(plt)
+    cat("\n\n")
+  } else if (out == "one_pager") {
+    return(plt)
+  } else {
+    stop("Please specify output format")
+  }
+}
+
 # esp_overall_score(AKesp::bbrkc_long, species = "BBRKC")
 
 # create_dummy_figs <- function(chunk_names){
