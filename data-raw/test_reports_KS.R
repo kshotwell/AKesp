@@ -25,7 +25,7 @@ esp_list <- esp_stock_options()
 # get data ----
 # function to return data frame of given esp stock for inspection
 yr <- 2024 #use just for this year with crab stocks, delete when new changes have been implemented in database and substitute with internal code below
-i=1 #set for whichever ESP you are interested in
+i=3 #set for whichever ESP you are interested in
 
 # get data for a multiple ESPs, use purrr here TBD - KS
 
@@ -33,15 +33,25 @@ i=1 #set for whichever ESP you are interested in
 dat <- get_esp_data(paste(esp_list[i,])) %>%
   check_data()
 #%>%
-# For confidentiality of BBRKC, do not show values < 2
+
+# stock Errata that need to be fixed but not done yet ----
+
+# BBRKC: for confidentiality of BBRKC, do not show values < 2
 dat<-dat %>%
   mutate(DATA_VALUE = replace(DATA_VALUE, INDICATOR_NAME=="Annual_Red_King_Crab_Active_Vessels_BBRKC_Fishery" & YEAR==2021, NA)) %>%
 mutate(DATA_VALUE = replace(DATA_VALUE, INDICATOR_NAME=="Annual_Red_King_Crab_Active_Vessels_BBRKC_Fishery" & YEAR==1995, NA)) %>%
 mutate(DATA_VALUE = replace(DATA_VALUE, INDICATOR_NAME=="Annual_Red_King_Crab_Active_Vessels_BBRKC_Fishery" & YEAR==1983, NA))
 
-# filter data from all indicators to a category
+# Snow Crab: for taking out the incomplete fishery year of incidental catch
 dat<-dat %>%
-  dplyr::filter(INDICATOR_TYPE=="Ecosystem")
+  mutate(DATA_VALUE = replace(DATA_VALUE, INDICATOR_NAME=="Annual_Snow_Crab_Incidental_Catch_EBS_Fishery" & YEAR==2024, NA))
+# for dealing with the CMEMS label and changing to NSIDC
+dat["INDICATOR_NAME"][dat["INDICATOR_NAME"]=="Winter_Sea_Ice_Advance_BS_Satellite_CMEMS"]<-"Winter_Sea_Ice_Advance_BS_Satellite_NSIDC"
+
+# filter data from all indicators to a category or one indicator
+dat<-dat %>%
+  dplyr::filter(INDICATOR_TYPE=="Socioeconomic")
+  #dplyr::filter(INDICATOR_NAME=="Annual_Snow_Crab_Incidental_Catch_EBS_Fishery")
 
 # look at data ---
 unique(dat$INDICATOR_NAME)
