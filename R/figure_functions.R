@@ -217,6 +217,7 @@ esp_traffic <- function(data,
                         color = "brown1")
 
   # try to add units on y axis ----
+  # if you need to make more space between y axis labels and axis add more "\n"
   if(y_units & "UNITS" %in% colnames(dat)){
     key <- dat %>%
       dplyr::select(.data$name, .data$UNITS, .data$DATA_VALUE, .data$YEAR) %>%
@@ -230,10 +231,10 @@ esp_traffic <- function(data,
                          ggplot2::aes(x = min_year,
                                       y = mean,
                                       label = paste(stringr::str_wrap(.data$UNITS, 10),
-                                                    "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")),
+                                                    "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")),
                          angle = 90,
                          lineheight = 0.75) +
-      ggplot2::theme(plot.margin = ggplot2::unit(c(1, 1, 1, 6), "lines")) +
+      ggplot2::theme(plot.margin = ggplot2::unit(c(1, 1, 1, 3), "lines")) +
       ggplot2::coord_cartesian(clip = "off") +
       ggplot2::scale_y_continuous(labels = scales::label_scientific(),
                                   breaks = scales::breaks_pretty(n = 3))

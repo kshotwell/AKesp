@@ -25,7 +25,7 @@ esp_list <- esp_stock_options()
 # get data ----
 # function to return data frame of given esp stock for inspection
 yr <- 2024 #use just for this year with crab stocks, delete when new changes have been implemented in database and substitute with internal code below
-i=2 #set for whichever ESP you are interested in
+i=3 #set for whichever ESP you are interested in
 
 # get data for a multiple ESPs, use purrr here TBD - KS
 
