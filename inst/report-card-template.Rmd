@@ -40,8 +40,11 @@ devtools::load_all()
 #                               is.null(params$esp_data) ~ AKesp::get_esp_data(params$akfin_stock_name),
 #                               TRUE ~ stop("No data! Please add an AKFIN stock name or assign a suitable data table to esp_data"))
 
-esp_data <- eval(params$esp_data) %>%
+if(!is.null(esp_data)) {
+  esp_data <- eval(params$esp_data) %>%
   AKesp::check_data()
+}
+
 if(is.null(esp_data)) {
   esp_data <- AKesp::get_esp_data(params$akfin_stock_name) %>%
   AKesp::check_data()
@@ -54,7 +57,8 @@ knitr::opts_chunk$set(
   echo = FALSE,
   warning = FALSE,
   message = FALSE,
-  results = "asis"
+  results = "asis",
+  dpi = 300
 )
 
 # fig_spreadsheet <- params$fig_spreadsheet
