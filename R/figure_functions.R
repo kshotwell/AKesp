@@ -612,24 +612,22 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
     stringr::str_wrap(width = 40)
 
   plt <- ggplot2::ggplot(dat, ggplot2::aes(x = dat$YEAR)) +
-#<<<<<<< HEAD
     ggplot2::geom_line(aes(y = dat$type_mean_score, color= dat$INDICATOR_TYPE), linewidth = 1.5) +
     ggplot2::geom_point(aes(y = dat$type_mean_score, color= dat$INDICATOR_TYPE, shape= dat$INDICATOR_TYPE), show.legend = FALSE, size = 0) +
     ggplot2::geom_line(aes(y = dat$mean_score, color = dat$CATEGORY)) +
     ggplot2::geom_point(aes(y = dat$mean_score, color = dat$CATEGORY, shape = dat$CATEGORY), show.legend = FALSE) +
-#=======
     ggplot2::geom_line(ggplot2::aes(y = dat$type_mean_score,
                                     color= dat$INDICATOR_TYPE),
                        linewidth = 1.5) +
     ggplot2::geom_point(ggplot2::aes(y = dat$type_mean_score,
                                      color= dat$INDICATOR_TYPE,
                                      shape= dat$INDICATOR_TYPE),
-                        size = 0) +
+                        size = 0, show.legend = FALSE) +
     ggplot2::geom_line(ggplot2::aes(y = dat$mean_score,
                                     color = dat$CATEGORY)) +
     ggplot2::geom_point(ggplot2::aes(y = dat$mean_score,
                                      color = dat$CATEGORY,
-                                     shape = dat$CATEGORY)) +
+                                     shape = dat$CATEGORY), show.legend = FALSE) +
 #>>>>>>> 345c840fbe51d6e2d14eddcc829584375c60b9ea
     ggplot2::geom_hline(
       yintercept = 0,
