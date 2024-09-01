@@ -613,9 +613,9 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
 
   plt <- ggplot2::ggplot(dat, ggplot2::aes(x = dat$YEAR)) +
     ggplot2::geom_line(aes(y = dat$type_mean_score, color= dat$INDICATOR_TYPE), linewidth = 1.5) +
-    ggplot2::geom_point(aes(y = dat$type_mean_score, color= dat$INDICATOR_TYPE, shape= dat$INDICATOR_TYPE), size = 0) +
+    ggplot2::geom_point(aes(y = dat$type_mean_score, color= dat$INDICATOR_TYPE, shape= dat$INDICATOR_TYPE), show.legend = FALSE, size = 0) +
     ggplot2::geom_line(aes(y = dat$mean_score, color = dat$CATEGORY)) +
-    ggplot2::geom_point(aes(y = dat$mean_score, color = dat$CATEGORY, shape = dat$CATEGORY)) +
+    ggplot2::geom_point(aes(y = dat$mean_score, color = dat$CATEGORY, shape = dat$CATEGORY), show.legend = FALSE) +
     ggplot2::geom_hline(
       yintercept = 0,
       lty = "dashed"
@@ -632,7 +632,40 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
     ggplot2::guides(color = ggplot2::guide_legend(ncol = 2)) +
     ggplot2::ggtitle(label = title) +
     ggplot2::ylim(-ymax, ymax) +
-    ggplot2::facet_grid(rows = ggplot2::vars(.data$INDICATOR_TYPE))
+    ggplot2::facet_grid(rows = ggplot2::vars(.data$INDICATOR_TYPE)) +
+    ggplot2::scale_color_manual(
+      values = c(
+          "Physical" = "red",
+          "Larval" = "red",
+          "Lower Trophic" = "darkorange",
+          "Juvenile" = "darkorange",
+          "Upper Trophic" = "gold",
+          "Adult" = "gold",
+          "Ecosystem" = "darkgray",
+          "Fishery Performance" = "green",
+          "Economic" = "blue",
+          "Community" = "purple",
+          "Socioeconomic" = "black"
+        ),
+        labels = c(
+          "Physical" = "Physical",
+          "Larval" = "Larval",
+          "Lower Trophic" = "Lower Trophic",
+          "Juvenile" = "Juvenile",
+          "Upper Trophic" = "Upper Trophic",
+          "Adult" = "Adult",
+          "Ecosystem" = "Overall Ecosystem",
+          "Fishery Performance" = "Fishery Performance",
+          "Economic" = "Economic",
+          "Community" = "Community",
+          "Socioeconomic" = "Overall Socioeconomic"
+        ),
+        breaks = c(
+        "Physical", "Larval", "Lower Trophic", "Juvenile",
+        "Upper Trophic", "Adult", "Ecosystem", "Fishery Performance",
+        "Economic", "Community", "Socioeconomic"
+      )
+    )
 
   if (out == "save") {
     ggplot2::ggsave(plt, filename = name, ...)

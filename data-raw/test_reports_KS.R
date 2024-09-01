@@ -25,13 +25,14 @@ esp_list <- esp_stock_options()
 # get data ----
 # function to return data frame of given esp stock for inspection
 yr <- 2024 #use just for this year with crab stocks, delete when new changes have been implemented in database and substitute with internal code below
-i=3 #set for whichever ESP you are interested in
+i=2 #set for whichever ESP you are interested in
 
 # get data for a multiple ESPs, use purrr here TBD - KS
 
 # get data for a single ESP
 dat <- get_esp_data(paste(esp_list[i,])) %>%
   check_data()
+#write.csv(dat,here::here(paste(esp_list[i,])),row.names=FALSE)
 #%>%
 
 # stock Errata that need to be fixed but not done yet ----
@@ -47,6 +48,10 @@ dat<-dat %>%
   mutate(DATA_VALUE = replace(DATA_VALUE, INDICATOR_NAME=="Annual_Snow_Crab_Incidental_Catch_EBS_Fishery" & YEAR==2024, NA))
 # for dealing with the CMEMS label and changing to NSIDC
 dat["INDICATOR_NAME"][dat["INDICATOR_NAME"]=="Winter_Sea_Ice_Advance_BS_Satellite_CMEMS"]<-"Winter_Sea_Ice_Advance_BS_Satellite_NSIDC"
+
+# Tanner Crab: for taking out the incomplete fishery year of active vessels
+dat<-dat %>%
+  mutate(DATA_VALUE = replace(DATA_VALUE, INDICATOR_NAME=="Annual_Tanner_Active_Vessels_EBS_Fishery" & YEAR==2024, NA))
 
 # filter data from all indicators to a category or one indicator
 dat<-dat %>%
@@ -108,7 +113,7 @@ render_esp(esp_dir = here::here("data-raw/dev_2024/KS_reports"),
            authors = "Erin Fedewa, Kalei Shotwell, Abby Tyrell",
            year = 2024,
            fish = paste(esp_list[i,]),
-           region = "Bristol Bay",
+           region = "eastern Bering Sea",
            render_ref = FALSE#,
           # con_model_path = ...
           )
