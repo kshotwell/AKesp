@@ -3,6 +3,8 @@ devtools::load_all()# remember to run this after every change!!!
 library(tidyverse)
 library(httr)
 library(jsonlite)
+library(scales)
+options(scipen = 999)
 
 # get fields ----
 # simple function to get all the fields in the ESP webservice for data checking
@@ -55,8 +57,8 @@ dat<-dat %>%
 
 # filter data from all indicators to a category or one indicator
 dat<-dat %>%
-  dplyr::filter(INDICATOR_TYPE=="Socioeconomic")
-  #dplyr::filter(INDICATOR_NAME=="Annual_Snow_Crab_Incidental_Catch_EBS_Fishery")
+  #dplyr::filter(INDICATOR_TYPE=="Socioeconomic")
+  dplyr::filter(INDICATOR_NAME=="FMA_Temperature_Surface_ATF_Satellite")
 
 # look at data ---
 unique(dat$INDICATOR_NAME)
@@ -113,7 +115,7 @@ render_esp(esp_dir = here::here("data-raw/dev_2024/KS_reports"),
            authors = "Erin Fedewa, Kalei Shotwell, Abby Tyrell",
            year = 2024,
            fish = paste(esp_list[i,]),
-           region = "eastern Bering Sea",
+           region = "Bristol Bay",
            render_ref = FALSE#,
           # con_model_path = ...
           )

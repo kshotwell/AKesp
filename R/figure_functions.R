@@ -140,7 +140,7 @@ esp_traffic <- function(data,
                              y_units = TRUE,
                         skip_lines = FALSE,
                              ...) {
-
+  options(scipen = 999)
   maxyear <- max(data$YEAR)
   minyear <- maxyear - 1
 
