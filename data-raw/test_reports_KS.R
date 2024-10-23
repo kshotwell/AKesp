@@ -5,6 +5,7 @@ library(httr)
 library(jsonlite)
 library(scales)
 options(scipen = 999)
+# to turn off scientific notation, just adjust line 239 in figure_functions.R or can make a parameter in future if switching this a lot
 
 # get fields ----
 # simple function to get all the fields in the ESP webservice for data checking
@@ -20,21 +21,37 @@ get_all_esp <- function() {
 esp <-get_all_esp()
 # or just pop the url into a browser to see the column names https://apex.psmfc.org/akfin/data_marts/akmp/esp_indicators
 
+# START HERE
 # get stocks ----
 # function to return a list of all stocks available on the webservice with data
 esp_list <- esp_stock_options()
 
+#So far we have the following stocks:
+#1 Alaska Sablefish
+#2 BS Snow Crab
+#3 Bristol Bay Red King Crab
+#4 EBS Pacific Cod
+#5 EBS Tanner Crab
+#6 GOA Arrowtooth founder
+#7 GOA Pacific Cod
+#8 GOA Pollock
+#9 St. Matthew Blue King Crab
+
 # get data ----
 # function to return data frame of given esp stock for inspection
-yr <- 2024 #use just for this year with crab stocks, delete when new changes have been implemented in database and substitute with internal code below
-i=3 #set for whichever ESP you are interested in
+yr <- 2024  #use to set the current submission year filter
+i <- 7      #use to set for whichever ESP you are interested in
 
 # get data for a multiple ESPs, use purrr here TBD - KS
 
-# get data for a single ESP
+# get data for a single ESP, make sure SUBMISSION_YEAR is current year
 dat <- get_esp_data(paste(esp_list[i,])) %>%
   check_data()
-#write.csv(dat,here::here(paste(esp_list[i,])),row.names=FALSE)
+dat <- dat %>%
+  dplyr::filter(SUBMISSION_YEAR==yr)
+
+# to output a csv of the data for reference if desired
+# write.csv(dat,here::here(paste(esp_list[i,])),row.names=FALSE)
 #%>%
 
 # stock Errata that need to be fixed but not done yet ----
@@ -50,6 +67,8 @@ dat<-dat %>%
   mutate(DATA_VALUE = replace(DATA_VALUE, INDICATOR_NAME=="Annual_Snow_Crab_Incidental_Catch_EBS_Fishery" & YEAR==2024, NA))
 # for dealing with the CMEMS label and changing to NSIDC
 dat["INDICATOR_NAME"][dat["INDICATOR_NAME"]=="Winter_Sea_Ice_Advance_BS_Satellite_CMEMS"]<-"Winter_Sea_Ice_Advance_BS_Satellite_NSIDC"
+dat<-dat %>%
+dplyr::filter(!(INDICATOR_NAME== "Summer_Benthic_Invertebrate_Density_SEBS_Survey" & YEAR<1988))
 
 # Tanner Crab: for taking out the incomplete fishery year of active vessels
 dat<-dat %>%
@@ -57,12 +76,15 @@ dat<-dat %>%
 
 # filter data from all indicators to a category or one indicator
 dat<-dat %>%
-  #dplyr::filter(INDICATOR_TYPE=="Socioeconomic")
-  dplyr::filter(INDICATOR_NAME=="FMA_Temperature_Surface_ATF_Satellite")
+  dplyr::filter(INDICATOR_TYPE=="Socioeconomic")
+  dplyr::filter(CATEGORY=="Larval_YOY")
+  dplyr::filter(SUBMISSION_YEAR==2024)
+  dplyr::filter(INDICATOR_NAME=="Annual_Copepod_Community_Size_EGOA_Survey")
 
 # look at data ---
 unique(dat$INDICATOR_NAME)
 summary(dat)
+#esp_cor_matrix(dat, out="ggplot") #need to fix
 esp_traffic(dat, skip_lines = TRUE, paginate = TRUE) #make sure data is plotting correctly
 esp_traffic_tab(data = dat, year = (yr-4):yr) #make sure table looks right
 list_indicators(data=dat,indicator_type="Ecosystem") #make sure list is working
@@ -112,10 +134,10 @@ render_esp(esp_dir = here::here("data-raw/dev_2024/KS_reports"),
            out_name = paste0("report_card ", paste(esp_list[i,])," ", Sys.Date(), ".docx"),
            akfin_stock_name = paste(esp_list[i,]),
            esp_data = dat,
-           authors = "Erin Fedewa, Kalei Shotwell, Abby Tyrell",
+           authors = "Kalei Shotwell",
            year = 2024,
            fish = paste(esp_list[i,]),
-           region = "Bristol Bay",
+           region = "Alaska",
            render_ref = FALSE#,
           # con_model_path = ...
           )

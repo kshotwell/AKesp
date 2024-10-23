@@ -236,9 +236,8 @@ esp_traffic <- function(data,
                          lineheight = 0.75) +
       ggplot2::theme(plot.margin = ggplot2::unit(c(1, 1, 1, 3), "lines")) +
       ggplot2::coord_cartesian(clip = "off") +
-      ggplot2::scale_y_continuous(labels = scales::label_scientific(),
-                                  breaks = scales::breaks_pretty(n = 3))
-
+      ggplot2::scale_y_continuous(breaks = scales::breaks_pretty(n = 3))
+    #ggplot2::scale_y_continuous(labels = scales::label_scientific(), breaks = scales::breaks_pretty(n = 3))
     # ylabels <- key$UNITS
     # names(ylabels) <- key$name
       }
@@ -515,7 +514,7 @@ esp_overall_score <- function(data, species, region, out = "ggplot", name, ...) 
   dat$CATEGORY <- factor(dat$CATEGORY,
     levels = c(
       "Physical",
-      "Larval",
+      "Larval_YOY",
       "Lower Trophic",
       "Juvenile",
       "Upper Trophic",
@@ -596,7 +595,7 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
   dat$CATEGORY <- factor(dat$CATEGORY,
                          levels = c(
                            "Physical",
-                           "Larval",
+                           "Larval_YOY",
                            "Lower Trophic",
                            "Juvenile",
                            "Upper Trophic",
@@ -650,7 +649,7 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
     ggplot2::scale_color_manual(
       values = c(
           "Physical" = "red",
-          "Larval" = "red",
+          "Larval_YOY" = "red",
           "Lower Trophic" = "darkorange",
           "Juvenile" = "darkorange",
           "Upper Trophic" = "gold",
@@ -663,7 +662,7 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
         ),
         labels = c(
           "Physical" = "Physical",
-          "Larval" = "Larval",
+          "Larval_YOY" = "Larval_YOY",
           "Lower Trophic" = "Lower Trophic",
           "Juvenile" = "Juvenile",
           "Upper Trophic" = "Upper Trophic",
@@ -675,7 +674,7 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
           "Socioeconomic" = "Overall Socioeconomic"
         ),
         breaks = c(
-        "Physical", "Larval", "Lower Trophic", "Juvenile",
+        "Physical", "Larval_YOY", "Lower Trophic", "Juvenile",
         "Upper Trophic", "Adult", "Ecosystem", "Fishery Performance",
         "Economic", "Community", "Socioeconomic"
       )
