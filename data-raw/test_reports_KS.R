@@ -40,7 +40,7 @@ esp_list <- esp_stock_options()
 # get data ----
 # function to return data frame of given esp stock for inspection
 yr <- 2024  #use to set the current submission year filter
-i <- 7      #use to set for whichever ESP you are interested in
+i <- 1      #use to set for whichever ESP you are interested in
 
 # get data for a multiple ESPs, use purrr here TBD - KS
 
@@ -137,7 +137,7 @@ render_esp(esp_dir = here::here("data-raw/dev_2024/KS_reports"),
            authors = "Kalei Shotwell",
            year = 2024,
            fish = paste(esp_list[i,]),
-           region = "Alaska",
+           region = "Gulf of Alaska",
            render_ref = FALSE#,
           # con_model_path = ...
           )
