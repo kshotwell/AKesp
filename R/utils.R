@@ -95,7 +95,7 @@ list_indicators <- function(data, indicator_type) {
       cats <- c("Larval_YOY", "Juvenile", "Adult")
     }
   } else if (indicator_type == "Socioeconomic") {
-    cats <- c("Fishery Performance", "Economic", "Community")
+    cats <- c("Fishery Informed", "Economic", "Community")
   }
 
   for (j in cats) {

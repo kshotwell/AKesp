@@ -4,6 +4,7 @@ library(tidyverse)
 library(httr)
 library(jsonlite)
 library(scales)
+library(AKesp)
 options(scipen = 999)
 # to turn off scientific notation, just adjust line 239 in figure_functions.R or can make a parameter in future if switching this a lot
 
@@ -42,9 +43,7 @@ esp_list <- esp_stock_options()
 yr <- 2024  #use to set the current submission year filter
 i <- 1      #use to set for whichever ESP you are interested in
 
-# get data for a multiple ESPs, use purrr here TBD - KS
-
-# get data for a single ESP, make sure SUBMISSION_YEAR is current year
+# get data for a single ESP, make sure SUBMISSION_YEAR is current year for 2024 but next year do not have to do this, akfin defaults to most current submission for that contribution
 dat <- get_esp_data(paste(esp_list[i,])) %>%
   check_data()
 dat <- dat %>%
@@ -52,7 +51,6 @@ dat <- dat %>%
 
 # to output a csv of the data for reference if desired
 # write.csv(dat,here::here(paste(esp_list[i,])),row.names=FALSE)
-#%>%
 
 # stock Errata that need to be fixed but not done yet ----
 
@@ -76,7 +74,7 @@ dat<-dat %>%
 
 # filter data from all indicators to a category or one indicator
 dat<-dat %>%
-  dplyr::filter(INDICATOR_TYPE=="Socioeconomic")
+  dplyr::filter(INDICATOR_TYPE=="Ecosystem")
   dplyr::filter(CATEGORY=="Larval_YOY")
   dplyr::filter(SUBMISSION_YEAR==2024)
   dplyr::filter(INDICATOR_NAME=="Annual_Copepod_Community_Size_EGOA_Survey")
@@ -85,7 +83,7 @@ dat<-dat %>%
 unique(dat$INDICATOR_NAME)
 summary(dat)
 #esp_cor_matrix(dat, out="ggplot") #need to fix
-esp_traffic(dat, skip_lines = TRUE, paginate = TRUE) #make sure data is plotting correctly
+esp_traffic(dat, skip_lines = FALSE, paginate = TRUE) #make sure data is plotting correctly
 esp_traffic_tab(data = dat, year = (yr-4):yr) #make sure table looks right
 list_indicators(data=dat,indicator_type="Ecosystem") #make sure list is working
 list_indicators(data=dat,indicator_type="Socioeconomic") #make sure list is working
@@ -129,15 +127,15 @@ AKesp::one_pager(data = dat %>%
 )
 
 # a report card ----
-devtools::load_all()
+#devtools::load_all()
 render_esp(esp_dir = here::here("data-raw/dev_2024/KS_reports"),
            out_name = paste0("report_card ", paste(esp_list[i,])," ", Sys.Date(), ".docx"),
            akfin_stock_name = paste(esp_list[i,]),
            esp_data = dat,
-           authors = "Kalei Shotwell",
+           authors = "Kalei Shotwell and Russel Dame",
            year = 2024,
            fish = paste(esp_list[i,]),
-           region = "Gulf of Alaska",
+           region = "Alaska",
            render_ref = FALSE#,
           # con_model_path = ...
           )

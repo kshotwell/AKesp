@@ -519,7 +519,7 @@ esp_overall_score <- function(data, species, region, out = "ggplot", name, ...) 
       "Juvenile",
       "Upper Trophic",
       "Adult",
-      "Fishery Performance",
+      "Fishery Informed",
       "Economic",
       "Community"
     )
@@ -600,7 +600,7 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
                            "Juvenile",
                            "Upper Trophic",
                            "Adult",
-                           "Fishery Performance",
+                           "Fishery Informed",
                            "Economic",
                            "Community"
                          )
@@ -655,7 +655,7 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
           "Upper Trophic" = "gold",
           "Adult" = "gold",
           "Ecosystem" = "darkgray",
-          "Fishery Performance" = "green",
+          "Fishery Informed" = "green",
           "Economic" = "blue",
           "Community" = "purple",
           "Socioeconomic" = "black"
@@ -668,14 +668,14 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
           "Upper Trophic" = "Upper Trophic",
           "Adult" = "Adult",
           "Ecosystem" = "Overall Ecosystem",
-          "Fishery Performance" = "Fishery Performance",
+          "Fishery Informed" = "Fishery Informed",
           "Economic" = "Economic",
           "Community" = "Community",
           "Socioeconomic" = "Overall Socioeconomic"
         ),
         breaks = c(
         "Physical", "Larval_YOY", "Lower Trophic", "Juvenile",
-        "Upper Trophic", "Adult", "Ecosystem", "Fishery Performance",
+        "Upper Trophic", "Adult", "Ecosystem", "Fishery Informed",
         "Economic", "Community", "Socioeconomic"
       )
     )
