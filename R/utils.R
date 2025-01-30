@@ -64,7 +64,7 @@ label_facets <- function(p,
 
 list_indicators <- function(data, indicator_type) {
 
-  select_cols <- c("INDICATOR_NAME", "REPORT_CARD_TITLE", "CONTACT",
+  select_cols <- c("INDICATOR_NAME", "DESCRIPTION", "CONTACT",
                    "STATUS_TRENDS", "FACTORS", "IMPLICATIONS",
                    "INDICATOR_TYPE", "CATEGORY", "INDICATOR_ORDER")
 
@@ -92,10 +92,10 @@ list_indicators <- function(data, indicator_type) {
     if("Physical" %in% unique(dat$CATEGORY)){
       cats <- c("Physical", "Lower Trophic", "Upper Trophic")
     } else {
-      cats <- c("Larval", "Juvenile", "Adult")
+      cats <- c("Larval_YOY", "Juvenile", "Adult")
     }
   } else if (indicator_type == "Socioeconomic") {
-    cats <- c("Fishery Performance", "Economic", "Community")
+    cats <- c("Fishery Informed", "Economic", "Community")
   }
 
   for (j in cats) {
@@ -109,18 +109,18 @@ list_indicators <- function(data, indicator_type) {
     dat1 <- dat %>%
       dplyr::filter(.data$CATEGORY == j)
 
-    for (k in unique(dat1$REPORT_CARD_TITLE)) {
+    for (k in unique(dat1$DESCRIPTION)) {
       dat2 <- dat1 %>%
         dplyr::select(
           .data$INDICATOR_NAME,
-          .data$REPORT_CARD_TITLE,
+          .data$DESCRIPTION,
           .data$CONTACT,
           .data$STATUS_TRENDS,
           .data$FACTORS,
           .data$IMPLICATIONS
         ) %>%
         dplyr::distinct() %>%
-        dplyr::filter(.data$REPORT_CARD_TITLE == k) %>%
+        dplyr::filter(.data$DESCRIPTION == k) %>%
         dplyr::mutate_all(~dplyr::case_when(is.na(.x) | .x == " " | .x == "NA" | .x == "" ~ "**Information not present in database**",
                                        TRUE ~ .x))
 

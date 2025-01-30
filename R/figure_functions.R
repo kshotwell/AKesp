@@ -140,7 +140,7 @@ esp_traffic <- function(data,
                              y_units = TRUE,
                         skip_lines = FALSE,
                              ...) {
-
+  options(scipen = 999)
   maxyear <- max(data$YEAR)
   minyear <- maxyear - 1
 
@@ -217,6 +217,7 @@ esp_traffic <- function(data,
                         color = "brown1")
 
   # try to add units on y axis ----
+  # if you need to make more space between y axis labels and axis add more "\n"
   if(y_units & "UNITS" %in% colnames(dat)){
     key <- dat %>%
       dplyr::select(.data$name, .data$UNITS, .data$DATA_VALUE, .data$YEAR) %>%
@@ -230,14 +231,13 @@ esp_traffic <- function(data,
                          ggplot2::aes(x = min_year,
                                       y = mean,
                                       label = paste(stringr::str_wrap(.data$UNITS, 10),
-                                                    "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")),
+                                                    "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")),
                          angle = 90,
                          lineheight = 0.75) +
-      ggplot2::theme(plot.margin = ggplot2::unit(c(1, 1, 1, 6), "lines")) +
+      ggplot2::theme(plot.margin = ggplot2::unit(c(1, 1, 1, 3), "lines")) +
       ggplot2::coord_cartesian(clip = "off") +
-      ggplot2::scale_y_continuous(labels = scales::label_scientific(),
-                                  breaks = scales::breaks_pretty(n = 3))
-
+      ggplot2::scale_y_continuous(breaks = scales::breaks_pretty(n = 3))
+    #ggplot2::scale_y_continuous(labels = scales::label_scientific(), breaks = scales::breaks_pretty(n = 3))
     # ylabels <- key$UNITS
     # names(ylabels) <- key$name
       }
@@ -514,12 +514,12 @@ esp_overall_score <- function(data, species, region, out = "ggplot", name, ...) 
   dat$CATEGORY <- factor(dat$CATEGORY,
     levels = c(
       "Physical",
-      "Larval",
+      "Larval_YOY",
       "Lower Trophic",
       "Juvenile",
       "Upper Trophic",
       "Adult",
-      "Fishery Performance",
+      "Fishery Informed",
       "Economic",
       "Community"
     )
@@ -595,12 +595,12 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
   dat$CATEGORY <- factor(dat$CATEGORY,
                          levels = c(
                            "Physical",
-                           "Larval",
+                           "Larval_YOY",
                            "Lower Trophic",
                            "Juvenile",
                            "Upper Trophic",
                            "Adult",
-                           "Fishery Performance",
+                           "Fishery Informed",
                            "Economic",
                            "Community"
                          )
@@ -612,18 +612,23 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
     stringr::str_wrap(width = 40)
 
   plt <- ggplot2::ggplot(dat, ggplot2::aes(x = dat$YEAR)) +
+    ggplot2::geom_line(aes(y = dat$type_mean_score, color= dat$INDICATOR_TYPE), linewidth = 1.5) +
+    ggplot2::geom_point(aes(y = dat$type_mean_score, color= dat$INDICATOR_TYPE, shape= dat$INDICATOR_TYPE), show.legend = FALSE, size = 0) +
+    ggplot2::geom_line(aes(y = dat$mean_score, color = dat$CATEGORY)) +
+    ggplot2::geom_point(aes(y = dat$mean_score, color = dat$CATEGORY, shape = dat$CATEGORY), show.legend = FALSE) +
     ggplot2::geom_line(ggplot2::aes(y = dat$type_mean_score,
                                     color= dat$INDICATOR_TYPE),
                        linewidth = 1.5) +
     ggplot2::geom_point(ggplot2::aes(y = dat$type_mean_score,
                                      color= dat$INDICATOR_TYPE,
                                      shape= dat$INDICATOR_TYPE),
-                        size = 0) +
+                        size = 0, show.legend = FALSE) +
     ggplot2::geom_line(ggplot2::aes(y = dat$mean_score,
                                     color = dat$CATEGORY)) +
     ggplot2::geom_point(ggplot2::aes(y = dat$mean_score,
                                      color = dat$CATEGORY,
-                                     shape = dat$CATEGORY)) +
+                                     shape = dat$CATEGORY), show.legend = FALSE) +
+#>>>>>>> 345c840fbe51d6e2d14eddcc829584375c60b9ea
     ggplot2::geom_hline(
       yintercept = 0,
       lty = "dashed"
@@ -640,7 +645,40 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
     ggplot2::guides(color = ggplot2::guide_legend(ncol = 2)) +
     ggplot2::ggtitle(label = title) +
     ggplot2::ylim(-ymax, ymax) +
-    ggplot2::facet_grid(rows = ggplot2::vars(.data$INDICATOR_TYPE))
+    ggplot2::facet_grid(rows = ggplot2::vars(.data$INDICATOR_TYPE)) +
+    ggplot2::scale_color_manual(
+      values = c(
+          "Physical" = "red",
+          "Larval_YOY" = "red",
+          "Lower Trophic" = "darkorange",
+          "Juvenile" = "darkorange",
+          "Upper Trophic" = "gold",
+          "Adult" = "gold",
+          "Ecosystem" = "darkgray",
+          "Fishery Informed" = "green",
+          "Economic" = "blue",
+          "Community" = "purple",
+          "Socioeconomic" = "black"
+        ),
+        labels = c(
+          "Physical" = "Physical",
+          "Larval_YOY" = "Larval_YOY",
+          "Lower Trophic" = "Lower Trophic",
+          "Juvenile" = "Juvenile",
+          "Upper Trophic" = "Upper Trophic",
+          "Adult" = "Adult",
+          "Ecosystem" = "Overall Ecosystem",
+          "Fishery Informed" = "Fishery Informed",
+          "Economic" = "Economic",
+          "Community" = "Community",
+          "Socioeconomic" = "Overall Socioeconomic"
+        ),
+        breaks = c(
+        "Physical", "Larval_YOY", "Lower Trophic", "Juvenile",
+        "Upper Trophic", "Adult", "Ecosystem", "Fishery Informed",
+        "Economic", "Community", "Socioeconomic"
+      )
+    )
 
   if (out == "save") {
     ggplot2::ggsave(plt, filename = name, ...)

@@ -4,26 +4,37 @@
 
 The ecosystem and socioeconomic profile, or ESP, is a standardized framework for compiling and evaluating relevant stock-specific ecosystem and socioeconomic indicators and communicating linkages and potential drivers of the stock within the stock assessment process (Shotwell et al., 2023). The ESP process creates a traceable pathway from the initial development of indicators to management advice and serves as an on-ramp for developing ecosystem-linked stock assessments. 
 
-Please refer to the last full ESP, partial, and report card documents (*list references*) which are available within the `r params$fish` stock assessment and fishery evaluation or SAFE reports for further information regarding the ecosystem and socioeconomic linkages for this stock.
+Please refer to the last full ESP and most recent report card documents (*list references*) which are available as an appendix within the `r params$fish` stock assessment and fishery evaluation or SAFE reports for further information regarding the ecosystem and socioeconomic linkages for this stock.
 
 ## Management Considerations {-}
 
-Summary conclusions from ESP for ABC (risk table) 
+The following are the summary considerations from current updates to the ecosystem and socioeconomic indicators evaluated for `r params$fish`:
 
 ## Modeling Considerations {-}
 
-Summary of indicators with high importance in the Bayesian adaptive sampling routine and discussion of which indicators have had consistent high importance. 
-List of research ecosystem model runs that are currently ongoing and potential for operational use in the future. 
+The following are the summary results from the most recent intermediate and advanced stage monitoring analyses for `r params$fish` (*list references*): 
 
 # Assessment {-}
 
 ## Ecosystem and Socioeconomic Processes {-}
 
-One paragraph description of ecosystem and socioeconomic (if available) conceptual model(s)
+We summarize important processes that may be helpful for identifying productivity bottlenecks and dominant pressures on the stock in conceptual models detailing 1) ecosystem processes by life history stage (Figure 1a) and 2) socioeconomic performance metrics (Figure 1b). Please refer to the last full ESP document (*list reference*) for more details.
 
 ## Indicator Suite {-}
 
-One paragraph description of LME level indicators relevant to stock (ESR summary)
+The following list of indicators for `r params$fish` is organized by categories: three for ecosystem indicators (larval, juvenile, and adult) and three for socioeconomic indicators (fishery performance, economic, and community). The indicator name and short description are provided in the heading. We also include the anticipated sign of the proposed relationship between the indicator and the stock population dynamics where relevant. Following the indicator heading is a series of bullets that include information on the contact for the indicator, status and trends for the current year, factors influencing those trends, and implications for fishery management. 
+
+We use the following nomenclature when describing these indicators: 
+If the value in the time series is at the long-term mean of the time series (or the mean), we use the term “average” (dotted green line in Figure 2). 
+If the value is above/below the mean but below/above 1 standard deviation of the mean (solid green line in Figure 2) we use the terms “above average” or “below average”. 
+Any value within 1 standard deviation of the mean is considered “neutral” in Table 1. 
+If the value is above/below 1 standard deviation of the mean (solid green line in Figure 2) we use the term “high” or “low”. 
+
+We concentrate on updates since the last ESP report card (*list reference*). Please refer to the last full ESP document for detailed information regarding these ecosystem and socioeconomic indicator descriptions and proposed mechanistic linkages for this stock (*list reference*). Time series of the ecosystem and socioeconomic indicators are provided in Figure 2a and Figure 2b, respectively.
+
+New indicators in `r params$year` include: (*list new indicators*)
+
+In addition, the previously reported *old indicator name* has been discontinued and replaced with the *new indicator name*.
 
 ### Ecosystem Indicators: {-}
 ```{r, eco_ind, message = TRUE} 
@@ -47,21 +58,42 @@ cat(socio, sep = "\n\n")
 
 ## Indicator Monitoring Analysis {-}
 
-References for statistical tests for monitoring indicator suite by stage where relevant 
+There are up to three stages (beginning, intermediate, and advanced) of statistical analyses for monitoring the indicator suite listed in the previous section. These analyses differ by ecosystem or socioeconomic indicator type. 
 
-### Beginning Stage: Traffic Light Test {-}
+For ecosystem indicators, the beginning stage is a relatively simple evaluation by traffic light scoring. This evaluates the value of each year relative to the mean of the whole time series and includes the anticipated sign of the proposed relationship between the indicator and the stock health. Please refer to the last full ESP report (*list document*) for more details on the scoring calculation. The intermediate stage uses importance methods related to a stock assessment parameter of interest (e.g., recruitment, growth, catchability). These regression techniques provide a simple predictive performance for the parameter of interest and are run separate from the stock assessment model. They provide the direction, magnitude, uncertainty of the effect, and an estimate of inclusion probability. The advanced stage is used for providing visibility on current research ecosystem models and may be used for testing a research ecosystem linked stock assessment model where output can be compared with the current operational stock assessment model to understand information on retrospective patterns, prediction performance, and comparisons to model outputs.
 
-One paragraph summary of indicator status and trends over time and last five years trend
-Report scores by category (if applicable) and overall ecosystem and socioeconomic indicators. 
+For socioeconomic indicators, the beginning stage is a similar traffic light score as with the ecosystem indicators but does *not* use the anticipated sign of the proposed relationship with stock health.
 
-### Intermediate Stage: Importance Test {-}
+*Insert intermediate and advanced socioeconomic concepts, TBD*
 
-One paragraph summary of importance results with analysis of highly explanatory variables for stock assessment input of interest (e.g., recruitment estimates)
+### Beginning Stage: {-}
 
-### Advanced Stage: Research Model Test {-}
+The scores are summed by the ecosystem or socioeconomic indicator categories and divided by the total number of indicators available in that category for a given year. The ecosystem scores over time provide a history of stock productivity while the socioeconomic scores over time allow comparison of indicator performance (Figure 3). We also provide five year indicator status tables with a color (ecosystem indicators only) for the relationship with the stock (Tables 1a,b).
+
+Overall, the ecosystem indicators score in `r params$year` increased from the previous year but remained below average (Figure 3, top panel). By category, the *larval and juvenile indicators remained below average and the adult indicators increased to above average*. Overall, socioeconomic indicators in `r params$year` remain below average but increased from the previous year (Figure 3, bottom panel). By category, *fishery performance indicators remain below average, while economic indicators increase from average to above average*.
+
+### Intermediate Stage: {-}
+
+Bayesian adaptive sampling (BAS) was used to quantify the association between hypothesized ecosystem predictors and `r params$fish` recruitment and to assess the strength of support for each hypothesis (*list document*). We provide the mean relationship between each predictor variable and `r params$fish` recruitment over time (Figure 4a), with error bars describing the uncertainty (95% confidence intervals) in each estimated effect and the marginal inclusion probabilities for each predictor variable (Figure 4b). Results from this analysis may assist with evaluation of the updated indicator suite for use in the risk table. A higher probability indicates that the variable is a better candidate predictor of `r params$fish` recruitment. 
+
+The highest ranked predictor variables based on the most recent BAS analysis were *1) Pacific cod biomass, 2) cold pool spatial extent, and 3) benthic invertebrate biomass*. The direction of these effects were consistent with hypothesized directional relationships identified in peer-reviewed literature. Intermediate stage indicator importance tests in future ESP report cards will explore additional statistical techniques to address potential nonstationarity and missing observations.
+
+### Advanced Stage: {-}
 
 Update on ecosystem linked model in development and link to relevant literature or report on model 
 
 # Data Gaps and Future Research Priorities {-}
 
-Copy from full ESP
+Copy from previous ESP report
+
+# Acknowledgements {-}
+
+We would like to thank all the contributors for their timely response to requests and questions regarding their data, report summaries, and manuscripts. We thank the staff of the survey programs for rapid turnaround of data to facilitate timely uptake and incorporation into this document. We also thank the Plan Teams and SSC for their helpful insight on the development of this report and future reports.
+
+We would also like to thank the AFSC personnel and divisions, the Alaska Department of Fish and Game, and the Southwest Fisheries Science Center CoastWatch Program for their data contributions. We thank the Alaska Fisheries Information Network and NeXus Data Solutions teams for their extensive help with data management and processing for this report. Finally, we thank Dr. Abigail Tyrell for her tireless assistance with debugging code to link the data management system and the automated reports.
+
+# Literature Cited {-}
+
+Shotwell, S.K., K., Blackhart, C. Cunningham, E. Fedewa, D., Hanselman, K., Aydin, M., Doyle, B., Fissel, P., Lynch, O., Ormseth, P., Spencer, S., Zador. 2023. Introducing the Ecosystem and Socioeconomic Profile, a proving ground for next generation stock assessments. Coastal Management. 51:5-6, 319-352, DOI: 10.1080/08920753.2023.2291858.
+
+
