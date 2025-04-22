@@ -30,14 +30,15 @@ Imports:
     ggpubr,
     httr,
     knitr,
-    magick,
     magrittr,
     png,
-    readtext,
     rlang,
     rmarkdown,
     scales,
     stringr,
     tidyr
+Suggests:
+    readtext,
+    magick
 VignetteBuilder: 
     knitr
