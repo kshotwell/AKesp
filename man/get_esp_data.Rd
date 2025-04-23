@@ -4,10 +4,10 @@
 \alias{get_esp_data}
 \title{Pull ESP data}
 \usage{
-get_esp_data(stock)
+get_esp_data(stock = NULL)
 }
 \arguments{
-\item{stock}{The name of the stock to pull data for. Use \code{AKesp::esp_stock_options()} to view current options.}
+\item{stock}{The name of the stock to pull data for. Use \code{AKesp::esp_stock_options()} to view current options. Leave as NULL to get all data.}
 }
 \value{
 A tibble

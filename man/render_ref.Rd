@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions.R
 \name{render_ref}
 \alias{render_ref}
-\title{Create \code{references.bib} from template spreadsheet}
+\title{Create \code{references.bib} from template spreadsheet - DEPRECATED}
 \usage{
 render_ref(refs = "references_spreadsheet.csv", dir)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/one-pager.R
 \name{one_pager}
 \alias{one_pager}
-\title{Create ESP one-pager}
+\title{Create ESP one-pager - DEPRECATED}
 \usage{
 one_pager(
   data,
