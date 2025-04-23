@@ -1,4 +1,4 @@
-#' Create ESP one-pager
+#' Create ESP one-pager - DEPRECATED
 #'
 #' This function creates a one-pager summary of ESP data.
 #' @param data The data you want displayed in traffic light figures/table (pulled from AKFIN)
