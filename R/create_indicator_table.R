@@ -96,9 +96,13 @@ create_indicator_table <- function(data, dir, type) {
   return(tbl)
 }
 
-img <- create_indicator_table(data = read.csv(here::here("inst/two-pager_table_template.csv")),
-                              dir = here::here("inst/images"),
-                              type = "Socioeconomic")
-flextable::save_as_image(img,
-                          path = here::here("data-raw/indicator_table.png"))
+# img <- create_indicator_table(data = read.csv(here::here("inst/two-pager_table_template.csv")),
+#                               dir = here::here("inst/images"),
+#                               type = "Socioeconomic")
+#
+# img <- create_indicator_table(data = read.csv(here::here("inst/two-pager_table_template.csv")),
+#                               dir = here::here("inst/images"),
+#                               type = "Ecosystem")
+# flextable::save_as_image(img,
+#                           path = here::here("data-raw/indicator_table_eco.png"))
 
