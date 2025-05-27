@@ -1,5 +1,0 @@
-```{r, {{label}}, fig.cap = "{{alttext}}" }
-knitr::include_graphics(here::here(img))
-```
-
-Figure \@ref(fig:{{label}}). {{caption}}

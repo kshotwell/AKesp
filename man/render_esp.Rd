@@ -2,29 +2,23 @@
 % Please edit documentation in R/functions.R
 \name{render_esp}
 \alias{render_esp}
-\title{Create an ESP}
+\title{Create an ESP report card}
 \usage{
 render_esp(
   out_name = "EXAMPLE-ESP.docx",
   esp_dir = getwd(),
   ...,
-  ref_spreadsheet = "references_spreadsheet.csv",
-  esp_data = NULL,
-  render_ref = FALSE
+  esp_data = NULL
 )
 }
 \arguments{
 \item{out_name}{The file name for the report}
 
-\item{esp_dir}{The directory with your ESP files. This folders should have been populated with the ESP template files. The ESP will be saved here.}
+\item{esp_dir}{The ESP will be saved here.}
 
 \item{...}{Parameters passed to the Rmarkdown. See details.}
 
-\item{ref_spreadsheet}{The file path to the filled out references spreadsheet (one of the template documents; optional)}
-
 \item{esp_data}{The data to use for automated analyses.}
-
-\item{render_ref}{Whether to render references in markdown from a references spreadsheet}
 }
 \value{
 Suggestions for parameters are:
@@ -45,7 +39,7 @@ Suggestions for parameters are:
 }
 }
 \description{
-This function creates an ESP from a template. If left empty, an example report will be created.
+This function creates an ESP report card from a template. If left empty, an example report will be created.
 }
 \details{
 Additional arguments are passed as parameters to the ESP Rmarkdown report.

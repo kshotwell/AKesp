@@ -1,51 +1,11 @@
-#' Create an ESP template
+
+#' Create an ESP report card
 #'
-#' This function creates an ESP template at the specified path. DEPRECATED -- PLAN TO REMOVE
-#' @param path Where to create the template. Defaults to the present working directory.
-#' @param type The type of template. One of c("full", "partial", "report card", "one pager")
-#' @export
-
-
-create_template <- function(path = getwd(),
-                            type = "full") {
-  file.copy(
-    from = system.file(c("images", "tables", "figure_spreadsheet.csv",
-                         "table_spreadsheet.csv", "references_spreadsheet.csv",
-                         "esp-template.Rmd", "template.docx"),
-                       package = "AKesp"
-    ),
-    to = path,
-    recursive = TRUE,
-    overwrite = TRUE
-  )
-  if (type == "full") {
-    file.copy(
-      from = system.file("full-esp-text-template.docx",
-                         package = "AKesp"
-      ),
-      to = path
-    )
-  } else if (type == "partial") {
-    file.copy(
-      from = system.file("partial-esp-text-template.docx",
-                         package = "AKesp"
-      ),
-      to = path
-    )
-  } else {
-    stop("That template doesn't exist yet!")
-  }
-}
-
-#' Create an ESP
-#'
-#' This function creates an ESP from a template. If left empty, an example report will be created.
+#' This function creates an ESP report card from a template. If left empty, an example report will be created.
 #' @param out_name The file name for the report
-#' @param esp_dir The directory with your ESP files. This folders should have been populated with the ESP template files. The ESP will be saved here.
+#' @param esp_dir The ESP will be saved here.
 #' @param ... Parameters passed to the Rmarkdown. See details.
-#' @param ref_spreadsheet The file path to the filled out references spreadsheet (one of the template documents; optional)
 #' @param esp_data The data to use for automated analyses.
-#' @param render_ref Whether to render references in markdown from a references spreadsheet
 #'
 #' @details Additional arguments are passed as parameters to the ESP Rmarkdown report.
 #' @return
@@ -69,9 +29,7 @@ create_template <- function(path = getwd(),
 render_esp <- function(out_name = "EXAMPLE-ESP.docx",
                        esp_dir = getwd(),
                        ...,
-                        ref_spreadsheet = "references_spreadsheet.csv",
-                        esp_data = NULL,
-                       render_ref = FALSE
+                       esp_data = NULL
 ) {
 
   # create references.bib
@@ -194,7 +152,7 @@ render_tab <- function(tab, # the file path to the table
   cat(res, sep = "\n\n")
 }
 
-#' Create `references.bib` from template spreadsheet
+#' Create `references.bib` from template spreadsheet - DEPRECATED
 #'
 #' This function creates `references.bib` from a template spreadsheet
 #' @param refs The file path to a reference spreadsheet. Defaults to `references_spreadsheet.csv`.
