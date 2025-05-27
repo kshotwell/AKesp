@@ -12,5 +12,5 @@ create_template(path = getwd(), type = "full")
 \item{type}{The type of template. One of c("full", "partial", "report card", "one pager")}
 }
 \description{
-This function creates an ESP template at the specified path.
+This function creates an ESP template at the specified path. DEPRECATED -- PLAN TO REMOVE
 }

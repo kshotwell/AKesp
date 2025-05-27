@@ -10,7 +10,6 @@ render_esp(
   ...,
   ref_spreadsheet = "references_spreadsheet.csv",
   esp_data = NULL,
-  google_folder_url = NULL,
   render_ref = FALSE
 )
 }
@@ -24,8 +23,6 @@ render_esp(
 \item{ref_spreadsheet}{The file path to the filled out references spreadsheet (one of the template documents; optional)}
 
 \item{esp_data}{The data to use for automated analyses.}
-
-\item{google_folder_url}{The URL of the google drive folder holding the template materials (optional)}
 
 \item{render_ref}{Whether to render references in markdown from a references spreadsheet}
 }

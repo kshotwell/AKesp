@@ -10,7 +10,7 @@ esp_traffic(
   out = "ggplot",
   paginate = FALSE,
   label = TRUE,
-  status = TRUE,
+  status = FALSE,
   caption = "",
   ncolumn = 1,
   silent = FALSE,
@@ -18,6 +18,7 @@ esp_traffic(
   chunk_label = "traffic",
   f_units = FALSE,
   y_units = TRUE,
+  skip_lines = FALSE,
   ...
 )
 }
