@@ -9,8 +9,8 @@
 
 create_indicator_table <- function(data, dir, type) {
   if(type == "Socioeconomic") {
-    head_fill = "#547A64"
-    text_col = "#6C8975"
+    head_fill = "#2e3192ff"
+    text_col = "#2e3192"
   } else if (type == "Ecosystem") {
     head_fill = "#008998"
     text_col = "#00467F"
@@ -96,13 +96,15 @@ create_indicator_table <- function(data, dir, type) {
   return(tbl)
 }
 
-# img <- create_indicator_table(data = read.csv(here::here("inst/two-pager_table_template.csv")),
-#                               dir = here::here("inst/images"),
-#                               type = "Socioeconomic")
-#
-# img <- create_indicator_table(data = read.csv(here::here("inst/two-pager_table_template.csv")),
-#                               dir = here::here("inst/images"),
-#                               type = "Ecosystem")
-# flextable::save_as_image(img,
-#                           path = here::here("data-raw/indicator_table_eco.png"))
+img <- create_indicator_table(data = read.csv(here::here("inst/two-pager_table_template.csv")),
+                              dir = here::here("inst/images"),
+                              type = "Socioeconomic")
+flextable::save_as_image(img,
+                         path = here::here("data-raw/indicator_table.png"))
+
+img <- create_indicator_table(data = read.csv(here::here("inst/two-pager_table_template.csv")),
+                              dir = here::here("inst/images"),
+                              type = "Ecosystem")
+flextable::save_as_image(img,
+                          path = here::here("data-raw/indicator_table_eco.png"))
 
