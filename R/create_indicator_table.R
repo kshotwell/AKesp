@@ -5,9 +5,14 @@
 #' @param data The template .csv
 #' @param dir The directory where images referenced in the .csv are saved
 #' @param type The type of template. One of c("Ecosystem", "Socioeconomic")
+#' @param img_w The width of the time series plot (inches)
+#' @param img_h The height of the time series plot (inches)
+#' @param colnames The column names for the table. Defaults to c("Indicator", "2024 Status", "Trend").
 #' @export
 
-create_indicator_table <- function(data, dir, type, img_w = 4.5, img_h = 2.5) {
+create_indicator_table <- function(data, dir, type,
+                                   img_w = 4.5, img_h = 2.5,
+                                   colnames = c("Indicator", "2024 Status", "Trend")) {
   if(type == "Socioeconomic") {
     head_fill = "#2e3192ff"
     text_col = "#2e3192"
@@ -28,9 +33,7 @@ create_indicator_table <- function(data, dir, type, img_w = 4.5, img_h = 2.5) {
   small_dat <- data |>
     dplyr::select(1:3)
 
-  colnames(small_dat) <- colnames(small_dat) |>
-    stringr::str_replace_all("_", " ") |>
-    stringr::str_to_title()
+  colnames(small_dat) <- colnames
 
   flextable::set_flextable_defaults(font.size = 10)
 
