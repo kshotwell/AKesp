@@ -1,6 +1,6 @@
 ﻿indicator,status_2024,status_image,trend,category,type
-test,test,red_up.png,noaa.jpg,predictive,Ecosystem
-test,test,blue_down.png,noaa.jpg,contextual,Ecosystem
-test,test,grey_nochange.png,noaa.jpg,fishery performance,Socioeconomic
-test,test,grey_up.png,noaa.jpg,economic,Socioeconomic
-test,test,grey_down.png,noaa.jpg,community,Socioeconomic
+test,test,red_up.png,test_time_series.png,predictive,Ecosystem
+test,test,blue_down.png,test_time_series.png,contextual,Ecosystem
+test,test,grey_nochange.png,test_time_series.png,fishery performance,Socioeconomic
+test,test,grey_up.png,test_time_series.png,economic,Socioeconomic
+test,test,grey_down.png,test_time_series.png,community,Socioeconomic

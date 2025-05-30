@@ -1,5 +1,5 @@
 ---
-title: "two_pager_indicator_table"
+title: "Creating indicator tables for short-form ESP updatese"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{two_pager_indicator_table}
@@ -12,9 +12,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+devtools::load_all()
 ```
-
-# Creating indicator tables for short-form ESP updates
 
 ## The table template
 
@@ -31,11 +30,13 @@ Out of the six columns in the template, only two will propagate directly to the 
 
 The table is created with the `create_table_indicator` function. All 3 parameters are required. `data` should be a file path to the template spreadsheet. `dir` should be the directory where the status icons and trend images are stored. `type` should be either 'Ecosystem' or 'Socioeconomic', and will be used to subset the table output.
 
-```{r}
+```{r, fig.width=5.135, fig.height=3.685}
 AKesp::create_indicator_table(data = read.csv(here::here("inst/two-pager_table_template.csv")),
                               dir = here::here("inst/images"),
                               type = "Ecosystem")
+```
 
+```{r, fig.width=5.135, fig.height=5.32}
 AKesp::create_indicator_table(data = read.csv(here::here("inst/two-pager_table_template.csv")),
                               dir = here::here("inst/images"),
                               type = "Socioeconomic")

@@ -7,7 +7,7 @@
 #' @param type The type of template. One of c("Ecosystem", "Socioeconomic")
 #' @export
 
-create_indicator_table <- function(data, dir, type) {
+create_indicator_table <- function(data, dir, type, img_w = 4.5, img_h = 2.5) {
   if(type == "Socioeconomic") {
     head_fill = "#2e3192ff"
     text_col = "#2e3192"
@@ -44,8 +44,8 @@ create_indicator_table <- function(data, dir, type) {
                               j = 3,
                               value = flextable::as_paragraph(
                                 flextable::as_image(src = data$filepath[i],
-                                                    width = 1.5,
-                                                    height = 1.5,
+                                                    width = img_w,
+                                                    height = img_h,
                                                     unit = "in",
                                                     guess_size = FALSE
                                 )))
