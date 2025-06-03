@@ -45,10 +45,11 @@ reference:
   - title: Functions
   - subtitle: Create figures
     contents:
-      - '`esp_cor_matrix`'
-      - '`esp_hist`'
+      - '`rpt_card_timeseries`'
       - '`esp_traffic`'
       - '`esp_overall_score`'
+      - '`esp_cor_matrix`'
+      - '`esp_hist`'
   - subtitle: Create tables
     contents:
       - '`create_indicator_table`'

@@ -1,5 +1,5 @@
 ---
-title: "Creating indicator tables for short-form ESP updates"
+title: "Create indicator tables for short-form ESP updates"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{two_pager_indicator_table}

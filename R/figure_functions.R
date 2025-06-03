@@ -592,3 +592,58 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
 #     cat(res, sep = "\n\n")
 #   }
 # }
+
+#' Plot indicator time series for the report card
+#'
+#' This function plots an indicator time series for the report card
+#' @param data The ESP indicator data (LONG format).
+#' @param ylab The y-axis label
+#' @param xlims The x-axis limits
+#' @param new_breaks The x-axis breaks
+#' @return A ggplot
+#' @export
+
+rpt_card_timeseries <- function(data,
+                                ylab,
+                                xlims,
+                                new_breaks
+                                ) {
+  plt <- data |>
+    AKesp::prep_ind_data() |>
+    ggplot2::ggplot(ggplot2::aes(x = YEAR,
+               y = DATA_VALUE))+
+    ggplot2::geom_rect(ggplot2::aes(ymin=mean + sd,
+                                    ymax=Inf,
+                                    xmin=-Inf,
+                                    xmax=Inf),
+                       alpha=0.2,
+                       fill= "#DF5C47") +
+    ggplot2::geom_rect(ggplot2::aes(ymin=-Inf,
+                                    ymax=mean - sd,
+                                    xmin=-Inf,
+                                    xmax=Inf),
+                       alpha=0.2,
+                       fill= "#6B87B9") +
+    ggplot2::geom_point(size=3)+
+    ggplot2::geom_line() +
+    ggplot2::geom_hline(ggplot2::aes(yintercept = mean),
+                        linetype = 5)+
+    ggplot2::geom_hline(ggplot2::aes(yintercept = mean - sd),
+                        linetype = 3)+
+    ggplot2::geom_hline(ggplot2::aes(yintercept = mean + sd),
+                        linetype = 3)+
+    ggplot2::ylab(ylab) +
+    ggplot2::theme_bw() +
+    ggplot2::scale_x_continuous(breaks = new_breaks,
+                       limits = xlims)+
+    ggplot2::theme(panel.grid = ggplot2::element_blank(),
+                   axis.text=ggplot2::element_text(size=12),
+                   axis.text.x = ggplot2::element_text(angle = 30,
+                                                       hjust = 1),
+                  axis.title.x = ggplot2::element_blank(),
+                  plot.background = ggplot2::element_rect(color='black'))
+
+  return(plt)
+}
+
+

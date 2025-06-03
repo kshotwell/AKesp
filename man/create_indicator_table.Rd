@@ -4,7 +4,14 @@
 \alias{create_indicator_table}
 \title{Create a status table for the short-form summary report}
 \usage{
-create_indicator_table(data, dir, type)
+create_indicator_table(
+  data,
+  dir,
+  type,
+  img_w = 4.5,
+  img_h = 2.5,
+  colnames = c("Indicator", "2024 Status", "Trend")
+)
 }
 \arguments{
 \item{data}{The template .csv}
@@ -12,6 +19,12 @@ create_indicator_table(data, dir, type)
 \item{dir}{The directory where images referenced in the .csv are saved}
 
 \item{type}{The type of template. One of c("Ecosystem", "Socioeconomic")}
+
+\item{img_w}{The width of the time series plot (inches)}
+
+\item{img_h}{The height of the time series plot (inches)}
+
+\item{colnames}{The column names for the table. Defaults to c("Indicator", "2024 Status", "Trend").}
 }
 \description{
 This function creates a status table for the short-form summary report.
