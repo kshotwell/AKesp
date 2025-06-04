@@ -616,22 +616,25 @@ rpt_card_timeseries <- function(data,
                                     ymax=Inf,
                                     xmin=-Inf,
                                     xmax=Inf),
-                       alpha=0.2,
+                       alpha=0.05,
                        fill= "#DF5C47") +
     ggplot2::geom_rect(ggplot2::aes(ymin=-Inf,
                                     ymax=mean - sd,
                                     xmin=-Inf,
                                     xmax=Inf),
-                       alpha=0.2,
+                       alpha=0.05,
                        fill= "#6B87B9") +
     ggplot2::geom_point(size=3)+
     ggplot2::geom_line() +
     ggplot2::geom_hline(ggplot2::aes(yintercept = mean),
-                        linetype = 5)+
+                        linetype = 5,
+                        lwd = 1)+
     ggplot2::geom_hline(ggplot2::aes(yintercept = mean - sd),
-                        linetype = 3)+
+                        linetype = 3,
+                        lwd = 1)+
     ggplot2::geom_hline(ggplot2::aes(yintercept = mean + sd),
-                        linetype = 3)+
+                        linetype = 3,
+                        lwd = 1)+
     ggplot2::ylab(ylab) +
     ggplot2::theme_bw() +
     ggplot2::scale_x_continuous(breaks = new_breaks,

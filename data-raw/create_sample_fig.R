@@ -1,4 +1,6 @@
 
+
+
 dat <- AKesp::get_esp_data("Alaska Sablefish") |>
   AKesp::check_data()
 
@@ -21,6 +23,8 @@ ggplot2::ggsave(here::here("inst/images/test_time_series.png"),
 
 test_dat <- dat |>
   dplyr::filter(INDICATOR_NAME == "Annual_Copepod_Community_Size_EGOA_Survey")
+
+devtools::load_all()
 
 rpt_card_timeseries(test_dat,
                     ylab = test_dat$UNITS[1],
