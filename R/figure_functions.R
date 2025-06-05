@@ -608,6 +608,13 @@ rpt_card_timeseries <- function(data,
                                 xlims,
                                 new_breaks
                                 ) {
+
+  max_year <- data |>
+    dplyr::select(YEAR, DATA_VALUE) |>
+    tidyr::drop_na() |>
+    dplyr::arrange(YEAR) |>
+    dplyr::last()
+
   plt <- data |>
     AKesp::prep_ind_data() |>
     ggplot2::ggplot(ggplot2::aes(x = YEAR,
@@ -635,6 +642,11 @@ rpt_card_timeseries <- function(data,
     ggplot2::geom_hline(ggplot2::aes(yintercept = mean + sd),
                         linetype = 3,
                         lwd = 1)+
+    ggplot2::annotate("text",
+                      x = max_year$YEAR,
+                      y = max_year$DATA_VALUE,
+                      label = max_year$YEAR,
+                      vjust = -1) +
     ggplot2::ylab(ylab) +
     ggplot2::theme_bw() +
     ggplot2::scale_x_continuous(breaks = new_breaks,
