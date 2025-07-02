@@ -1,5 +1,5 @@
 ---
-title: "Create tables"
+title: "Create traffic light tables"
 output: rmarkdown::html_vignette
 
 vignette: >

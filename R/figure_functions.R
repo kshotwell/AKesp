@@ -369,118 +369,6 @@ esp_traffic <- function(data,
   }
 }
 
-#' Plot a metric panel figure
-#'
-#' This function plots an ESP metric panel
-#' @param data The ESP metric panel data (suggest to use `AKesp::metric_panel`).
-#' @param species The species name
-#' @param region The stock region
-#' @param approved Boolean. Whether to use only approved metrics (`approved = TRUE`)
-#' @param order Boolean. Whether to order the metrics by value (`order = TRUE`). Else will be in standard order.
-#' @param name The file name for the image. Will be saved relative to the working directory.
-#' @param out Whether the function should save the plot, or return a ggplot object. One of c("ggplot", "save")
-#' @param ... Passed to `ggplot2::ggsave`
-#' @return An image file
-#' @importFrom magrittr %>%
-#' @importFrom rlang .data
-#' @export
-
-esp_metrics <- function(data, species, region, approved = TRUE, order = FALSE, out, name, ...) {
-  dat <- data %>%
-    dplyr::filter(
-      .data$Stock == species,
-      .data$Region == region
-    ) %>%
-    dplyr::mutate(
-      Rank0 = as.numeric(.data$Rank0),
-      Rank = as.numeric(.data$Rank)
-    )
-
-  if (approved) {
-    dat <- dat %>%
-      dplyr::filter(.data$Use == "Yes")
-  }
-
-  if (order) {
-    dat <- dat %>%
-      dplyr::arrange(.data$Order2)
-  } else {
-    dat <- dat %>%
-      dplyr::arrange(.data$Order1)
-  }
-
-  dat$Metric <- factor(dat$Metric, levels = unique(dat$Metric))
-
-  labs <- factor(dat$Metric)
-  n <- length(labs)
-
-  plt <- ggplot2::ggplot(dat) +
-    ggplot2::geom_ribbon(ggplot2::aes(
-      ymax = 0.9,
-      ymin = 0.8,
-      x = seq(0, length(.data$Metric) + 1,
-        length.out = length(.data$Metric)
-      )
-    ),
-    color = "gray",
-    fill = "gray"
-    ) +
-    ggplot2::geom_ribbon(ggplot2::aes(
-      ymax = 1,
-      ymin = 0.9,
-      x = seq(0, length(.data$Metric) + 1,
-        length.out = length(.data$Metric)
-      )
-    ),
-    color = "black",
-    fill = "black"
-    ) +
-    ggplot2::geom_col(ggplot2::aes(
-      x = as.numeric(factor(.data$Metric)),
-      y = .data$Rank,
-      fill = .data$Quality
-    ), ) +
-    ggplot2::scale_fill_gradient(
-      low = "green",
-      high = "blue",
-      na.value = "transparent",
-      breaks = c(0, 2, 4),
-      labels = c("No Data", "Medium", "Complete"),
-      limits = c(0, 4)
-    ) +
-    ggplot2::scale_y_continuous(
-      limits = c(0, 1),
-      breaks = c(0, 0.5, 1),
-      labels = c("Low", "Med", "High")
-    ) +
-    ggplot2::scale_x_continuous(
-      limits = c(0, n + 1),
-      breaks = 1:n,
-      minor_breaks = NULL,
-      expand = c(0, 0),
-      n.breaks = n,
-      labels = labs
-    ) +
-    ggplot2::coord_flip() +
-    ggplot2::theme_bw(base_size = 14) +
-    ggplot2::ggtitle("") +
-    ggplot2::xlab("") +
-    ggplot2::ylab("")
-
-  if (out == "save") {
-    ggplot2::ggsave(plt, filename = name, ...)
-  } else if (out == "ggplot") {
-    print(plt)
-  } else {
-    stop("Please specify output format")
-  }
-}
-
-# esp_metrics(
-#  data = AKesp::metric_panel, species = "Sablefish", region = "GOA",
-#  approved = TRUE, order = FALSE, out = "ggplot"
-# )
-
 #' Plot a figure of overall ESP scores
 #'
 #' This function plots a visual of overall ESP scores over time.
@@ -717,3 +605,73 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
 #     cat(res, sep = "\n\n")
 #   }
 # }
+
+#' Plot indicator time series for the report card
+#'
+#' This function plots an indicator time series for the report card
+#' @param data The ESP indicator data (LONG format).
+#' @param ylab The y-axis label
+#' @param xlims The x-axis limits
+#' @param new_breaks The x-axis breaks
+#' @return A ggplot
+#' @export
+
+rpt_card_timeseries <- function(data,
+                                ylab,
+                                xlims,
+                                new_breaks
+                                ) {
+
+  max_year <- data |>
+    dplyr::select(YEAR, DATA_VALUE) |>
+    tidyr::drop_na() |>
+    dplyr::arrange(YEAR) |>
+    dplyr::last()
+
+  plt <- data |>
+    AKesp::prep_ind_data() |>
+    ggplot2::ggplot(ggplot2::aes(x = YEAR,
+               y = DATA_VALUE))+
+    ggplot2::geom_rect(ggplot2::aes(ymin=mean + sd,
+                                    ymax=Inf,
+                                    xmin=-Inf,
+                                    xmax=Inf),
+                       alpha=0.05,
+                       fill= "#DF5C47") +
+    ggplot2::geom_rect(ggplot2::aes(ymin=-Inf,
+                                    ymax=mean - sd,
+                                    xmin=-Inf,
+                                    xmax=Inf),
+                       alpha=0.05,
+                       fill= "#6B87B9") +
+    ggplot2::geom_point(size=3)+
+    ggplot2::geom_line() +
+    ggplot2::geom_hline(ggplot2::aes(yintercept = mean),
+                        linetype = 5,
+                        lwd = 1)+
+    ggplot2::geom_hline(ggplot2::aes(yintercept = mean - sd),
+                        linetype = 3,
+                        lwd = 1)+
+    ggplot2::geom_hline(ggplot2::aes(yintercept = mean + sd),
+                        linetype = 3,
+                        lwd = 1)+
+    ggplot2::annotate("text",
+                      x = max_year$YEAR,
+                      y = max_year$DATA_VALUE,
+                      label = max_year$YEAR,
+                      vjust = -1) +
+    ggplot2::ylab(ylab) +
+    ggplot2::theme_bw() +
+    ggplot2::scale_x_continuous(breaks = new_breaks,
+                       limits = xlims)+
+    ggplot2::theme(panel.grid = ggplot2::element_blank(),
+                   axis.text=ggplot2::element_text(size=12),
+                   axis.text.x = ggplot2::element_text(angle = 30,
+                                                       hjust = 1),
+                  axis.title.x = ggplot2::element_blank(),
+                  plot.background = ggplot2::element_rect(color='black'))
+
+  return(plt)
+}
+
+

@@ -1,5 +1,0 @@
-# Maintenance and limitations
-
-At the moment, column names are hardcoded into nearly all of the functions. **That means that this package will only work as long as the input data remains formatted in the same way.** If there are changes to AKFIN naming conventions or data structure, this package will fail!
-
-Aside from these specific data requirements, this package can be updated by future users as needed. (This should only be done by those who are familiar with both the needs of the ESP reports and tidyverse coding in R.) Simply locate the function that you wish to change, make the changes and test locally, and then push the changes to the github repository.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/render_AKesp_book.R
 \name{render_AKesp_book}
 \alias{render_AKesp_book}
-\title{Shortcut to render the bookdown SOP}
+\title{Shortcut to render the bookdown SOP - DEPRECATED}
 \usage{
 render_AKesp_book()
 }

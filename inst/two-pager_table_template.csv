@@ -1,0 +1,6 @@
+﻿indicator,status_2024,status_image,trend,category,type
+test,test,red_up.png,test_time_series2.png,predictive,Ecosystem
+test,test,blue_down.png,test_time_series2.png,contextual,Ecosystem
+test,test,grey_nochange.png,test_time_series2.png,fishery performance,Socioeconomic
+test,test,grey_up.png,test_time_series2.png,economic,Socioeconomic
+test,test,grey_down.png,test_time_series2.png,community,Socioeconomic

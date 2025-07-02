@@ -73,7 +73,7 @@ list_indicators <- function(data, indicator_type) {
       dplyr::any_of(select_cols)
     ) %>%
     dplyr::distinct() %>%
-    dplyr::filter(.data$INDICATOR_TYPE == indicator_type) %>%
+    dplyr::filter(stringr::str_detect(.data$INDICATOR_TYPE, indicator_type)) %>%
     dplyr::arrange(INDICATOR_ORDER)
 
   # add NA if col not present

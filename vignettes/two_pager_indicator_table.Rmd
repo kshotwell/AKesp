@@ -1,0 +1,55 @@
+---
+title: "Create indicator tables for short-form ESP updates"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{two_pager_indicator_table}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+devtools::load_all()
+```
+
+## The table template
+
+A table template is used to create the short-form ESP indicator table. An example template is included in the AKesp R package in the `inst/two-pager_table_template.csv` file. This template can be modified to create a custom table for your ESP update.
+
+```{r}
+temp <- read.csv(here::here("inst/two-pager_table_template.csv"))
+
+knitr::kable(temp)
+```
+Out of the six columns in the template, only two will propagate directly to the final output. The other four are used for internal purposes. `indicator` and `status_2024` will transfer to the final output as written. `status_image` should include the file path to the status icon that should be displayed for each indicator. `trend` should include the file path to an image that will be used in the table. Image file paths should include only the file name, and no directory or full path information, which will be added later. `category` should be one of 'predictive', 'contextual', 'fishery performance', 'economic', or 'community', and will be used to color the table cells. `type` should be one of 'Ecosystem' or 'Socioeconomic' and will be used to subset the table output.
+
+## Creating tables
+
+The table is created with the `create_table_indicator` function. All 3 parameters are required. `data` should be a file path to the template spreadsheet. `dir` should be the directory where the status icons and trend images are stored. `type` should be either 'Ecosystem' or 'Socioeconomic', and will be used to subset the table output.
+
+```{r, fig.width=5.135, fig.height=3.685}
+AKesp::create_indicator_table(data = read.csv(here::here("inst/two-pager_table_template.csv")),
+                              dir = here::here("inst/images"),
+                              type = "Ecosystem")
+```
+
+```{r, fig.width=5.135, fig.height=5.32}
+AKesp::create_indicator_table(data = read.csv(here::here("inst/two-pager_table_template.csv")),
+                              dir = here::here("inst/images"),
+                              type = "Socioeconomic")
+```
+
+## Saving images of the tables
+
+The `create_indicator_table` function returns a `flextable` object, which can be saved as an image with the `flextable::save_as_image` function. Make sure that all dependencies are installed, including `magick`. 
+
+```{r, eval = FALSE}
+img <- AKesp::create_indicator_table(data = read.csv(here::here("inst/two-pager_table_template.csv")),
+                              dir = here::here("inst/images"),
+                              type = "Ecosystem")
+flextable::save_as_image(img,
+                          path = here::here("data-raw/indicator_table_eco.png"))
+```
