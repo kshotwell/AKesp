@@ -231,7 +231,7 @@ esp_traffic <- function(data,
                          ggplot2::aes(x = min_year,
                                       y = mean,
                                       label = paste(stringr::str_wrap(.data$UNITS, 10),
-                                                    "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")),
+                                                    "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")),
                          angle = 90,
                          lineheight = 0.75) +
       ggplot2::theme(plot.margin = ggplot2::unit(c(1, 1, 1, 3), "lines")) +
@@ -571,6 +571,20 @@ esp_overall_score <- function(data, species, region, out = "ggplot", name, ...) 
   }
 }
 
+#' Plot a figure of combo ESP scores
+#'
+#' This function is a alternative combo plot of the overall ESP scores over time.
+#' @param data The ESP indicator data (LONG format).
+#' @param species The species name
+#' @param region The stock region
+#' @param out Whether the function should save the plot, or return a ggplot object. One of c("ggplot", "save")
+#' @param name The file name for the image. Will be saved relative to the working directory. Only needed if saving the plot.
+#' @param ... Passed to `ggplot2::ggsave`
+#' @return An image file
+#' @importFrom magrittr %>%
+#' @importFrom rlang .data
+#' @export
+
 esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
   dat <- data %>%
     prep_ind_data() %>%
@@ -608,12 +622,12 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
 
   ymax <- max(abs(dat$mean_score))
 
-  title <- paste("Overall Type Stage 1 Score for", region, species) %>%
+  title <- paste("Combo Type Stage 1 Score for", region, species) %>%
     stringr::str_wrap(width = 40)
 
   plt <- ggplot2::ggplot(dat, ggplot2::aes(x = dat$YEAR)) +
     ggplot2::geom_line(aes(y = dat$type_mean_score, color= dat$INDICATOR_TYPE), linewidth = 1.5) +
-    ggplot2::geom_point(aes(y = dat$type_mean_score, color= dat$INDICATOR_TYPE, shape= dat$INDICATOR_TYPE), show.legend = FALSE, size = 0) +
+    ggplot2::geom_point(aes(y = dat$type_mean_score, color= dat$INDICATOR_TYPE, shape= dat$INDICATOR_TYPE), show.legend = FALSE, size = 2) +
     ggplot2::geom_line(aes(y = dat$mean_score, color = dat$CATEGORY)) +
     ggplot2::geom_point(aes(y = dat$mean_score, color = dat$CATEGORY, shape = dat$CATEGORY), show.legend = FALSE) +
     ggplot2::geom_line(ggplot2::aes(y = dat$type_mean_score,
@@ -622,13 +636,12 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
     ggplot2::geom_point(ggplot2::aes(y = dat$type_mean_score,
                                      color= dat$INDICATOR_TYPE,
                                      shape= dat$INDICATOR_TYPE),
-                        size = 0, show.legend = FALSE) +
+                        size = 2, show.legend = FALSE) +
     ggplot2::geom_line(ggplot2::aes(y = dat$mean_score,
                                     color = dat$CATEGORY)) +
     ggplot2::geom_point(ggplot2::aes(y = dat$mean_score,
                                      color = dat$CATEGORY,
                                      shape = dat$CATEGORY), show.legend = FALSE) +
-#>>>>>>> 345c840fbe51d6e2d14eddcc829584375c60b9ea
     ggplot2::geom_hline(
       yintercept = 0,
       lty = "dashed"
@@ -648,13 +661,13 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
     ggplot2::facet_grid(rows = ggplot2::vars(.data$INDICATOR_TYPE)) +
     ggplot2::scale_color_manual(
       values = c(
-          "Physical" = "red",
-          "Larval_YOY" = "red",
-          "Lower Trophic" = "darkorange",
-          "Juvenile" = "darkorange",
-          "Upper Trophic" = "gold",
-          "Adult" = "gold",
-          "Ecosystem" = "darkgray",
+          "Physical" = "green",
+          "Larval_YOY" = "green",
+          "Lower Trophic" = "blue",
+          "Juvenile" = "blue",
+          "Upper Trophic" = "purple",
+          "Adult" = "purple",
+          "Ecosystem" = "black",
           "Fishery Informed" = "green",
           "Economic" = "blue",
           "Community" = "purple",
@@ -662,7 +675,7 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
         ),
         labels = c(
           "Physical" = "Physical",
-          "Larval_YOY" = "Larval_YOY",
+          "Larval_YOY" = "Larval to YOY",
           "Lower Trophic" = "Lower Trophic",
           "Juvenile" = "Juvenile",
           "Upper Trophic" = "Upper Trophic",
