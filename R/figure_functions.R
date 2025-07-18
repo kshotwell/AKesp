@@ -1,4 +1,3 @@
-
 #' Plot correlation matrices
 #'
 #' This function creates correlation matrices for ESP indicators.
@@ -74,19 +73,21 @@ esp_hist <- function(data, name, out, ...) {
       stringr::str_wrap(width = 30))
 
   plt <- ggplot2::ggplot(dat) +
-    ggplot2::geom_histogram(ggplot2::aes(
-      x = .data$DATA_VALUE,
-      y = ggplot2::after_stat(density)
-    ),
-    color = "black",
-    fill = "white",
-    na.rm = TRUE
+    ggplot2::geom_histogram(
+      ggplot2::aes(
+        x = .data$DATA_VALUE,
+        y = ggplot2::after_stat(density)
+      ),
+      color = "black",
+      fill = "white",
+      na.rm = TRUE
     ) +
-    ggplot2::geom_density(ggplot2::aes(
-      x = .data$DATA_VALUE,
-      y = ggplot2::after_stat(density)
-    ),
-    alpha = 0.2, fill = "yellow"
+    ggplot2::geom_density(
+      ggplot2::aes(
+        x = .data$DATA_VALUE,
+        y = ggplot2::after_stat(density)
+      ),
+      alpha = 0.2, fill = "yellow"
     ) +
     ggplot2::facet_wrap(~name, ncol = 3, scales = "free") +
     ggplot2::theme_bw(base_size = 12)
@@ -126,20 +127,20 @@ esp_hist <- function(data, name, out, ...) {
 #' @export
 
 esp_traffic <- function(data,
-                             name,
-                             out = "ggplot",
-                             paginate = FALSE,
-                             label = TRUE,
-                             status = FALSE,
-                             caption = "",
-                             ncolumn = 1,
-                             silent = FALSE,
-                             min_year = NULL,
-                             chunk_label = "traffic",
-                             f_units = FALSE,
-                             y_units = TRUE,
+                        name,
+                        out = "ggplot",
+                        paginate = FALSE,
+                        label = TRUE,
+                        status = FALSE,
+                        caption = "",
+                        ncolumn = 1,
+                        silent = FALSE,
+                        min_year = NULL,
+                        chunk_label = "traffic",
+                        f_units = FALSE,
+                        y_units = TRUE,
                         skip_lines = FALSE,
-                             ...) {
+                        ...) {
   options(scipen = 999)
   maxyear <- max(data$YEAR)
   minyear <- maxyear - 1
@@ -155,13 +156,13 @@ esp_traffic <- function(data,
   dat$name <- factor(dat$name, levels = unique(dat$name))
 
   # add units on facet ----
-  if(f_units & "UNITS" %in% colnames(dat)){
-  dat <- dat %>%
-    dplyr::mutate(name = paste0(.data$name, "\n", .data$UNITS))
+  if (f_units & "UNITS" %in% colnames(dat)) {
+    dat <- dat %>%
+      dplyr::mutate(name = paste0(.data$name, "\n", .data$UNITS))
   }
 
   # line data ----
-  if(skip_lines){
+  if (skip_lines) {
     line_dat <- dat
   } else {
     line_dat <- dat %>%
@@ -177,26 +178,29 @@ esp_traffic <- function(data,
       group = name
     )
   ) +
-    ggplot2::geom_hline(ggplot2::aes(
-      yintercept = .data$mean + .data$sd,
-      group = .data$name
-    ),
-    color = "darkgreen",
-    linetype = "solid"
+    ggplot2::geom_hline(
+      ggplot2::aes(
+        yintercept = .data$mean + .data$sd,
+        group = .data$name
+      ),
+      color = "darkgreen",
+      linetype = "solid"
     ) +
-    ggplot2::geom_hline(ggplot2::aes(
-      yintercept = .data$mean - .data$sd,
-      group = .data$name
-    ),
-    color = "darkgreen",
-    linetype = "solid"
+    ggplot2::geom_hline(
+      ggplot2::aes(
+        yintercept = .data$mean - .data$sd,
+        group = .data$name
+      ),
+      color = "darkgreen",
+      linetype = "solid"
     ) +
-    ggplot2::geom_hline(ggplot2::aes(
-      yintercept = .data$mean,
-      group = .data$name
-    ),
-    color = "darkgreen",
-    linetype = "dotted"
+    ggplot2::geom_hline(
+      ggplot2::aes(
+        yintercept = .data$mean,
+        group = .data$name
+      ),
+      color = "darkgreen",
+      linetype = "dotted"
     ) +
     ggplot2::geom_point() +
     ggplot2::geom_line(data = line_dat) +
@@ -207,18 +211,26 @@ esp_traffic <- function(data,
 
   # add colored points based on score column (created by prep_ind_data fxn)
   plt <- plt +
-    ggplot2::geom_point(data = dat %>%
-                          dplyr::filter(score == 1,
-                                        INDICATOR_TYPE == "Ecosystem"),
-                        color = "cornflowerblue") +
-    ggplot2::geom_point(data = dat %>%
-                          dplyr::filter(score == -1,
-                                        INDICATOR_TYPE == "Ecosystem"),
-                        color = "brown1")
+    ggplot2::geom_point(
+      data = dat %>%
+        dplyr::filter(
+          score == 1,
+          INDICATOR_TYPE == "Ecosystem"
+        ),
+      color = "cornflowerblue"
+    ) +
+    ggplot2::geom_point(
+      data = dat %>%
+        dplyr::filter(
+          score == -1,
+          INDICATOR_TYPE == "Ecosystem"
+        ),
+      color = "brown1"
+    )
 
   # try to add units on y axis ----
   # if you need to make more space between y axis labels and axis add more "\n"
-  if(y_units & "UNITS" %in% colnames(dat)){
+  if (y_units & "UNITS" %in% colnames(dat)) {
     key <- dat %>%
       dplyr::select(.data$name, .data$UNITS, .data$DATA_VALUE, .data$YEAR) %>%
       dplyr::mutate(min_year = min(.data$YEAR, na.rm = TRUE)) %>%
@@ -226,21 +238,27 @@ esp_traffic <- function(data,
       dplyr::summarise(mean = mean(.data$DATA_VALUE, na.rm = TRUE))
 
     plt <- plt +
-      ggplot2::geom_text(data = key,
-                         inherit.aes = FALSE,
-                         ggplot2::aes(x = min_year,
-                                      y = mean,
-                                      label = paste(stringr::str_wrap(.data$UNITS, 10),
-                                                    "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")),
-                         angle = 90,
-                         lineheight = 0.75) +
+      ggplot2::geom_text(
+        data = key,
+        inherit.aes = FALSE,
+        ggplot2::aes(
+          x = min_year,
+          y = mean,
+          label = paste(
+            stringr::str_wrap(.data$UNITS, 10),
+            "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+          )
+        ),
+        angle = 90,
+        lineheight = 0.75
+      ) +
       ggplot2::theme(plot.margin = ggplot2::unit(c(1, 1, 1, 3), "lines")) +
       ggplot2::coord_cartesian(clip = "off") +
       ggplot2::scale_y_continuous(breaks = scales::breaks_pretty(n = 3))
-    #ggplot2::scale_y_continuous(labels = scales::label_scientific(), breaks = scales::breaks_pretty(n = 3))
+    # ggplot2::scale_y_continuous(labels = scales::label_scientific(), breaks = scales::breaks_pretty(n = 3))
     # ylabels <- key$UNITS
     # names(ylabels) <- key$name
-      }
+  }
 
   # status ----
 
@@ -250,7 +268,8 @@ esp_traffic <- function(data,
         .data$YEAR == maxyear
       ) %>%
       dplyr::mutate(score = ifelse(INDICATOR_TYPE == "Socioeconomic",
-                                   0, score))
+        0, score
+      ))
 
     # status shapes/colors
     plt <- plt + ggplot2::geom_point(
@@ -325,8 +344,7 @@ esp_traffic <- function(data,
       cat("\n\n")
     } else if (out == "one_pager") {
       return(plt)
-    }
-    else {
+    } else {
       stop("Please specify output format")
     }
   }
@@ -334,10 +352,10 @@ esp_traffic <- function(data,
   if (paginate == TRUE) {
     plt2 <- plt +
       ggforce::facet_wrap_paginate(
-      ~name,
-      # ggforce::facet_grid_paginate(
-      #   rows = ggplot2::vars(name),
-      #   cols = ggplot2::vars(UNITS),
+        ~name,
+        # ggforce::facet_grid_paginate(
+        #   rows = ggplot2::vars(name),
+        #   cols = ggplot2::vars(UNITS),
         ncol = ncolumn,
         nrow = 5,
         scales = "free_y"
@@ -351,8 +369,8 @@ esp_traffic <- function(data,
           ncol = ncolumn,
           nrow = 5,
           scales = "free_y",
-          page = i#,
-          #labeller = ggplot2::labeller(name = ylabels)
+          page = i # ,
+          # labeller = ggplot2::labeller(name = ylabels)
         )
 
       finish_fig()
@@ -361,8 +379,8 @@ esp_traffic <- function(data,
     plt <- plt +
       ggplot2::facet_wrap(~name,
         ncol = ncolumn,
-        scales = "free_y"#,
-       # labeller = ggplot2::labeller(name = ylabels)
+        scales = "free_y" # ,
+        # labeller = ggplot2::labeller(name = ylabels)
       )
 
     finish_fig()
@@ -481,17 +499,17 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
     dplyr::distinct()
 
   dat$CATEGORY <- factor(dat$CATEGORY,
-                         levels = c(
-                           "Physical",
-                           "Larval_YOY",
-                           "Lower Trophic",
-                           "Juvenile",
-                           "Upper Trophic",
-                           "Adult",
-                           "Fishery Informed",
-                           "Economic",
-                           "Community"
-                         )
+    levels = c(
+      "Physical",
+      "Larval_YOY",
+      "Lower Trophic",
+      "Juvenile",
+      "Upper Trophic",
+      "Adult",
+      "Fishery Informed",
+      "Economic",
+      "Community"
+    )
   )
 
   ymax <- max(abs(dat$mean_score))
@@ -500,23 +518,35 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
     stringr::str_wrap(width = 40)
 
   plt <- ggplot2::ggplot(dat, ggplot2::aes(x = dat$YEAR)) +
-    ggplot2::geom_line(aes(y = dat$type_mean_score, color= dat$INDICATOR_TYPE), linewidth = 1.5) +
-    ggplot2::geom_point(aes(y = dat$type_mean_score, color= dat$INDICATOR_TYPE, shape= dat$INDICATOR_TYPE), show.legend = FALSE, size = 0) +
+    ggplot2::geom_line(aes(y = dat$type_mean_score, color = dat$INDICATOR_TYPE), linewidth = 1.5) +
+    ggplot2::geom_point(aes(y = dat$type_mean_score, color = dat$INDICATOR_TYPE, shape = dat$INDICATOR_TYPE), show.legend = FALSE, size = 0) +
     ggplot2::geom_line(aes(y = dat$mean_score, color = dat$CATEGORY)) +
     ggplot2::geom_point(aes(y = dat$mean_score, color = dat$CATEGORY, shape = dat$CATEGORY), show.legend = FALSE) +
-    ggplot2::geom_line(ggplot2::aes(y = dat$type_mean_score,
-                                    color= dat$INDICATOR_TYPE),
-                       linewidth = 1.5) +
-    ggplot2::geom_point(ggplot2::aes(y = dat$type_mean_score,
-                                     color= dat$INDICATOR_TYPE,
-                                     shape= dat$INDICATOR_TYPE),
-                        size = 0, show.legend = FALSE) +
-    ggplot2::geom_line(ggplot2::aes(y = dat$mean_score,
-                                    color = dat$CATEGORY)) +
-    ggplot2::geom_point(ggplot2::aes(y = dat$mean_score,
-                                     color = dat$CATEGORY,
-                                     shape = dat$CATEGORY), show.legend = FALSE) +
-#>>>>>>> 345c840fbe51d6e2d14eddcc829584375c60b9ea
+    ggplot2::geom_line(
+      ggplot2::aes(
+        y = dat$type_mean_score,
+        color = dat$INDICATOR_TYPE
+      ),
+      linewidth = 1.5
+    ) +
+    ggplot2::geom_point(
+      ggplot2::aes(
+        y = dat$type_mean_score,
+        color = dat$INDICATOR_TYPE,
+        shape = dat$INDICATOR_TYPE
+      ),
+      size = 0, show.legend = FALSE
+    ) +
+    ggplot2::geom_line(ggplot2::aes(
+      y = dat$mean_score,
+      color = dat$CATEGORY
+    )) +
+    ggplot2::geom_point(ggplot2::aes(
+      y = dat$mean_score,
+      color = dat$CATEGORY,
+      shape = dat$CATEGORY
+    ), show.legend = FALSE) +
+    #>>>>>>> 345c840fbe51d6e2d14eddcc829584375c60b9ea
     ggplot2::geom_hline(
       yintercept = 0,
       lty = "dashed"
@@ -536,32 +566,32 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
     ggplot2::facet_grid(rows = ggplot2::vars(.data$INDICATOR_TYPE)) +
     ggplot2::scale_color_manual(
       values = c(
-          "Physical" = "red",
-          "Larval_YOY" = "red",
-          "Lower Trophic" = "darkorange",
-          "Juvenile" = "darkorange",
-          "Upper Trophic" = "gold",
-          "Adult" = "gold",
-          "Ecosystem" = "darkgray",
-          "Fishery Informed" = "green",
-          "Economic" = "blue",
-          "Community" = "purple",
-          "Socioeconomic" = "black"
-        ),
-        labels = c(
-          "Physical" = "Physical",
-          "Larval_YOY" = "Larval_YOY",
-          "Lower Trophic" = "Lower Trophic",
-          "Juvenile" = "Juvenile",
-          "Upper Trophic" = "Upper Trophic",
-          "Adult" = "Adult",
-          "Ecosystem" = "Overall Ecosystem",
-          "Fishery Informed" = "Fishery Informed",
-          "Economic" = "Economic",
-          "Community" = "Community",
-          "Socioeconomic" = "Overall Socioeconomic"
-        ),
-        breaks = c(
+        "Physical" = "red",
+        "Larval_YOY" = "red",
+        "Lower Trophic" = "darkorange",
+        "Juvenile" = "darkorange",
+        "Upper Trophic" = "gold",
+        "Adult" = "gold",
+        "Ecosystem" = "darkgray",
+        "Fishery Informed" = "green",
+        "Economic" = "blue",
+        "Community" = "purple",
+        "Socioeconomic" = "black"
+      ),
+      labels = c(
+        "Physical" = "Physical",
+        "Larval_YOY" = "Larval_YOY",
+        "Lower Trophic" = "Lower Trophic",
+        "Juvenile" = "Juvenile",
+        "Upper Trophic" = "Upper Trophic",
+        "Adult" = "Adult",
+        "Ecosystem" = "Overall Ecosystem",
+        "Fishery Informed" = "Fishery Informed",
+        "Economic" = "Economic",
+        "Community" = "Community",
+        "Socioeconomic" = "Overall Socioeconomic"
+      ),
+      breaks = c(
         "Physical", "Larval_YOY", "Lower Trophic", "Juvenile",
         "Upper Trophic", "Adult", "Ecosystem", "Fishery Informed",
         "Economic", "Community", "Socioeconomic"
@@ -600,15 +630,15 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
 #' @param ylab The y-axis label
 #' @param xlims The x-axis limits
 #' @param new_breaks The x-axis breaks
+#' @param type The type of indicator. One of c("Ecosystem", "Socioeconomic"). Default is "Ecosystem".
 #' @return A ggplot
 #' @export
 
 rpt_card_timeseries <- function(data,
                                 ylab,
                                 xlims,
-                                new_breaks
-                                ) {
-
+                                new_breaks,
+                                type = "Ecosystem") {
   max_year <- data |>
     dplyr::select(YEAR, DATA_VALUE) |>
     tidyr::drop_na() |>
@@ -617,48 +647,72 @@ rpt_card_timeseries <- function(data,
 
   plt <- data |>
     AKesp::prep_ind_data() |>
-    ggplot2::ggplot(ggplot2::aes(x = YEAR,
-               y = DATA_VALUE))+
-    ggplot2::geom_rect(ggplot2::aes(ymin=mean + sd,
-                                    ymax=Inf,
-                                    xmin=-Inf,
-                                    xmax=Inf),
-                       alpha=0.05,
-                       fill= "#DF5C47") +
-    ggplot2::geom_rect(ggplot2::aes(ymin=-Inf,
-                                    ymax=mean - sd,
-                                    xmin=-Inf,
-                                    xmax=Inf),
-                       alpha=0.05,
-                       fill= "#6B87B9") +
-    ggplot2::geom_point(size=3)+
+    ggplot2::ggplot(ggplot2::aes(
+      x = YEAR,
+      y = DATA_VALUE
+    ))
+
+  if (type == "Ecosystem") {
+    plt <- plt +
+      ggplot2::geom_rect(
+        ggplot2::aes(
+          ymin = mean + sd,
+          ymax = Inf,
+          xmin = -Inf,
+          xmax = Inf
+        ),
+        alpha = 0.05,
+        fill = "#DF5C47"
+      ) +
+      ggplot2::geom_rect(
+        ggplot2::aes(
+          ymin = -Inf,
+          ymax = mean - sd,
+          xmin = -Inf,
+          xmax = Inf
+        ),
+        alpha = 0.05,
+        fill = "#6B87B9"
+      )
+  }
+
+  plt <- plt +
+    ggplot2::geom_point(size = 3) +
     ggplot2::geom_line() +
     ggplot2::geom_hline(ggplot2::aes(yintercept = mean),
-                        linetype = 5,
-                        lwd = 1)+
+      linetype = 5,
+      lwd = 1
+    ) +
     ggplot2::geom_hline(ggplot2::aes(yintercept = mean - sd),
-                        linetype = 3,
-                        lwd = 1)+
+      linetype = 3,
+      lwd = 1
+    ) +
     ggplot2::geom_hline(ggplot2::aes(yintercept = mean + sd),
-                        linetype = 3,
-                        lwd = 1)+
+      linetype = 3,
+      lwd = 1
+    ) +
     ggplot2::annotate("text",
-                      x = max_year$YEAR,
-                      y = max_year$DATA_VALUE,
-                      label = max_year$YEAR,
-                      vjust = -1) +
+      x = max_year$YEAR,
+      y = max_year$DATA_VALUE,
+      label = max_year$YEAR,
+      vjust = -1
+    ) +
     ggplot2::ylab(ylab) +
     ggplot2::theme_bw() +
-    ggplot2::scale_x_continuous(breaks = new_breaks,
-                       limits = xlims)+
-    ggplot2::theme(panel.grid = ggplot2::element_blank(),
-                   axis.text=ggplot2::element_text(size=12),
-                   axis.text.x = ggplot2::element_text(angle = 30,
-                                                       hjust = 1),
-                  axis.title.x = ggplot2::element_blank(),
-                  plot.background = ggplot2::element_rect(color='black'))
+    ggplot2::scale_x_continuous(
+      breaks = new_breaks,
+      limits = xlims
+    ) +
+    ggplot2::theme(
+      panel.grid = ggplot2::element_blank(),
+      axis.text = ggplot2::element_text(size = 12),
+      axis.text.x = ggplot2::element_text(
+        angle = 30,
+        hjust = 1
+      ),
+      axis.title.x = ggplot2::element_blank(),
+      plot.background = ggplot2::element_rect(color = "black")
+    )
 
   return(plt)
 }
-
-

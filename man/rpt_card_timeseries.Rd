@@ -4,7 +4,7 @@
 \alias{rpt_card_timeseries}
 \title{Plot indicator time series for the report card}
 \usage{
-rpt_card_timeseries(data, ylab, xlims, new_breaks)
+rpt_card_timeseries(data, ylab, xlims, new_breaks, type = "Ecosystem")
 }
 \arguments{
 \item{data}{The ESP indicator data (LONG format).}
@@ -14,6 +14,8 @@ rpt_card_timeseries(data, ylab, xlims, new_breaks)
 \item{xlims}{The x-axis limits}
 
 \item{new_breaks}{The x-axis breaks}
+
+\item{type}{The type of indicator. One of c("Ecosystem", "Socioeconomic"). Default is "Ecosystem".}
 }
 \value{
 A ggplot

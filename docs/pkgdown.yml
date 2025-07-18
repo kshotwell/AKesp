@@ -1,4 +1,4 @@
-pandoc: 3.1.11
+pandoc: '3.2'
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
@@ -10,7 +10,7 @@ articles:
   two_pager_indicator_table: two_pager_indicator_table.html
   update-pkg: update-pkg.html
   use-google: use-google.html
-last_built: 2025-06-05T13:38Z
+last_built: 2025-07-18T19:31Z
 urls:
   reference: https://atyrell.github.io/AKesp/reference
   article: https://atyrell.github.io/AKesp/articles
