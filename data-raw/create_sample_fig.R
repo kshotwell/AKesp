@@ -32,9 +32,10 @@ rpt_card_timeseries(test_dat,
   ylab = test_dat$UNITS[1],
   # ylab = expression("Temperature of Occupancy (\u00B0C)"),
   xlims = c(1985, NA),
-  new_breaks = c(seq(1985, 2023, 5))
+  new_breaks = c(seq(1985, 2023, 5)),
+  type = "Socioeconomic"
 )
-ggplot2::ggsave(here::here("inst/images/test_time_series2.png"),
+ggplot2::ggsave(here::here("inst/images/test_time_series3.png"),
   width = 4.5,
   height = 2.75,
   unit = "in"

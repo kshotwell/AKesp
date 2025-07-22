@@ -354,29 +354,41 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
 #   }
 # }
 
+#' Plot a time series figure for inclusion in the ESP report card indicator table
+#'
+#' This function plots  a time series figure for inclusion in the ESP report card indicator table.
+#' @param data The ESP indicator data -- data for a single indicator time series.
+#' @param ylab The y-axis label
+#' @param xlims The x-axis limits
+#' @param new_breaks The x-axis breaks
+#' @param type The type of indicator, either "Ecosystem" or "Socioeconomic". Defaults to "Ecosystem".
+#' @return A ggplot
+#' @importFrom rlang .data
+#' @export
+
 rpt_card_timeseries <- function(data,
                                 ylab,
                                 xlims,
                                 new_breaks,
                                 type = "Ecosystem") {
   max_year <- data |>
-    dplyr::select(YEAR, DATA_VALUE) |>
+    dplyr::select(.data$YEAR, .data$DATA_VALUE) |>
     tidyr::drop_na() |>
-    dplyr::arrange(YEAR) |>
+    dplyr::arrange(.data$YEAR) |>
     dplyr::last()
 
   plt <- data |>
     AKesp::prep_ind_data() |>
     ggplot2::ggplot(ggplot2::aes(
-      x = YEAR,
-      y = DATA_VALUE
+      x = .data$YEAR,
+      y = .data$DATA_VALUE
     ))
 
   if (type == "Ecosystem") {
     plt <- plt +
       ggplot2::geom_rect(
         ggplot2::aes(
-          ymin = mean + sd,
+          ymin = .data$mean + .data$sd,
           ymax = Inf,
           xmin = -Inf,
           xmax = Inf
@@ -387,7 +399,7 @@ rpt_card_timeseries <- function(data,
       ggplot2::geom_rect(
         ggplot2::aes(
           ymin = -Inf,
-          ymax = mean - sd,
+          ymax = .data$mean - .data$sd,
           xmin = -Inf,
           xmax = Inf
         ),
@@ -399,15 +411,15 @@ rpt_card_timeseries <- function(data,
   plt <- plt +
     ggplot2::geom_point(size = 3) +
     ggplot2::geom_line() +
-    ggplot2::geom_hline(ggplot2::aes(yintercept = mean),
+    ggplot2::geom_hline(ggplot2::aes(yintercept = .data$mean),
       linetype = 5,
       lwd = 1
     ) +
-    ggplot2::geom_hline(ggplot2::aes(yintercept = mean - sd),
+    ggplot2::geom_hline(ggplot2::aes(yintercept = .data$mean - .data$sd),
       linetype = 3,
       lwd = 1
     ) +
-    ggplot2::geom_hline(ggplot2::aes(yintercept = mean + sd),
+    ggplot2::geom_hline(ggplot2::aes(yintercept = .data$mean + .data$sd),
       linetype = 3,
       lwd = 1
     ) +
