@@ -26,6 +26,9 @@ ggplot2::ggsave(here::here("inst/images/test_time_series.png"),
 test_dat <- dat |>
   dplyr::filter(INDICATOR_NAME == "Annual_Copepod_Community_Size_EGOA_Survey")
 
+test_dat <- dat |>
+  dplyr::filter(INDICATOR_NAME == "Spring_Chlorophylla_Biomass_SEBS_Satellite")
+
 devtools::load_all()
 
 rpt_card_timeseries(test_dat,
@@ -33,9 +36,9 @@ rpt_card_timeseries(test_dat,
   # ylab = expression("Temperature of Occupancy (\u00B0C)"),
   xlims = c(1985, NA),
   new_breaks = c(seq(1985, 2023, 5)),
-  type = "Socioeconomic"
+  type = "Ecosystem"
 )
-ggplot2::ggsave(here::here("inst/images/test_time_series3.png"),
+ggplot2::ggsave(here::here("inst/images/test_time_series4.png"),
   width = 4.5,
   height = 2.75,
   unit = "in"

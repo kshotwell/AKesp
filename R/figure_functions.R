@@ -385,6 +385,18 @@ rpt_card_timeseries <- function(data,
     ))
 
   if (type == "Ecosystem") {
+
+    data_sign <- unique(data$SIGN)
+    if (length(data_sign) != 1) {
+      # can add ability to handle this later, if it's useful
+      stop("It looks like you are trying to plot multiple indicators that have different SIGNS. Please break up indicators before passing to plotting function.")
+    }
+
+    top_color <- dplyr::case_when(data_sign == 1 ~ "#6B87B9",
+                                  data_sign == -1 ~ "#DF5C47")
+
+    bottom_color <- dplyr::case_when(data_sign == -1 ~ "#6B87B9",
+                                     data_sign == 1 ~ "#DF5C47")
     plt <- plt +
       ggplot2::geom_rect(
         ggplot2::aes(
@@ -394,7 +406,7 @@ rpt_card_timeseries <- function(data,
           xmax = Inf
         ),
         alpha = 0.05,
-        fill = "#DF5C47"
+        fill = top_color
       ) +
       ggplot2::geom_rect(
         ggplot2::aes(
@@ -404,7 +416,7 @@ rpt_card_timeseries <- function(data,
           xmax = Inf
         ),
         alpha = 0.05,
-        fill = "#6B87B9"
+        fill = bottom_color
       )
   }
 
