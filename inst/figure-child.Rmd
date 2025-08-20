@@ -65,7 +65,7 @@ knitr::opts_chunk$set(fig.cap = alt)
 
 
 ```{r, overall, fig.height = 7, eval = params$esp_type == "report_card"}
-AKesp::esp_combo_score(
+AKesp::esp_overall_score(
   data = esp_data,
   species = params$fish,
   region = params$region

@@ -1,5 +1,5 @@
 devtools::load_all()# remember to run this after every change!!!
-`%>%` <- magrittr::`%>%`
+`%>%` <- magrittr::`%>%`#add pipe operator use Ctrl+Shift+M
 library(tidyverse)
 library(httr)
 library(jsonlite)
@@ -28,29 +28,30 @@ esp <-get_all_esp()
 esp_list <- esp_stock_options()
 
 #So far we have the following stocks:
-#1 Alaska Sablefish
-#2 BS Snow Crab
-#3 Bristol Bay Red King Crab
-#4 EBS Pacific Cod
-#5 EBS Tanner Crab
-#6 GOA Arrowtooth founder
-#7 GOA Pacific Cod
-#8 GOA Pollock
-#9 St. Matthew Blue King Crab
+# 1 Alaska Sablefish
+# 2 BS Snow Crab
+# 3 Black Sea Bass
+# 4 Bristol Bay Red King Crab
+# 5 EBS Pacific Cod
+# 6 EBS Tanner Crab
+# 7 GOA Arrowtooth founder
+# 8 GOA Pacific Cod
+# 9 GOA Pollock
+# 10 St. Matthew Blue King Crab
 
 # get data ----
 # function to return data frame of given esp stock for inspection
-yr <- 2024  #use to set the current submission year filter
-i <- 1      #use to set for whichever ESP you are interested in
+yr <- 2025  #use to set the current submission year filter
+i <- 2      #use to set for whichever ESP you are interested in
 
 # get data for a single ESP, make sure SUBMISSION_YEAR is current year for 2024 but next year do not have to do this, akfin defaults to most current submission for that contribution
 dat <- get_esp_data(paste(esp_list[i,])) %>%
   check_data()
-dat <- dat %>%
-  dplyr::filter(SUBMISSION_YEAR==yr)
+#dat <- dat %>%
+#  dplyr::filter(SUBMISSION_YEAR==yr)
 
 # to output a csv of the data for reference if desired
-# write.csv(dat,here::here(paste(esp_list[i,])),row.names=FALSE)
+write.csv(dat,here::here(paste(esp_list[i,],".csv")),row.names=FALSE)
 
 # stock Errata that need to be fixed but not done yet ----
 
@@ -72,18 +73,37 @@ dplyr::filter(!(INDICATOR_NAME== "Summer_Benthic_Invertebrate_Density_SEBS_Surve
 dat<-dat %>%
   mutate(DATA_VALUE = replace(DATA_VALUE, INDICATOR_NAME=="Annual_Tanner_Active_Vessels_EBS_Fishery" & YEAR==2024, NA))
 
-# filter data from all indicators to a category or one indicator
+# filter data from all indicators to a category or one indicator ----
+devtools::load_all()# remember to run this after every change!!!
+
 dat<-dat %>%
+  #dplyr::filter(INDICATOR_TYPE=="Socioeconomic")
   dplyr::filter(INDICATOR_TYPE=="Ecosystem")
   dplyr::filter(CATEGORY=="Larval_YOY")
+  dplyr::filter(CATEGORY=="Juvenile")
+  dplyr::filter(CATEGORY=="Adult")
+  dplyr::filter(CATEGORY=="Fishery Informed")
+  dplyr::filter(CATEGORY=="Economic")
   dplyr::filter(SUBMISSION_YEAR==2024)
   dplyr::filter(INDICATOR_NAME=="Annual_Copepod_Community_Size_EGOA_Survey")
 
 # look at data ---
 unique(dat$INDICATOR_NAME)
+#filter for removed years or passed gate 2
+dat <- dat %>%
+  dplyr::filter(
+    (GATE2_YEAR == "NA" | is.na(GATE2_YEAR)),
+    (REMOVED_YEAR == "NA" | is.na(REMOVED_YEAR))
+  )
+unique(dat$INDICATOR_NAME)
 summary(dat)
 #esp_cor_matrix(dat, out="ggplot") #need to fix
-esp_traffic(dat, skip_lines = FALSE, paginate = TRUE) #make sure data is plotting correctly
+esp_traffic(dat, ncolumn = 1, skip_lines = FALSE, paginate = TRUE) #make sure data is plotting correctly
+
+dat<-dat %>%
+  dplyr::filter(INDICATOR_NAME=="Summer_ATF_Size_Small_ADFG_Survey")
+rpt_card_timeseries(dat,dat$UNITS,xlims = c(1980,2025),new_breaks = 5)
+
 esp_traffic_tab(data = dat, year = (yr-4):yr) #make sure table looks right
 list_indicators(data=dat,indicator_type="Ecosystem") #make sure list is working
 list_indicators(data=dat,indicator_type="Socioeconomic") #make sure list is working
@@ -132,14 +152,26 @@ render_esp(esp_dir = here::here("data-raw/dev_2024/KS_reports"),
            out_name = paste0("report_card ", paste(esp_list[i,])," ", Sys.Date(), ".docx"),
            akfin_stock_name = paste(esp_list[i,]),
            esp_data = dat,
-           authors = "Kalei Shotwell and Russel Dame",
+           authors = "Shannon Hennessey",
            year = 2024,
            fish = paste(esp_list[i,]),
-           region = "Alaska",
+           region = "Eastern Bering Sea",
            render_ref = FALSE#,
           # con_model_path = ...
           )
 
+#separate combo graph
+dat<-dat %>%
+  dplyr::filter(INDICATOR_TYPE=="Ecosystem")
+p1<-esp_combo_score(data=dat,species=paste(esp_list[i,]),region=" ") #try another score (see function at bottom)
+p1
+ggsave(paste0("combo_graph ", paste(esp_list[i,])," ", Sys.Date(), ".png"), units = 'in', bg = 'white',
+       height = 6, width = 7, dpi = 300)
+
+p1<-esp_traffic(dat, ncolumn = 1, skip_lines = FALSE, paginate = TRUE)
+p1
+ggsave(paste0("pres_YOY ", paste(esp_list[i,])," ", Sys.Date(), ".png"), units = 'in', bg = 'white',
+       height = 6, width = 6, dpi = 300)
 # ALL THE REPORT CARDS!
 # broken maybe due to data problems, I can troubleshoot later --AT
 
