@@ -20,29 +20,26 @@ esp_cor_matrix <- function(data, name, out, ...) {
     )
 
   traffic1_cor <- round(
-    stats::cor(data,
-      use = "complete.obs"
-    ),
+    stats::cor(data, use = "complete.obs"),
     1
   )
   p.mat <- ggcorrplot::cor_pmat(data)
 
-  traffic1_cor_plot <- ggcorrplot::ggcorrplot(traffic1_cor,
+  traffic1_cor_plot <- ggcorrplot::ggcorrplot(
+    traffic1_cor,
     hc.order = TRUE,
     type = "lower",
     lab = TRUE
   )
-  traffic1_cor_plot2 <- ggcorrplot::ggcorrplot(traffic1_cor,
+  traffic1_cor_plot2 <- ggcorrplot::ggcorrplot(
+    traffic1_cor,
     hc.order = TRUE,
     type = "lower",
     p.mat = p.mat,
     insig = "blank"
   )
 
-  plt <- ggpubr::ggarrange(traffic1_cor_plot,
-    traffic1_cor_plot2,
-    ncol = 1
-  ) +
+  plt <- ggpubr::ggarrange(traffic1_cor_plot, traffic1_cor_plot2, ncol = 1) +
     ggplot2::theme(axis.text = ggplot2::element_text(size = 5))
 
   if (out == "save") {
@@ -68,9 +65,11 @@ esp_cor_matrix <- function(data, name, out, ...) {
 
 esp_hist <- function(data, name, out, ...) {
   dat <- data %>%
-    dplyr::mutate(name = .data$INDICATOR_NAME %>%
-      stringr::str_replace_all("_", " ") %>%
-      stringr::str_wrap(width = 30))
+    dplyr::mutate(
+      name = .data$INDICATOR_NAME %>%
+        stringr::str_replace_all("_", " ") %>%
+        stringr::str_wrap(width = 30)
+    )
 
   plt <- ggplot2::ggplot(dat) +
     ggplot2::geom_histogram(
@@ -87,7 +86,8 @@ esp_hist <- function(data, name, out, ...) {
         x = .data$DATA_VALUE,
         y = ggplot2::after_stat(density)
       ),
-      alpha = 0.2, fill = "yellow"
+      alpha = 0.2,
+      fill = "yellow"
     ) +
     ggplot2::facet_wrap(~name, ncol = 3, scales = "free") +
     ggplot2::theme_bw(base_size = 12)
@@ -104,7 +104,6 @@ esp_hist <- function(data, name, out, ...) {
 
 # check for normalcy/zeros - none of these look normal
 
-
 #' Plot a figure of overall ESP scores
 #'
 #' This function plots a visual of overall ESP scores over time.
@@ -119,7 +118,14 @@ esp_hist <- function(data, name, out, ...) {
 #' @importFrom rlang .data
 #' @export
 
-esp_overall_score <- function(data, species, region, out = "ggplot", name, ...) {
+esp_overall_score <- function(
+  data,
+  species,
+  region,
+  out = "ggplot",
+  name,
+  ...
+) {
   dat <- data %>%
     prep_ind_data() %>%
     dplyr::filter(.data$YEAR >= 2000) %>%
@@ -129,13 +135,17 @@ esp_overall_score <- function(data, species, region, out = "ggplot", name, ...) 
       mean_score = mean(.data$score, na.rm = TRUE)
     ) %>%
     dplyr::select(
-      .data$YEAR, .data$INDICATOR_NAME,
-      .data$CATEGORY, .data$INDICATOR_TYPE,
-      .data$score, .data$mean_score
+      .data$YEAR,
+      .data$INDICATOR_NAME,
+      .data$CATEGORY,
+      .data$INDICATOR_TYPE,
+      .data$score,
+      .data$mean_score
     ) %>%
     dplyr::distinct()
 
-  dat$CATEGORY <- factor(dat$CATEGORY,
+  dat$CATEGORY <- factor(
+    dat$CATEGORY,
     levels = c(
       "Physical",
       "Larval_YOY",
@@ -223,14 +233,18 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
       type_mean_score = mean(.data$score, na.rm = TRUE)
     ) %>%
     dplyr::select(
-      .data$YEAR, .data$INDICATOR_NAME,
-      .data$CATEGORY, .data$INDICATOR_TYPE,
-      .data$score, .data$mean_score,
+      .data$YEAR,
+      .data$INDICATOR_NAME,
+      .data$CATEGORY,
+      .data$INDICATOR_TYPE,
+      .data$score,
+      .data$mean_score,
       .data$type_mean_score,
     ) %>%
     dplyr::distinct()
 
-  dat$CATEGORY <- factor(dat$CATEGORY,
+  dat$CATEGORY <- factor(
+    dat$CATEGORY,
     levels = c(
       "Physical",
       "Larval_YOY",
@@ -249,35 +263,60 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
   title <- paste("Combo Type Stage 1 Score for", region, species) %>%
     stringr::str_wrap(width = 40)
 
-  plt <- ggplot2::ggplot(dat, ggplot2::aes(x = dat$YEAR)) +
-    ggplot2::geom_line(aes(y = dat$type_mean_score, color = dat$INDICATOR_TYPE), linewidth = 1.5) +
-    ggplot2::geom_point(aes(y = dat$type_mean_score, color = dat$INDICATOR_TYPE, shape = dat$INDICATOR_TYPE), show.legend = FALSE, size = 2) +
-    ggplot2::geom_line(aes(y = dat$mean_score, color = dat$CATEGORY)) +
-    ggplot2::geom_point(aes(y = dat$mean_score, color = dat$CATEGORY, shape = dat$CATEGORY), show.legend = FALSE) +
+  plt <- ggplot2::ggplot(dat, ggplot2::aes(x = .data$YEAR)) +
+    ggplot2::geom_line(
+      ggplot2::aes(y = .data$type_mean_score, color = .data$INDICATOR_TYPE),
+      linewidth = 1.5
+    ) +
+    ggplot2::geom_point(
+      ggplot2::aes(
+        y = .data$type_mean_score,
+        color = .data$INDICATOR_TYPE,
+        shape = .data$INDICATOR_TYPE
+      ),
+      show.legend = FALSE,
+      size = 2
+    ) +
+    ggplot2::geom_line(ggplot2::aes(
+      y = .data$mean_score,
+      color = .data$CATEGORY
+    )) +
+    ggplot2::geom_point(
+      ggplot2::aes(
+        y = .data$mean_score,
+        color = .data$CATEGORY,
+        shape = .data$CATEGORY
+      ),
+      show.legend = FALSE
+    ) +
     ggplot2::geom_line(
       ggplot2::aes(
-        y = dat$type_mean_score,
-        color = dat$INDICATOR_TYPE
+        y = .data$type_mean_score,
+        color = .data$INDICATOR_TYPE
       ),
       linewidth = 1.5
     ) +
     ggplot2::geom_point(
       ggplot2::aes(
-        y = dat$type_mean_score,
-        color = dat$INDICATOR_TYPE,
-        shape = dat$INDICATOR_TYPE
+        y = .data$type_mean_score,
+        color = .data$INDICATOR_TYPE,
+        shape = .data$INDICATOR_TYPE
       ),
-      size = 2, show.legend = FALSE
+      size = 2,
+      show.legend = FALSE
     ) +
     ggplot2::geom_line(ggplot2::aes(
-      y = dat$mean_score,
-      color = dat$CATEGORY
+      y = .data$mean_score,
+      color = .data$CATEGORY
     )) +
-    ggplot2::geom_point(ggplot2::aes(
-      y = dat$mean_score,
-      color = dat$CATEGORY,
-      shape = dat$CATEGORY
-    ), show.legend = FALSE) +
+    ggplot2::geom_point(
+      ggplot2::aes(
+        y = .data$mean_score,
+        color = .data$CATEGORY,
+        shape = .data$CATEGORY
+      ),
+      show.legend = FALSE
+    ) +
     ggplot2::geom_hline(
       yintercept = 0,
       lty = "dashed"
@@ -323,9 +362,17 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
         "Socioeconomic" = "Overall Socioeconomic"
       ),
       breaks = c(
-        "Physical", "Larval_YOY", "Lower Trophic", "Juvenile",
-        "Upper Trophic", "Adult", "Ecosystem", "Fishery Informed",
-        "Economic", "Community", "Socioeconomic"
+        "Physical",
+        "Larval_YOY",
+        "Lower Trophic",
+        "Juvenile",
+        "Upper Trophic",
+        "Adult",
+        "Ecosystem",
+        "Fishery Informed",
+        "Economic",
+        "Community",
+        "Socioeconomic"
       )
     )
 
@@ -366,11 +413,13 @@ esp_combo_score <- function(data, species, region, out = "ggplot", name, ...) {
 #' @importFrom rlang .data
 #' @export
 
-rpt_card_timeseries <- function(data,
-                                ylab,
-                                xlims,
-                                new_breaks,
-                                type = "Ecosystem") {
+rpt_card_timeseries <- function(
+  data,
+  ylab,
+  xlims,
+  new_breaks,
+  type = "Ecosystem"
+) {
   max_year <- data |>
     dplyr::select(.data$YEAR, .data$DATA_VALUE) |>
     tidyr::drop_na() |>
@@ -385,18 +434,23 @@ rpt_card_timeseries <- function(data,
     ))
 
   if (type == "Ecosystem") {
-
     data_sign <- unique(data$SIGN)
     if (length(data_sign) != 1) {
       # can add ability to handle this later, if it's useful
-      stop("It looks like you are trying to plot multiple indicators that have different SIGNS. Please break up indicators before passing to plotting function.")
+      stop(
+        "It looks like you are trying to plot multiple indicators that have different SIGNS. Please break up indicators before passing to plotting function."
+      )
     }
 
-    top_color <- dplyr::case_when(data_sign == 1 ~ "#6B87B9",
-                                  data_sign == -1 ~ "#DF5C47")
+    top_color <- dplyr::case_when(
+      data_sign == 1 ~ "#6B87B9",
+      data_sign == -1 ~ "#DF5C47"
+    )
 
-    bottom_color <- dplyr::case_when(data_sign == -1 ~ "#6B87B9",
-                                     data_sign == 1 ~ "#DF5C47")
+    bottom_color <- dplyr::case_when(
+      data_sign == -1 ~ "#6B87B9",
+      data_sign == 1 ~ "#DF5C47"
+    )
     plt <- plt +
       ggplot2::geom_rect(
         ggplot2::aes(
@@ -423,19 +477,23 @@ rpt_card_timeseries <- function(data,
   plt <- plt +
     ggplot2::geom_point(size = 3) +
     ggplot2::geom_line() +
-    ggplot2::geom_hline(ggplot2::aes(yintercept = .data$mean),
+    ggplot2::geom_hline(
+      ggplot2::aes(yintercept = .data$mean),
       linetype = 5,
       lwd = 1
     ) +
-    ggplot2::geom_hline(ggplot2::aes(yintercept = .data$mean - .data$sd),
+    ggplot2::geom_hline(
+      ggplot2::aes(yintercept = .data$mean - .data$sd),
       linetype = 3,
       lwd = 1
     ) +
-    ggplot2::geom_hline(ggplot2::aes(yintercept = .data$mean + .data$sd),
+    ggplot2::geom_hline(
+      ggplot2::aes(yintercept = .data$mean + .data$sd),
       linetype = 3,
       lwd = 1
     ) +
-    ggplot2::annotate("text",
+    ggplot2::annotate(
+      "text",
       x = max_year$YEAR,
       y = max_year$DATA_VALUE,
       label = max_year$YEAR,

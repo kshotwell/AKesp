@@ -6,7 +6,7 @@ output:
   bookdown::word_document2:
     reference_docx: "template.docx"
     fig_caption: false
-bibliography: references.bib
+# bibliography: references.bib
 params:
   num: 1
   authors: "Kalei Shotwell, Abby Tyrell"
