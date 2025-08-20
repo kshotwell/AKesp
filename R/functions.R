@@ -32,10 +32,10 @@ render_esp <- function(out_name = "EXAMPLE-ESP.docx",
                        esp_data = NULL
 ) {
 
-  # create references.bib
+   #create references.bib
   if(render_ref) {
     message("creating .bib file...")
-    AKesp::render_ref(refs = ref_spreadsheet,
+   AKesp::render_ref(refs = ref_spreadsheet,
                       dir = dir)
   } else {
     file.create("references.bib") # empty dummy file
