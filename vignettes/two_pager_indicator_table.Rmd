@@ -30,16 +30,24 @@ Out of the six columns in the template, only two will propagate directly to the 
 
 The table is created with the `create_table_indicator` function. All 3 parameters are required. `data` should be a file path to the template spreadsheet. `dir` should be the directory where the status icons and trend images are stored. `type` should be either 'Ecosystem' or 'Socioeconomic', and will be used to subset the table output.
 
+### Ecosystem indicators
+
 ```{r, fig.width=5.135, fig.height=3.685}
-AKesp::create_indicator_table(data = read.csv(here::here("inst/two-pager_table_template.csv")),
-                              dir = here::here("inst/images"),
-                              type = "Ecosystem")
+AKesp::create_indicator_table(
+  data = read.csv(here::here("inst/two-pager_table_template.csv")),
+  dir = here::here("inst/images"),
+  type = "Ecosystem"
+)
 ```
 
+### Socioeconomic indicators
+
 ```{r, fig.width=5.135, fig.height=5.32}
-AKesp::create_indicator_table(data = read.csv(here::here("inst/two-pager_table_template.csv")),
-                              dir = here::here("inst/images"),
-                              type = "Socioeconomic")
+AKesp::create_indicator_table(
+  data = read.csv(here::here("inst/two-pager_table_template.csv")),
+  dir = here::here("inst/images"),
+  type = "Socioeconomic"
+)
 ```
 
 ## Saving images of the tables
@@ -47,9 +55,12 @@ AKesp::create_indicator_table(data = read.csv(here::here("inst/two-pager_table_t
 The `create_indicator_table` function returns a `flextable` object, which can be saved as an image with the `flextable::save_as_image` function. Make sure that all dependencies are installed, including `magick`. 
 
 ```{r, eval = FALSE}
-img <- AKesp::create_indicator_table(data = read.csv(here::here("inst/two-pager_table_template.csv")),
-                              dir = here::here("inst/images"),
-                              type = "Ecosystem")
+img <- AKesp::create_indicator_table(
+  data = read.csv(here::here("inst/two-pager_table_template.csv")),
+  dir = here::here("inst/images"),
+  type = "Ecosystem"
+)
 flextable::save_as_image(img,
-                          path = here::here("data-raw/indicator_table_eco.png"))
+  path = here::here("data-raw/indicator_table_eco.png")
+)
 ```

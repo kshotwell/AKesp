@@ -1,4 +1,3 @@
-
 #' Create an ESP report card
 #'
 #' This function creates an ESP report card from a template. If left empty, an example report will be created.
@@ -26,31 +25,31 @@
 #'
 #' @export
 
-render_esp <- function(out_name = "EXAMPLE-ESP.docx",
-                       esp_dir = getwd(),
-                       ...,
-                       esp_data = NULL
+render_esp <- function(
+  out_name = "EXAMPLE-ESP.docx",
+  esp_dir = getwd(),
+  ...,
+  esp_data = NULL
 ) {
 
-   #create references.bib
-  if(render_ref) {
-    message("creating .bib file...")
-   AKesp::render_ref(refs = ref_spreadsheet,
-                      dir = dir)
-  } else {
-    file.create("references.bib") # empty dummy file
-  }
+  # create references.bib -- DEPRECATED
+  # if (render_ref) {
+  #   message("creating .bib file...")
+  #   AKesp::render_ref(refs = ref_spreadsheet, dir = dir)
+  # } else {
+  #   file.create("references.bib") # empty dummy file
+  # }
 
   args <- list(eval(quote(list(...))))
-  print(args)
+  # print(args)
 
-  if(!is.null(esp_data)) {
+  if (!is.null(esp_data)) {
     args[[1]]$esp_data <- substitute(esp_data)
   }
-  print(args)
+  # print(args)
 
-args <- unlist(args, recursive = FALSE)
-print(args)
+  args <- unlist(args, recursive = FALSE)
+  print(args)
 
   # if(!is.null(esp_data)) {
   #   args <- unlist(args)
@@ -59,12 +58,11 @@ print(args)
   # print(args)
 
   message("knitting ESP...")
-  rmarkdown::render(system.file("report-card-template.Rmd",
-                                package = "AKesp"
-  ),
-  clean = FALSE,
-  params = args,
-  output_file = here::here(esp_dir, out_name)
+  rmarkdown::render(
+    system.file("report-card-template.Rmd", package = "AKesp"),
+    clean = FALSE,
+    params = args,
+    output_file = here::here(esp_dir, out_name)
   )
 
   # clean = TRUE removes .bib file
@@ -87,10 +85,12 @@ print(args)
 #' @param alt The figure alt text
 #' @export
 
-render_fig <- function(img, # the file path to the image
-                       lab = "no-name",
-                       cap = "no-caption",
-                       alt = "no-alt") {
+render_fig <- function(
+  img, # the file path to the image
+  lab = "no-name",
+  cap = "no-caption",
+  alt = "no-alt"
+) {
   txt <- '```{r, {{label}}, fig.cap = "{{alttext}}"}
       knitr::include_graphics(path = "{{img}}")
       ```'
@@ -112,13 +112,14 @@ render_fig <- function(img, # the file path to the image
     quiet = TRUE
   )
 
-  cat(res,
-      knitr::knit_expand(
-        text = "##### Figure \\@ref(fig:{{label}}). {{caption}} {-}",
-        label = lab,
-        caption = cap
-      ),
-      sep = "\n\n"
+  cat(
+    res,
+    knitr::knit_expand(
+      text = "##### Figure \\@ref(fig:{{label}}). {{caption}} {-}",
+      label = lab,
+      caption = cap
+    ),
+    sep = "\n\n"
   )
 }
 
@@ -131,13 +132,14 @@ render_fig <- function(img, # the file path to the image
 #' @importFrom magrittr %>%
 #' @export
 
-render_tab <- function(tab, # the file path to the table
-                       lab = "no-name",
-                       cap = "no-caption") {
+render_tab <- function(
+  tab, # the file path to the table
+  lab = "no-name",
+  cap = "no-caption"
+) {
   res <- knitr::knit_child(
     text = knitr::knit_expand(
-      text =
-        '```{r, {{label}} }
+      text = '```{r, {{label}} }
       data <- read.csv(file = tab)
       flextable::flextable(data) %>%
           flextable::theme_vanilla() %>%
@@ -160,8 +162,9 @@ render_tab <- function(tab, # the file path to the table
 #' @importFrom magrittr %>%
 #' @export
 
-render_ref <- function(refs = "references_spreadsheet.csv", # the file path to the reference spreadsheet
-                       dir # directory where references.bib should be saved.
+render_ref <- function(
+  refs = "references_spreadsheet.csv", # the file path to the reference spreadsheet
+  dir # directory where references.bib should be saved.
 ) {
   data <- utils::read.csv(file = paste(dir, refs, sep = "/"))
   file <- paste0(dir, "/references.bib")
@@ -170,8 +173,7 @@ render_ref <- function(refs = "references_spreadsheet.csv", # the file path to t
 
   for (i in 1:nrow(data)) {
     res <- knitr::knit_expand(
-      text =
-        "@article{ {{keyword}},
+      text = "@article{ {{keyword}},
         author  = { {{authors}} },
         title   = { {{title}} },
         journal = { {{journal}} },
