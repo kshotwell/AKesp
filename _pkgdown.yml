@@ -48,6 +48,7 @@ reference:
       - '`rpt_card_timeseries`'
       - '`esp_traffic`'
       - '`esp_overall_score`'
+      - '`esp_combo_score`'
       - '`esp_cor_matrix`'
       - '`esp_hist`'
   - subtitle: Create tables

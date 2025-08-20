@@ -77,7 +77,7 @@ dat<-dat %>%
 devtools::load_all()# remember to run this after every change!!!
 
 dat<-dat %>%
-  #dplyr::filter(INDICATOR_TYPE=="Socioeconomic")
+  dplyr::filter(INDICATOR_TYPE=="Socioeconomic")
   dplyr::filter(INDICATOR_TYPE=="Ecosystem")
   dplyr::filter(CATEGORY=="Larval_YOY")
   dplyr::filter(CATEGORY=="Juvenile")
@@ -146,17 +146,16 @@ AKesp::one_pager(data = dat %>%
                                                  Sys.Date(), ".pdf"))
 )
 
-# a report card ----
+
 #devtools::load_all()
-render_esp(esp_dir = here::here("data-raw/dev_2024/KS_reports"),
+render_esp(esp_dir = here::here("data-raw/dev_2025/KS_reports"),
            out_name = paste0("report_card ", paste(esp_list[i,])," ", Sys.Date(), ".docx"),
            akfin_stock_name = paste(esp_list[i,]),
            esp_data = dat,
-           authors = "Shannon Hennessey",
-           year = 2024,
+           authors = "Erin Fedewa",
+           year = 2025,
            fish = paste(esp_list[i,]),
-           region = "Eastern Bering Sea",
-           render_ref = FALSE#,
+           region = "Eastern Bering Sea"
           # con_model_path = ...
           )
 

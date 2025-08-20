@@ -2,6 +2,7 @@
 
 export(check_data)
 export(create_indicator_table)
+export(esp_combo_score)
 export(esp_cor_matrix)
 export(esp_hist)
 export(esp_overall_score)
