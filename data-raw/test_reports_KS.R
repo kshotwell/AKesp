@@ -42,7 +42,7 @@ esp_list <- esp_stock_options()
 # get data ----
 # function to return data frame of given esp stock for inspection
 yr <- 2025  #use to set the current submission year filter
-i <- 2      #use to set for whichever ESP you are interested in
+i <- 6      #use to set for whichever ESP you are interested in
 
 # get data for a single ESP, make sure SUBMISSION_YEAR is current year for 2024 but next year do not have to do this, akfin defaults to most current submission for that contribution
 dat <- get_esp_data(paste(esp_list[i,])) %>%
