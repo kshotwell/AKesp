@@ -111,7 +111,8 @@ esp_traffic <- function(data,
           score == 1,
           INDICATOR_TYPE == "Ecosystem"
         ),
-      color = "cornflowerblue"
+      #color = "cornflowerblue"
+      color = "black"
     ) +
     ggplot2::geom_point(
       data = dat %>%
@@ -119,7 +120,8 @@ esp_traffic <- function(data,
           score == -1,
           INDICATOR_TYPE == "Ecosystem"
         ),
-      color = "brown1"
+      #color = "brown1"
+      color = "black"
     )
 
   # try to add units on y axis ----
