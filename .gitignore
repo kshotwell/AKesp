@@ -11,3 +11,4 @@ _targets/**
 .Rhistory
 **Rhistory$
 inst/doc
+.Rproj.user
