@@ -24,8 +24,7 @@ esp_traffic_tab <- function(data, year, cap = "Traffic light scoring") {
     ) %>%
     dplyr::group_by(.data$INDICATOR_NAME) %>%
     dplyr::mutate(
-      name = .data$INDICATOR_NAME %>%
-        stringr::str_replace_all("_", " "),
+      name = .data$REPORT_CARD_TITLE,
       this_year = (.data$YEAR %in% year),
       avg = mean(.data$DATA_VALUE,
         na.rm = TRUE
