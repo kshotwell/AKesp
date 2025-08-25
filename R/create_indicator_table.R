@@ -25,7 +25,7 @@ create_indicator_table <- function(data, dir, type,
   data$category <- factor(data$category,
     levels = c(
       "predictive", "contextual", "monitoring",
-      "fishery performance", "economic", "community"
+      "fishery informed", "economic", "community"
     )
   )
   data <- data |>
@@ -45,7 +45,7 @@ create_indicator_table <- function(data, dir, type,
 
   colnames(small_dat) <- colnames
 
-  flextable::set_flextable_defaults(font.size = 10)
+  flextable::set_flextable_defaults(font.size = 14)
 
   tbl <- flextable::flextable(small_dat)
   tbl <- flextable::theme_box(tbl)
