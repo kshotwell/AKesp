@@ -47,6 +47,9 @@ esp_traffic <- function(data,
 
   dat <- dat %>%
     dplyr::arrange(INDICATOR_ORDER)
+  #use report card title for label instead of indicator name
+  dat$name <- dat$REPORT_CARD_TITLE
+
   dat$name <- factor(dat$name, levels = unique(dat$name))
 
   # add units on facet ----
