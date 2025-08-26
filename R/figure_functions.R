@@ -459,7 +459,7 @@ rpt_card_timeseries <- function(
           xmin = -Inf,
           xmax = Inf
         ),
-        alpha = 0.05,
+        #alpha = 0.05,
         fill = top_color
       ) +
       ggplot2::geom_rect(
@@ -469,13 +469,13 @@ rpt_card_timeseries <- function(
           xmin = -Inf,
           xmax = Inf
         ),
-        alpha = 0.05,
+        #alpha = 0.05,
         fill = bottom_color
       )
   }
 
   plt <- plt +
-    ggplot2::geom_point(size = 5) +
+    ggplot2::geom_point(size = 1.5) +
     ggplot2::geom_line() +
     ggplot2::geom_hline(
       ggplot2::aes(yintercept = .data$mean),
@@ -497,18 +497,18 @@ rpt_card_timeseries <- function(
       x = max_year$YEAR,
       y = max_year$DATA_VALUE,
       label = max_year$YEAR,
-      size = 7,
+      size = 4,
       vjust = -1
     ) +
     ggplot2::ylab(ylab) +
-    ggplot2::theme_bw(base_size = 20) +
+    ggplot2::theme_bw(base_size = 12) +
     ggplot2::scale_x_continuous(
       breaks = new_breaks,
       limits = xlims
     ) +
     ggplot2::theme(
       panel.grid = ggplot2::element_blank(),
-      axis.text = ggplot2::element_text(size = 20),
+      axis.text = ggplot2::element_text(size = 12),
       axis.text.x = ggplot2::element_text(
         angle = 30,
         hjust = 1
