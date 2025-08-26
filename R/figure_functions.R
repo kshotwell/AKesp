@@ -445,11 +445,15 @@ rpt_card_timeseries <- function(
     top_color <- dplyr::case_when(
       data_sign == 1 ~ "#6B87B9",
       data_sign == -1 ~ "#DF5C47"
+      # data_sign == 1 ~ "grey",
+      # data_sign == -1 ~ "grey"
     )
 
     bottom_color <- dplyr::case_when(
       data_sign == -1 ~ "#6B87B9",
       data_sign == 1 ~ "#DF5C47"
+      # data_sign == -1 ~ "grey",
+      # data_sign == 1 ~ "grey"
     )
     plt <- plt +
       ggplot2::geom_rect(
