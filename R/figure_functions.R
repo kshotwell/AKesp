@@ -12,10 +12,10 @@
 
 esp_cor_matrix <- function(data, name, out, ...) {
   data <- data %>%
-    dplyr::select(.data$YEAR, .data$INDICATOR_NAME, .data$DATA_VALUE) %>%
+    dplyr::select(.data$YEAR, .data$REPORT_CARD_TITLE, .data$DATA_VALUE) %>%
     tidyr::pivot_wider(
       id_cols = .data$YEAR,
-      names_from = .data$INDICATOR_NAME,
+      names_from = .data$REPORT_CARD_TITLE,
       values_from = .data$DATA_VALUE
     )
 
