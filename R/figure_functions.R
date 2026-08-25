@@ -11,37 +11,69 @@
 #' @export
 
 esp_cor_matrix <- function(data, name, out, ...) {
+  # --- 1. Data Wrangling (with fix for correlation)
   data <- data %>%
     dplyr::select(.data$YEAR, .data$REPORT_CARD_TITLE, .data$DATA_VALUE) %>%
     tidyr::pivot_wider(
       id_cols = .data$YEAR,
       names_from = .data$REPORT_CARD_TITLE,
       values_from = .data$DATA_VALUE
-    )
+    ) %>%
 
+    # This is a critical step: convert YEAR to rownames so the data frame is purely numeric.
+    tibble::column_to_rownames(var = "YEAR")
+
+  # --- 2. Correlation Calculation
   traffic1_cor <- round(
     stats::cor(data, use = "complete.obs"),
     1
   )
   p.mat <- ggcorrplot::cor_pmat(data)
 
+  # --- 3. Plot Generation (with Readability Improvements)
   traffic1_cor_plot <- ggcorrplot::ggcorrplot(
     traffic1_cor,
     hc.order = TRUE,
     type = "lower",
-    lab = TRUE
-  )
+    lab = TRUE,
+    lab_size = 3 # Make the number labels a bit smaller if needed.
+  ) +
+    # --- ADDITIONS FOR READABILITY ---
+    labs(title = "All Correlation Coefficients") + # Add a title
+    theme(
+      #axis.text.x = element_blank(), # Remove x-axis labels from the top plot
+      #axis.ticks.x = element_blank(),   # Remove x-axis ticks
+      axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8)
+    )
+
+  # Create the second plot (significant correlations only).
   traffic1_cor_plot2 <- ggcorrplot::ggcorrplot(
     traffic1_cor,
     hc.order = TRUE,
     type = "lower",
     p.mat = p.mat,
     insig = "blank"
-  )
+  ) +
+    # --- ADDITIONS FOR READABILITY ---
+    labs(title = "Significant Correlations Only") + # Add a title
+    theme(
+      #axis.text.y = element_blank(), # Remove y-axis labels from the bottom plot
+      #axis.ticks.y = element_blank(),  # Remove y-axis ticks
+      # Rotate the x-axis labels to prevent overlap.
+      axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 8)
+    )
+  # --- 4. Combine and Finalize Plots (with Readability Improvements)
+  plt <- ggpubr::ggarrange(
+    traffic1_cor_plot,
+    traffic1_cor_plot2,
+    ncol = 1,
+    common.legend = TRUE, # Use a single legend for both plots
+    legend = "right"        # Place the legend on the right
+    )
+  #+
+  #  ggplot2::theme(axis.text = ggplot2::element_text(size = 5))
 
-  plt <- ggpubr::ggarrange(traffic1_cor_plot, traffic1_cor_plot2, ncol = 1) +
-    ggplot2::theme(axis.text = ggplot2::element_text(size = 5))
-
+  # --- 5. Output Handling
   if (out == "save") {
     ggplot2::ggsave(plt, filename = name, ...)
   } else if (out == "ggplot") {
@@ -445,15 +477,15 @@ rpt_card_timeseries <- function(
     top_color <- dplyr::case_when(
       data_sign == 1 ~ "#6B87B9",
       data_sign == -1 ~ "#DF5C47"
-      # data_sign == 1 ~ "grey",
-      # data_sign == -1 ~ "grey"
+      #data_sign == 1 ~ "grey",
+      #data_sign == -1 ~ "grey"
     )
 
     bottom_color <- dplyr::case_when(
       data_sign == -1 ~ "#6B87B9",
       data_sign == 1 ~ "#DF5C47"
-      # data_sign == -1 ~ "grey",
-      # data_sign == 1 ~ "grey"
+      #data_sign == -1 ~ "grey",
+      #data_sign == 1 ~ "grey"
     )
     plt <- plt +
       ggplot2::geom_rect(
@@ -496,14 +528,15 @@ rpt_card_timeseries <- function(
       linetype = 3,
       lwd = 1
     ) +
-    ggplot2::annotate(
-      "text",
-      x = max_year$YEAR,
-      y = max_year$DATA_VALUE,
-      label = max_year$YEAR,
-      size = 4,
-      vjust = -1
-    ) +
+    #Uncomment if you want to add a data label to the last year
+    #ggplot2::annotate(
+    #  "text",
+    #  x = max_year$YEAR,
+    #  y = max_year$DATA_VALUE,
+    #  label = max_year$YEAR,
+    #  size = 4,
+    #  vjust = 1
+    #) +
     ggplot2::ylab(ylab) +
     ggplot2::theme_bw(base_size = 12) +
     ggplot2::scale_x_continuous(
@@ -513,10 +546,11 @@ rpt_card_timeseries <- function(
     ggplot2::theme(
       panel.grid = ggplot2::element_blank(),
       axis.text = ggplot2::element_text(size = 12),
-      axis.text.x = ggplot2::element_text(
-        angle = 30,
-        hjust = 1
-      ),
+      #uncomment below if you want to rotate the x-axis for readability
+      #axis.text.x = ggplot2::element_text(
+      #  angle = 30,
+      #  hjust = 1
+      #),
       axis.title.x = ggplot2::element_blank(),
       plot.background = ggplot2::element_rect(color = "black")
     )
