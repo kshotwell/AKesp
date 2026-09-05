@@ -99,12 +99,12 @@ esp_traffic <- function(data,
       color = "darkgreen",
       linetype = "dotted"
     ) +
-    ggplot2::geom_point() +
+    ggplot2::geom_point(size = 2) + #adjust here if you need different size points
     ggplot2::geom_line(data = line_dat) +
     ggplot2::ylab("") +
     ggplot2::scale_y_continuous(labels = scales::comma) +
     ggplot2::theme_bw(base_size = 16) +
-    ggplot2::theme(strip.text = ggplot2::element_text(size = 10))
+    ggplot2::theme(strip.text = ggplot2::element_text(size = 14))
 
   # add colored points based on score column (created by prep_ind_data fxn)
   plt <- plt +
@@ -114,8 +114,9 @@ esp_traffic <- function(data,
           score == 1,
           INDICATOR_TYPE == "Ecosystem"
         ),
-      color = "cornflowerblue"
+      color = "cornflowerblue",
       #color = "black"
+      size = 2 # change if need different size points
     ) +
     ggplot2::geom_point(
       data = dat %>%
@@ -123,40 +124,55 @@ esp_traffic <- function(data,
           score == -1,
           INDICATOR_TYPE == "Ecosystem"
         ),
-      color = "brown1"
+      color = "brown1",
       #color = "black"
+      size = 2 # change if need different size points
     )
 
   # try to add units on y axis ----
-  # if you need to make more space between y axis labels and axis add more "\n"
   if (y_units & "UNITS" %in% colnames(dat)) {
     key <- dat %>%
-      dplyr::select(.data$name, .data$UNITS, .data$DATA_VALUE, .data$YEAR) %>%
-      dplyr::mutate(min_year = min(.data$YEAR, na.rm = TRUE)) %>%
-      dplyr::group_by(.data$name, .data$UNITS, .data$min_year) %>%
-      dplyr::summarise(mean = mean(.data$DATA_VALUE, na.rm = TRUE))
+      # Swap out the literal strings for Unicode superscript symbols
+      dplyr::mutate(
+        UNITS = stringr::str_replace_all(.data$UNITS, "\\^2", "²"),
+        UNITS = stringr::str_replace_all(.data$UNITS, "\\^3", "³"),
+        UNITS = stringr::str_replace_all(.data$UNITS, "Degrees C", "°C")
+      ) %>%
+      dplyr::group_by(.data$name, .data$UNITS) %>%
+      dplyr::summarise(mean = mean(.data$DATA_VALUE, na.rm = TRUE), .groups = "drop")
 
     plt <- plt +
       ggplot2::geom_text(
         data = key,
         inherit.aes = FALSE,
         ggplot2::aes(
-          x = min_year,
-          y = mean,
-          label = paste(
-            stringr::str_wrap(.data$UNITS, 10),
-            "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-          )
+          x = -Inf, # Anchor: -Inf locks the text exactly to the left y-axis line. Do not change this.
+          y = mean, # Anchor: 'mean' centers the text vertically on the y-axis. Do not change this.
+          label = stringr::str_wrap(.data$UNITS, 20)
         ),
         angle = 90,
-        lineheight = 0.75
+
+        # ADJUST THIS FOR LEFT/RIGHT MOVEMENT:
+        # Negative values push text LEFT (into the margin).
+        # Positive values push text RIGHT (into the plot).
+        # Try -1.5, -2, or -3 until it looks perfectly spaced from the numbers.
+        vjust = -4,
+
+        lineheight = 0.75,
+        size = 5
       ) +
-      ggplot2::theme(plot.margin = ggplot2::unit(c(1, 1, 1, 3), "lines")) +
+
+      # ADJUST THE FOURTH NUMBER FOR CLIPPING:
+      # c(top, right, bottom, left). The 'left' value (currently 5) creates the blank space
+      # for the text to live in. If your text gets cut off the left edge of the image
+      # because you pushed it too far with vjust, increase this number (e.g., to 6 or 7).
+      ggplot2::theme(plot.margin = ggplot2::unit(c(1, 1, 1, 5), "lines")) +
+
       ggplot2::coord_cartesian(clip = "off") +
-      ggplot2::scale_y_continuous(breaks = scales::breaks_pretty(n = 3))
-    # ggplot2::scale_y_continuous(labels = scales::label_scientific(), breaks = scales::breaks_pretty(n = 3))
-    # ylabels <- key$UNITS
-    # names(ylabels) <- key$name
+      ggplot2::scale_y_continuous(
+        labels = scales::label_number(scale_cut = scales::cut_short_scale()),
+        breaks = scales::breaks_pretty(n = 3)
+      )
   }
 
   # status ----

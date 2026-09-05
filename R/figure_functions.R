@@ -450,8 +450,14 @@ rpt_card_timeseries <- function(
   ylab,
   xlims,
   new_breaks,
-  type = "Ecosystem"
+  type = "Ecosystem",
+  use_color = FALSE # <-- NEW TOGGLE: Set to TRUE for red/blue, FALSE for grey
 ) {
+  # Intercept and modify the y-axis label string directly
+  ylab <- stringr::str_replace_all(ylab, "\\^2", "²")
+  #ylab <- stringr::str_replace_all(ylab, "\\^3", "³")
+  ylab <- stringr::str_replace_all(ylab, "Degrees C", "°C")
+
   max_year <- data |>
     dplyr::select(.data$YEAR, .data$DATA_VALUE) |>
     tidyr::drop_na() |>
@@ -474,19 +480,35 @@ rpt_card_timeseries <- function(
       )
     }
 
-    top_color <- dplyr::case_when(
-      data_sign == 1 ~ "#6B87B9",
-      data_sign == -1 ~ "#DF5C47"
-      #data_sign == 1 ~ "grey",
-      #data_sign == -1 ~ "grey"
-    )
+    # Automatically set colors based on the toggle
+    if (use_color) {
+      top_color <- dplyr::case_when(
+        data_sign == 1 ~ "#6B87B9",
+        data_sign == -1 ~ "#DF5C47"
+      )
+      bottom_color <- dplyr::case_when(
+        data_sign == -1 ~ "#6B87B9",
+        data_sign == 1 ~ "#DF5C47"
+      )
+    } else {
+      # Grayscale presentation style
+      top_color <- "grey"
+      bottom_color <- "grey"
+    }
 
-    bottom_color <- dplyr::case_when(
-      data_sign == -1 ~ "#6B87B9",
-      data_sign == 1 ~ "#DF5C47"
-      #data_sign == -1 ~ "grey",
-      #data_sign == 1 ~ "grey"
-    )
+    # top_color <- dplyr::case_when(
+    #   data_sign == 1 ~ "#6B87B9",
+    #   data_sign == -1 ~ "#DF5C47"
+    #   # data_sign == 1 ~ "grey",
+    #   # data_sign == -1 ~ "grey"
+    # )
+    #
+    # bottom_color <- dplyr::case_when(
+    #   data_sign == -1 ~ "#6B87B9",
+    #   data_sign == 1 ~ "#DF5C47"
+    #   # data_sign == -1 ~ "grey",
+    #   # data_sign == 1 ~ "grey"
+    # )
     plt <- plt +
       ggplot2::geom_rect(
         ggplot2::aes(
